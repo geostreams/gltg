@@ -3,7 +3,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Box, CircularProgress, makeStyles } from '@material-ui/core';
 
-import Footer from './Footer';
 import Header, { HEADERS_HEIGHT } from './Header';
 
 const useStyles = makeStyles({
@@ -24,10 +23,9 @@ type Props = {
     isLoading: boolean;
     extraMainClasses: string;
     children: React.Node;
-    hasFooter: boolean;
 }
 
-const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => {
+const Layout = ({ isLoading, children, extraMainClasses }: Props) => {
     const classes = useStyles();
     return (
         <>
@@ -44,7 +42,6 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => 
             <Header />
             <main className={`${classes.main} ${extraMainClasses}`}>
                 {children}
-                {hasFooter ? <Footer /> : null}
             </main>
         </>
     );
@@ -52,8 +49,7 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => 
 
 Layout.defaultProps = {
     extraMainClasses: '',
-    children: null,
-    hasFooter: false
+    children: null
 };
 
 const mapStateToProps = (state) => ({

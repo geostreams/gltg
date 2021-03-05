@@ -1,10 +1,218 @@
-export default {
+module.exports = {
     map: {
+        geoserverUrl: process.env.GEOSERVER_URL,
+        zoom: 5.5,
+        center: [-9972968, 4972295],
+        useCluster: true,
+        clusterDistance: 45,
         clusterExpandCountThreshold: 10,
-        clusterExpandZoomThreshold: 12
+        clusterExpandZoomThreshold: 12,
+        layers: {
+            'SPARROW 2002 Nutrient Model Results': [
+                {
+                    title: 'SPARROW 2002 Nitrogen Load',
+                    id: 'gltg:sparrow-nitrogen',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:sparrow-nitrogen'
+                },
+                {
+                    title: 'SPARROW 2002 Phosphorus Load',
+                    id: 'gltg:sparrow-phosphorus',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:sparrow-phosphorus'
+                }
+            ],
+            'Watershed Boundaries': [
+                {
+                    title: 'HUC 8',
+                    id: 'gltg:huc250k',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:huc250k'
+                },
+                {
+                    title: 'HUC 4',
+                    id: 'gltg:huc4',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:huc4'
+                },
+                {
+                    title: 'HUC 2',
+                    id: 'gltg:huc2',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:huc2'
+                }
+            ],
+            'Hypoxia and Precipitation': [
+                {
+                    title: '2005 Hypoxia Contours',
+                    id: 'gltg:2005_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2005_Hypoxia_Contours'
+                },
+                {
+                    title: '2006 Hypoxia Contours',
+                    id: 'gltg:2006_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2006_Hypoxia_Contours'
+                },
+                {
+                    title: '2007 Hypoxia Contours',
+                    id: 'gltg:2007_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2007_Hypoxia_Contours'
+                },
+                {
+                    title: '2008 Hypoxia Contours',
+                    id: 'gltg:2008_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2008_Hypoxia_Contours'
+                },
+                {
+                    title: '2009 Hypoxia Contours',
+                    id: 'gltg:2009_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2009_Hypoxia_Contours'
+                },
+                {
+                    title: '2010 Hypoxia Contours',
+                    id: 'gltg:2010_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2010_Hypoxia_Contours'
+                },
+                {
+                    title: '2011 Hypoxia Contours',
+                    id: 'gltg:2011_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2011_Hypoxia_Contours'
+                },
+                {
+                    title: '2012 Hypoxia Contours',
+                    id: 'gltg:2012_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2012_Hypoxia_Contours'
+                },
+                {
+                    title: '2013 Hypoxia Contours',
+                    id: 'gltg:2013_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2013_Hypoxia_Contours'
+                },
+                {
+                    title: '2014 Hypoxia Contours',
+                    id: 'gltg:2014_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2014_Hypoxia_Contours'
+                },
+                {
+                    title: '2015 Hypoxia Contours',
+                    id: 'gltg:2015_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2015_Hypoxia_Contours'
+                },
+                {
+                    title: '2016 Hypoxia Contours',
+                    id: 'gltg:2016_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2016_Hypoxia_Contours'
+                },
+                {
+                    title: '2017 Hypoxia Contours',
+                    id: 'gltg:2017_Hypoxia_Contours',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2017_Hypoxia_Contours'
+                }
+            ],
+            'Cropscape Frequency Data': [
+                {
+                    title: 'Corn Frequency',
+                    id: 'gltg:corn_freq',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:corn_freq'
+                },
+                {
+                    title: 'Cotton Frequency',
+                    id: 'gltg:cotton_freq',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:cotton_freq'
+                },
+                {
+                    title: 'Soy Frequency',
+                    id: 'gltg:soy_freq',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:soy_freq'
+                }
+            ],
+            '': [
+                {
+                    title: 'River Reaches',
+                    id: 'gltg:gltg-pools',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:gltg-pools',
+                    initialOpacity: 0.9
+                },
+                {
+                    title: 'Large Rivers',
+                    id: 'gltg:us-rivers',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:us-rivers',
+                    initialVisibility: true,
+                    initialOpacity: 0.25
+                },
+                {
+                    title: 'US States',
+                    id: 'gltg:us-states',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:us-states',
+                    initialOpacity: 0.5
+                },
+                {
+                    title: 'Total annual nitrogen from point sources by HUC8 watershed (avg. 2007-2014)',
+                    id: 'gltg:agg-pt-source',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:agg-pt-source',
+                    initialOpacity: 0.5
+                },
+                {
+                    title: 'Average Annual Nitrogen Fertilizer Inputs for 1997 to 2006',
+                    id: 'gltg:fertilizer_n',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:fertilizer_n',
+                    initialOpacity: 0.5
+                },
+                {
+                    title: 'EPA Impaired Stream Segments',
+                    id: 'gltg:impaired-epa',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:impaired-epa',
+                    initialOpacity: 0.75
+                },
+                {
+                    title: 'State Legislative District - Lower Chamber',
+                    id: 'gltg:state-legi-dist-lower',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:state-legi-dist-lower',
+                    initialOpacity: 0.75
+                },
+                {
+                    title: 'State Legislative District - Upper Chamber',
+                    id: 'gltg:state-legi-dist-upper',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:state-legi-dist-upper',
+                    initialOpacity: 0.75
+                },
+                {
+                    title: 'Congressional District',
+                    id: 'gltg:cong-dist-il',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:cong-dist-il',
+                    initialOpacity: 0.75
+                }
+            ]
+        }
     },
     geostreamingEndpoint: process.env.GEOSTREAMS_URL,
     sensors: {
+        maxDisplayParameters: 10,
         displayOnlineStatus: true
     },
     source: {

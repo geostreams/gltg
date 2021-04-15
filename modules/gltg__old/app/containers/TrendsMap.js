@@ -4,7 +4,7 @@
 
 
 import {connect} from 'react-redux';
-import TrendsMapComponent from 'gd-core__old/app/components/TrendsMap';
+import TrendsMapComponent from '@geostreams/core__old/app/components/TrendsMap';
 
 
 const mapStateToProps = (state) => {

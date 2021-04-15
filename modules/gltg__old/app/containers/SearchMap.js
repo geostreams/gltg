@@ -3,8 +3,8 @@
  */
 
 import {connect} from 'react-redux';
-import {addCustomLocationFilter} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import {addCustomLocationFilter} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 import SearchMapComponent from '../components/SearchMap';
 
 const mapStateToProps = (state) => {

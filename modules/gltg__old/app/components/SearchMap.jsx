@@ -9,10 +9,10 @@ require("openlayers/css/ol.css");
 import styles from '../styles/map.css';
 import {getCustomLocation, getMobileSizeMax} from '../utils/getConfig';
 import {sensorsToFeatures, getMultiLineLayer} from '../utils/mapUtils';
-import {drawHelper} from 'gd-core__old/app/utils/mapDraw';
+import {drawHelper} from '@geostreams/core__old/app/utils/mapDraw';
 import {popupHeader, popupParameters, removePopup} from '../utils/mapPopup';
 import BasicMap from './BasicMap';
-import type {InputEventMap} from 'gd-core__old/app/utils/flowtype';
+import type {InputEventMap} from '@geostreams/core__old/app/utils/flowtype';
 
 
 class SearchMap extends Component {

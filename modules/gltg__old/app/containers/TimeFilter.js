@@ -3,9 +3,9 @@
  */
 
 import {connect} from 'react-redux';
-import {addStartDate, addEndDate, addSpanEnd, addSpanStart} from 'gd-core__old/app/actions';
-import TimeFilterComponent from 'gd-core__old/app/components/TimeFilter';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import {addStartDate, addEndDate, addSpanEnd, addSpanStart} from '@geostreams/core__old/app/actions';
+import TimeFilterComponent from '@geostreams/core__old/app/components/TimeFilter';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 
 const mapStateToProps = (state, ownProps) => {

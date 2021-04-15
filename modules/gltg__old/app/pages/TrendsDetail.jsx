@@ -8,9 +8,9 @@ import TrendsRegionDetails from '../containers/TrendsRegionDetails';
 import TrendsDetailRight from '../containers/TrendsDetailRight';
 import {Grid, Cell, Content, List, Card, CardTitle} from 'react-mdc-web/lib';
 import styles from '../styles/main.css';
-import trendsStyles from 'gd-core__old/app/styles/trends.css';
+import trendsStyles from '@geostreams/core__old/app/styles/trends.css';
 import { getCustomTrendsRegion, getTrendsPageSettings } from '../utils/getConfig';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 class TrendsDetail extends Component {
 
@@ -40,7 +40,7 @@ class TrendsDetail extends Component {
                             <Cell col={4}>
                                 <Card className={trendsStyles.detailTitle}>
                                     <CardTitle className={styles.title_card}>
-                                        <Link href={"#trendsregions"}>Trends Regions</Link>
+                                        <Link to={"#trendsregions"}>Trends Regions</Link>
                                         {trendsRegionTitleLink}
                                     </CardTitle>
                                 </Card>

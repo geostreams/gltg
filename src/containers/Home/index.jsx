@@ -14,7 +14,7 @@ import {
 import DownTrendIcon from '@material-ui/icons/ArrowDropDown';
 import UpTrendIcon from '@material-ui/icons/ArrowDropUp';
 import FlatTrendIcon from '@material-ui/icons/FiberManualRecord';
-import Control from 'gd-core/src/components/ol/Control';
+import Control from '@geostreams/core/src/components/ol/Control';
 import { createEmpty as createEmptyExtent, extend as extendExtent } from 'ol/extent';
 import GeoJSON from 'ol/format/GeoJSON';
 import GroupLayer from 'ol/layer/Group';
@@ -27,9 +27,9 @@ import VectorSource from 'ol/source/Vector';
 import XYZ from 'ol/source/XYZ';
 import { decode } from 'geobuf';
 import Pbf from 'pbf';
-import { Map, BaseControlPortal } from 'gd-core/src/components/ol';
-import { entries } from 'gd-core/src/utils/array';
-import { SLRSlope } from 'gd-core/src/utils/math';
+import { Map, BaseControlPortal } from '@geostreams/core/src/components/ol';
+import { entries } from '@geostreams/core/src/utils/array';
+import { SLRSlope } from '@geostreams/core/src/utils/math';
 
 import type {
     Feature as FeatureType,

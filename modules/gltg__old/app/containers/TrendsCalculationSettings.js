@@ -3,9 +3,9 @@
  */
 
 import {connect} from 'react-redux';
-import TrendsCalculationSettingsComponent from 'gd-core__old/app/components/TrendsCalculationSettings';
-import {selectTrendsCalcBaselineSetting, selectTrendsCalcRollingSetting} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import TrendsCalculationSettingsComponent from '@geostreams/core__old/app/components/TrendsCalculationSettings';
+import {selectTrendsCalcBaselineSetting, selectTrendsCalcRollingSetting} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 
 const mapStateToProps = (state) => {

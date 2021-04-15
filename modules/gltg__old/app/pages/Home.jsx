@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 import styles from '../styles/customStyles.css';
 import {Button} from 'react-mdc-web';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import Footer from "../components/Footer";
 
 
@@ -42,7 +42,7 @@ class Home extends Component {
                         </div>
 
                         <div className={styles.custom_button} >
-                            <Link href="#explore/all">
+                            <Link to="#explore/all">
                                 <Button raised>
                                     Explore Now
                                 </Button>

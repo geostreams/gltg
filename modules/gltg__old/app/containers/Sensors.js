@@ -3,7 +3,7 @@
  */
 
 import {connect} from 'react-redux';
-import SensorsComponent from 'gd-core__old/app/components/Sensors';
+import SensorsComponent from '@geostreams/core__old/app/components/Sensors';
 
 const mapStateToProps = (state) => {
     return {

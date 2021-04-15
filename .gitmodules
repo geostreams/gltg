@@ -1,0 +1,3 @@
+[submodule "src/containers/DataStories/pages"]
+	path = src/containers/DataStories/pages
+	url = https://github.com/geostreams/gltg-datastories.git

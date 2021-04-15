@@ -10,7 +10,7 @@ import styles from '../styles/map.css';
 import {sensorsToFeatures, getMultiLineLayer, matchMapArea} from '../utils/mapUtils';
 import {popupHeader, popupParameters} from '../utils/mapPopup';
 import BasicMap from './BasicMap';
-import type {InputEventMap} from 'gd-core__old/app/utils/flowtype';
+import type {InputEventMap} from '@geostreams/core__old/app/utils/flowtype';
 import {
     getMobileFilterSensors, getMobileSizeMax, getMobileSourceNames, displayOnlineStatus,
     getMapPopupZoom, maxZoom, clustersExpandMaxNumberFeatures, getAreaLocations

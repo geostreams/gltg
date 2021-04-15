@@ -5,21 +5,21 @@
 import React, {Component} from 'react';
 import Map from '../containers/TrendsMap';
 import TrendsParameters from '../containers/TrendsParameters';
-import TrendsSeasons from 'gd-core__old/app/containers/TrendsSeasons';
+import TrendsSeasons from '@geostreams/core__old/app/containers/TrendsSeasons';
 import TrendsRegions from '../containers/TrendsRegions';
-import Spinner from 'gd-core__old/app/components/Spinner';
+import Spinner from '@geostreams/core__old/app/components/Spinner';
 import {
     Grid, Cell, Content, List, Card, CardHeader, CardTitle, CardText, Tabbar, Tab
 } from 'react-mdc-web/lib';
 import styles from '../styles/main.css';
-import trendsStyles from 'gd-core__old/app/styles/trends.css';
+import trendsStyles from '@geostreams/core__old/app/styles/trends.css';
 import {connect} from 'react-redux';
 import {
     getTrendsPageSettings, getTrendsPageSeasons, getTrendsRegionsSettings,
     getTrendsDefaultValues, getMobileSizeMax
 } from '../utils/getConfig';
-import {generateMobilePageTabs} from "gd-core__old/app/utils/mobileUtils";
-import {handleParamsWithItalics} from 'gd-core__old/app/utils/configUtils';
+import {generateMobilePageTabs} from "@geostreams/core__old/app/utils/mobileUtils";
+import {handleParamsWithItalics} from '@geostreams/core__old/app/utils/configUtils';
 
 
 class TrendsSensor extends Component {

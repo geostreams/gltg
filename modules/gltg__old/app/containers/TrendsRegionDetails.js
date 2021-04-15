@@ -3,7 +3,7 @@
  */
 
 import {connect} from 'react-redux';
-import TrendsRegionDetailsComponent from 'gd-core__old/app/components/TrendsRegionDetails';
+import TrendsRegionDetailsComponent from '@geostreams/core__old/app/components/TrendsRegionDetails';
 
 const mapStateToProps = (state) => {
 

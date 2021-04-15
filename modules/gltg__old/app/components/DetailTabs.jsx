@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from 'gd-core__old/app/styles/detailTabs.css';
+import styles from '@geostreams/core__old/app/styles/detailTabs.css';
 
 const DetailTabs = ({ categories, sensorName, selected }) =>(
 

@@ -2,16 +2,16 @@
 
 /* eslint-disable */
 // $FlowFixMe
-const __old_config = require('gd-gltg__old/config');
+const __old_config = require('@geostreams/gltg__old/config');
 window.configruntime = __old_config;
 
 // $FlowFixMe
-import { addEndpoints, fetchSensors as __old_fetchSensors } from 'gd-core__old/app/actions';
+import { addEndpoints, fetchSensors as __old_fetchSensors } from '@geostreams/core__old/app/actions';
 
-import render from 'gd-core/src/render';
-import { updateGeoStreamingConfig } from 'gd-geostreaming/src/actions/config';
-import { fetchParameters } from 'gd-geostreaming/src/actions/parameters';
-import { fetchSensors } from 'gd-geostreaming/src/actions/sensors';
+import render from '@geostreams/core/src/render';
+import { updateGeoStreamingConfig } from '@geostreams/geostreaming/src/actions/config';
+import { fetchParameters } from '@geostreams/geostreaming/src/actions/parameters';
+import { fetchSensors } from '@geostreams/geostreaming/src/actions/sensors';
 
 import config from './config';
 import reducers from './reducers';

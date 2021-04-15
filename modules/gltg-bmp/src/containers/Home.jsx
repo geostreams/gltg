@@ -2,16 +2,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, makeStyles } from '@material-ui/core';
-import { Map } from 'gd-core/src/components/ol';
-import { updateLoadingStatus } from 'gd-core/src/actions/page';
-import logger from 'gd-core/src/utils/logger';
+import { Map } from '@geostreams/core/src/components/ol';
+import { updateLoadingStatus } from '@geostreams/core/src/actions/page';
+import logger from '@geostreams/core/src/utils/logger';
 
 import type {
     Feature as FeatureType,
     Layer as LayerType,
     MapBrowserEventType
 } from 'ol';
-import type { Action as PageAction } from 'gd-core/src/actions/page';
+import type { Action as PageAction } from '@geostreams/core/src/actions/page';
 
 import { BMP_API_URL, BOUNDARIES, INITIAL_FILTERS, LAYERS, MAP_CENTER, getStyle } from '../config';
 import { BMPContext } from './Context';

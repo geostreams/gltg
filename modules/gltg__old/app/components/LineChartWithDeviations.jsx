@@ -1,7 +1,7 @@
 /* No Flow due to D3 Items */
 
 import React, { Component } from 'react';
-import { XAxis, YAxis } from 'gd-core__old/vendor/rd3/src';
+import { XAxis, YAxis } from '@geostreams/core__old/vendor/rd3/src';
 const d3 = require('d3');
 
 

@@ -1,11 +1,11 @@
 /* No Flow due to D3 Items */
 
 import React, {Component} from 'react';
-import D3Line from 'gd-core__old/app/components/D3/D3Line';
+import D3Line from '@geostreams/core__old/app/components/D3/D3Line';
 import PropTypes from 'prop-types';
-import styles from 'gd-core__old/app/styles/detail.css';
+import styles from '@geostreams/core__old/app/styles/detail.css';
 import ReactDOM from 'react-dom';
-import {removeCharsIDs} from 'gd-core__old/app/utils/graphUtils';
+import {removeCharsIDs} from '@geostreams/core__old/app/utils/graphUtils';
 
 
 class LinePlot extends Component {

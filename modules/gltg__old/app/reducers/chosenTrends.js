@@ -12,7 +12,7 @@ import {
     SELECT_TRENDS_THRESHOLD, SELECT_TRENDS_VIEW_TYPE, SET_TRENDS_TIMEFRAMES,
     SET_REGIONS_SENSORS, SET_TRENDS_SENSORS, UPDATE_TRENDS_SENSORS, FAILED_RETRIEVING_REGION_TRENDS,
     ANALYSIS_SAVED_SEARCH
-} from 'gd-core__old/app/actions';
+} from '@geostreams/core__old/app/actions';
 import {
     getTrendsPageTimeframes, getTrendsRegionsSettings, getTrendSettings,
     getTrendsPageSettings, getTrendsSources
@@ -20,12 +20,12 @@ import {
 import {
     createRegionalTrends, filterCustomTrendLocation, filterPresetTrendLocation,
     getAllRegions, handleThresholdChangeNoChoice, matchRegionAnalysis, matchRegionTrends
-} from 'gd-core__old/app/utils/trendsUtils';
+} from '@geostreams/core__old/app/utils/trendsUtils';
 import type {
     ChosenTrendsState, Sensors, TrendsBaselineTotalYear, TrendsPageSensorsState,
     TrendsPageRegionsState, TrendsParameter, TrendsRegion, TrendsRollingInterval,
     TrendsThreshold, TrendsThresholdChoice, TrendsViewType
-} from 'gd-core__old/app/utils/flowtype';
+} from '@geostreams/core__old/app/utils/flowtype';
 
 
 type ChosenTrendsAction = {|

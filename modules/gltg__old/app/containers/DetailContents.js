@@ -4,9 +4,9 @@
 
 import {connect} from "react-redux";
 import DetailContentsComponent from "../components/DetailContents";
-import {fetchSensorMobile, fetchSensor} from "gd-core__old/app/actions";
+import {fetchSensorMobile, fetchSensor} from "@geostreams/core__old/app/actions";
 import {getMobileFilterSensors, getMobileSizeMax} from '../utils/getConfig';
-import type {Dispatch} from "gd-core__old/app/utils/flowtype";
+import type {Dispatch} from "@geostreams/core__old/app/utils/flowtype";
 
 
 const mapStateToProps = (state, ownProps) => {

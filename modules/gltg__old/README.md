@@ -3,7 +3,7 @@
 Part of the [Geostreaming Data Framework](https://geodashboard.ncsa.illinois.edu/). Web frontend to explore, search and
 visualize data stored in the Geostreaming Web Service.
 
-Built on react.js, redux, webpack, babel, react-router, openlayers 3.
+Built on react.js, redux, webpack, babel, react-router-dom, openlayers 3.
 
 ## How to Build
 

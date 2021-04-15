@@ -4,9 +4,9 @@
 
 import {
     SELECT_SENSOR, RECEIVE_SENSOR, UPDATE_DETAIL, CLEAN_DETAIL
-} from 'gd-core__old/app/actions';
+} from '@geostreams/core__old/app/actions';
 import {getProcessedProperty} from '../utils/getConfig';
-import type {sensorDetailState} from 'gd-core__old/app/utils/flowtype';
+import type {sensorDetailState} from '@geostreams/core__old/app/utils/flowtype';
 
 
 const defaultState = {

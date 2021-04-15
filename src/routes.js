@@ -1,15 +1,15 @@
 // @flow
-import coreRoutes from 'gd-core/src/routes';
-import hocs from 'gd-core/src/utils/hocs';
-import GeoStreamingExplore from 'gd-geostreaming/src/containers/Explore';
-import GeoStreamingHome from 'gd-geostreaming/src/containers/Home';
-import GeoStreamingSearch from 'gd-geostreaming/src/containers/Search';
-import GeoStreamingSensorDetail from 'gd-geostreaming/src/containers/Sensor/Detail';
+import coreRoutes from '@geostreams/core/src/routes';
+import hocs from '@geostreams/core/src/utils/hocs';
+import GeoStreamingExplore from '@geostreams/geostreaming/src/containers/Explore';
+import GeoStreamingHome from '@geostreams/geostreaming/src/containers/Home';
+import GeoStreamingSearch from '@geostreams/geostreaming/src/containers/Search';
+import GeoStreamingSensorDetail from '@geostreams/geostreaming/src/containers/Sensor/Detail';
 
 // $FlowFixMe
-import __old_Search from 'gd-gltg__old/app/pages/Search';
+import __old_Search from '@geostreams/gltg__old/app/pages/Search';
 // $FlowFixMe
-import __old_Analysis from 'gd-gltg__old/app/pages/Analysis';
+import __old_Analysis from '@geostreams/gltg__old/app/pages/Analysis';
 
 import About from './containers/About';
 import DataStories from './containers/DataStories';

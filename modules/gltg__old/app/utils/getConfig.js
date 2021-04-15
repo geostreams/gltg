@@ -2,7 +2,7 @@
  * @flow
  */
 
-import type {PropertiesType} from 'gd-core__old/app/utils/flowtype';
+import type {PropertiesType} from '@geostreams/core__old/app/utils/flowtype';
 
 export function getSourceName(source: PropertiesType): string {
     const sourceName = window.configruntime.gd3.sourcename;

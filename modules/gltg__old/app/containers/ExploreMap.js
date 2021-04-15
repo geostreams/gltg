@@ -4,8 +4,8 @@
 
 import {connect} from 'react-redux';
 import ExploreMapComponent from '../components/ExploreMap';
-import type {Dispatch} from "gd-core__old/app/utils/flowtype";
-import {resetDetailPage, resetExploreSensors, initializeExploreDataSources, selectSensorDetail} from "gd-core__old/app/actions";
+import type {Dispatch} from "@geostreams/core__old/app/utils/flowtype";
+import {resetDetailPage, resetExploreSensors, initializeExploreDataSources, selectSensorDetail} from "@geostreams/core__old/app/actions";
 
 const mapStateToProps = (state) => {
     return {

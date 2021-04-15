@@ -1,11 +1,11 @@
-// @flow
-import React from 'react';
-import BaseTests from 'gd-core/src/tests/BaseTests';
+// // @flow
+// import React from 'react';
+// import BaseTests from '@geostreams/core/src/tests/BaseTests';
 
-const tests = [];
+// const tests = [];
 
-const Tests = () => (
-    <BaseTests components={tests} />
-);
+// const Tests = () => (
+//     <BaseTests components={tests} />
+// );
 
-export default Tests;
+// export default Tests;

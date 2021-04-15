@@ -9,9 +9,9 @@ import {
     getMapAttributionsCollapsibleSetting, getMapMiniAttributionsCollapsibleSetting,
     getMobileSizeMax, getMobileSourceNames, getClustersDistance
 } from './getConfig';
-import {matchRegionTrends, getRegionalThreshold} from 'gd-core__old/app/utils/trendsUtils';
-import type {Parameters, Sensors} from 'gd-core__old/app/utils/flowtype';
-import {pnpoly} from "gd-core__old/app/utils/arrayUtils";
+import {matchRegionTrends, getRegionalThreshold} from '@geostreams/core__old/app/utils/trendsUtils';
+import type {Parameters, Sensors} from '@geostreams/core__old/app/utils/flowtype';
+import {pnpoly} from "@geostreams/core__old/app/utils/arrayUtils";
 
 
 // FIXME: TEMPORARY CORRECTION - All usages should be removed in the future

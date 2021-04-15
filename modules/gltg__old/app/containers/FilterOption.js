@@ -3,9 +3,9 @@
  */
 
 import {connect} from 'react-redux';
-import {addSearchParameter, addSearchDataSource} from 'gd-core__old/app/actions';
-import FilterOptionComponent from 'gd-core__old/app/components/FilterOption';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import {addSearchParameter, addSearchDataSource} from '@geostreams/core__old/app/actions';
+import FilterOptionComponent from '@geostreams/core__old/app/components/FilterOption';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 const mapStateToProps = (state) => {
 

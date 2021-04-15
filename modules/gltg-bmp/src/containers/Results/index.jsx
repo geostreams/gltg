@@ -2,12 +2,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FormControl, Grid, Select, makeStyles } from '@material-ui/core';
-import { updateLoadingStatus } from 'gd-core/src/actions/page';
-import { entries } from 'gd-core/src/utils/array';
-import { useElementRect } from 'gd-core/src/utils/hooks';
-import logger from 'gd-core/src/utils/logger';
+import { updateLoadingStatus } from '@geostreams/core/src/actions/page';
+import { entries } from '@geostreams/core/src/utils/array';
+import { useElementRect } from '@geostreams/core/src/utils/hooks';
+import logger from '@geostreams/core/src/utils/logger';
 
-import type { Action as PageAction } from 'gd-core/src/actions/page';
+import type { Action as PageAction } from '@geostreams/core/src/actions/page';
 
 import { BMP_API_URL } from '../../config';
 import { BMPContext } from '../Context';

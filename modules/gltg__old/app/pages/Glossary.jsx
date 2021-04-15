@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Menu from '../containers/MenuBar';
 import styles from '../styles/customStyles.css';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {List, ListItem} from 'react-mdc-web';
 
 
@@ -245,7 +245,7 @@ class Glossary extends Component {
                             some contaminants. The presence of contaminants does not necessarily indicate that water
                             poses a health risk. EPA sets standards for approximately 90 contaminants and indicators
                             in drinking water.
-                            (Source: <Link href="http://water.epa.gov/drink/contaminants/basicinformation/index.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/drink/contaminants/basicinformation/index.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -274,7 +274,7 @@ class Glossary extends Component {
                             Past decades of river management has prevented the Mississippi River from naturally flowing
                             through its delta wetlands, causing erosion. Between 1990 and 2000, the Mississippi River
                             Delta lost 62 square kilometers (24 square miles) of wetlands per year.
-                            (Source: <Link href="http://education.nationalgeographic.com/education/encyclopedia/delta/?ar_a=1" target="_blank">National Geographic</Link>)<br/>
+                            (Source: <Link to="http://education.nationalgeographic.com/education/encyclopedia/delta/?ar_a=1" target="_blank">National Geographic</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -292,8 +292,8 @@ class Glossary extends Component {
                             systems and rapid accumulation of rainfall.  Overland flooding, the most common type of flooding event
                             typically occurs when waterways such as rivers or streams overflow their banks as a result of
                             rainwater or a possible levee breach and cause flooding in surrounding areas.
-                            (Sources: <Link href="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/ffr_overview.jsp" target="_blank">NFIP</Link>,&nbsp;
-                            <Link href="http://ready.gov/floods" target="_blank">Ready.gov</Link>)<br/>
+                            (Sources: <Link to="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/ffr_overview.jsp" target="_blank">NFIP</Link>,&nbsp;
+                            <Link to="http://ready.gov/floods" target="_blank">Ready.gov</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -307,7 +307,7 @@ class Glossary extends Component {
                             changes due to building and development. To help communities understand their risk, flood
                             maps (Flood Insurance Rate Maps, FIRMs) have been created to show the locations of high-risk,
                             moderate-to-low risk and undetermined-risk areas.
-                            (Source: <Link href="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
+                            (Source: <Link to="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -319,7 +319,7 @@ class Glossary extends Component {
                             All home and business owners in these areas with mortgages from federally regulated or insured
                             lenders are required to buy flood insurance. They are shown on the flood maps as zones labeled
                             with the letters A or V.
-                            (Source: <Link href="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
+                            (Source: <Link to="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -332,7 +332,7 @@ class Glossary extends Component {
                             flooding. Flood insurance isn't federally required in moderate-to-low areas, but it is recommended
                             for all property owners and renters. They are shown on flood maps as zones labeled with the
                             letters B, C or X (or a shaded X).
-                            (Source: <Link href="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
+                            (Source: <Link to="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -343,7 +343,7 @@ class Glossary extends Component {
                             No flood-hazard analysis has been conducted in these areas, but a flood risk still exists.
                             Flood insurance rates reflect the uncertainty of the flood risk. These areas are labeled with
                             the letter D on the flood maps.
-                            (Source: <Link href="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
+                            (Source: <Link to="https://www.floodsmart.gov/floodsmart/pages/flooding_flood_risks/defining_flood_risks.jsp" target="_blank">NFIP</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -380,7 +380,7 @@ class Glossary extends Component {
                             indicator of how much progress is being made to reduce nutrient inputs into the Gulf of Mexico.
                             Sometimes the size of the zone is influenced by other factors, such as droughts or hurricanes
                             that can reduce the size of the zone, or floods that can increase the size.
-                            (Source: <Link href="http://water.epa.gov/type/watersheds/named/msbasin/zone.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/type/watersheds/named/msbasin/zone.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -396,8 +396,8 @@ class Glossary extends Component {
                             units are arranged or nested within each other, from the largest geographic area (regions) to the
                             smallest geographic area (cataloging units). Each hydrologic unit is identified by a unique
                             hydrologic unit code (HUC) based on the four levels of classification in the hydrologic unit system.
-                            (Sources: <Link href="http://arkansaswater.org/index.php?option=com_content&task=view&id=312&Itemid=86" target="_blank">Arkansas Water</Link>,&nbsp;
-                            <Link href="http://water.usgs.gov/GIS/huc.html" target="_blank">USGS</Link>)<br/>
+                            (Sources: <Link to="http://arkansaswater.org/index.php?option=com_content&task=view&id=312&Itemid=86" target="_blank">Arkansas Water</Link>,&nbsp;
+                            <Link to="http://water.usgs.gov/GIS/huc.html" target="_blank">USGS</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -413,7 +413,7 @@ class Glossary extends Component {
                             biological processes involving water as it travels its various paths in the atmosphere, over and
                             beneath the earth's surface and through growing plants, are of interest to those who study the
                             hydrologic cycle.
-                            (Source: <Link href="http://water.usgs.gov/edu/hydrology.html#HDR2" target="_blank">USGS</Link>)<br/>
+                            (Source: <Link to="http://water.usgs.gov/edu/hydrology.html#HDR2" target="_blank">USGS</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -432,7 +432,7 @@ class Glossary extends Component {
                             Direct effects of hypoxia include fish kills, which deplete valuable fisheries and
                             disrupt ecosystems. The Gulf of Mexico hypoxic zone is located in the northern Gulf of Mexico off
                             the coast of Louisiana and Texas. The zone was first documented in 1972.
-                            (Source: <Link href="http://water.epa.gov/type/watersheds/named/msbasin/hypoxia101.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/type/watersheds/named/msbasin/hypoxia101.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -446,7 +446,7 @@ class Glossary extends Component {
                             Mississippi River from Minneapolis-St. Paul to its confluence with the Ohio River and up the
                             Illinois Waterway to the Thomas J. O’Brien Lock in Chicago. It includes 37 Locks and approximately
                             1,200 miles of navigable waterway in Illinois, Iowa, Minnesota, Missouri and Wisconsin.
-                            (Source: <Link href="http://www.mvr.usace.army.mil/Portals/48/docs/CC/FactSheets/Miss/Mississippi River Locks and Dams (2012).pdf" target="_blank">USACE</Link>)<br/>
+                            (Source: <Link to="http://www.mvr.usace.army.mil/Portals/48/docs/CC/FactSheets/Miss/Mississippi River Locks and Dams (2012).pdf" target="_blank">USACE</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -465,7 +465,7 @@ class Glossary extends Component {
                             sensitive to pollution than others. Therefore, if a stream site is inhabited by organisms
                             that can tolerate pollution and the more pollution sensitive organisms are missing a pollution
                             problem is likely.
-                            (Source: <Link href="http://water.epa.gov/type/rsl/monitoring/vms40.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/type/rsl/monitoring/vms40.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -490,7 +490,7 @@ class Glossary extends Component {
                             support the growth of algae and aquatic plants, which provide food and habitat for fish,
                             shellfish and smaller organisms that live in water.  Excess nitrogen and phosphorus (nutrients)
                             are among the most prevalent cause of water quality impairment in the United States.
-                            (Source: <Link href="http://www2.epa.gov/nutrientpollution/problem" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://www2.epa.gov/nutrientpollution/problem" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -513,7 +513,7 @@ class Glossary extends Component {
                             that aquatic life need to survive. Some algal blooms are harmful to humans because they produce
                             elevated toxins and bacterial growth that can make people sick if they come into contact with
                             polluted water, consume tainted fish or shellfish, or drink contaminated water.
-                            (Source: <Link href="http://www2.epa.gov/nutrientpollution/problem" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://www2.epa.gov/nutrientpollution/problem" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -537,7 +537,7 @@ class Glossary extends Component {
                             to 0.01 milligram per liter (mg/L) or even lower. Even such very low concentrations of phosphorus
                             can have a dramatic impact on streams. Less sensitive methods should be used only to identify
                             serious problem areas.
-                            (Source: <Link href="http://water.epa.gov/type/rsl/monitoring/vms56.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/type/rsl/monitoring/vms56.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -553,7 +553,7 @@ class Glossary extends Component {
                             In a balanced ecosystem, phytoplankton provide food for a wide range of sea creatures including
                             whales, shrimp, snails, and jellyfish. When too many nutrients are available, phytoplankton
                             may grow out of control and form harmful algal blooms.
-                            (Source: <Link href="http://oceanservice.noaa.gov/facts/phyto.html" target="_blank">NOAA</Link>)<br/>
+                            (Source: <Link to="http://oceanservice.noaa.gov/facts/phyto.html" target="_blank">NOAA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -565,7 +565,7 @@ class Glossary extends Component {
                             vegetation cover, and land use practices.  On the Mississippi River, the term Pool is used to
                             describe the area between navigation dams. For example, Pool 13 is the area upstream of Lock
                             and Dam 13, to Lock and Dam 12.  There are 26 navigation pools in the Upper Mississippi River.
-                            (Source: <Link href="http://www.umesc.usgs.gov/rivers/upper_mississippi/reach_1/sel_a_pool_r1.html" target="_blank">USGS</Link>)<br/>
+                            (Source: <Link to="http://www.umesc.usgs.gov/rivers/upper_mississippi/reach_1/sel_a_pool_r1.html" target="_blank">USGS</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -575,7 +575,7 @@ class Glossary extends Component {
                         <p className={styles.custom_paragraph}>
                             The term river mile is the distance from the mouth of the creek or river to the given location,
                             to the nearest tenth of a mile.  The USACE uses river miles in its navigation charts.
-                            (Source: <Link href="http://www.mvr.usace.army.mil/Missions/Navigation/NavigationCharts.aspx" target="_blank">USACE</Link>)<br/>
+                            (Source: <Link to="http://www.mvr.usace.army.mil/Missions/Navigation/NavigationCharts.aspx" target="_blank">USACE</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -585,7 +585,7 @@ class Glossary extends Component {
                         <p className={styles.custom_paragraph}>
                             Conductivity measurements, along with temperature, also allow for salinity values to be
                             calculated through algorithms.
-                            (Source: <Link href="http://www.ysi.com/parametersdetail.php?Conductivity-7" target="_blank">YSI</Link>)<br/>
+                            (Source: <Link to="http://www.ysi.com/parametersdetail.php?Conductivity-7" target="_blank">YSI</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -604,7 +604,7 @@ class Glossary extends Component {
                             on the bottom of natural water bodies. This includes the frequently used terms of clean sediment,
                             suspended sediment, total suspended solids, bedload, turbidity, or in common terms, dirt,
                             soils or eroded materials.
-                            (Source: <Link href="http://water.epa.gov/polwaste/sediments/" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/polwaste/sediments/" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -619,7 +619,7 @@ class Glossary extends Component {
                             to the saline gradient caused where the freshwater and saline water meet, the freshwater is
                             warmer than the deeper ocean water, further contributing to the stratification. Without mixing,
                             oxygen in the bottom water is limited and the hypoxic condition remains.
-                            (Source: <Link href="http://water.epa.gov/type/watersheds/named/msbasin/hypoxia101.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/type/watersheds/named/msbasin/hypoxia101.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -647,7 +647,7 @@ class Glossary extends Component {
                             streams and rivers in arid regions where water is scarce and evaporation is high tend to have
                             higher concentrations of solids and are more readily affected by human introduction of solids
                             from land use activities.
-                            (Source: <Link href="http://water.epa.gov/type/rsl/monitoring/vms58.cfm" target="_blank">EPA</Link>)<br/>
+                            (Source: <Link to="http://water.epa.gov/type/rsl/monitoring/vms58.cfm" target="_blank">EPA</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -662,7 +662,7 @@ class Glossary extends Component {
                             Most large rivers are formed from many tributaries. Each tributary drains a different
                             watershed, carrying runoff and snowmelt from that area. Each tributary's watershed makes up
                             the larger watershed of the mainstem.
-                            (Source: <Link href="http://education.nationalgeographic.com/education/encyclopedia/tributary/?ar_a=1" target="_blank">National Geographic</Link>)<br/>
+                            (Source: <Link to="http://education.nationalgeographic.com/education/encyclopedia/tributary/?ar_a=1" target="_blank">National Geographic</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -681,7 +681,7 @@ class Glossary extends Component {
                             and pollution, but it would be overwhelmed if we didn't treat the billions of gallons of
                             wastewater and sewage produced every day before releasing it back to the environment.
                             Treatment plants reduce pollutants in wastewater to a level nature can handle.
-                            (Source: <Link href="http://water.usgs.gov/edu/wuww.html" target="_blank">USGS</Link>)<br/>
+                            (Source: <Link to="http://water.usgs.gov/edu/wuww.html" target="_blank">USGS</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -700,7 +700,7 @@ class Glossary extends Component {
                             right in the stream or at the well. These include temperature, acidity (pH), dissolved oxygen,
                             and electrical conductance (an indirect indicator of dissolved minerals in the water).
                             Analyses of individual chemicals generally are done at a laboratory.
-                            (Source: <Link href="http://pubs.usgs.gov/fs/fs-027-01/" target="_blank">USGS</Link>)<br/>
+                            (Source: <Link to="http://pubs.usgs.gov/fs/fs-027-01/" target="_blank">USGS</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>
@@ -714,8 +714,8 @@ class Glossary extends Component {
                             Mississippi. The Mississippi River watershed is the fourth largest in the world, including
                             all or parts of 31 states and 2 Canadian Provinces. The watershed measures approximately
                             1.2 million square miles, covering about 40% of the lower 48 states.
-                            (Sources: <Link href="http://water.epa.gov/type/watersheds/whatis.cfm" target="_blank">EPA</Link>,&nbsp;
-                            <Link href="http://www.nps.gov/miss/riverfacts.htm" target="_blank">NPS</Link>)<br/>
+                            (Sources: <Link to="http://water.epa.gov/type/watersheds/whatis.cfm" target="_blank">EPA</Link>,&nbsp;
+                            <Link to="http://www.nps.gov/miss/riverfacts.htm" target="_blank">NPS</Link>)<br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
                             </Link>

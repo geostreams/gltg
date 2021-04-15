@@ -17,11 +17,11 @@ import ol from 'openlayers';
 require("openlayers/css/ol.css");
 import styles from '../styles/map.css';
 import {Icon} from 'react-mdc-web/lib';
-import type {MapProps, BasicMapState} from 'gd-core__old/app/utils/flowtype';
+import type {MapProps, BasicMapState} from '@geostreams/core__old/app/utils/flowtype';
 import {getMapTileURLSetting, getClustersDistance, maxZoom, minZoom, mapCenter} from '../utils/getConfig';
 import {clusteringOptions, getAttribution, getControls} from '../utils/mapUtils';
 import {removePopup} from '../utils/mapPopup';
-import {drawClearButtonFunction, drawControlElements} from 'gd-core__old/app/utils/mapDraw';
+import {drawClearButtonFunction, drawControlElements} from '@geostreams/core__old/app/utils/mapDraw';
 
 
 class BasicMap extends Component {

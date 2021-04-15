@@ -4,13 +4,13 @@
 
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import DetailTabs from '../components/DetailTabs';
-import Spinner from 'gd-core__old/app/components/Spinner';
+import Spinner from '@geostreams/core__old/app/components/Spinner';
 import DetailContents from '../containers/DetailContents';
 import {getMobileSizeMax, getSourceName, getMobileExplorePath, getColor} from "../utils/getConfig";
-import {resetDetailPage} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype'
+import {resetDetailPage} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype'
 import {Row, Col} from 'react-flexbox-grid';
 import styles from '../styles/main.css';
 import {Icon} from 'react-mdc-web/lib';
@@ -78,7 +78,7 @@ class Detail extends Component {
     render() {
 
         let urlArray =  window.location.href.split('#');
-        let linkVal = <Link href="/geostreaming/explore/all"> <Icon name="close"/></Link>;
+        let linkVal = <Link to="/geostreaming/explore/all"> <Icon name="close"/></Link>;
 
         if (Object.keys(this.state.category_mappings).length === 0) {
             let contents;
@@ -138,7 +138,7 @@ class Detail extends Component {
             const source_name = getSourceName(sensor.properties.type);
             if (screen.width <= getMobileSizeMax()) {
                 title = (<h1><Link
-                    href={getMobileExplorePath()}>Explore Mobile</Link><Icon name="chevron_right"/> {sensor.name}
+                    to={getMobileExplorePath()}>Explore Mobile</Link><Icon name="chevron_right"/> {sensor.name}
                 </h1>);
             } else {
                 const background_color = getColor(sensor.properties.type.id);

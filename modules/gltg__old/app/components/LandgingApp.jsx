@@ -3,10 +3,10 @@
  */
 
 import React, {Component} from 'react';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, hashHistory} from 'react-router-dom';
 import Welcome from '../pages/Welcome';
 import 'material-components-web/dist/material-components-web.min.css';
-import type {MapProps} from "gd-core__old/app/utils/flowtype";
+import type {MapProps} from "@geostreams/core__old/app/utils/flowtype";
 import {
     Button, Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Icon
 } from 'react-mdc-web/lib';

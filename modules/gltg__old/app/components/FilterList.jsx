@@ -3,19 +3,19 @@
  */
 
 import React, {Component} from 'react';
-import styles from 'gd-core__old/app/styles/filterList.css';
+import styles from '@geostreams/core__old/app/styles/filterList.css';
 import mainStyles from '../styles/main.css';
 import TimeFilter from '../containers/TimeFilter';
 import UpdateFilters from '../containers/FilterOption';
-import dimensions from 'gd-core__old/data/dimensions.json';
+import dimensions from '@geostreams/core__old/data/dimensions.json';
 import {getLocationName, getMobileSizeMax} from '../utils/getConfig';
 import {
     Body2, Card, CardHeader, CardTitle, CardSubtitle, CardText,
     Checkbox, FormField, Icon, label, RadioGroup, Radio
 } from 'react-mdc-web/lib';
-import type {InputEvent} from 'gd-core__old/app/utils/flowtype';
+import type {InputEvent} from '@geostreams/core__old/app/utils/flowtype';
 import Select from './material/Select';
-import {handleParamsWithItalics} from 'gd-core__old/app/utils/configUtils';
+import {handleParamsWithItalics} from '@geostreams/core__old/app/utils/configUtils';
 
 
 class FilterList extends Component {

@@ -4,8 +4,8 @@
 
 import {connect} from 'react-redux';
 import AnalysisMapComponent from '../components/AnalysisMap';
-import {addCustomTrendLocationsFilter} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import {addCustomTrendLocationsFilter} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 const mapStateToProps = (state) => {
     return {

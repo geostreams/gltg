@@ -14,8 +14,8 @@ import {
 } from '../utils/getConfig';
 import {sensorsToFeaturesAnalysisPage, getAttribution, getControls} from '../utils/mapUtils';
 import {popupHeader, popupAnalysis, removePopup} from '../utils/mapPopup';
-import {drawHelper, centerHelper} from 'gd-core__old/app/utils/mapDraw';
-import type {MapProps, TrendsMapState} from 'gd-core__old/app/utils/flowtype';
+import {drawHelper, centerHelper} from '@geostreams/core__old/app/utils/mapDraw';
+import type {MapProps, TrendsMapState} from '@geostreams/core__old/app/utils/flowtype';
 
 
 class AnalysisMap extends Component {

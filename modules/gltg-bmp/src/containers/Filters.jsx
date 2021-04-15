@@ -13,7 +13,7 @@ import {
     makeStyles
 } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import { entries } from 'gd-core/src/utils/array';
+import { entries } from '@geostreams/core/src/utils/array';
 
 import { BOUNDARIES, YEAR_RANGE } from '../config';
 import { BMPContext } from './Context';

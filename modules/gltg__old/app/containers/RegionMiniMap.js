@@ -4,7 +4,7 @@
 
 
 import {connect} from 'react-redux';
-import RegionMiniMapComponent from 'gd-core__old/app/components/RegionMiniMap';
+import RegionMiniMapComponent from '@geostreams/core__old/app/components/RegionMiniMap';
 
 const mapStateToProps = (state) => {
 

@@ -3,9 +3,9 @@
  */
 
 import {connect} from 'react-redux';
-import TrendsSubmitButtonComponent from 'gd-core__old/app/components/TrendsSubmitButton';
-import {fetchAnalysis, fetchAnalysisRegion} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import TrendsSubmitButtonComponent from '@geostreams/core__old/app/components/TrendsSubmitButton';
+import {fetchAnalysis, fetchAnalysisRegion} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 
 const mapStateToProps = (state) => {

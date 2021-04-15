@@ -8,8 +8,8 @@ import {
     Button, Dialog, DialogHeader, DialogTitle, DialogBody, DialogFooter, Icon
 } from 'react-mdc-web/lib';
 import {getDownloadButtonPath} from '../utils/getConfig';
-import {intersectArrays, serialize} from 'gd-core__old/app/utils/arrayUtils';
-import styles from 'gd-core__old/app/styles/detail.css';
+import {intersectArrays, serialize} from '@geostreams/core__old/app/utils/arrayUtils';
+import styles from '@geostreams/core__old/app/styles/detail.css';
 import stylesMain from '../styles/main.css';
 
 

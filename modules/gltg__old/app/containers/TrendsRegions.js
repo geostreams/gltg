@@ -3,9 +3,9 @@
  */
 
 import {connect} from 'react-redux';
-import TrendsRegionsComponent from 'gd-core__old/app/components/TrendsRegions';
-import {selectTrendsRegion, selectAnalysisRegion} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import TrendsRegionsComponent from '@geostreams/core__old/app/components/TrendsRegions';
+import {selectTrendsRegion, selectAnalysisRegion} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 
 const mapStateToProps = (state) => {

@@ -3,7 +3,7 @@
  */
 
 import React, {Component, PropTypes} from 'react';
-import ExploreLayersItems from 'gd-core__old/app/containers/ExploreLayersItems';
+import ExploreLayersItems from '@geostreams/core__old/app/containers/ExploreLayersItems';
 import {
     Button, Drawer, DrawerContent, DrawerHeaderContent, DrawerSpacer, Icon
 } from 'react-mdc-web/lib';

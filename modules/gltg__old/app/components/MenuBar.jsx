@@ -9,7 +9,7 @@ import {
     getApplicationOptions, getIEAlertMenuBarShow, getIEAlertHeader, getIEVersionEdge,
     getIEVersionEleven, getIEVersionsBeforeEleven, getMobileSizeMax, getMobileExplorePath
 } from "../utils/getConfig";
-import MenuDropdown from "gd-core__old/app/components/MenuDropdown";
+import MenuDropdown from "@geostreams/core__old/app/components/MenuDropdown";
 
 
 class MenuBar extends Component {

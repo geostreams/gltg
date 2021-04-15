@@ -4,9 +4,9 @@
 
 import React, {Component} from 'react';
 import Map from '../containers/ExploreMap';
-import ExploreSourcesTab from 'gd-core__old/app/components/ExploreSourcesTab';
-import ExploreCustomItemsTab from 'gd-core__old/app/components/ExploreCustomItemsTab';
-import ExploreCategoriesTab from 'gd-core__old/app/components/ExploreCategoriesTab';
+import ExploreSourcesTab from '@geostreams/core__old/app/components/ExploreSourcesTab';
+import ExploreCustomItemsTab from '@geostreams/core__old/app/components/ExploreCustomItemsTab';
+import ExploreCategoriesTab from '@geostreams/core__old/app/components/ExploreCategoriesTab';
 import {
     Cell, Content, Grid, Icon, List, ListHeader, ListGroup, Tabbar, Tab
 } from 'react-mdc-web/lib';
@@ -15,9 +15,9 @@ import {
     getMobileSourceNames, getMobileSizeMax, getLayersDetails,
     getExploreCategoriesOpen, clustersChoiceOption, getExploreSections
 } from '../utils/getConfig';
-import MapToggleClusters from "gd-core__old/app/components/MapToggleClusters";
-import Spinner from "gd-core__old/app/components/Spinner";
-import {generateMobilePageTabs} from "gd-core__old/app/utils/mobileUtils";
+import MapToggleClusters from "@geostreams/core__old/app/components/MapToggleClusters";
+import Spinner from "@geostreams/core__old/app/components/Spinner";
+import {generateMobilePageTabs} from "@geostreams/core__old/app/utils/mobileUtils";
 import ExploreLayers from '../components/ExploreLayers';
 import styles from '../styles/main.css';
 import exploreStyles from '../styles/explore.css';

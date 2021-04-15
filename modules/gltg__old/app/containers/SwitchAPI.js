@@ -3,9 +3,9 @@
  */
 
 import {connect} from 'react-redux';
-import {switchBackend, fetchSensors} from 'gd-core__old/app/actions';
-import SwitchAPIComponent from 'gd-core__old/app/components/SwitchAPI';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+import {switchBackend, fetchSensors} from '@geostreams/core__old/app/actions';
+import SwitchAPIComponent from '@geostreams/core__old/app/components/SwitchAPI';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 
 const mapStateToProps = (state) => {

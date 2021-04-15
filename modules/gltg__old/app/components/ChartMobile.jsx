@@ -3,10 +3,10 @@
  */
 
 import React, {Component} from 'react';
-import { LineChart } from 'gd-core__old/vendor/rd3/src';
+import { LineChart } from '@geostreams/core__old/vendor/rd3/src';
 import { Row, Col } from 'react-flexbox-grid';
 import {Card, CardHeader, CardTitle} from 'react-mdc-web/lib';
-import styles from 'gd-core__old/app/styles/detail.css';
+import styles from '@geostreams/core__old/app/styles/detail.css';
 
 class ChartMobile extends Component {
     constructor(props: Object) {

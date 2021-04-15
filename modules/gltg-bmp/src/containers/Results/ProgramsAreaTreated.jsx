@@ -2,10 +2,10 @@
 import React from 'react';
 import { VegaLite } from 'react-vega';
 import { makeStyles, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import { entries } from 'gd-core/src/utils/array';
-import { precision } from 'gd-core/src/utils/format';
+import { entries } from '@geostreams/core/src/utils/array';
+import { precision } from '@geostreams/core/src/utils/format';
 
-import type { ElementRect } from 'gd-core/src/utils/flowtype';
+import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
 import type { Filters, QueryParams } from '../../utils/flowtype';
 

@@ -3,12 +3,12 @@
  */
 
 import {connect} from 'react-redux';
-import FilterSelectionComponent from 'gd-core__old/app/components/FilterSelection';
+import FilterSelectionComponent from '@geostreams/core__old/app/components/FilterSelection';
 import {
     addSearchParameter, addSearchDataSource, addStartDate, addEndDate, addSearchOnline,
     addSearchLocation, addFilter, deleteFilter, changeFilter, addSpanStart, addSpanEnd
-} from 'gd-core__old/app/actions';
-import type {Dispatch} from 'gd-core__old/app/utils/flowtype';
+} from '@geostreams/core__old/app/actions';
+import type {Dispatch} from '@geostreams/core__old/app/utils/flowtype';
 
 const mapStateToProps = (state) => {
 

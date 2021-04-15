@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import styles from '../styles/main.css';
-import analysisStyles from 'gd-core__old/app/styles/analysis.css';
+import analysisStyles from '@geostreams/core__old/app/styles/analysis.css';
 import {
     Card, CardHeader, CardActions, CardTitle, CardSubtitle, CardText,
     Content, List, Cell, Grid, Textfield, Button, Tab, Tabbar
@@ -14,13 +14,13 @@ import {
     getTrendSettings, getTrendRegions, getTrendsAnalysisDefaultValues, getMobileSizeMax
 } from '../utils/getConfig';
 import TrendsParameters from '../containers/TrendsParameters';
-import TrendsThresholds from 'gd-core__old/app/containers/TrendsThresholds';
+import TrendsThresholds from '@geostreams/core__old/app/containers/TrendsThresholds';
 import TrendsRegions from '../containers/TrendsRegions';
-import Spinner from 'gd-core__old/app/components/Spinner';
+import Spinner from '@geostreams/core__old/app/components/Spinner';
 import TrendsCalculationSettings from '../containers/TrendsCalculationSettings';
 import TrendsSubmitButton from '../containers/TrendsSubmitButton';
 import {connect} from "react-redux";
-import {generateMobilePageTabs} from "gd-core__old/app/utils/mobileUtils";
+import {generateMobilePageTabs} from "@geostreams/core__old/app/utils/mobileUtils";
 
 
 class Analysis extends Component {

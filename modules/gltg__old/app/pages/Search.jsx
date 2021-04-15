@@ -4,10 +4,10 @@
 
 import React, {Component} from 'react';
 
-import stylesMobile from 'gd-core__old/app/styles/mobilePageTabs.css';
-import DownloadButtons from 'gd-core__old/app/containers/DownloadButtons';
-import MapToggleClusters from "gd-core__old/app/components/MapToggleClusters";
-import {generateMobilePageTabs} from 'gd-core__old/app/utils/mobileUtils';
+import stylesMobile from '@geostreams/core__old/app/styles/mobilePageTabs.css';
+import DownloadButtons from '@geostreams/core__old/app/containers/DownloadButtons';
+import MapToggleClusters from "@geostreams/core__old/app/components/MapToggleClusters";
+import {generateMobilePageTabs} from '@geostreams/core__old/app/utils/mobileUtils';
 
 import styles from '../styles/main.css';
 import styleSearch from '../styles/search.css';

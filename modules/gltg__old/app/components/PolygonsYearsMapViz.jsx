@@ -11,7 +11,7 @@ import {
 } from 'react-mdc-web';
 import {select} from 'd3';
 import {Card, CardHeader, CardSubtitle, CardTitle, CardText, Headline} from 'react-mdc-web/lib';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 // $FlowFixMe
 import huc from '../../data/HUC-N.geojson';
 // $FlowFixMe
@@ -865,7 +865,7 @@ class PolygonsYearsMapViz extends Component {
                                         <Headline className={styles.custom_carousel_title}>
                                             Learn More About GLTG
                                             <Link className={styles.custom_carousel_link}
-                                                  href={"public/pages/datastories.html"}>
+                                                  to={"public/pages/datastories.html"}>
                                                 View All Data Stories
                                             </Link>
                                         </Headline>

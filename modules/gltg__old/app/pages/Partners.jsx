@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Menu from '../containers/MenuBar';
 import styles from '../styles/customStyles.css';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {List, ListItem} from 'react-mdc-web';
 
 
@@ -218,7 +218,7 @@ class Partners extends Component {
                             the state’s great rivers. The unique partnership has enabled the Center’s rapid growth and
                             contributions to watershed research and education.</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about the <Link href="http://www.ngrrec.org" target="_blank">National Great Rivers Research and Education Center</Link>
+                            Learn more about the <Link to="http://www.ngrrec.org" target="_blank">National Great Rivers Research and Education Center</Link>
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
@@ -236,7 +236,7 @@ class Partners extends Component {
                             and to provide information to the public in order to foster an understanding and appreciation of
                             our natural heritage.</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about the <Link href="http://www.inhs.illinois.edu" target="_blank">Illinois Natural History Survey</Link>.
+                            Learn more about the <Link to="http://www.inhs.illinois.edu" target="_blank">Illinois Natural History Survey</Link>.
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
@@ -250,7 +250,7 @@ class Partners extends Component {
                             district, which reaches into seven counties. Founded in 1970 with 450 students, today Lewis and
                             Clark serves approximately 26,000 students annually.</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about <Link href="http://www.lc.edu" target="_blank">Lewis and Clark Community College</Link>.
+                            Learn more about <Link to="http://www.lc.edu" target="_blank">Lewis and Clark Community College</Link>.
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
@@ -267,7 +267,7 @@ class Partners extends Component {
                             for lives of impact, and addressing critical societal needs through the transfer and application
                             of knowledge.</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about the <Link href="http://www.illinois.edu" target="_blank">University of Illinois at Urbana-Champaign</Link>.
+                            Learn more about the <Link to="http://www.illinois.edu" target="_blank">University of Illinois at Urbana-Champaign</Link>.
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
@@ -288,7 +288,7 @@ class Partners extends Component {
                             educators, policy makers, community decision makers, outreach specialists, business leaders, and
                             the general public to work towards a healthy environment and economy.</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about <Link href="http://www.iisgcp.org/" target="_blank">Illinois-Indiana Sea Grant</Link>.
+                            Learn more about <Link to="http://www.iisgcp.org/" target="_blank">Illinois-Indiana Sea Grant</Link>.
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
@@ -307,7 +307,7 @@ class Partners extends Component {
                             the University of Illinois, the National Science Foundation, and grants from other federal
                             agencies. The center focuses on big computing, big data, and big research.</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about the <Link href="http://www.ncsa.illinois.edu" target="_blank">NCSA</Link>.
+                            Learn more about the <Link to="http://www.ncsa.illinois.edu" target="_blank">NCSA</Link>.
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>
@@ -316,7 +316,7 @@ class Partners extends Component {
 
                         <p className={styles.custom_header_second} id="ilepa">Illinois Environmental Protection Agency</p>
                         <p className={styles.custom_paragraph}>
-                            Learn more about the <Link href="http://www.epa.illinois.gov" target="_blank">Illinois EPA</Link>.
+                            Learn more about the <Link to="http://www.epa.illinois.gov" target="_blank">Illinois EPA</Link>.
                             <br/>
                             <Link className={styles.custom_links}
                                   onClick={() => {document.getElementById('toc').scrollIntoView()}}><sub>[top]</sub>

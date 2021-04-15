@@ -7,7 +7,7 @@ import styles from '../styles/carousel.css';
 import customStyles from "../styles/customStyles.css";
 import {Button, Fab, Icon, Card, CardTitle, CardActions} from 'react-mdc-web/lib';
 import {getCarouselImageNames, getCarouselImageCaptions} from '../utils/getConfig';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom-dom';
 
 
 class Carousel extends Component {
@@ -179,7 +179,7 @@ class Carousel extends Component {
                     >
                         <Card>
                             <CardActions className={styles.captionStyle}>
-                                <Link style={{color: '#FFFFFF'}} href={"public/pages/datastories.html"}>
+                                <Link style={{color: '#FFFFFF'}} to={"public/pages/datastories.html"}>
                                     <Button>
                                         <Icon name={'import_contacts'} key={"data_icon"} id={"data_icon"}/>
                                         <span>DATA STORY</span>

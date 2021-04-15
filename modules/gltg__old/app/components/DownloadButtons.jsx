@@ -11,11 +11,11 @@ import {
     getCustomLocation, getDownloadButtonPath, getDownloadButtonPathCount, getDownloadMaxDatapointsAllowed,
     getGeneralDownloadErrorText, getDatapointsDownloadErrorText
 } from '../utils/getConfig';
-import {intersectArrays, serialize} from 'gd-core__old/app/utils/arrayUtils';
-import styles from 'gd-core__old/app/styles/downloadButton.css';
+import {intersectArrays, serialize} from '@geostreams/core__old/app/utils/arrayUtils';
+import styles from '@geostreams/core__old/app/styles/downloadButton.css';
 import stylesMain from '../styles/main.css';
-import Spinner from 'gd-core__old/app/components/Spinner';
-import {intervalCounts} from "gd-core__old/app/utils/spinnerUtils";
+import Spinner from '@geostreams/core__old/app/components/Spinner';
+import {intervalCounts} from "@geostreams/core__old/app/utils/spinnerUtils";
 
 
 type DownloadStateType = {

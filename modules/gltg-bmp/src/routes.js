@@ -1,7 +1,7 @@
 // @flow
-import hocs from 'gd-core/src/utils/hocs';
+import hocs from '@geostreams/core/src/utils/hocs';
 
-import type { Routes } from 'gd-core/src/routes';
+import type { Routes } from '@geostreams/core/src/routes';
 
 import Layout from './containers/Layout';
 import Home from './containers/Home';

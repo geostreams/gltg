@@ -20,10 +20,10 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import InfoIcon from '@material-ui/icons/Info';
 import { Link } from 'react-router-dom';
-import { BarChart, LegendHorizontalDiscrete, SimpleLegend } from 'gd-core/src/components/d3';
-import Carousel from 'gd-core/src/components/Carousel';
-import { entries } from 'gd-core/src/utils/array';
-import { useElementRect } from 'gd-core/src/utils/hooks';
+import { BarChart, LegendHorizontalDiscrete, SimpleLegend } from '@geostreams/core/src/components/d3';
+import Carousel from '@geostreams/core/src/components/Carousel';
+import { entries } from '@geostreams/core/src/utils/array';
+import { useElementRect } from '@geostreams/core/src/utils/hooks';
 
 import dataStories from '../DataStories/pages';
 import DataStoriesModal from '../DataStories/Details';

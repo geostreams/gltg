@@ -2,7 +2,7 @@
 import React from 'react';
 import { VegaLite } from 'react-vega';
 
-import type { ElementRect } from 'gd-core/src/utils/flowtype';
+import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
 import type { Filters, QueryParams } from '../../utils/flowtype';
 

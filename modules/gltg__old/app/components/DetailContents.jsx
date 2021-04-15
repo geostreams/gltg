@@ -4,12 +4,12 @@
 
 import React, {Component} from 'react';
 import DialogWrapper from './DialogWrapper';
-import MiniMap from 'gd-core__old/app/components/MiniMap';
-import DetailParameterList from 'gd-core__old/app/components/DetailParameterList';
-import LineChart from 'gd-core__old/app/components/LineChart';
-import StackedLineChart from 'gd-core__old/app/components/StackedLineChart';
-import StackedBarChart from 'gd-core__old/app/components/StackedBarChart';
-import styles from 'gd-core__old/app/styles/detail.css';
+import MiniMap from '@geostreams/core__old/app/components/MiniMap';
+import DetailParameterList from '@geostreams/core__old/app/components/DetailParameterList';
+import LineChart from '@geostreams/core__old/app/components/LineChart';
+import StackedLineChart from '@geostreams/core__old/app/components/StackedLineChart';
+import StackedBarChart from '@geostreams/core__old/app/components/StackedBarChart';
+import styles from '@geostreams/core__old/app/styles/detail.css';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {Checkbox, FormField} from 'react-mdc-web/lib';
 import {
@@ -18,7 +18,7 @@ import {
     getUseSameTimescaleChoice, getTimeSeriesSensorExtent, getSourceInfo, getSourceName
 } from '../utils/getConfig';
 import Select from './material/Select';
-import DateSlider from "gd-core__old/app/components/DateSlider";
+import DateSlider from "@geostreams/core__old/app/components/DateSlider";
 import DetailPageDownload from "../containers/DetailPageDownload";
 import {detailSeasonBins, detailSeasonBinsSources} from '../utils/getConfig';
 

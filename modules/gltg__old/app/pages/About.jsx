@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import styles from '../styles/customStyles.css';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {List, ListItem, ListHeader} from 'react-mdc-web';
 import Footer from "../components/Footer";
 
@@ -29,7 +29,7 @@ class About extends Component {
 
                     <div className={styles.custom_section_paragraph}>
                         <p>
-                            From its headwaters at Minnesota's Lake Itasca to the <Link href="/glossary">delta</Link>&nbsp;
+                            From its headwaters at Minnesota's Lake Itasca to the <Link to="/glossary">delta</Link>&nbsp;
                             in the Gulf of Mexico, the Mississippi River is the fourth largest watershed in the world
                             covering approximately 1.2 million square miles. The Mississippi River and its tributaries
                             are valued as both a natural and economic resource. The river simultaneously serves as home

@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.2.6",
-    "@geostreams/core__old": "^3.6.1",
+    "@geostreams/core__old": "^3.6.0",
     "isomorphic-fetch": "^2.2.1",
     "moment": "2.24.0",
     "ol3-layerswitcher": "git+https://github.com/walkermatt/ol3-layerswitcher.git#master",

@@ -153,6 +153,7 @@ module.exports = {
         alias: {
             'react': path.resolve('./node_modules/react'),
             'redux': path.resolve('./node_modules/redux'),
+            'react-router-dom': path.resolve('./node_modules/react-router-dom'),
             'react-redux': path.resolve('./node_modules/react-redux'),
             '@material-ui': path.resolve('./node_modules/@material-ui')
         }

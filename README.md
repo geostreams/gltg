@@ -17,6 +17,10 @@ Great Lakes to Gulf frontend based on Geostreams and Geodashboard
     ```bash
     yarn start
     ```
+- Start BMP Project
+    ```bash
+    yarn bmp:start
+    ```
 
 ### Environment variables
 

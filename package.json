@@ -10,7 +10,9 @@
     "lint:fix": "eslint -c .eslintrc --ext .js --ext .jsx --ignore-path .eslintignore --fix ./",
     "flow": "flow",
     "build": "webpack --config webpack.prod.js",
-    "clean": "find . -name 'yarn.lock' -prune -exec rm '{}' + && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+    "clean": "find . -name 'yarn.lock' -prune -exec rm '{}' + && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "bmp:start": "yarn workspace @geostreams/gltg-bmp start",
+    "bmp:build": "yarn workspace @geostreams/gltg-bmp build"
   },
   "author": "NCSA",
   "license": "ISC",
@@ -92,7 +94,8 @@
       "modules/*"
     ],
     "nohoist": [
-      "**/@geostreams/gltg__old/**"
+      "**/@geostreams/gltg__old/**",
+      "**/@geostreams/gltg-bmp/**"
     ]
   }
 }

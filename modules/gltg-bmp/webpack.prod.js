@@ -14,10 +14,10 @@ module.exports = webpackMerge.merge(commonConfig, {
         ]
     },
     plugins: [
-            new Webpack.DefinePlugin({
-                'process.env.NODE_ENV': '"production"',
-                'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || '/geoserver'),
-                'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || '/bmp')
-            })
+        new Webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"',
+            'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || '/geoserver'),
+            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || '/bmp')
+       })
     ]
 });

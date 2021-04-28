@@ -2,7 +2,7 @@ const Webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const commonConfig = require('../../webpack.common');
+const commonConfig = require('./webpack.common');
 
 module.exports = webpackMerge.merge(commonConfig, {
     mode: 'development',
@@ -24,7 +24,7 @@ module.exports = webpackMerge.merge(commonConfig, {
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"',
             'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://gltg-dev.ncsa.illinois.edu/geoserver'),
-            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://gltg-dev.ncsa.illinois.edu/bmp')
+            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://gltg-dev.ncsa.illinois.edu/bmp-api/v1.0')
         })
     ]
 });

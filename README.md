@@ -29,5 +29,6 @@ Great Lakes to Gulf frontend based on Geostreams and Geodashboard
 | GEOSERVER_URL | string | https://gltg-dev.ncsa.illinois.edu/geoserver | /geoserver | |
 | GEOSTREAMS_URL | string | https://gltg-dev.ncsa.illinois.edu/geostreams | /geostreams | |
 | GA_TOKEN | string | | | Google Analytics Token |
+| BMP_API_URL | string | https://gltg-dev.ncsa.illinois.edu/bmp-api/v1.0 | /bmp | |
 
 

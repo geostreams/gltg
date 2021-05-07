@@ -13,11 +13,11 @@ import type {
 } from 'ol';
 import type { Action as PageAction } from '@geostreams/core/src/actions/page';
 
-import { BMP_API_URL, BOUNDARIES, INITIAL_FILTERS, LAYERS, MAP_CENTER, getStyle } from '../config';
+import { BMP_API_URL, BOUNDARIES, INITIAL_FILTERS, LAYERS, MAP_CENTER, getStyle } from './config';
 import { BMPContext } from './Context';
 import Sidebar from './Sidebar';
 
-import type { Config, Filters, FiltersAction } from '../utils/flowtype';
+import type { Config, Filters, FiltersAction } from './flowtype';
 
 const useStyle = makeStyles({
     mainContainer: {
@@ -60,7 +60,7 @@ type Props = {
     dispatch: (pageAction: PageAction) => void;
 };
 
-const Home = ({ dispatch }: Props) => {
+const BMP = ({ dispatch }: Props) => {
     const classes = useStyle();
 
     const [activeView, updateActiveView] = React.useState<'filter' | 'results'>('filter');
@@ -253,4 +253,4 @@ const Home = ({ dispatch }: Props) => {
     );
 };
 
-export default connect()(Home);
+export default connect()(BMP);

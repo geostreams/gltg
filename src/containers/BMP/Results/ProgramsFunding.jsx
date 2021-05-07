@@ -14,52 +14,47 @@ import { precision } from '@geostreams/core/src/utils/format';
 
 import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
-import type { Filters, QueryParams } from '../../utils/flowtype';
+import type { Filters, QueryParams } from '../flowtype';
 
 
 export const config = {
-    label: 'Nutrient reduction',
+    label: 'Programs Funding',
     prepareParams: (params: QueryParams) => {
-        params.aggregates.push('p_reduction_fraction-sum');
-        params.aggregates.push('n_reduction_fraction-sum');
-        params.order_by.push('-p_reduction_fraction-sum');
-        params.order_by.push('-p_reduction_fraction-sum');
+        params.group_by.push('program');
+        params.group_by.push('applied_date');
+        params.aggregates.push('funding-sum');
+        params.order_by.push('-funding-sum');
     },
     chartSpec: {
-        data: { name: 'nutrient_reduction' },
-        transform: [
-            { calculate: 'datum["p_reduction_fraction-sum"] * 100', as: 'P' },
-            { calculate: 'datum["n_reduction_fraction-sum"] * 100', as: 'N' },
-            { fold: ['P', 'N'], as: ['nutrient', 'reduction'] }
-        ],
+        data: { name: 'funding' },
         mark: 'bar',
         selection: {
-            nutrient: {
+            program: {
                 type: 'multi',
-                fields: ['nutrient'],
+                fields: ['program'],
                 bind: 'legend'
             }
         },
         encoding: {
             row: { field: '', title: '' },
             x: {
-                field: 'reduction',
-                title: 'Reduction (%)',
+                field: 'funding-sum',
+                title: 'Funding ($)',
                 type: 'quantitative',
-                axis: { format: ',.01f' }
+                axis: { format: ',.0f' }
             },
-            y: { field: 'nutrient', axis: { title: '' } },
+            y: { field: 'applied_date', title: 'Year' },
             color: {
-                field: 'nutrient',
+                field: 'program',
                 scale: { scheme: 'category10' },
-                title: 'Nutrient',
+                title: 'Program',
                 legend: { orient: 'top' }
             },
             opacity: {
-                condition: { selection: 'nutrient', value: 1 },
+                condition: { selection: 'program', value: 1 },
                 value: 0.2
             },
-            tooltip: { field: 'reduction', format: ',.02f' }
+            tooltip: { field: 'funding-sum', format: '$,.01f' }
         }
     }
 };
@@ -74,14 +69,15 @@ type Props = {
     filters: Filters;
     /** Sample data
      * [
-     *   { "state": "Illinois", "p_reduction_fraction-sum": 0.0004683620385481556, "n_reduction_fraction-sum": 0.000493042593381203 },
-     *   { "state": "Iowa", "p_reduction_fraction-sum": 0.0015097308506042226, "n_reduction_fraction-sum": 0.0018844352499341763 },
+     *   { "applied_date": 2010, "program": "CSP", "state": "Illinois", "funding-sum": 236754 },
+     *   { "applied_date": 2011, "program": "CSP", "state": "Indiana", "funding-sun": null },
      *   ...
      * ]
      */
     data: Array<{
-        'p_reduction_fraction-sum': number;
-        'n_reduction_fraction-sum': number;
+        'program': string;
+        'applied_date': number;
+        'funding-sum': number;
         // Each item has only one of the following boundary types:
         'state'?: string;
         'huc_8'?: string;
@@ -90,7 +86,7 @@ type Props = {
     showVegaActions: boolean;
 };
 
-const NutrientReduction = (props: Props) => {
+const ProgramsFunding = (props: Props) => {
     const classes = useStyle();
 
     const { containerRect, filters, showVegaActions } = props;
@@ -107,21 +103,22 @@ const NutrientReduction = (props: Props) => {
         config.chartSpec.encoding.row = { field: '', title: '' };
     }
 
-    const nutrients = ['p_reduction_fraction-sum', 'n_reduction_fraction-sum'];
+    const programsSet = new Set();
     const tableData = {};
     props.data.forEach((d) => {
         const boundaryId: string = filters.selectedBoundaries.length ? (d[filters.boundaryType]: any) : 'Total';
 
+        programsSet.add(d.program);
+
         if (tableData[boundaryId]) {
-            tableData[boundaryId]['p_reduction_fraction-sum'] += (d['p_reduction_fraction-sum'] || 0);
-            tableData[boundaryId]['n_reduction_fraction-sum'] += (d['n_reduction_fraction-sum'] || 0);
+            tableData[boundaryId][d.program] = (tableData[boundaryId][d.program] || 0) + (d['funding-sum'] || 0);
         } else {
             tableData[boundaryId] = {
-                'p_reduction_fraction-sum': d['p_reduction_fraction-sum'] || 0,
-                'n_reduction_fraction-sum': d['n_reduction_fraction-sum'] || 0
+                [d.program]: d['funding-sum'] || 0
             };
         }
     });
+    const programs = Array.from(programsSet);
 
     return (
         <>
@@ -135,7 +132,7 @@ const NutrientReduction = (props: Props) => {
                     compiled: process.env.NODE_ENV === 'development',
                     editor: process.env.NODE_ENV === 'development'
                 }}
-                data={{ nutrient_reduction: props.data }}
+                data={{ funding: props.data }}
                 spec={config.chartSpec}
             />
             <TableContainer className={classes.tableContainer}>
@@ -143,24 +140,23 @@ const NutrientReduction = (props: Props) => {
                     <TableHead>
                         <TableRow>
                             <TableCell />
-                            <TableCell align="center">P</TableCell>
-                            <TableCell align="center">N</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell />
-                            <TableCell colSpan={2} align="center">Reduction (%)</TableCell>
+                            {programs.map((program) => (
+                                <TableCell key={program} align="center">{program}</TableCell>
+                            ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {entries(tableData).map(([
                             boundary,
-                            boundaryNutrients
+                            boundaryPrograms
                         ]) => (
                             <TableRow key={boundary}>
-                                <TableCell>{boundary}</TableCell>
-                                {nutrients.map((nutrient: string) => (
-                                    <TableCell key={nutrient} align="center">
-                                        {boundaryNutrients[nutrient] ? `${precision((boundaryNutrients[nutrient] || 0) * 100, 5)}%` : '-'}
+                                <TableCell>
+                                    {boundary}
+                                </TableCell>
+                                {programs.map((program: string) => (
+                                    <TableCell key={program} align="center">
+                                        {boundaryPrograms[program] ? `$${precision(boundaryPrograms[program], 0)}` : '-'}
                                     </TableCell>
                                 ))}
                             </TableRow>
@@ -172,8 +168,8 @@ const NutrientReduction = (props: Props) => {
     );
 };
 
-NutrientReduction.defaultProps = {
+ProgramsFunding.defaultProps = {
     showVegaActions: true
 };
 
-export default NutrientReduction;
+export default ProgramsFunding;

@@ -109,6 +109,13 @@ const Header = ({ location }: Props) => {
                     />
                     <Tab
                         className={classes.tabRoot}
+                        label="BMP"
+                        component={Link}
+                        to="/bmp"
+                        value="bmp"
+                    />
+                    <Tab
+                        className={classes.tabRoot}
                         label="Data Stories"
                         component={Link}
                         to="/data-stories"

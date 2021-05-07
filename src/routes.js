@@ -17,6 +17,7 @@ import FAQ from './containers/FAQ';
 import Home from './containers/Home';
 import Partners from './containers/Partners';
 import GLTGLayout from './containers/Layout';
+import BMP from './containers/BMP';
 import Tests from './tests/Tests';
 
 const routes = Object.assign(
@@ -32,7 +33,8 @@ const routes = Object.assign(
         // Routes pointing to the __old code
         '/explore/:stations': { component: hocs.withLayout(GLTGLayout, GeoStreamingExplore), exact: true },
         '/search': { component: hocs.withLayout(GLTGLayout, __old_Search), exact: true },
-        '/analysis': { component: hocs.withLayout(GLTGLayout, __old_Analysis), exact: true }
+        '/analysis': { component: hocs.withLayout(GLTGLayout, __old_Analysis), exact: true },
+        '/bmp': { component: hocs.withLayout(GLTGLayout, BMP), exact: true }
     }
 );
 

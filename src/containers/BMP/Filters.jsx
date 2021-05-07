@@ -15,7 +15,7 @@ import {
 import { Autocomplete } from '@material-ui/lab';
 import { entries } from '@geostreams/core/src/utils/array';
 
-import { BOUNDARIES, YEAR_RANGE } from '../config';
+import { BOUNDARIES, YEAR_RANGE } from './config';
 import { BMPContext } from './Context';
 
 const useStyle = makeStyles((theme) => ({

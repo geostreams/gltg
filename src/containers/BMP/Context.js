@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
 
-import { INITIAL_FILTERS } from '../config';
+import { INITIAL_FILTERS } from './config';
 
-import type { BMPContextType } from '../utils/flowtype';
+import type { BMPContextType } from './flowtype';
 
 export const BMPContext = React.createContext<BMPContextType>({
     config: {},

@@ -14,7 +14,7 @@ import { entries } from '@geostreams/core/src/utils/array';
 
 import type { Feature as FeatureType } from 'ol';
 
-import type { Boundary, Filters } from './utils/flowtype';
+import type { Boundary, Filters } from './flowtype';
 
 export const GEOSERVER_URL = process.env.GEOSERVER_URL || '';
 export const BMP_API_URL = process.env.BMP_API_URL || '';

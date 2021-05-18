@@ -7,7 +7,7 @@ import ProgramsAreaTreated, { config as programsAreaTreatedConfig } from './Prog
 import NutrientReduction, { config as nutrientReductionConfig } from './NutrientReduction';
 import TopPracticesByArea, { config as topPracticesByAreaConfig } from './TopPracticesByArea';
 
-import type { Filters, QueryParams } from '../../utils/flowtype';
+import type { Filters, QueryParams } from '../flowtype';
 
 export const RESULTS = {
     programsCount: {

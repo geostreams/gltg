@@ -24,7 +24,7 @@ import { htmlToPdf } from '@geostreams/core/src/utils/pdf';
 
 import type { Action as PageAction } from '@geostreams/core/src/actions/page';
 
-import { BMP_API_URL } from '../../config';
+import { BMP_API_URL } from '../config';
 import { BMPContext } from '../Context';
 import { RESULTS, createRequestParams } from './config';
 

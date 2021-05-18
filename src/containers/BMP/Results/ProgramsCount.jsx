@@ -14,19 +14,19 @@ import { precision } from '@geostreams/core/src/utils/format';
 
 import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
-import type { Filters, QueryParams } from '../../utils/flowtype';
+import type { Filters, QueryParams } from 'src/containers/BMP/flowtype';
 
 
 export const config = {
-    label: 'Programs Funding',
+    label: 'Programs Count',
     prepareParams: (params: QueryParams) => {
         params.group_by.push('program');
         params.group_by.push('applied_date');
-        params.aggregates.push('funding-sum');
-        params.order_by.push('-funding-sum');
+        params.aggregates.push('program-count');
+        params.order_by.push('-program-count');
     },
     chartSpec: {
-        data: { name: 'funding' },
+        data: { name: 'program_count' },
         mark: 'bar',
         selection: {
             program: {
@@ -38,10 +38,10 @@ export const config = {
         encoding: {
             row: { field: '', title: '' },
             x: {
-                field: 'funding-sum',
-                title: 'Funding ($)',
+                field: 'program-count',
+                title: 'Count',
                 type: 'quantitative',
-                axis: { format: ',.0f' }
+                axis: { format: ',.0d' }
             },
             y: { field: 'applied_date', title: 'Year' },
             color: {
@@ -54,7 +54,7 @@ export const config = {
                 condition: { selection: 'program', value: 1 },
                 value: 0.2
             },
-            tooltip: { field: 'funding-sum', format: '$,.01f' }
+            tooltip: { field: 'program-count', format: ',.01d' }
         }
     }
 };
@@ -69,15 +69,15 @@ type Props = {
     filters: Filters;
     /** Sample data
      * [
-     *   { "applied_date": 2010, "program": "CSP", "state": "Illinois", "funding-sum": 236754 },
-     *   { "applied_date": 2011, "program": "CSP", "state": "Indiana", "funding-sun": null },
+     *   { "state": "Indiana", "program": "EQIP", "applied_date": 2015, "program-count": 2952 },
+     *   { "state": "Indiana", "program": "EQIP", "applied_date": 2016, "program-count": 2809 },
      *   ...
      * ]
      */
     data: Array<{
         'program': string;
         'applied_date': number;
-        'funding-sum': number;
+        'program-count': number;
         // Each item has only one of the following boundary types:
         'state'?: string;
         'huc_8'?: string;
@@ -86,7 +86,7 @@ type Props = {
     showVegaActions: boolean;
 };
 
-const ProgramsFunding = (props: Props) => {
+const ProgramsCount = (props: Props) => {
     const classes = useStyle();
 
     const { containerRect, filters, showVegaActions } = props;
@@ -111,10 +111,10 @@ const ProgramsFunding = (props: Props) => {
         programsSet.add(d.program);
 
         if (tableData[boundaryId]) {
-            tableData[boundaryId][d.program] = (tableData[boundaryId][d.program] || 0) + (d['funding-sum'] || 0);
+            tableData[boundaryId][d.program] = (tableData[boundaryId][d.program] || 0) + (d['program-count'] || 0);
         } else {
             tableData[boundaryId] = {
-                [d.program]: d['funding-sum'] || 0
+                [d.program]: d['program-count'] || 0
             };
         }
     });
@@ -132,7 +132,7 @@ const ProgramsFunding = (props: Props) => {
                     compiled: process.env.NODE_ENV === 'development',
                     editor: process.env.NODE_ENV === 'development'
                 }}
-                data={{ funding: props.data }}
+                data={{ program_count: props.data }}
                 spec={config.chartSpec}
             />
             <TableContainer className={classes.tableContainer}>
@@ -155,9 +155,7 @@ const ProgramsFunding = (props: Props) => {
                                     {boundary}
                                 </TableCell>
                                 {programs.map((program: string) => (
-                                    <TableCell key={program} align="center">
-                                        {boundaryPrograms[program] ? `$${precision(boundaryPrograms[program], 0)}` : '-'}
-                                    </TableCell>
+                                    <TableCell key={program} align="center">{precision(boundaryPrograms[program] || 0, 0)}</TableCell>
                                 ))}
                             </TableRow>
                         ))}
@@ -168,8 +166,8 @@ const ProgramsFunding = (props: Props) => {
     );
 };
 
-ProgramsFunding.defaultProps = {
+ProgramsCount.defaultProps = {
     showVegaActions: true
 };
 
-export default ProgramsFunding;
+export default ProgramsCount;

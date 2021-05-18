@@ -4,7 +4,7 @@ import { VegaLite } from 'react-vega';
 import Typography from '@material-ui/core/Typography';
 import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
-import type { Filters, QueryParams } from '../../utils/flowtype';
+import type { Filters, QueryParams } from '../flowtype';
 
 
 export const config = {

@@ -9,7 +9,7 @@ module.exports = webpackMerge.merge(commonConfig, {
     devtool: 'source-map',
 
     optimization: {
-        minimize: true,    
+        minimize: true,
         minimizer: [new CssMinimizerPlugin()
         ]
     },
@@ -18,7 +18,7 @@ module.exports = webpackMerge.merge(commonConfig, {
             'process.env.NODE_ENV': '"production"',
             'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || '/geoserver'),
             'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || '/geostreams'),
-            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || '/bmp')
+            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || '/bmp-api/v1.0')
         })
     ]
 });

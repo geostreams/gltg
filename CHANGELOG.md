@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   [Github-38](https://github.com/geostreams/geodashboard/issues/38)
 - Move BMP to GLTG
   [Github-2](https://github.com/geostreams/gltg/issues/2)
+- Update BMP results description
+  [Github-5](https://github.com/geostreams/gltg/issues/5)
 
 ## [3.6.0] - 2020-12-14
 

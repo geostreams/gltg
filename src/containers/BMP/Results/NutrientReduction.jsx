@@ -125,7 +125,11 @@ const NutrientReduction = (props: Props) => {
 
     return (
         <>
-            <Typography variant="body1" paragraph>LOREM IPSUM</Typography>
+            <Typography variant="body1" paragraph>
+                Estimated relative nitrogen (N) and phosphorus (P) reductions due to conservation practices
+                implemented in selected area.
+                These estimates only represent the programs selected.
+            </Typography>
             <VegaLite
                 width={(containerRect.width || 0) * 0.6}
                 height={(containerRect.height || 0) * 0.6}

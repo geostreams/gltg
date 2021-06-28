@@ -87,7 +87,10 @@ const TopPracticesByArea = (props: Props) => {
 
     return (
         <>
-            <Typography variant="body1" paragraph>LOREM IPSUM</Typography>
+            <Typography variant="body1" paragraph>
+                List of the most important (by area treated) conservation practices across selected area.
+                This considers the time range selected. This figure represents all programs and funding sources.
+            </Typography>
             <VegaLite
                 width={(containerRect.width || 0) * 0.6}
                 height={(containerRect.height || 0) * 0.6}

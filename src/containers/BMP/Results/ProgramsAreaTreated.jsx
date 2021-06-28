@@ -122,7 +122,18 @@ const ProgramsAreaTreated = (props: Props) => {
 
     return (
         <>
-            <Typography variant="body1" paragraph>LOREM IPSUM</Typography>
+            <Typography variant="body1" paragraph>
+                Distribution of the number of acres treated by conservation practices across selected area by year.
+                Conservation practices are distinguished by funding source.
+                Please see this document for more information about assumptions made to estimate acres treated:&nbsp;
+                <a
+                    href="http://draindrop.cropsci.illinois.edu/wp-content/uploads/2019/09/Data_Norms.pdf"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                >
+                    http://draindrop.cropsci.illinois.edu/wp-content/uploads/2019/09/Data_Norms.pdf
+                </a>
+            </Typography>
             <VegaLite
                 width={(containerRect.width || 0) * 0.6}
                 height={(containerRect.height || 0) * 0.6}

@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   [Github-2](https://github.com/geostreams/gltg/issues/2)
 - Update BMP results description
   [Github-5](https://github.com/geostreams/gltg/issues/5)
+- Update the build section in Dockerfile
+  [GLTG-7](https://github.com/geostreams/gltg/issues/7)
 
 ## [3.6.0] - 2020-12-14
 

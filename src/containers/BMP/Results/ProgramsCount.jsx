@@ -14,7 +14,7 @@ import { precision } from '@geostreams/core/src/utils/format';
 
 import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
-import type { Filters, QueryParams } from 'src/containers/BMP/flowtype';
+import type { Filters, QueryParams } from '../flowtype';
 
 
 export const config = {

@@ -123,8 +123,6 @@ export type Config = {
 
 export type BMPContextType = {
     config: Config;
-    activeView: 'filter' | 'results';
-    updateActiveView: (activeView: 'filter' | 'results') => void;
     filters: Filters;
     dispatchFilterUpdate: (action: FiltersAction) => void;
     results: { [queryParamsBase64: string]: any };

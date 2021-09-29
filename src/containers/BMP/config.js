@@ -62,7 +62,7 @@ export const getStyle = (options: string[], feature: FeatureType, featureIdKey: 
 export const BOUNDARIES: { [k: string]: Boundary } = {
     state: {
         visible: true,
-        label: 'States',
+        label: 'State',
         idKey: 'id',
         layer: {
             id: 'gltg:us-states',
@@ -72,7 +72,7 @@ export const BOUNDARIES: { [k: string]: Boundary } = {
     },
     huc_8: {
         visible: false,
-        label: 'HUC-8s',
+        label: 'HUC-8',
         idKey: 'huc8',
         layer: {
             id: 'gltg:huc8',
@@ -126,6 +126,11 @@ export const LAYERS = {
 };
 
 export const YEAR_RANGE = [1980, 2020];
+export const YEAR_RANGE_MARKS = [];
+for (let i = YEAR_RANGE[0]; i <= YEAR_RANGE[1]; i += 1) {
+    const mark = i % 5 ? { value: i } : { value: i, label: i };
+    YEAR_RANGE_MARKS.push(mark);
+}
 
 export const INITIAL_FILTERS: Filters = {
     years: YEAR_RANGE,

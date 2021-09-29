@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
   [Github-5](https://github.com/geostreams/gltg/issues/5)
 - Update the build section in Dockerfile
   [GLTG-7](https://github.com/geostreams/gltg/issues/7)
+- Improved BMP UI/UX
+  [GLTG-9](https://github.com/geostreams/gltg/issues/9)
 
 ## [3.6.0] - 2020-12-14
 

@@ -1,8 +1,13 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { Grid, makeStyles } from '@material-ui/core';
-import { Map } from '@geostreams/core/src/components/ol';
+import { makeStyles } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { BaseControlPortal, Map } from '@geostreams/core/src/components/ol';
+import Control from '@geostreams/core/src/components/ol/Control';
 import { updateLoadingStatus } from '@geostreams/core/src/actions/page';
 import logger from '@geostreams/core/src/utils/logger';
 
@@ -15,6 +20,7 @@ import type { Action as PageAction } from '@geostreams/core/src/actions/page';
 
 import { BMP_API_URL, BOUNDARIES, INITIAL_FILTERS, LAYERS, MAP_CENTER, getStyle } from './config';
 import { BMPContext } from './Context';
+import Header from './Header';
 import Sidebar from './Sidebar';
 
 import type { Config, Filters, FiltersAction } from './flowtype';
@@ -24,8 +30,19 @@ const useStyle = makeStyles({
         position: 'absolute',
         height: '100%'
     },
+    mapContainer: {
+        height: 'calc(100% - 50px)'
+    },
+    boundaryInfoMapControl: {
+        top: '0.5em',
+        right: '2em',
+        background: '#fff',
+        border: '2px solid #aaa',
+        paddingTop: 10,
+        maxWidth: 250
+    },
     sidebar: {
-        'height': '100%',
+        'height': 'calc(100% - 50px)',
         'overflowY': 'auto',
         '& a': {
             color: '#0D73C5'
@@ -51,6 +68,8 @@ const filtersReducer = (state: Filters = INITIAL_FILTERS, action: FiltersAction)
                 ...state,
                 selectedBoundaries: action.value
             };
+        case 'reset':
+            return { ...INITIAL_FILTERS, selectedBoundaries: [] };
         default:
             return state;
     }
@@ -62,10 +81,6 @@ type Props = {
 
 const BMP = ({ dispatch }: Props) => {
     const classes = useStyle();
-
-    const [activeView, updateActiveView] = React.useState<'filter' | 'results'>('filter');
-
-    const activeViewRef = React.useRef<string>(activeView);
 
     const [results, updateResults] = React.useState({});
 
@@ -79,6 +94,14 @@ const BMP = ({ dispatch }: Props) => {
     const [config, updateConfig] = React.useState<Config>({});
     const configRef = React.useRef<Config | null>(null);
     const hasConfig = Object.keys(config).length > 0;
+
+    const mapControlsRef = React.useRef({
+        boundaryInfo: new Control({
+            className: classes.boundaryInfoMapControl
+        })
+    });
+
+    const [hoveredBoundaryInfo, updateHoveredBoundaryInfo] = React.useState<[[string, string]]>([]);
 
     React.useEffect(
         () => {
@@ -156,63 +179,89 @@ const BMP = ({ dispatch }: Props) => {
         }
     }, [filters]);
 
-    const handleMapClick = React.useCallback((e: MapBrowserEventType) => {
-        if (activeViewRef.current === 'filter') {
-            const currentConfig = configRef.current;
-            const currentFilters = filtersRef.current.current;
-            if (currentConfig && currentConfig[currentFilters.boundaryType]) {
-                const boundaryProps = BOUNDARIES[currentFilters.boundaryType];
-                const boundaryOptions = currentConfig[currentFilters.boundaryType].map(
-                    (attrs) => attrs[BOUNDARIES[currentFilters.boundaryType].idKey]
-                );
+    const getMapEventTargetProps = (
+        e: MapBrowserEventType
+    ): {feature: FeatureType, layer: LayerType, boundaryOptions: [] } | null => {
+        const currentConfig = configRef.current;
+        const currentFilters = filtersRef.current.current;
+        if (currentConfig && currentConfig[currentFilters.boundaryType]) {
+            const boundaryProps = BOUNDARIES[currentFilters.boundaryType];
+            const boundaryOptions = currentConfig[currentFilters.boundaryType].map(
+                (attrs) => attrs[BOUNDARIES[currentFilters.boundaryType].idKey]
+            );
 
-                const clickedObject: [FeatureType, LayerType] | null = e.map.forEachFeatureAtPixel(
-                    e.pixel,
-                    (feature, layer) => (
-                        layer.get('interactive') && boundaryOptions.includes(feature.get(boundaryProps.layer.featureIdKey))
-                    ) ?
-                        [feature, layer] : null
-                );
+            const targetObject: [FeatureType, LayerType] | null = e.map.forEachFeatureAtPixel(
+                e.pixel,
+                (feature, layer) => (
+                    layer.get('interactive') && boundaryOptions.includes(feature.get(boundaryProps.layer.featureIdKey))
+                ) ?
+                    [feature, layer] : null
+            );
 
-                if (clickedObject && currentFilters) {
-                    const [clickedFeature, clickedLayer] = clickedObject;
-                    const boundaryIndex = currentFilters.selectedBoundaries.indexOf(
-                        clickedFeature.get(boundaryProps.layer.featureIdKey)
-                    );
-                    const { selectedBoundaries } = currentFilters;
-                    if (boundaryIndex > -1) {
-                        // Deselect the feature
-                        selectedBoundaries.splice(boundaryIndex, 1);
-                    } else {
-                        // Select the feature
-                        selectedBoundaries.push(clickedFeature.get(boundaryProps.layer.featureIdKey));
-                    }
-
-                    clickedLayer.setStyle((feature) => getStyle(
-                        boundaryOptions,
-                        feature,
-                        boundaryProps.layer.featureIdKey,
-                        selectedBoundaries.includes(feature.get(boundaryProps.layer.featureIdKey))
-                    ));
-
-                    dispatchFilterUpdate({
-                        type: 'selectedBoundaries',
-                        value: selectedBoundaries
-                    });
-                }
+            if (targetObject) {
+                return {
+                    feature: targetObject[0],
+                    layer: targetObject[1],
+                    boundaryOptions
+                };
             }
         }
-    }, [filtersRef]);
+        return null;
+    };
+
+    const handleMapClick = React.useCallback((e: MapBrowserEventType) => {
+        const clickedObjectProps = getMapEventTargetProps(e);
+        if (clickedObjectProps) {
+            const { feature: clickedFeature, layer: clickedLayer, boundaryOptions } = clickedObjectProps;
+            const currentFilters = filtersRef.current.current;
+            const boundaryProps = BOUNDARIES[currentFilters.boundaryType];
+
+            const boundaryIndex = currentFilters.selectedBoundaries.indexOf(
+                clickedFeature.get(boundaryProps.layer.featureIdKey)
+            );
+            const { selectedBoundaries } = currentFilters;
+            if (boundaryIndex > -1) {
+                // Deselect the feature
+                selectedBoundaries.splice(boundaryIndex, 1);
+            } else {
+                // Select the feature
+                selectedBoundaries.push(clickedFeature.get(boundaryProps.layer.featureIdKey));
+            }
+
+            clickedLayer.setStyle((feature) => getStyle(
+                boundaryOptions,
+                feature,
+                boundaryProps.layer.featureIdKey,
+                selectedBoundaries.includes(feature.get(boundaryProps.layer.featureIdKey))
+            ));
+
+            dispatchFilterUpdate({
+                type: 'selectedBoundaries',
+                value: selectedBoundaries
+            });
+        }
+    });
+
+    const handleMapHover = React.useCallback((e: MapBrowserEventType) => {
+        const hoveredObjectProps = getMapEventTargetProps(e);
+        if (hoveredObjectProps) {
+            const currentFilters = filtersRef.current.current;
+            if (currentFilters.boundaryType === 'state') {
+                const { NAME: name } = hoveredObjectProps.feature.getProperties();
+                updateHoveredBoundaryInfo([['Name', name]]);
+            } else if (currentFilters.boundaryType === 'huc_8') {
+                const { huc8, states, name } = hoveredObjectProps.feature.getProperties();
+                updateHoveredBoundaryInfo([['HUC8', huc8], ['Name', name], ['State(s)', states]]);
+            }
+        } else {
+            updateHoveredBoundaryInfo([]);
+        }
+    });
 
     return (
         <BMPContext.Provider
             value={{
                 config,
-                activeView,
-                updateActiveView: (view) => {
-                    updateActiveView(view);
-                    activeViewRef.current = view;
-                },
                 dispatchFilterUpdate,
                 filters,
                 results,
@@ -225,9 +274,11 @@ const BMP = ({ dispatch }: Props) => {
                     container
                     alignItems="stretch"
                 >
+                    <Grid item xs={12}>
+                        <Header />
+                    </Grid>
                     <Grid
-                        className="fillContainer"
-                        mapcontainer={1}
+                        className={classes.mapContainer}
                         item
                         xs={6}
                     >
@@ -237,8 +288,24 @@ const BMP = ({ dispatch }: Props) => {
                             center={MAP_CENTER}
                             layers={Object.values(LAYERS)}
                             layerSwitcherOptions={{}}
-                            events={{ click: handleMapClick }}
-                        />
+                            controls={[mapControlsRef.current.boundaryInfo]}
+                            events={{
+                                click: handleMapClick,
+                                pointermove: handleMapHover
+                            }}
+                        >
+                            <BaseControlPortal el={mapControlsRef.current.boundaryInfo.element}>
+                                <Container>
+                                    <Typography variant="subtitle2">
+                                        Select boundaries using the map or the form on the right
+                                    </Typography>
+                                    <Divider />
+                                    {hoveredBoundaryInfo.map(([label, value]) => (
+                                        <Typography key={label} variant="body2">{label}: {value}</Typography>
+                                    ))}
+                                </Container>
+                            </BaseControlPortal>
+                        </Map>
                     </Grid>
                     <Grid
                         className={classes.sidebar}

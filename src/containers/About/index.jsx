@@ -1,13 +1,14 @@
 // @flow
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import GeoStreamingHome from '@geostreams/geostreaming/src/containers/Home';
 
-type Props = {
-    location: {
-        pathname: string
-    }
-}
+import Partners from '../Partners';
 
-const About = ({ location }: Props) => <div>{location.pathname}</div>;
+const About = () => (
+    <>
+        <GeoStreamingHome />
+        <Partners />
+    </>
+);
 
-export default withRouter(About);
+export default About;

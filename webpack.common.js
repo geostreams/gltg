@@ -11,7 +11,7 @@ const { dependencies } = require('./package.json');
 module.exports = {
     target: 'web',
 
-    entry: {        
+    entry: {
         index: path.resolve(__dirname, './src/index.jsx'),
         olStyle: 'ol/ol.css',
         olLayerSwitcherStyle: 'ol-layerswitcher/src/ol-layerswitcher.css',
@@ -155,11 +155,15 @@ module.exports = {
             'redux': path.resolve('./node_modules/redux'),
             'react-router-dom': path.resolve('./node_modules/react-router-dom'),
             'react-redux': path.resolve('./node_modules/react-redux'),
-            '@material-ui': path.resolve('./node_modules/@material-ui')
+            '@material-ui': path.resolve('./node_modules/@material-ui'),
+            'process': path.resolve('./node_modules/process')
         }
     },
 
     plugins: [
+        new Webpack.ProvidePlugin({
+            process: 'process/browser'
+        }),
         new Webpack.DefinePlugin({
             'process.env.VERSION': JSON.stringify(
                 dependencies['@geostreams/core']
@@ -179,7 +183,8 @@ module.exports = {
         new MiniCssExtractPlugin({ filename: 'css/[name]-[chunkhash].css' }),
         new CleanWebpackPlugin(),
         new ESLintPlugin({
-            emitWarning: true
+            emitWarning: true,
+            failOnError: false
         })
     ]
 };

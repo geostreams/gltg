@@ -10,20 +10,20 @@ import __old_Search from '@geostreams/gltg__old/app/pages/Search';
 // $FlowFixMe
 import __old_Analysis from '@geostreams/gltg__old/app/pages/Analysis';
 
-import About from './containers/About';
+import Home from './containers/Home';
 import DataStories from './containers/DataStories';
 import Help from './containers/Help';
-import Home from './containers/Home';
 import GLTGLayout from './containers/Layout';
 import BMP from './containers/BMP';
+import Summary from './containers/Summary';
 import Tests from './tests/Tests';
 
 const routes = Object.assign(
     coreRoutes,
     {
-        '/': { exact: true, component: hocs.withLayout(GLTGLayout, Home, { hasFooter: true, stickyFooter: true }) },
+        '/': { exact: true, component: hocs.withLayout(GLTGLayout, Home, { hasFooter: true }) },
+        '/summary': { exact: true, component: hocs.withLayout(GLTGLayout, Summary, { hasFooter: true, stickyFooter: true }) },
         '/data-stories': { component: hocs.withLayout(GLTGLayout, DataStories, { hasFooter: true }) },
-        '/about': { exact: true, component: hocs.withLayout(GLTGLayout, About, { hasFooter: true }) },
         '/help': { exact: true, component: hocs.withLayout(GLTGLayout, Help, { hasFooter: true }) },
         '/:parent(explore|search|analysis)/detail/location/:name/:category': { component: hocs.withLayout(GLTGLayout, GeoStreamingSensorDetail) },
         // Routes pointing to the __old code

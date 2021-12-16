@@ -106,15 +106,6 @@ const Header = ({ location }: Props) => {
                     />
                     <Tab
                         className={classes.tabRoot}
-                        label="About"
-                        component={Link}
-                        to="/about"
-                        value="about"
-                    >
-                        About
-                    </Tab>
-                    <Tab
-                        className={classes.tabRoot}
                         label="How to Use This Site"
                         component={Link}
                         to="/help"
@@ -128,7 +119,7 @@ const Header = ({ location }: Props) => {
                         className={classes.tabRoot}
                         label={
                             <span className={classes.dropdownIcon}>
-                                Dashboard <ArrowDropDownIcon />
+                                Dashboards <ArrowDropDownIcon />
                             </span>
                         }
                         value="dashboard"
@@ -143,6 +134,12 @@ const Header = ({ location }: Props) => {
                             onClickAway={() => updateGeostreamingMenuOpen(false)}
                         >
                             <Paper>
+                                <MenuItem
+                                    component={Link}
+                                    to="/summary"
+                                >
+                                    Summary
+                                </MenuItem>
                                 <MenuItem
                                     component={Link}
                                     to="/explore/all"
@@ -172,7 +169,7 @@ const Header = ({ location }: Props) => {
                     </Popper>
                     <Tab
                         className={classes.tabRoot}
-                        label="(Data Stories)"
+                        label="Data Stories"
                         component={Link}
                         to="/data-stories"
                         value="data-stories"

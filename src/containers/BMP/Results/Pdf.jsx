@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -141,6 +142,12 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
                     </Button>
                 </Toolbar>
             </AppBar>
+
+            <Alert style={{ margin: 20 }} severity="warning">
+                The recommended browsers are Firefox and Chrome.
+                There might be issues with the generated PDF in other browsers such as Safari and IE.
+            </Alert>
+
             <Grid container className={classes.contentContainer}>
                 <Grid item xs={4}>
                     <Typography variant="h6">Include in the report</Typography>

@@ -25,9 +25,10 @@ type Props = {
     extraMainClasses: string;
     children: React.Node;
     hasFooter: boolean;
+    stickyFooter: boolean;
 }
 
-const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => {
+const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter }: Props) => {
     const classes = useStyles();
     return (
         <>
@@ -44,7 +45,7 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => 
             <Header />
             <main className={`${classes.main} ${extraMainClasses}`}>
                 {children}
-                {hasFooter ? <Footer /> : null}
+                {hasFooter ? <Footer sticky={stickyFooter} /> : null}
             </main>
         </>
     );
@@ -53,7 +54,8 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => 
 Layout.defaultProps = {
     extraMainClasses: '',
     children: null,
-    hasFooter: false
+    hasFooter: false,
+    stickyFooter: false
 };
 
 const mapStateToProps = (state) => ({

@@ -49,9 +49,6 @@ const useStyles = makeStyles((theme) =>{
         tabRoot: {
             fontSize: '1rem'
         },
-        marginLeftAuto: {
-            marginLeft: 'auto !important'
-        },
         dropdown: {
             zIndex: 1100
         },
@@ -101,7 +98,7 @@ const Header = ({ location }: Props) => {
                     value={activeTab.search(/^(explore|search|analysis)/) === 0 ? 'geostreaming' : activeTab}
                 >
                     <Tab
-                        className={`${classes.marginLeftAuto} ${classes.tabRoot}`}
+                        className={classes.tabRoot}
                         label="Home"
                         component={Link}
                         to="/"
@@ -109,42 +106,23 @@ const Header = ({ location }: Props) => {
                     />
                     <Tab
                         className={classes.tabRoot}
-                        label="BMP"
+                        label="How to Use This Site"
                         component={Link}
-                        to="/bmp"
-                        value="bmp"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Data Stories"
-                        component={Link}
-                        to="/data-stories"
-                        value="data-stories"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Partners"
-                        component={Link}
-                        to="/partners"
-                        value="partners"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="FAQ"
-                        component={Link}
-                        to="/faq"
-                        value="faq"
-                    />
+                        to="/help"
+                        value="help"
+                    >
+                        How to Use This Site
+                    </Tab>
                     <Tab
                         ref={geostreamingMenuEl}
                         component="a"
-                        className={`${classes.marginLeftAuto} ${classes.tabRoot}`}
+                        className={classes.tabRoot}
                         label={
                             <span className={classes.dropdownIcon}>
-                                Geostreaming App <ArrowDropDownIcon />
+                                Dashboards <ArrowDropDownIcon />
                             </span>
                         }
-                        value="geostreaming"
+                        value="dashboard"
                         onClick={() => updateGeostreamingMenuOpen(true)}
                     />
                     <Popper
@@ -158,9 +136,9 @@ const Header = ({ location }: Props) => {
                             <Paper>
                                 <MenuItem
                                     component={Link}
-                                    to="/geostreaming"
+                                    to="/summary"
                                 >
-                                    About
+                                    Summary
                                 </MenuItem>
                                 <MenuItem
                                     component={Link}
@@ -180,9 +158,22 @@ const Header = ({ location }: Props) => {
                                 >
                                     Analysis
                                 </MenuItem>
+                                <MenuItem
+                                    component={Link}
+                                    to="/bmp"
+                                >
+                                    Best Management Practices
+                                </MenuItem>
                             </Paper>
                         </ClickAwayListener>
                     </Popper>
+                    <Tab
+                        className={classes.tabRoot}
+                        label="Data Stories"
+                        component={Link}
+                        to="/data-stories"
+                        value="data-stories"
+                    />
                 </Tabs>
             </Toolbar>
         </AppBar>

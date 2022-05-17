@@ -1,0 +1,51 @@
+.column {
+    float: left;
+    width: 33.33%;
+    height: 22.5em;
+    position: relative;
+}
+
+.bottomLeft {
+    position: absolute;
+    bottom: 9em;
+    left: 1em;
+}
+
+.headingBottomLeft {
+    position: absolute;
+    bottom: 2em;
+    left: 1em;
+}
+
+
+.subHeadingbottomLeft {
+    position: absolute;
+    bottom: 5em;
+    left: 1em;
+}
+
+.column img {
+    width: 100%;
+    object-fit: contain;
+}
+
+/* Clear floats after the columns */
+
+.row:after {
+    display: table;
+    clear: both;
+}
+
+.header{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 2em;
+
+}
+
+.descriptionText{
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 1em;
+
+}

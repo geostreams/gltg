@@ -30,9 +30,6 @@ const About = () => (
                 <Typography className={classes.introSubtitle} gutterBottom>
                     GLTG helps people visualize and better understand nutrient pollution and its potential causes. Find out more and try it out for yourself via the resources below.                    </Typography>
             </div>
-            <div style={{ marginLeft: '19em' , marginTop:'2em', width: '90%' }}>
-                <Button variant="outlined" style={{ color: '#FFFFFF', borderColor: '#FFFFFF' }}>Learn More</Button>
-            </div>
         </Box>
         <div className={classes.photoCredit}>
             <p> Photo by Todd Trapani on Unsplash</p>

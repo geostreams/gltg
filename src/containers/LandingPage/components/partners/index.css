@@ -5,8 +5,8 @@
 
 .column {
     float: left;
-    width: 20%;
-    height: 7.5em;
+    width: 50%;
+    height: 15vh;
     position: relative;
     transition: transform .5s ease;
 }
@@ -18,7 +18,7 @@
 .textDiv{
     width: 100%;
     left: 0px;
-    height: 24em;
+    height: 15em;
     display: flex;
     flex-direction: column;
 }
@@ -35,6 +35,7 @@
 
     /* TextLight */
     color: #2D3C4A;
-    margin-top: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
 
 }

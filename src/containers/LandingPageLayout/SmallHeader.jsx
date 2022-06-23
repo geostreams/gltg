@@ -4,15 +4,9 @@ import { Link, withRouter } from 'react-router-dom';
 import {
     AppBar,
     Avatar,
-    Button,
-    ClickAwayListener,
     IconButton,
     Menu,
     MenuItem,
-    Paper,
-    Popper,
-    Tab,
-    Tabs,
     Toolbar,
     Typography,
     makeStyles
@@ -179,9 +173,8 @@ const SmallHeader = ({ location }: Props) => {
                             <ArrowLeftIcon />
                             <span>Geostreaming App</span>
                         </div>  </MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose}>FAQ</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose}>Data Stories</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose}>Partners</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="/help">FAQ</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="data-stories">Data Stories</MenuItem>
                     </Menu>
                     <Menu
                         id="dashboard-menu"
@@ -194,9 +187,26 @@ const SmallHeader = ({ location }: Props) => {
                         getContentAnchorEl={null}
                         anchorOrigin={{ vertical: 0, horizontal: -235 }}
                         className={classes.dropdown}>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClose}>Summary Dashboard</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClose}>Best Management Practices</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClose}>State Portal</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} 
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="summary">
+                                Summary Dashboard
+                        </MenuItem>
+                        <MenuItem 
+                            classes={{ root: classes.menuItem }}
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="/bmp">
+                            Best Management Practices
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="/summary">
+                            State Portals
+                        </MenuItem>
                     </Menu>
                     <Menu
                         id="geoApp-menu"
@@ -209,9 +219,27 @@ const SmallHeader = ({ location }: Props) => {
                         getContentAnchorEl={null}
                         anchorOrigin={{ vertical: 0, horizontal: -100 }}
                         className={classes.dropdown}>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClose}>Explore</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClose}>Download</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClose}>Analysis</MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={geoAppHandleClose}
+                            component={Link}
+                            to="/explore/all">
+                            Explore
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={geoAppHandleClose}
+                            component={Link}
+                            to="/search">
+                            Download
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={geoAppHandleClose}
+                            component={Link}
+                            to="/analysis">
+                            Analysis
+                        </MenuItem>
                     </Menu>
                 </div>
             </Toolbar>

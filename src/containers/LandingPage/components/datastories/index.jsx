@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box ,Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import DataStory from '../../Images/DataStory.jpg'
 import classes from './index.css';
@@ -17,7 +18,7 @@ const DataStories = () => (
                 <h1 className={classes.header}> Data Stories</h1>
                 <p className={classes.text}> Learn more about specific water quality case studies from throughout the region.</p>
                 <div className={classes.button}>
-                    <Button variant="outlined" style={{ color: '#FFFFFF', borderColor: '#FFFFFF' }}>Learn More</Button>
+                    <Button component={Link} to="data-stories" variant="outlined" style={{ color: '#FFFFFF', borderColor: '#FFFFFF' }}>Learn More</Button>
                 </div>
             </Box>
         </div>

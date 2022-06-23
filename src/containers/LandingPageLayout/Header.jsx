@@ -5,18 +5,14 @@ import {
     AppBar,
     Avatar,
     Button,
-    ClickAwayListener,
     Menu,
     MenuItem,
-    Paper,
-    Popper,
     Tab,
     Tabs,
     Toolbar,
     Typography,
     makeStyles
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import LogoApp from '../../images/logo_app.png';
 
@@ -128,7 +124,7 @@ const Header = ({ location }: Props) => {
                 >
                     <Tab
                         className={classes.tabRoot}
-                        label="Dashboard"
+                        label="Dashboards"
                         component={Button}
                         id = "dashboard-button"
                         aria-controls={dashboardOpen ? 'dashboard-menu' : undefined}
@@ -149,9 +145,26 @@ const Header = ({ location }: Props) => {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                         transformOrigin={{ horizontal: 'center' }}
                         className={classes.dropdown}>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClose}>Summary Dashboard</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClose}>Best Management Practices</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClose}>State Portal</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} 
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="summary">
+                            Summary Dashboard
+                        </MenuItem>
+                        <MenuItem 
+                            classes={{ root: classes.menuItem }}
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="/bmp">
+                            Best Management Practices
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="/summary">
+                            State Portals
+                        </MenuItem>
                     </Menu>
                     <Tab
                         className={classes.tabRoot}
@@ -176,9 +189,27 @@ const Header = ({ location }: Props) => {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                         transformOrigin={{ horizontal: 'center' }}
                         className={classes.dropdown}>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClose}>Explore</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClose}>Download</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClose}>Analysis</MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={geoAppHandleClose}
+                            component={Link}
+                            to="/explore/all">
+                            Explore
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={geoAppHandleClose}
+                            component={Link}
+                            to="/search">
+                            Download
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={geoAppHandleClose}
+                            component={Link}
+                            to="/analysis">
+                            Analysis
+                        </MenuItem>
                     </Menu>
                     <Tab
                         className={classes.tabRoot}
@@ -186,19 +217,6 @@ const Header = ({ location }: Props) => {
                         component={Link}
                         to="/help"
                         value="faq"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Data Stories"
-                        component={Link}
-                        to="/data-stories"
-                        value="data-stories"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Partner"
-                        component={Link}
-                        value="partner"
                     />
                 </Tabs>
                 <Typography

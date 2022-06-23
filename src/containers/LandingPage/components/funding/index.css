@@ -5,8 +5,8 @@
 
 .column {
     float: left;
-    width: 20%;
-    height: 7.5em;
+    width: 33%;
+    height: 15vh;
     position: relative;
     transition: transform .5s ease;
 }
@@ -35,7 +35,8 @@
 
     /* TextLight */
     color: #2D3C4A;
-    margin-top: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
 
 }
 

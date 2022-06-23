@@ -4,15 +4,16 @@ import { Link, withRouter } from 'react-router-dom';
 import {
     AppBar,
     Avatar,
-    Button,
+    IconButton,
     Menu,
     MenuItem,
-    Tab,
-    Tabs,
     Toolbar,
     Typography,
     makeStyles
 } from '@material-ui/core';
+
+import MenuIcon from '@material-ui/icons/Menu';
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
 import LogoApp from '../../images/logo_app.png';
 
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) =>{
         tabsRoot: {
             marginLeft: '6em',
             fontSize: 16,
-            flexGrow: 1
+            flexGrow: 1,
         },
         menuItem: {
             '&:hover': {
@@ -68,6 +69,11 @@ const useStyles = makeStyles((theme) =>{
         },
         dropdownIcon: {
             display: 'flex'
+        },
+        menuIcon: {
+            display: 'block',
+            marginLeft: 'auto',
+            marginRight: 0
         }
     });
 });
@@ -78,8 +84,17 @@ type Props = {
     }
 }
 
-const Header = ({ location }: Props) => {
+const SmallHeader = ({ location }: Props) => {
     const classes = useStyles();
+
+    const [menuAnchorEL, setMenuAnchorEL] = React.useState(null);
+    const menuOpen = Boolean(menuAnchorEL);
+    const menuHandleClick = (event) => {
+        setMenuAnchorEL(event.currentTarget);
+    };
+    const menuHandleClose = () => {
+        setMenuAnchorEL(null);
+    };
 
     const [dashboardAnchorEl, setDashboardAnchorEl] = React.useState(null);
     const dashboardOpen = Boolean(dashboardAnchorEl);
@@ -88,7 +103,9 @@ const Header = ({ location }: Props) => {
     };
     const dashboardHandleClose = () => {
         setDashboardAnchorEl(null);
+        setMenuAnchorEL(null);
     };
+
 
     const [geoAppAnchorEl, setGeoAppAnchorEl] = React.useState(null);
     const geoAppOpen = Boolean(geoAppAnchorEl);
@@ -97,6 +114,7 @@ const Header = ({ location }: Props) => {
     };
     const geoAppHandleClose = () => {
         setGeoAppAnchorEl(null);
+        setMenuAnchorEL(null);
     };
 
     return (
@@ -116,23 +134,48 @@ const Header = ({ location }: Props) => {
                 >
                     Great Lakes to Gulf
                 </Typography>
-                <Tabs
-                    classes={{
-                        root: classes.tabsRoot,
-                        indicator: classes.tabsIndicator
-                    }}
-                >
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Dashboards"
-                        component={Button}
-                        id = "dashboard-button"
-                        aria-controls={dashboardOpen ? 'dashboard-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={dashboardOpen ? 'true' : undefined}
-                        onClick={dashboardHandleClick}
-                        classes={classes.headerButton}
-                    />
+                <div className={classes.menuIcon}>
+                    <IconButton
+                        label = 'burger-menu'
+                        id= 'menu-dropdown'
+                        aria-controls={menuOpen ? 'dropdown-menu' : undefined}
+                        aria-haspopup= 'true'
+                        aria-expanded={menuOpen ? 'true' : undefined}
+                        onClick={menuHandleClick}
+                    >
+                        <MenuIcon style={{ color: 'white' }} />
+                    </IconButton>
+                    <Menu
+                        id="dashboard-menu"
+                        anchorEl={menuAnchorEL}
+                        open={menuOpen}
+                        onClose={menuHandleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'burger-button'
+                        }}
+                        getContentAnchorEl={null}
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                        transformOrigin={{ horizontal: 'center' }}
+                        className={classes.dropdown}>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClick}> <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexWrap: 'wrap'
+                        }}>
+                            <ArrowLeftIcon />
+                            <span>Dashboards</span>
+                        </div>  </MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClick}> <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexWrap: 'wrap'
+                        }}>
+                            <ArrowLeftIcon />
+                            <span>Geostreaming App</span>
+                        </div>  </MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="/help">FAQ</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="data-stories">Data Stories</MenuItem>
+                    </Menu>
                     <Menu
                         id="dashboard-menu"
                         anchorEl={dashboardAnchorEl}
@@ -142,16 +185,15 @@ const Header = ({ location }: Props) => {
                             'aria-labelledby': 'dashboard-button'
                         }}
                         getContentAnchorEl={null}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                        transformOrigin={{ horizontal: 'center' }}
+                        anchorOrigin={{ vertical: 0, horizontal: -235 }}
                         className={classes.dropdown}>
-                        <MenuItem classes={{ root: classes.menuItem }}
-                                  onClick={dashboardHandleClose}
-                                  component={Link}
-                                  to="summary">
+                        <MenuItem classes={{ root: classes.menuItem }} 
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="summary">
                             Summary Dashboard
                         </MenuItem>
-                        <MenuItem
+                        <MenuItem 
                             classes={{ root: classes.menuItem }}
                             onClick={dashboardHandleClose}
                             component={Link}
@@ -166,17 +208,6 @@ const Header = ({ location }: Props) => {
                             State Portals
                         </MenuItem>
                     </Menu>
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Geostreaming App"
-                        component={Button}
-                        id = "geoApp-button"
-                        aria-controls={geoAppOpen ? 'geoApp-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={geoAppOpen ? 'true' : undefined}
-                        onClick={geoAppHandleClick}
-                        classes={classes.headerButton}
-                    />
                     <Menu
                         id="geoApp-menu"
                         anchorEl={geoAppAnchorEl}
@@ -186,8 +217,7 @@ const Header = ({ location }: Props) => {
                             'aria-labelledby': 'geoApp-button'
                         }}
                         getContentAnchorEl={null}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                        transformOrigin={{ horizontal: 'center' }}
+                        anchorOrigin={{ vertical: 0, horizontal: -100 }}
                         className={classes.dropdown}>
                         <MenuItem
                             classes={{ root: classes.menuItem }}
@@ -211,26 +241,10 @@ const Header = ({ location }: Props) => {
                             Analysis
                         </MenuItem>
                     </Menu>
-                    <Tab
-                        className={classes.tabRoot}
-                        label="FAQ"
-                        component={Link}
-                        to="/help"
-                        value="faq"
-                    />
-                </Tabs>
-                <Typography
-                    component='a'
-                    to="/"
-                    href='mailto:gltg-support@lists.illinois.edu'
-                    className={classes.contactText}
-                    noWrap
-                >
-                    CONTACT
-                </Typography>
+                </div>
             </Toolbar>
         </AppBar>
     );
 };
 
-export default withRouter(Header);
+export default withRouter(SmallHeader);

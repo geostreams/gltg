@@ -1,7 +1,7 @@
 .textDiv{
     width: 100%;
     left: 0px;
-    height: 12em;
+    height: 18em;
     /*top: 47.563em;*/
     background-color: #F6F6F6;
     display: flex;
@@ -26,7 +26,7 @@
     /*order: 0;*/
     /*align-self: stretch;*/
     /*flex-grow: 0;*/
-    margin: auto;
+    margin-top: 1em;
 
 }
 .textSubTitle{

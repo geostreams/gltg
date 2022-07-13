@@ -15,7 +15,7 @@ const ImageRow = (props) => {
     return (
         <div className={classes.row} >
             <div className={classes.column}
-                style={{ background: `-moz-linear-gradient(270deg, rgba(0, 0, 0, 0) 8.58%, rgba(0, 0, 0, 0.8) 100%),url(${image1})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                style={{ background: `url(${image1})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 onMouseEnter={() => setImage1Hover(true)}
                 onMouseLeave={() => setImage1Hover(false)}
                 onClick={() => history.push(link1)}
@@ -34,7 +34,7 @@ const ImageRow = (props) => {
                     </div>)}
             </div>
             <div className={classes.column}
-                style={{ background: `-moz-linear-gradient(270deg, rgba(0, 0, 0, 0) 8.58%, rgba(0, 0, 0, 0.8) 100%),url(${image2})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                style={{ background: `url(${image2})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 onMouseEnter={() => setImage2Hover(true)}
                 onMouseLeave={() => setImage2Hover(false)}
                 onClick={() => history.push(link2)}
@@ -53,7 +53,7 @@ const ImageRow = (props) => {
                     </div>)}
             </div>
             <div className={classes.column}
-                style={{ background: `-moz-linear-gradient(270deg, rgba(0, 0, 0, 0) 8.58%, rgba(0, 0, 0, 0.8) 100%),url(${image3})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                style={{ background: `url(${image3})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
                 onMouseEnter={() => setImage3Hover(true)}
                 onMouseLeave={() => setImage3Hover(false)}
                 onClick={() => history.push(link3)}

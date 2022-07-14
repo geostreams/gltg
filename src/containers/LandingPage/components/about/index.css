@@ -1,0 +1,98 @@
+.introDiv{
+    /*position: absolute;*/
+    position: relative;
+    display: flex;
+    width: 100%;
+    /*left: 0px;*/
+    height: 44.563em;
+    margin-top: 3em;
+    background-image: url('../../Images/Welcome.jpg');
+    background-position: center;
+}
+
+.introBox{
+
+    width: 47.063em;
+    height: 28.375em;
+    background-color: rgba(45, 60, 74, 0.7);
+    z-index: +1;
+    margin: auto;
+}
+
+.introTitle{
+
+    /* H1 */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+
+    /* TextLight */
+    color: #FFFFFF;
+    position:static;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: auto;
+}
+
+.introSubtitle{
+
+    /* Body1 */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* TextLight */
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: auto;
+}
+
+.introList{
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 17px;
+
+    /* or 106% */
+
+    /* TextLight */
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    margin: auto;
+}
+
+.photoCredit{
+
+    position:absolute;
+    bottom: 0;
+    right:0;
+    color: #BEC4C9;
+
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+}

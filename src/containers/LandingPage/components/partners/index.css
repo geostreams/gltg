@@ -1,0 +1,41 @@
+.row:after {
+    display: table;
+    clear: both;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    height: 15vh;
+    position: relative;
+    transition: transform .5s ease;
+}
+
+.column:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.textDiv{
+    width: 100%;
+    left: 0px;
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+}
+
+.textTitle{
+
+    /* H1 */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+
+    /* TextLight */
+    color: #2D3C4A;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}

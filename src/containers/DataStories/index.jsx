@@ -12,6 +12,7 @@ import {
     Typography,
     makeStyles
 } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 
 import dataStories from './pages';
@@ -56,6 +57,9 @@ const DataStories = () => {
     return (
         <>
             <Details {...iframeProps} handleClose={handleModalClose} />
+            <Alert  severity="info">
+                Below, please find our archive of storyboards providing historical context on nutrient pollution and the Great Lakes to Gulf project. Our team is at work developing additional resources to launch in late 2022 and 2023 - check back at greatlakestogulf.org for updates.
+            </Alert>
             <Container>
                 <Typography
                     className={classes.header}
@@ -72,6 +76,7 @@ const DataStories = () => {
                 <Grid container spacing={4}>
                     {dataStories.map(({ title, thumbnail, slides }) => (
                         <Grid key={title} item xs={4}>
+                            {slides &&
                             <Card
                                 raised
                                 onClick={() => slides && updateIframeProps({
@@ -96,6 +101,7 @@ const DataStories = () => {
                                     </CardContent>
                                 </CardActionArea>
                             </Card>
+                            }
                         </Grid>
                     ))}
                 </Grid>

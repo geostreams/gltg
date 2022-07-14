@@ -145,13 +145,13 @@ const Header = ({ location }: Props) => {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                         transformOrigin={{ horizontal: 'center' }}
                         className={classes.dropdown}>
-                        <MenuItem classes={{ root: classes.menuItem }}
-                                  onClick={dashboardHandleClose}
-                                  component={Link}
-                                  to="summary">
+                        <MenuItem classes={{ root: classes.menuItem }} 
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="summary">
                             Summary Dashboard
                         </MenuItem>
-                        <MenuItem
+                        <MenuItem 
                             classes={{ root: classes.menuItem }}
                             onClick={dashboardHandleClose}
                             component={Link}

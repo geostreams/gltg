@@ -15,9 +15,10 @@ const useStyles = makeStyles({
     },
     main: {
         position: 'absolute',
-        top: HEADERS_HEIGHT,
+        top: 0,
         width: '100%',
-        height: `calc(100% - ${HEADERS_HEIGHT}px)`
+        height: `calc(100% - ${HEADERS_HEIGHT}px)`,
+        minWidth: '77em'
     }
 });
 
@@ -42,7 +43,6 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter
             window.removeEventListener('resize',handleResizeWindow);
         };
     },[]);
-
 
     return (
         <>

@@ -1,7 +1,7 @@
 FROM node:14 as build
 
 ARG GEODASHBOARD_VERSION
-ARG GEOSERVER_URL=/geoserver
+ARG GEOSERVER_URL=https://gltg-geoserver.ncsa.illinois.edu/geoserver
 ARG GEOSTREAMS_URL=/geostreams
 ARG BMP_API_URL=/bmp-api
 

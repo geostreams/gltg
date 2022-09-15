@@ -6,7 +6,7 @@ const __old_config = require('@geostreams/gltg__old/config');
 window.configruntime = __old_config;
 
 // $FlowFixMe
-import { addEndpoints, fetchSensors as __old_fetchSensors } from '@geostreams/core__old/app/actions';
+// import { addEndpoints, fetchSensors as __old_fetchSensors } from '@geostreams/core__old/app/actions';
 
 import render from '@geostreams/core/src/render';
 import { updateGeoStreamingConfig } from '@geostreams/geostreaming/src/actions/config';
@@ -23,8 +23,8 @@ render(
     routes,
     (store) => {
         store.dispatch(updateGeoStreamingConfig(config));
-        store.dispatch(addEndpoints());
-        store.dispatch(__old_fetchSensors(config.geostreamingEndpoint));
+//         store.dispatch(addEndpoints());
+//         store.dispatch(__old_fetchSensors(config.geostreamingEndpoint));geostreamingEndpoint
         store.dispatch(fetchParameters());
         store.dispatch(fetchSensors());
     }

@@ -120,6 +120,24 @@ module.exports = {
                     id: 'gltg:2017_Hypoxia_Contours',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2017_Hypoxia_Contours'
+                },
+                {
+                    title: '2018 Hypoxia Contours',
+                    id: 'gltg:Oregon328_Contours_2018',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:Oregon328_Contours_2018'
+                },
+                {
+                    title: '2019 Hypoxia Contours',
+                    id: 'gltg:Oregon332_Contours_2019',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:Oregon332_Contours_2019'
+                },
+                {
+                    title: '2021 Hypoxia Contours',
+                    id: 'gltg:Oregon340_Contours_2021',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:Oregon340_Contours_2021'
                 }
             ],
             'Cropscape Frequency Data': [

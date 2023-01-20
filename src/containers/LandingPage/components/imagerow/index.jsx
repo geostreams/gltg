@@ -15,7 +15,7 @@ const ImageRow = (props) => {
     return (
         <div className={classes.row} >
             <div className={classes.column}
-                style={{ background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),url(${image1})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                style={{ background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),url(${image1})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', cursor:'pointer' }}
                 onMouseEnter={() => setImage1Hover(true)}
                 onMouseLeave={() => setImage1Hover(false)}
                 onClick={() => history.push(link1)}
@@ -32,7 +32,7 @@ const ImageRow = (props) => {
 
             </div>
             <div className={classes.column}
-                style={{ background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),url(${image2})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                style={{ background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),url(${image2})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', cursor:'pointer' }}
                 onMouseEnter={() => setImage2Hover(true)}
                 onMouseLeave={() => setImage2Hover(false)}
                 onClick={(e) => {
@@ -68,7 +68,7 @@ const ImageRow = (props) => {
 
             </div>
             <div className={classes.column}
-                style={{ background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),url(${image3})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
+                style={{ background: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),url(${image3})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' , cursor:'pointer'}}
                 onMouseEnter={() => setImage3Hover(true)}
                 onMouseLeave={() => setImage3Hover(false)}
                 onClick={() => history.push(link3)}

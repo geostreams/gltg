@@ -10,7 +10,9 @@
     bottom: 9em;
     left: 1em;
 }
-
+a:hover{
+    text-decoration: none;
+}
 .headingBottomLeft {
     position: absolute;
     bottom: 2em;

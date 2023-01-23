@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import classes from './index.css';
+import {Stack} from '@material-ui/core';
 import { Button } from '@material-ui/core';
 const ImageRow = (props) => {
     const history = useHistory();
@@ -22,10 +23,10 @@ const ImageRow = (props) => {
             >
 
 
-                <div className={classes.topLeft} style={{ margin: "1em 0em 0em 0em" }}>
+                <div className={classes.topLeft} style={{ margin: "1em 0em 0em 0em" ,padding:"0.5em"}}>
                     <h2 className={classes.header} > {header1}</h2>
                 </div>
-                <div className={classes.subHeadingtopLeft} style={{ margin: "1em 0em 1em"}}>
+                <div className={classes.subHeadingtopLeft} style={{ margin: "1em 0em 1em",padding:"0.5em"}}>
                     <p className={classes.descriptionText}> {subheader1}</p>
                 </div>
 
@@ -39,28 +40,34 @@ const ImageRow = (props) => {
                     history.push(link2)
                 }}
             >
-                <div className={classes.topLeft} style={{ margin: "1em 0em 0em 0em" }}>
+                <div className={classes.topLeft} style={{ margin: "1em 0em 0em 0em" ,padding:"0.5em 0.5em 0em 0.5em"}}>
                     <h2 className={classes.header} > {header2}</h2>
                 </div>
-                <div className={classes.subHeadingtopLeft} style={{ margin: "1em 0em 1em"}}>
+                <div className={classes.subHeadingtopLeft} style={{ margin: "1em 0em 1em",padding:"0.5em 0.5em 0em 0.5em"}}>
                     <p className={classes.descriptionText}> {subheader2}</p>
                 </div>
 
                 {header2 == "State Portals" ?
                     (<>
-                        <a href={link4} target="_blank">
+                  
+                    <div style={{ margin:"0em 0em 4em 0em"}}>
+                        <a href={link4} >
                             <Button
-                                variant='outlined'
-                                style={{ color: "white", margin: "13em 0.5em 1em 2em",borderColor:"white" }}>
+                                variant='contained'
+                                style={{ color: "black", margin: "13em 0.5em 1em 2em",borderColor:"white"}}>
                                 Illinois
                             </Button>
                         </a>
-                        <a href={link5} target="_blank">
+                        <a href={link5} >
                             <Button
-                            variant='outlined'
-                                style={{ color: "white", margin: "13em 0em 1em 2em" ,borderColor:"white" }}> Arkansas
+                            variant='contained'
+                                style={{ color: "black", margin: "13em 0em 1em 2em" ,borderColor:"white" }}> Arkansas
                             </Button>
                         </a>
+                        </div>
+                   
+                        
+                        
                     </>) :
                     (<div >
 
@@ -73,10 +80,10 @@ const ImageRow = (props) => {
                 onMouseLeave={() => setImage3Hover(false)}
                 onClick={() => history.push(link3)}
             >
-                <div className={classes.topLeft} style={{ margin: "1em 0em 0em 0em" }}>
+                <div className={classes.topLeft} style={{ margin: "1em 0em 0em 0em",padding:"0.5em 0.5em 0em 0.5em" }}>
                     <h2 className={classes.header} > {header3}</h2>
                 </div>
-                <div className={classes.subHeadingtopLeft} style={{ margin: "1em 0em 1em"}} >
+                <div className={classes.subHeadingtopLeft} style={{ margin: "1em 0em 1em",padding:"0.5em 0.5em 0em 0.5em"}} >
                     <p className={classes.descriptionText} > {subheader3}</p>
                 </div>
 

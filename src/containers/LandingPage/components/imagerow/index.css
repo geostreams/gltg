@@ -10,7 +10,7 @@
     bottom: 9em;
     left: 1em;
 }
-a:hover{
+a{
     text-decoration: none;
 }
 .headingBottomLeft {

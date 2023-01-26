@@ -8,7 +8,19 @@ module.exports = {
         clusterExpandCountThreshold: 10,
         clusterExpandZoomThreshold: 12,
         layers: {
-            'SPARROW 2002 Nutrient Model Results': [
+            'SPARROW Nutrient Model Results': [
+                {
+                    title: 'SPARROW 2012 Nitrogen Load',
+                    id: 'gltg:sparrow12_huc8_nitrogen',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:sparrow12_huc8_nitrogen'
+                },
+                {
+                    title: 'SPARROW 2012 Phosphorus Load',
+                    id: 'gltg:sparrow12_huc8_phosphorous',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:sparrow12_huc8_phosphorous'
+                },
                 {
                     title: 'SPARROW 2002 Nitrogen Load',
                     id: 'gltg:sparrow-nitrogen',

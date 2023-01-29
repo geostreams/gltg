@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 const ImageRow = (props) => {
     const history = useHistory();
 
-    const { image1, image2, image3, header1, header2, header3, subheader1, subheader2, subheader3, link1, link2, link3, link4, link5 } = props;
+    const { image1, image2, image3, header1, header2, header3, subheader1, subheader2, subheader3, link1, link2, link3, link4, link5, link6 } = props;
     const [image1Hover, setImage1Hover] = React.useState(false);
     const [image2Hover, setImage2Hover] = React.useState(false);
     const [image3Hover, setImage3Hover] = React.useState(false);
@@ -54,16 +54,23 @@ const ImageRow = (props) => {
                         <a href={link4} >
                             <Button
                                 variant='contained'
-                                style={{ color: "black", margin: "13em 0.5em 1em 2em",borderColor:"white"}}>
+                                style={{ color: "black", margin: "11em 0.5em 4em 2em"}}>
                                 Illinois
+                            </Button>
+                        </a>
+                        <a href={link6} >
+                            <Button
+                            variant='contained'
+                                style={{ color: "black", margin: "11em 0em 4em 2em"  }}> Iowa
                             </Button>
                         </a>
                         <a href={link5} >
                             <Button
                             variant='contained'
-                                style={{ color: "black", margin: "13em 0em 1em 2em" ,borderColor:"white" }}> Arkansas
+                                style={{ color: "black", margin: "11em 0em 4em 2em"  }}> Arkansas
                             </Button>
                         </a>
+                        
                         </div>
                    
                         

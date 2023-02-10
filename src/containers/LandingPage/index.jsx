@@ -33,13 +33,17 @@ const Home = () => {
         'More to come!';
     const firstRowLink1 = 'summary';
     const firstRowHeader2 = 'State Portals';
-    const firstRowSubHeader2 = 'Review data and trends specific to individual states. Current states available: Illinois. \n' +
+    const firstRowSubHeader2 = 'Review data and trends specific to individual states. Current states available: Illinois, Arkansas. \n' +
                                 '\n' +
                                 'More to come!';
-    const firstRowLink2 = 'summary';
+    const firstRowLink2 = '';
     const firstRowHeader3 = 'Conservation Practices';
     const firstRowSubHeader3 = 'Visualize the impact of water quality best management practices in this region.';
     const firstRowLink3 = 'bmp';
+
+    //State Links
+    const illinois = "https://illinois.greatlakestogulf.org/"
+    const arkansas = "https://arkansas.greatlakestogulf.org/"
     // Second Image Row Text
     const secondRowHeader1 = 'Explore';
     const secondRowSubHeader1 = 'Explore water quality data';
@@ -64,7 +68,7 @@ const Home = () => {
             <Imagerow image1 = {SummaryDashboard} image2 = {StatePortal} image3 ={ConservationPractices}
                 header1={firstRowHeader1} header2={firstRowHeader2} header3 = {firstRowHeader3}
                 subheader1={firstRowSubHeader1} subheader2={firstRowSubHeader2} subheader3={firstRowSubHeader3}
-                link1={firstRowLink1} link2={firstRowLink2} link3={firstRowLink3} />
+                link1={firstRowLink1} link2={firstRowLink2} link3={firstRowLink3} link4={illinois} link5={arkansas}/>
             <TextBox title = 'Explore GeoStreaming Dashboards' text = 'GLTG is built on Geodashboards, an open-source web technology that lets users interact with and visualize geospatial data. Use the dashboards below to explore, download, and perform your own analysis on water quality data from across the Mississippi River watershed.' />
             <Imagerow image1 = {Explore} image2 = {Analyze} image3 ={Download}
                 header1={secondRowHeader1} header2={secondRowHeader2} header3 = {secondRowHeader3}

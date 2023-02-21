@@ -4,10 +4,12 @@ ARG GEODASHBOARD_VERSION
 ARG GEOSERVER_URL=https://gltg-geoserver.ncsa.illinois.edu/geoserver
 ARG GEOSTREAMS_URL=/geostreams
 ARG BMP_API_URL=/bmp-api
+ARG GA_TOKEN=UA-8681001-7
 
 ENV GEOSERVER_URL=$GEOSERVER_URL
 ENV GEOSTREAMS_URL=$GEOSTREAMS_URL
 ENV BMP_API_URL=$BMP_API_URL
+ENV GA_TOKEN=$GA_TOKEN
 
 RUN git clone https://github.com/geostreams/geodashboard.git /tmp/geodashboard
 WORKDIR /tmp/geodashboard

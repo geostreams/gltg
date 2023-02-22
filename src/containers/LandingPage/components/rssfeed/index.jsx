@@ -93,11 +93,16 @@ function RssFeed() {
 
           const formattedDate = `${monthName} ${day},${year}`;
           item["pubDate"] = formattedDate;
+          var desc = item["description"];
+          if(desc.length + (item["title"]).length>50){
+              desc = desc.substring(0,153);
+              item["description"] = desc +"......";
+          }
         });
 
         setFeedItems(feedItems);
       });
-  }, ["https://greatlakestogulf.web.illinois.edu/feed]"]);
+  }, ["https://greatlakestogulf.web.illinois.edu/feed"]);
 
   return (
     <>
@@ -105,8 +110,8 @@ function RssFeed() {
         <h1 className={classes.textTitle}>GLTG News</h1>
         <Grid container spacing={2}>
           {feedItems.map((card, index) => (
-            <Grid key={index} item xs={1} sm={1} md={4} className="cardGrid">
-              <Card>
+            <Grid key={index} item xs={1} sm={1} md={4} style={{ height: 550 }}>
+              <Card style={{ height: 550 }}>
                 <CardMedia
                   style={{
                     height: "300px",
@@ -127,11 +132,6 @@ function RssFeed() {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{
-                      height: "100%",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
                   >
                     {card.description}
                   </Typography>
@@ -141,6 +141,7 @@ function RssFeed() {
                   href={card.link}
                   color="inherit"
                   underline="none"
+                  style={{ marginBottom: "1em" }}
                 >
                   Learn More
                 </Link></Button>
@@ -154,7 +155,7 @@ function RssFeed() {
                 variant="outlined"
                 align="centre"
                 color="primary"
-                style={{ marginBottom: "1em" }}
+                style={{ marginBottom: "2em",marginTop: "1em" }}
               >
                 <Link
                   href="https://greatlakestogulf.web.illinois.edu/"

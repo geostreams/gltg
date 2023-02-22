@@ -77,7 +77,6 @@ const Home = () => {
                 subheader1={secondRowSubHeader1} subheader2={secondRowSubHeader2} subheader3={secondRowSubHeader3}
                 link1={secondRowLink1} link2={secondRowLink2} link3={secondRowLink3} />
             <FAQBox title = 'FAQ' text = 'Learn more about how to use this site.' />
-            <Datastories />
             <Partners partner1 = {NGRREC} partner2 = {NCSA} link1={partnerLink1} link2={partnerLink2} />
             <Funding image1 = {WaltonFamily} link1={fundLink1} />
         </>);

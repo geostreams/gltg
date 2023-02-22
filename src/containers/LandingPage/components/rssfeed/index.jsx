@@ -127,7 +127,7 @@ function RssFeed() {
                     {card.title}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
-                    {card.pubDate}-{card.author}
+                    {card.pubDate}
                   </Typography>
                   <Typography
                     variant="body2"

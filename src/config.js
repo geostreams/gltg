@@ -28,97 +28,97 @@ module.exports = {
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:TFNitrate'
                 },
                 {
-                    title: 'Nitrate Loading in June ($g\\ N/m^2$) ',
+                    title: 'Nitrate Loading in June (g N/m^2) ',
                     id: 'gltg:L_6_rcNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_rcNitrate'
                 },
                 {
-                    title: 'Nitrate Loading Absolute Increase ($g\\ N/m^2$)\\n (decrease corn fraction by 20%)',
+                    title: 'Nitrate Loading Absolute Increase (g N/m^2) (decrease corn fraction by 20%)',
                     id: 'gltg:rc_dNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:rc_dNitrate'
                 },
                 {
-                    title: 'Nitrate Loading Relative Increase (%)\\n (decrease corn fraction by 20%)',
+                    title: 'Nitrate Loading Relative Increase (%) (decrease corn fraction by 20%)',
                     id: 'gltg:rc_d_pNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:rc_d_pNitrate'
                 },
                 {
-                    title: 'Nitrate Loading in June ($g\\ N/m^2$)\\n (increase corn fraction by 20%)',
+                    title: 'Nitrate Loading in June (g N/m^2) (increase corn fraction by 20%)',
                     id: 'gltg:L_6_icNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_icNitrate'
                 },
                 {
-                    title: 'Nitrate loading Absolute Increase ($g\\ N/m^2$)\\n (increase corn fraction by 20%)',
+                    title: 'Nitrate loading Absolute Increase (g N/m^2) (increase corn fraction by 20%)',
                     id: 'gltg:ic_dNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:ic_dNitrate'
                 },
                 {
-                    title: 'Nitrate Loading Relative Increase  (%)\\n (increase corn fraction by 20%)',
+                    title: 'Nitrate Loading Relative Increase  (%) (increase corn fraction by 20%)',
                     id: 'gltg:ic_d_pNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:ic_d_pNitrate'
                 },
                 {
-                    title: 'Nitrate Loading in June ($g\\ N/m^2$)\\n (increase tile fraction by 10%)',
+                    title: 'Nitrate Loading in June (g N/m^2) (increase tile fraction by 10%)',
                     id: 'gltg:ic_d_pNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:ic_d_pNitrate'
                 },
                 {
-                    title: 'Nitrate loading in June ($g\\ N/m^2$)\\n (increase tile fraction by 10%)',
+                    title: 'Nitrate loading in June (g N/m^2) (increase tile fraction by 10%)',
                     id: 'gltg:L_6_it_1Nitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_it_1Nitrate'
                 },
                 {
-                    title: 'Nitrate loading Absolute Increase ($g\\ N/m^2$)\\n (increase tile fraction by 10%)',
+                    title: 'Nitrate loading Absolute Increase (g N/m^2) (increase tile fraction by 10%)',
                     id: 'gltg:it_1_dNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:it_1_dNitrate'
                 },
                 {
-                    title: 'Nitrate Loading Relative Increase (%)\\n (increase tile fraction by 10%)',
+                    title: 'Nitrate Loading Relative Increase (%) (increase tile fraction by 10%)',
                     id: 'gltg:it_1_d_pNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:it_1_d_pNitrate'
                 },
                 {
-                    title: 'Nitrate loading in June ($g\\ N/m^2$)\\n (increase tile fraction by 20%)',
+                    title: 'Nitrate loading in June (g N/m^2) (increase tile fraction by 20%)',
                     id: 'gltg:L_6_it_2Nitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_it_2Nitrate'
                 },
                 {
-                    title: 'Nitrate loading Absolute Increase ($g\\ N/m^2$)\\n (increase tile fraction by 20%)',
+                    title: 'Nitrate loading Absolute Increase (g N/m^2) (increase tile fraction by 20%)',
                     id: 'gltg:it_2_dNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:it_2_dNitrate'
                 },
                 {
-                    title: 'Nitrate Loading Relative Increase (%)\\n (increase tile fraction by 10%)',
+                    title: 'Nitrate Loading Relative Increase (%) (increase tile fraction by 10%)',
                     id: 'gltg:it_2_d_pNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:it_2_d_pNitrate'
                 },
                 {
-                    title: 'Nitrate loading in June ($g\\ N/m^2$)\\n (increase tile fraction by 30%)',
+                    title: 'Nitrate loading in June (g N/m^2) (increase tile fraction by 30%)',
                     id: 'gltg:L_6_it_3Nitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_it_3Nitrate'
                 },
                 {
-                    title: 'Nitrate loading Absolute Increase ($g\\ N/m^2$)\\n (increase tile fraction by 30%)',
+                    title: 'Nitrate loading Absolute Increase (g N/m^2) (increase tile fraction by 30%)',
                     id: 'gltg:it_3_dNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:it_3_dNitrate'
                 },
                 {
-                    title: 'Nitrate Loading Relative Increase (%)\\n (increase tile fraction by 30%)',
+                    title: 'Nitrate Loading Relative Increase (%) (increase tile fraction by 30%)',
                     id: 'gltg:it_3_d_pNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:it_3_d_pNitrate'

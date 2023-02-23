@@ -21,6 +21,7 @@ module.exports = {
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:SoybeanNitrate'
                 },
+
                 {
                     title: 'Tile Drainage Fraction (2012)',
                     id: 'gltg:TFNitrate',
@@ -28,7 +29,13 @@ module.exports = {
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:TFNitrate'
                 },
                 {
-                    title: 'Nitrate Loading in June (g N/m^2) ',
+                    title: 'Nitrate Loading in June (g N/m^2) (base)',
+                    id: 'gltg:L_6Nitrate',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6Nitrate'
+                },
+                {
+                    title: 'Nitrate Loading in June (g N/m^2) (decrease corn fraction by 20%)',
                     id: 'gltg:L_6_rcNitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_rcNitrate'
@@ -65,12 +72,6 @@ module.exports = {
                 },
                 {
                     title: 'Nitrate Loading in June (g N/m^2) (increase tile fraction by 10%)',
-                    id: 'gltg:ic_d_pNitrate',
-                    type: 'wms',
-                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:ic_d_pNitrate'
-                },
-                {
-                    title: 'Nitrate loading in June (g N/m^2) (increase tile fraction by 10%)',
                     id: 'gltg:L_6_it_1Nitrate',
                     type: 'wms',
                     legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:L_6_it_1Nitrate'

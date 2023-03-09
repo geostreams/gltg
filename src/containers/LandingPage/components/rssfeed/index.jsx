@@ -10,7 +10,7 @@ import {
   Link,
 } from "@material-ui/core";
 import classes from "./index.css";
-
+import {RSS} from '../config';
 function RssFeed() {
   const [feedItems, setFeedItems] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
@@ -20,9 +20,10 @@ function RssFeed() {
   };
 
   useEffect(() => {
-    fetch("https://greatlakestogulf.web.illinois.edu/feed")
+    fetch(RSS)
       .then((response) => response.text())
       .then((xml) => {
+        console.log("--THIS IS RSS--",RSS);
         const parser = new DOMParser();
         const doc = parser.parseFromString(xml, "application/xml");
 
@@ -102,7 +103,7 @@ function RssFeed() {
 
         setFeedItems(feedItems);
       });
-  }, ["https://greatlakestogulf.web.illinois.edu/feed"]);
+  }, [RSS]);
 
   return (
     <>

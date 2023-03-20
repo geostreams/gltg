@@ -15,7 +15,7 @@ import patternNoData from '../../images/pattern_no_data.png';
 import annualYieldData from '../../data/annual_yield.json';
 
 export const initialState = {
-    boundary: 'drainage',
+    boundary: 'watershed',
     nutrient: 'Nitrogen',
     year: 2017
 };
@@ -188,39 +188,8 @@ export type BoundaryType = {
 }
 
 export const BOUNDARIES: BoundaryType = {
-    drainage: {
-        visible: true,
-        label: 'IL Drainage',
-        layers: [
-            {
-                url: drainage,
-                style: getFeatureStyle
-            },
-            {
-                url: monitoringSites,
-                style: () => new Style({
-                    image: new Icon(({
-                        src: markerMonitoringSite
-                    }))
-                }),
-                zIndex: 3,
-                interactive: true
-            }
-        ]
-    },
-    huc8: {
-        visible: false,
-        label: 'IL HUC8',
-        layers: [
-            {
-                url: huc8,
-                style: getFeatureStyle,
-                interactive: true
-            }
-        ]
-    },
     watershed: {
-        visible: false,
+        visible: true,
         label: 'Trend Watersheds',
         layers: [
             {

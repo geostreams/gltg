@@ -33,7 +33,7 @@ const Home = () => {
         'More to come!';
     const firstRowLink1 = 'summary';
     const firstRowHeader2 = 'State Portals';
-    const firstRowSubHeader2 = 'Review data and trends specific to individual states. Current states available: Illinois, Arkansas. \n' +
+    const firstRowSubHeader2 = 'Review data and trends specific to individual states. Current states available: Illinois, Arkansas, Iowa. \n' +
                                 '\n' +
                                 'More to come!';
     const firstRowLink2 = '';

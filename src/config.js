@@ -8,6 +8,21 @@ module.exports = {
         clusterExpandCountThreshold: 10,
         clusterExpandZoomThreshold: 12,
         layers: {
+            'Green Infrastructure':[
+                {
+                    title: 'GI Count by HUC 12',
+                    id: 'gltg:huc12',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:huc12'
+                },
+                {
+                    title: 'Green Infrastructure Locations',
+                    id: 'gltg:green_infrastucture',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:green_infrastucture'
+                }
+            ],
+
             'HUC8 Nitrate Loading Prediction':[
                 {
                     title: 'Corn fraction (2012-2020)',

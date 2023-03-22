@@ -370,6 +370,11 @@ module.exports = {
                     initialOpacity: 0.75
                 }
             ]
+        },
+        layersInfo: {
+            'HUC8 Nitrate Loading Prediction':['Ma, Z., Guan, K., Peng, B., Sivapalan, M., Li, L., Pan, M., Zhou, W., Warner, R., & Zhang, J. (2023). ' +
+            'Agricultural nitrate export patterns shaped by crop rotation and tile drainage. Water Research, 229, 119468. https://doi.org/10.1016/J.WATRES.2022.119468'
+            , {}]
         }
     },
     geostreamingEndpoint: process.env.GEOSTREAMS_URL,

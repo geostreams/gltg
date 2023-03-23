@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="success">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/node_modules/get-down/test/fixtures/success.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

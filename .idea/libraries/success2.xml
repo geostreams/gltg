@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="success2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/modules/gltg__old/node_modules/get-down/test/fixtures/success.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -16,7 +16,7 @@ module.exports = {
         olStyle: 'ol/ol.css',
         olLayerSwitcherStyle: 'ol-layerswitcher/src/ol-layerswitcher.css',
         mcw__old: 'material-components-web/dist/material-components-web.min.css',
-        mdc__old: '@geostreams/gltg__old/app/styles_custom/react-mdc-web.css',
+//        mdc__old: '@geostreams/gltg__old/app/styles_custom/react-mdc-web.css',
         coreStyle: '@geostreams/core/src/styles/core.less',
         gltgStyle: './src/styles/gltg.less'
     },

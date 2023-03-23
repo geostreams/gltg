@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="closure-compiler-v20170124">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/modules/gltg__old/node_modules/ol3-layerswitcher/node_modules/closure-util/.deps/compiler/c2955f25dced757f9a2fdb5bcfbe72ec8f879936/closure-compiler-v20170124.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

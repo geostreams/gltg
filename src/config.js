@@ -8,6 +8,21 @@ module.exports = {
         clusterExpandCountThreshold: 10,
         clusterExpandZoomThreshold: 12,
         layers: {
+            'Green Infrastructure':[
+                {
+                    title: 'GI Count by HUC 12',
+                    id: 'gltg:huc12',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:huc12'
+                },
+                {
+                    title: 'Green Infrastructure Locations',
+                    id: 'gltg:green_infrastucture',
+                    type: 'wms',
+                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:green_infrastucture'
+                }
+            ],
+
             'HUC8 Nitrate Loading Prediction':[
                 {
                     title: 'Corn fraction (2012-2020)',
@@ -355,6 +370,14 @@ module.exports = {
                     initialOpacity: 0.75
                 }
             ]
+        },
+        layersInfo: {
+            'HUC8 Nitrate Loading Prediction':[{
+                description: 'Ma, Z., Guan, K., Peng, B., Sivapalan, M., Li, L., Pan, M., Zhou, W., Warner, R., & Zhang, J. (2023). ' +
+                    'Agricultural nitrate export patterns shaped by crop rotation and tile drainage. Water Research, 229, 119468.',
+                link: 'https://doi.org/10.1016/J.WATRES.2022.119468'
+            }
+            , {}]
         }
     },
     geostreamingEndpoint: process.env.GEOSTREAMS_URL,

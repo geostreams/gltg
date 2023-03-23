@@ -11,7 +11,7 @@ module.exports = webpackMerge.merge(commonConfig, {
     devServer: {
         hot: true,
         host: 'localhost',
-        port: 8080,
+        port: 9000,
         inline: true,
         watchContentBase: true,
         stats: { 'errors-only': true, 'colors': true },
@@ -25,7 +25,7 @@ module.exports = webpackMerge.merge(commonConfig, {
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"',
             'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://gltg-geoserver.ncsa.illinois.edu/geoserver'),
-            'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || 'https://gltg-apps-dev.ncsa.illinois.edu/geostreams'),
+            'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || 'http://localhost:9000'),
             'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://gltg-apps-dev.ncsa.illinois.edu/bmp-api')
         })
     ]

@@ -19,6 +19,9 @@ RUN yarn && yarn link:all
 COPY ./ /tmp/gltg/
 WORKDIR /tmp/gltg/
 RUN yarn
+RUN yarn link @geostreams/core && \
+    yarn link @geostreams/core__old && \
+    yarn link @geostreams/geostreaming
 RUN yarn build
 
 FROM nginx:stable-alpine

@@ -23,19 +23,22 @@ function RssFeed() {
     fetch(RSS)
       .then((response) => response.text())
       .then((xml) => {
-        console.log("--THIS IS RSS--",RSS);
+       
         const parser = new DOMParser();
         const doc = parser.parseFromString(xml, "application/xml");
 
         const items = doc.querySelectorAll("item");
         const channel = doc.querySelectorAll("channel");
-        const feedItems = Array.from(items).map((item) => ({
+        let feedItems_all = Array.from(items).map((item) => ({
           title: item.querySelector("title").textContent,
           link: item.querySelector("link").textContent,
           pubDate: item.querySelector("pubDate").textContent,
           author: item.querySelector("creator").textContent,
           description: item.querySelector("description").textContent,
         }));
+        let sortedArr = feedItems_all.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        let feedItems = sortedArr.slice(0, 3);
+
         feedItems.forEach((item) => {
           const text = item.description;
           const imgPattern = /<img\s+([^>]*src="([^"]+)"[^>]*)>/g;

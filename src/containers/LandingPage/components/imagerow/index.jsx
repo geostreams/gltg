@@ -130,9 +130,12 @@ const ImageRow = (props) => {
                 }}
               >
                 <MenuList>
-                  <MenuItem onClick={handleClose}>Option 1</MenuItem>
-                  <MenuItem onClick={handleClose}>Option 2</MenuItem>
-                  <MenuItem onClick={handleClose}>Option 3</MenuItem>
+                    <a href="https://programs.iowadnr.gov/aquia/search/map">
+                        <MenuItem>AQuIA Monitoring Site Map</MenuItem>
+                    </a>
+                    <a href="https://programs.iowadnr.gov/aquia/">
+                        <MenuItem>AQuIA Data Portal</MenuItem>
+                    </a>
                 </MenuList>
               </Popover>
 
@@ -145,6 +148,7 @@ const ImageRow = (props) => {
                   Arkansas
                 </Button>
               </a>
+                
               <a href={link7}>
                 <Button
                   variant="contained"

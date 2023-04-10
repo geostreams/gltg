@@ -2,7 +2,20 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./index.css";
 import { Stack } from "@material-ui/core";
-import { Button, MenuItem, Menu, Popover, MenuList } from "@material-ui/core";
+import {
+  Button,
+  Modal,
+  Box,
+  Typography,
+  Link,
+  FormControl,
+  InputLabel,
+  Menu,
+  Select,
+  MenuItem,
+  Popover,
+  MenuList
+} from "@material-ui/core";
 const ImageRow = (props) => {
   const history = useHistory();
 
@@ -26,7 +39,6 @@ const ImageRow = (props) => {
   } = props;
   const [image1Hover, setImage1Hover] = React.useState(false);
   const [image2Hover, setImage2Hover] = React.useState(false);
-  const [image3Hover, setImage3Hover] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -116,6 +128,7 @@ const ImageRow = (props) => {
                 {" "}
                 Iowa
               </Button>
+
               <Popover
                 open={Boolean(anchorEl)}
                 anchorEl={anchorEl}

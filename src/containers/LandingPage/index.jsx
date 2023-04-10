@@ -8,7 +8,7 @@ import FAQBox from './components/faqbox';
 import Datastories from './components/datastories';
 import Funding from './components/funding';
 import Partners from './components/partners';
-
+import  RssFeed  from './components/rssfeed';
 // Image URls
 import SummaryDashboard from './Images/SummaryDashboard.png';
 import StatePortal from './Images/StatePortal.png';
@@ -66,6 +66,7 @@ const Home = () => {
     return (
         <>
             <About />
+            <RssFeed></RssFeed>
             <TextBox title = 'Explore GLTG Dashboards' text = 'GLTG dashboards provide Mississippi River water quality analyses that have been developed by our team of experts. Take in the big picture at the summary dashboard; review water quality state-by-state; and see the impact of a variety of best management practices on the river.' />
             <Imagerow image1 = {SummaryDashboard} image2 = {StatePortal} image3 ={ConservationPractices}
                 header1={firstRowHeader1} header2={firstRowHeader2} header3 = {firstRowHeader3}
@@ -76,8 +77,10 @@ const Home = () => {
                 header1={secondRowHeader1} header2={secondRowHeader2} header3 = {secondRowHeader3}
                 subheader1={secondRowSubHeader1} subheader2={secondRowSubHeader2} subheader3={secondRowSubHeader3}
                 link1={secondRowLink1} link2={secondRowLink2} link3={secondRowLink3} />
+
             <FAQBox title = 'FAQ' text = 'Learn more about how to use this site.' /> 
             <Datastories />
+
             <Partners partner1 = {NGRREC} partner2 = {NCSA} link1={partnerLink1} link2={partnerLink2} />
             <Funding image1 = {WaltonFamily} link1={fundLink1} />
         </>);

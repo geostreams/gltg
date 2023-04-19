@@ -350,23 +350,20 @@ module.exports = {
                 },
                 {
                     title: 'State Legislative District - Lower Chamber',
-                    id: 'gltg:state-legi-dist-lower',
+                    id: 'gltg:12-states-legi-dist-lower',
                     type: 'wms',
-                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:state-legi-dist-lower',
                     initialOpacity: 0.75
                 },
                 {
                     title: 'State Legislative District - Upper Chamber',
-                    id: 'gltg:state-legi-dist-upper',
+                    id: 'gltg:12-states-legi-dist-upper',
                     type: 'wms',
-                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:state-legi-dist-upper',
                     initialOpacity: 0.75
                 },
                 {
                     title: 'Congressional District',
-                    id: 'gltg:cong-dist-il',
+                    id: 'gltg:congressional_district_12_states',
                     type: 'wms',
-                    legend: '/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:cong-dist-il',
                     initialOpacity: 0.75
                 }
             ]

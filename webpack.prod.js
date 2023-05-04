@@ -1,8 +1,10 @@
 const Webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const commonConfig = require('./webpack.common');
+
 
 module.exports = webpackMerge.merge(commonConfig, {
     mode: 'production',
@@ -14,6 +16,14 @@ module.exports = webpackMerge.merge(commonConfig, {
         ]
     },
     plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: './config.json',
+                    to: 'config.json'
+                }
+            ]
+        }),
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"',
             'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || '/geoserver'),

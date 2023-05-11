@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./index.css";
-import { Stack } from "@material-ui/core";
+import { Grid,Stack } from "@material-ui/core";
 import {
   Button,
   Modal,
@@ -108,11 +108,12 @@ const ImageRow = (props) => {
 
         {header2 == "State Portals" ? (
           <>
-            <div style={{ margin: "0em 0em 4em 0em" }}>
+                  
+            <Grid container spacing={2} style={{ margin: "9em 1em 0em 0em" }} >
               <a href={link4}>
                 <Button
                   variant="contained"
-                  style={{ color: "black", margin: "11em 0.5em 4em 2em" }}
+                  style={{ color: "black", margin: "0em 0em 0em 1em" }}
                 >
                   Illinois
                 </Button>
@@ -120,7 +121,7 @@ const ImageRow = (props) => {
 
               <Button
                 variant="contained"
-                style={{ color: "black", margin: "11em 0em 4em 2em" }}
+                style={{ color: "black", margin: "0em 0em 0em 1em" }}
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
@@ -143,35 +144,36 @@ const ImageRow = (props) => {
                 }}
               >
                 <MenuList>
-                    <a href="https://programs.iowadnr.gov/aquia/search/map">
-                        <MenuItem>AQuIA Monitoring Site Map</MenuItem>
-                    </a>
-                    <a href="https://programs.iowadnr.gov/aquia/">
-                        <MenuItem>AQuIA Data Portal</MenuItem>
-                    </a>
+                  <a href="https://programs.iowadnr.gov/aquia/search/map">
+                    <MenuItem>AQuIA Monitoring Site Map</MenuItem>
+                  </a>
+                  <a href="https://programs.iowadnr.gov/aquia/">
+                    <MenuItem>AQuIA Data Portal</MenuItem>
+                  </a>
                 </MenuList>
               </Popover>
 
               <a href={link5}>
                 <Button
                   variant="contained"
-                  style={{ color: "black", margin: "11em 0em 4em 2em" }}
+                  style={{ color: "black", margin: "0em 0em 0em 1em" }}
                 >
                   {" "}
                   Arkansas
                 </Button>
               </a>
-                
+
               <a href={link7}>
                 <Button
                   variant="contained"
-                  style={{ color: "black", margin: "11em 0em 4em 2em" }}
+                  style={{ color: "black", margin: "0em 0em 0em 1em" }}
                 >
                   {" "}
                   Indiana
                 </Button>
               </a>
-            </div>
+            </Grid>
+           
           </>
         ) : (
           <div></div>

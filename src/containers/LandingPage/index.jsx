@@ -23,6 +23,7 @@ import NCSA from './Images/Partners/NCSA_logo.png';
 
 // Funding Images
 import WaltonFamily from './Images/Partners/WaltonFamily.png';
+import { getTrendsRegionsSettings } from '@geostreams/core__old/app/utils/getConfig';
 
 const Home = () => {
 
@@ -33,7 +34,7 @@ const Home = () => {
         'More to come!';
     const firstRowLink1 = 'summary';
     const firstRowHeader2 = 'State Portals';
-    const firstRowSubHeader2 = 'Review data and trends specific to individual states. Current states available: Illinois, Arkansas, Iowa. \n' +
+    const firstRowSubHeader2 = 'Review data and trends specific to individual states. Current states available: Illinois, Arkansas, Iowa, Indiana, Tenesse. \n' +
                                 '\n' +
                                 'More to come!';
     const firstRowLink2 = '';
@@ -46,6 +47,7 @@ const Home = () => {
     const arkansas = "https://arkansas.greatlakestogulf.org/"
     const iowa = "https://programs.iowadnr.gov/aquia/"
     const indiana = "https://storymaps.arcgis.com/stories/977fe35741c34a2b860b5702c797e020"
+    const tenesse = "https://tennessee.greatlakestogulf.org/"
     // Second Image Row Text
     const secondRowHeader1 = 'Explore';
     const secondRowSubHeader1 = 'Explore water quality data';
@@ -71,7 +73,7 @@ const Home = () => {
             <Imagerow image1 = {SummaryDashboard} image2 = {StatePortal} image3 ={ConservationPractices}
                 header1={firstRowHeader1} header2={firstRowHeader2} header3 = {firstRowHeader3}
                 subheader1={firstRowSubHeader1} subheader2={firstRowSubHeader2} subheader3={firstRowSubHeader3}
-                link1={firstRowLink1} link2={firstRowLink2} link3={firstRowLink3} link4={illinois} link5={arkansas} link6={iowa} link7={indiana}/>
+                link1={firstRowLink1} link2={firstRowLink2} link3={firstRowLink3} link4={illinois} link5={arkansas} link6={iowa} link7={indiana} link8={tenesse}/>
             <TextBox title = 'Explore GeoStreaming Dashboards' text = 'GLTG is built on Geodashboards, an open-source web technology that lets users interact with and visualize geospatial data. Use the dashboards below to explore, download, and perform your own analysis on water quality data from across the Mississippi River watershed.' />
             <Imagerow image1 = {Explore} image2 = {Analyze} image3 ={Download}
                 header1={secondRowHeader1} header2={secondRowHeader2} header3 = {secondRowHeader3}

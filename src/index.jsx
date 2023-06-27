@@ -13,15 +13,20 @@ import { updateGeoStreamingConfig } from '@geostreams/geostreaming/src/actions/c
 import { fetchParameters } from '@geostreams/geostreaming/src/actions/parameters';
 import { fetchSensors } from '@geostreams/geostreaming/src/actions/sensors';
 
-import config from './config';
 import reducers from './reducers';
 import routes from './routes';
+import fetch from "sync-fetch";
 /* eslint-enable */
 
 render(
     reducers,
     routes,
-    (store) => {
+    async (store) => {
+        // Loading config.json dynamically and setting env variables
+        const config = fetch('../config.json').json();
+        config.map.geoserverUrl = process.env.GEOSERVER_URL;
+        config.geostreamingEndpoint = process.env.GEOSTREAMS_URL;
+
         store.dispatch(updateGeoStreamingConfig(config));
         store.dispatch(addEndpoints());
         store.dispatch(__old_fetchSensors(config.geostreamingEndpoint));

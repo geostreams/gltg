@@ -148,7 +148,7 @@ const Header = ({ location }: Props) => {
                         <MenuItem classes={{ root: classes.menuItem }}
                                   onClick={dashboardHandleClose}
                                   component={Link}
-                                  to="summary">
+                                  to="/summary">
                             Summary Dashboard
                         </MenuItem>
                         <MenuItem

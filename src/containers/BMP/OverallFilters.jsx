@@ -80,7 +80,7 @@ const OverallFilters = () => {
     const [fundingAgency, setFundingAgency] = React.useState(fundingAgenices[0].value);
     const [allYears, setAllYears] = React.useState(false);
     // TODO: Figure out how to dynamically set the year range
-    const YEAR_RANGE = [2010, 2020];
+    const FA_YEAR_RANGE = [2010, 2020];
     return (
         <Container className={classes.container}>
             <FormControl>
@@ -125,13 +125,13 @@ const OverallFilters = () => {
                         Select Date Range
                     </Typography>
                     <Slider
-                        defaultValue={YEAR_RANGE[0]}
+                        defaultValue={FA_YEAR_RANGE[0]}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
                         step={1}
                         marks
-                        min={YEAR_RANGE[0]}
-                        max={YEAR_RANGE[1]}
+                        min={FA_YEAR_RANGE[0]}
+                        max={FA_YEAR_RANGE[1]}
                     />
                 </>
             }

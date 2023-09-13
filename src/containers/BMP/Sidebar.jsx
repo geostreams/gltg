@@ -30,7 +30,7 @@ const Sidebar = () => {
                 <Tab value="specific" label="Specific" />
             </Tabs>
             { value === 'overall' ? <OverallFilters /> : <SpecificFilters /> }
-            <Results />
+            { value === 'overall' ? null : <Results /> }
         </Container>
     );
 };

@@ -137,3 +137,9 @@ export const INITIAL_FILTERS: Filters = {
     boundaryType: 'state',
     selectedBoundaries: []
 };
+
+export const FUNDING_AGENCIES = [
+    { value:'epa_319',label:'EPA 319' },
+    { value:'eqip', label:'EQIP' },
+    { value:'csp', label:'CSP' }
+];

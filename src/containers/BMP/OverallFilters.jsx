@@ -120,12 +120,12 @@ const OverallFilters = () => {
             </FormControl>
             {
                 !allYears &&
-                <Box className={classes.dateRangeContainer}>
+                <>
                     <Typography variant="h6">
                         Select Date Range
                     </Typography>
                     <Slider
-                        defaultValue={YEAR_RANGE}
+                        defaultValue={YEAR_RANGE[0]}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
                         step={1}
@@ -133,7 +133,7 @@ const OverallFilters = () => {
                         min={YEAR_RANGE[0]}
                         max={YEAR_RANGE[1]}
                     />
-                </Box>
+                </>
             }
         </Container>
     );

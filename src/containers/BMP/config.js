@@ -139,7 +139,14 @@ export const INITIAL_FILTERS: Filters = {
 };
 
 export const FUNDING_AGENCIES = [
-    { value:'epa_319',label:'EPA 319' },
+    { value:'epa_319',label:'EPA 319'},
     { value:'eqip', label:'EQIP' },
-    { value:'csp', label:'CSP' }
+    { value:'csp', label:'CSP' },
 ];
+
+export const FUNDING_YEAR_RANGES =
+    {
+        epa_319: [2004, 2017],
+        eqip: [2007, 2017],
+        csp: [2010, 2015]
+    };

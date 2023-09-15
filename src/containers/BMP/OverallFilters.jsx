@@ -22,10 +22,9 @@ import UnfoldLessIcon from '@material-ui/icons/UnfoldLess';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
 
 import { entries } from '@geostreams/core/src/utils/array';
-import { BOUNDARIES, YEAR_RANGE, YEAR_RANGE_MARKS } from './config';
+import { BOUNDARIES, YEAR_RANGE, YEAR_RANGE_MARKS ,FUNDING_AGENCIES, FUNDING_YEAR_RANGES } from './config';
 import { BMPContext } from './Context';
 
-import {FUNDING_AGENCIES} from './config';
 
 const useStyle = makeStyles((theme) => ({
     container: {
@@ -79,8 +78,16 @@ const OverallFilters = () => {
     const fundingAgenices = FUNDING_AGENCIES;
     const [fundingAgency, setFundingAgency] = React.useState(fundingAgenices[0].value);
     const [allYears, setAllYears] = React.useState(false);
-    // TODO: Figure out how to dynamically set the year range
-    const FA_YEAR_RANGE = [2010, 2020];
+    const [selectedStateBoundary, setSelectedStateBoundary] = React.useState(true);
+    const FA_YEAR_RANGE = FUNDING_YEAR_RANGES[fundingAgency];
+    // Make a list of all slider marks
+    const slider_marks = [];
+    for (let i = FA_YEAR_RANGE[0]; i <= FA_YEAR_RANGE[1]; i += 1) {
+        slider_marks.push({
+            value: i,
+            label: i
+        });
+    }
     return (
         <Container className={classes.container}>
             <FormControl>
@@ -102,6 +109,29 @@ const OverallFilters = () => {
                         />
                     ))}
                 </RadioGroup>
+                <br />
+                <Typography variant="h6">
+                    Select State Boundary
+                </Typography>
+                <ToggleButtonGroup
+                    value={selectedStateBoundary}
+                    exclusive
+                    onChange={(event, value) => setSelectedStateBoundary(value)}
+                    className={classes.boundaryToggleContainer}
+                >
+                    <ToggleButton
+                        value
+                        className={`${classes.boundaryToggleGroup} ${selectedStateBoundary ? classes.boundaryToggleGroupSelected : ''}`}
+                    >
+                        State
+                    </ToggleButton>
+                    <ToggleButton
+                        value={false}
+                        className={`${classes.boundaryToggleGroup} ${!selectedStateBoundary ? classes.boundaryToggleGroupSelected : ''}`}
+                    >
+                        HUC8
+                    </ToggleButton>
+                </ToggleButtonGroup>
                 <br />
                 <Typography variant="h6">
                     Years
@@ -129,7 +159,7 @@ const OverallFilters = () => {
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
                         step={1}
-                        marks
+                        marks={slider_marks}
                         min={FA_YEAR_RANGE[0]}
                         max={FA_YEAR_RANGE[1]}
                     />

@@ -38,6 +38,10 @@ import type {
 } from 'ol';
 import type { Layer as LayerType } from 'ol/layer';
 
+import { Circle } from 'ol/geom';
+import Fill from 'ol/style/Fill';
+import Style from 'ol/style/Style';
+import Stroke from 'ol/style/Stroke';
 import annualYieldData from '../../data/annual_yield.json';
 import overallData from '../../data/overall_data.json';
 import { HEADERS_HEIGHT } from '../Layout/Header';
@@ -48,6 +52,7 @@ import {
     MAP_BOUNDS,
     BOUNDARIES,
     GEOSERVER_URL,
+    TRENDS_DATA_STATIONS,
     getLayerExtent,
     getOverallFeatureLabels,
     getFeatureStyle,
@@ -128,6 +133,16 @@ type State = {
     year: number;
     nutrient: string;
 }
+
+const trendStationsObject = {
+    type: 'FeatureCollection',
+    features: TRENDS_DATA_STATIONS.features
+};
+
+const trendStationFeatures = new GeoJSON().readFeatures(trendStationsObject);
+
+console.log('Look here!');
+console.log(trendStationFeatures);
 
 class Summary extends React.Component<Props, State> {
     map: MapType;
@@ -276,7 +291,25 @@ class Summary extends React.Component<Props, State> {
                     return boundaryLayers;
                 },
                 {}
-            )
+            ),
+            trendStations:new GroupLayer({
+                title: 'Trend Stations',
+                layers: [
+                    new VectorLayer({
+                        title: 'Trend Stations',
+                        source: new VectorSource({
+                            features: trendStationFeatures
+                        }),
+                        style: () => new Style({
+                            image: new Circle({
+                                radius: 5,
+                                fill: new Fill({ color: 'red' }),
+                                stroke: new Stroke({ color: 'red', width: 1 })
+                            })
+                        })
+                    })
+                ]
+            })
         };
     }
 
@@ -290,9 +323,7 @@ class Summary extends React.Component<Props, State> {
         // change cursor when mouse is over interactive layers
         this.map.on('pointermove', (e) => {
             const pixel = map.getEventPixel(e.originalEvent);
-            const feature = map.forEachFeatureAtPixel(pixel, (_, layer) => {
-                return layer.get('interactive');
-            });
+            const feature = map.forEachFeatureAtPixel(pixel, (_, layer) => layer.get('interactive'));
             map.getTarget().style.cursor = feature ? 'pointer' : '';
         });
     };
@@ -323,7 +354,7 @@ class Summary extends React.Component<Props, State> {
             const layer = this.layers.contextual.getLayersArray().find(({ ol_uid }) => ol_uid === layerId);
             const visible = !boundaries || boundaries.indexOf(boundary) > -1;
             layer.setVisible(visible);
-            legend.visible = visible;
+            // legend.visible = visible;
         });
 
         const [regionLabel, featureId] = getOverallFeatureLabels(boundary);

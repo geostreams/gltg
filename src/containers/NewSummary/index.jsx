@@ -6,7 +6,14 @@ import XYZ from 'ol/source/XYZ';
 import OSM, { ATTRIBUTION as OSM_ATTRIBUTION } from 'ol/source/OSM';
 import { Map, BaseControlPortal } from '@geostreams/core/src/components/ol';
 import { makeStyles } from '@material-ui/core/styles';
-import { MAP_BOUNDS } from './config';
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
+import GeoJSON from 'ol/format/GeoJSON';
+import { Circle, Stroke } from 'ol/style';
+import Fill from 'ol/style/Fill';
+import Style from 'ol/style/Style';
+import { entries } from '@geostreams/core/src/utils/array';
+import { MAP_BOUNDS, trendStationsJSON } from './config';
 
 
 
@@ -52,9 +59,34 @@ const Summary = () => {
             })
         ]
     });
+
+    console.log('trendStationsJSON');
+    console.log(trendStationsJSON);
+
+    // const trendstations = {
+    //     trendstations:{
+    //         visible:true,
+    //         label:'Trend Stations',
+    //         layers: [
+    //             {
+    //                 url: trendStationsJSON,
+    //                 style: new Style({
+    //                     image: new Circle({
+    //                         radius: 5,
+    //                         fill: new Fill({ color: 'rgba(255, 0, 0, 0.5)' }),
+    //                         stroke: new Stroke({ color: 'red', width: 1 })
+    //                     })
+    //                 })
+    //             }
+    //         ]
+    //     }
+    // };
+    
+
     const layers = {
         basemaps: basemaps
     };
+
 
     return(
         <Grid
@@ -76,15 +108,13 @@ const Summary = () => {
                     // controls={[this.boundaryInfoControl, this.legendControl]}
                     layers={Object.values(layers)}
                     // legends={this.legends}
-                >
-                </Map>
+                />
             </Grid>
             <Grid
                 className={classes.sidebar}
                 item
                 xs={4}
-            >
-            </Grid>
+            />
         </Grid>
     );
 };

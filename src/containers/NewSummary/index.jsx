@@ -13,7 +13,8 @@ import { Circle, Stroke } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import { entries } from '@geostreams/core/src/utils/array';
-import { MAP_BOUNDS, trendStationsJSON } from './config';
+import { MAP_BOUNDS } from './config';
+import trendStationsJSON from '../../data/trend_stations.geojson';
 
 
 
@@ -70,6 +71,7 @@ const Summary = () => {
     //         layers: [
     //             {
     //                 url: trendStationsJSON,
+    //                 format: new GeoJSON(),
     //                 style: new Style({
     //                     image: new Circle({
     //                         radius: 5,
@@ -81,10 +83,32 @@ const Summary = () => {
     //         ]
     //     }
     // };
+
+    const trendstations = new GroupLayer({
+        title: 'Trend Stations',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Trend Stations',
+                source: new VectorSource({
+                    url: trendStationsJSON,
+                    format: new GeoJSON()
+                }),
+                style: new Style({
+                    image: new Circle({
+                        radius: 5,
+                        fill: new Fill({ color: 'rgba(255, 0, 0, 0.5)' }),
+                        stroke: new Stroke({ color: 'red', width: 1 })
+                    })
+                })
+            })
+        ]
+    });
     
 
     const layers = {
-        basemaps: basemaps
+        basemaps: basemaps,
+        trendstations: trendstations
     };
 
 

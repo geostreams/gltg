@@ -350,7 +350,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07068000",
         "WQ_MonitoringLocationName": "Current River at Doniphan, MO",
         "Stream_Name": "Current River",
-        "significance_concent": "Upward trend in concentration is very likely",
+        "significance_concent": "",
         "significance_flux": "Upward trend in flux is highly likely",
         "graph_image": "../RESULTS_Processed_data/USGS-07068000/USGS-07068000_Yearly_normalized_Concent.jpg"
       },

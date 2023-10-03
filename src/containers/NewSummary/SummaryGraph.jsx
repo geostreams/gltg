@@ -35,7 +35,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
             {
                 mark: { type: 'line' },
                 encoding: {
-                    x: { field: 'year', type: 'temporal', timeUnit: 'year', axis: { title: x_label, format: 's' } },
+                    x: { field: 'year' , type: 'temporal', timeUnit: 'year', axis: { title: x_label, format: '%Y' } },
                     y: { field: y_line_field, type: 'quantitative', axis: { title: y_label, format: 's' } },
                     color: { value: '#90EE90' }
                 }

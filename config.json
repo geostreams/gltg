@@ -185,7 +185,7 @@
       ],
       "Hypoxia and Precipitation_Temp": {
         "title": "Hypoxia Contours 2005",
-
+        "min_year": 2005,
         "type": "wms",
 
         "legend": "/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:2005_Hypoxia_Contours",

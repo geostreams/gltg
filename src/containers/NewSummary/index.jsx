@@ -46,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1) // Use theme.spacing for consistent spacing
     },
     legendIcon: {
-        width: '20px',
-        height: '20px',
+        width: '1.75em',
+        height: 'auto',
         marginRight: theme.spacing(1)
     },
     legendContainer: {
@@ -65,7 +65,8 @@ const renderIcon = (feature) => {
             feature.get('significance_flux') === 'Upward trend in flux is highly likely')) {
         return new Style({
             image: new Icon({
-                src: HighUpwardTrendIcon
+                src: HighUpwardTrendIcon,
+                scale: 0.75
             })
         });
     } if ((feature.get('significance_concent') === 'Downward trend in concentration is very likely' ||
@@ -74,25 +75,29 @@ const renderIcon = (feature) => {
             feature.get('significance_flux') === 'Downward trend in flux is highly likely')) {
         return new Style({
             image: new Icon({
-                src: HighDownwardTrendIcon
+                src: HighDownwardTrendIcon,
+                scale: 0.75
             })
         });
     } if (feature.get('significance_concent') === 'Upward trend in concentration is likely' || feature.get('significance_flux') === 'Upward trend in flux is likely') {
         return new Style({
             image: new Icon({
-                src: UpwardTrendIcon
+                src: UpwardTrendIcon,
+                scale: 0.75
             })
         });
     }if (feature.get('significance_concent') === 'Downward trend in concentration is likely' && feature.get('significance_flux') === 'Downward trend in flux is likely') {
         return new Style({
             image: new Icon({
-                src: DownwardTrendIcon
+                src: DownwardTrendIcon,
+                scale: 0.75
             })
         });
     }
     return new Style({
         image: new Icon({
-            src: NoSignificantTrendIcon
+            src: NoSignificantTrendIcon,
+            scale: 0.75
         })
     });
     

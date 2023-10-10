@@ -157,28 +157,28 @@ const Summary = () => {
     // Create legend for trend stations
     const trendStationsLegend = React.useMemo(() => (
         <div>
-            <h3>Icon Legend</h3>
+            <h3>Trend Icons</h3>
             <br />  
             <div className={classes.legendContainer}>
+                <div className={classes.legendItem}>
+                    <img src={HighUpwardTrendIcon} alt="High Upward Trend Icon" className={classes.legendIcon} />
+                    <span>High Likely Upward </span>
+                </div>
+                <div className={classes.legendItem}>
+                    <img src={UpwardTrendIcon} alt="Upward Trend Icon" className={classes.legendIcon} />
+                    <span>Likely Upward </span>
+                </div>
                 <div className={classes.legendItem}>
                     <img src={NoSignificantTrendIcon} alt="No Significant Trend Icon" className={classes.legendIcon} />
                     <span>No Significant Trend</span>
                 </div>
                 <div className={classes.legendItem}>
-                    <img src={HighUpwardTrendIcon} alt="High Upward Trend Icon" className={classes.legendIcon} />
-                    <span>High Upward Trend</span>
+                    <img src={DownwardTrendIcon} alt="Downward Trend Icon" className={classes.legendIcon} />
+                    <span>Likely Downward</span>
                 </div>
                 <div className={classes.legendItem}>
                     <img src={HighDownwardTrendIcon} alt="High Downward Trend Icon" className={classes.legendIcon} />
-                    <span>High Downward Trend</span>
-                </div>
-                <div className={classes.legendItem}>
-                    <img src={UpwardTrendIcon} alt="Upward Trend Icon" className={classes.legendIcon} />
-                    <span>Upward Trend</span>
-                </div>
-                <div className={classes.legendItem}>
-                    <img src={DownwardTrendIcon} alt="Downward Trend Icon" className={classes.legendIcon} />
-                    <span>Downward Trend</span>
+                    <span>High Likely Downward </span>
                 </div>
             </div>
         </div>

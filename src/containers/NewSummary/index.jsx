@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
-import { Circle, Stroke, RegularShape,Icon } from 'ol/style';
+import { Circle, Stroke, Icon } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import { TileWMS } from 'ol/source';
@@ -20,6 +20,7 @@ import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import { GEOSERVER_URL , MAP_BOUNDS } from './config';
 import trendStationsJSON from '../../data/trend_stations.geojson';
+import waterShedsJSON from '../../data/trend_station_watersheds.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -159,6 +160,31 @@ const Summary = () => {
         ]
     });
 
+    // This layer is the one with watersheds.
+    const watershedsLayer = new GroupLayer({
+        title: 'Watersheds',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Watersheds',
+                source: new VectorSource({
+                    url: waterShedsJSON,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: new Style({
+                    stroke: new Stroke({
+                        color: 'blue',
+                        width: 2
+                    }),
+                    fill: new Fill({
+                        color: 'rgba(0, 0, 0, 0.01)'
+                    })
+                })
+            })
+        ]
+    });
+    
     // Create legend for trend stations
     const trendStationsLegend = React.useMemo(() => (
         <div>
@@ -224,6 +250,7 @@ const Summary = () => {
 
     const layers = {
         basemaps,
+        watershedsLayer,
         trendstations
     };
 

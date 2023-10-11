@@ -5,6 +5,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "6048196",
         "WQ_MonitoringLocationIdentifier": "USGS-07247000",
         "WQ_MonitoringLocationName": "Poteau River at Cauthron, AR",
         "Stream_Name": "Poteau River",
@@ -23,6 +24,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "14809371",
         "WQ_MonitoringLocationIdentifier": "USGS-05420500",
         "WQ_MonitoringLocationName": "Mississippi River at Clinton, IA",
         "Stream_Name": "Mississippi River",
@@ -41,6 +43,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "11919825",
         "WQ_MonitoringLocationIdentifier": "USGS-05465500",
         "WQ_MonitoringLocationName": "Iowa River at Wapello, IA",
         "Stream_Name": "Iowa River",
@@ -59,6 +62,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "14787017",
         "WQ_MonitoringLocationIdentifier": "USGS-05540275",
         "WQ_MonitoringLocationName": "SPRING BROOK AT 87TH STREET NEAR NAPERVILLE, IL",
         "Stream_Name": "Spring Brook",
@@ -77,6 +81,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "3598294",
         "WQ_MonitoringLocationIdentifier": "USGS-05586100",
         "WQ_MonitoringLocationName": "ILLINOIS RIVER AT VALLEY CITY, IL",
         "Stream_Name": "Illinois River",
@@ -95,6 +100,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "18460036",
         "WQ_MonitoringLocationIdentifier": "USGS-394340085524601",
         "WQ_MonitoringLocationName": "SUGAR CREEK AT CO RD 400 S AT NEW PALESTINE, IN",
         "Stream_Name": "Sugar Creek",
@@ -113,6 +119,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "10109567",
         "WQ_MonitoringLocationIdentifier": "USGS-03303280",
         "WQ_MonitoringLocationName": "OHIO RIVER AT CANNELTON DAM AT CANNELTON, IN",
         "Stream_Name": "Ohio River",
@@ -131,6 +138,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "1100388",
         "WQ_MonitoringLocationIdentifier": "USGS-05287890",
         "WQ_MonitoringLocationName": "ELM CREEK NR CHAMPLIN, MN",
         "Stream_Name": "Elm Creek",
@@ -149,6 +157,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "4989635",
         "WQ_MonitoringLocationIdentifier": "USGS-05500000",
         "WQ_MonitoringLocationName": "South Fabius River near Taylor, MO",
         "Stream_Name": "South Fabius River",
@@ -167,6 +176,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "2507315",
         "WQ_MonitoringLocationIdentifier": "USGS-05514500",
         "WQ_MonitoringLocationName": "Cuivre River near Troy, MO",
         "Stream_Name": "Cuivre River",
@@ -185,6 +195,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "2501637",
         "WQ_MonitoringLocationIdentifier": "USGS-06817700",
         "WQ_MonitoringLocationName": "Nodaway River near Graham, MO",
         "Stream_Name": "Nodaway River",
@@ -203,6 +214,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "2252949",
         "WQ_MonitoringLocationIdentifier": "USGS-06818000",
         "WQ_MonitoringLocationName": "Missouri River at St. Joseph, MO",
         "Stream_Name": "Missouri River",
@@ -221,6 +233,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "2530551",
         "WQ_MonitoringLocationIdentifier": "USGS-06821190",
         "WQ_MonitoringLocationName": "Platte River at Sharps Station, MO",
         "Stream_Name": "Platte River",
@@ -239,6 +252,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "5969716",
         "WQ_MonitoringLocationIdentifier": "USGS-06902000",
         "WQ_MonitoringLocationName": "Grand River near Sumner, MO",
         "Stream_Name": "Grand River",
@@ -257,6 +271,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "5816473",
         "WQ_MonitoringLocationIdentifier": "USGS-06905500",
         "WQ_MonitoringLocationName": "Chariton River near Prairie Hill, MO",
         "Stream_Name": "Chariton River",
@@ -275,6 +290,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "7388043",
         "WQ_MonitoringLocationIdentifier": "USGS-06921070",
         "WQ_MonitoringLocationName": "Pomme de Terre River near Polk, MO",
         "Stream_Name": "Pomme de Terre River",
@@ -293,6 +309,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "6013072",
         "WQ_MonitoringLocationIdentifier": "USGS-06934500",
         "WQ_MonitoringLocationName": "Missouri River at Hermann, MO",
         "Stream_Name": "Missouri River",
@@ -311,6 +328,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "5053369",
         "WQ_MonitoringLocationIdentifier": "USGS-07014500",
         "WQ_MonitoringLocationName": "Meramec River near Sullivan, MO",
         "Stream_Name": "Meramec River",
@@ -329,6 +347,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "5092616",
         "WQ_MonitoringLocationIdentifier": "USGS-07022000",
         "WQ_MonitoringLocationName": "Mississippi River at Thebes, IL",
         "Stream_Name": "Mississippi River",
@@ -347,10 +366,11 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "7523285",
         "WQ_MonitoringLocationIdentifier": "USGS-07068000",
         "WQ_MonitoringLocationName": "Current River at Doniphan, MO",
         "Stream_Name": "Current River",
-        "significance_concent": "",
+        "significance_concent": "Upward trend in concentration is very likely",
         "significance_flux": "Upward trend in flux is highly likely",
         "graph_image": "../RESULTS_Processed_data/USGS-07068000/USGS-07068000_Yearly_normalized_Concent.jpg"
       },
@@ -365,6 +385,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "7572703",
         "WQ_MonitoringLocationIdentifier": "USGS-07071500",
         "WQ_MonitoringLocationName": "Eleven Point River near Bardley, MO",
         "Stream_Name": "Eleven Point River",
@@ -383,6 +404,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "7601075",
         "WQ_MonitoringLocationIdentifier": "USGS-07189000",
         "WQ_MonitoringLocationName": "Elk River near Tiff City, Mo",
         "Stream_Name": "Elk River",
@@ -401,6 +423,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "6041516",
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-ARK0015",
         "WQ_MonitoringLocationName": "James Fork on CR45 1.5 miles S of Hackett",
         "Stream_Name": "James Fork",
@@ -419,6 +442,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "19474395",
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-OUA0013",
         "WQ_MonitoringLocationName": "Bayou Bartholomew near Jones, Louisiana",
         "Stream_Name": "Bayou Bartholomew",
@@ -437,6 +461,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "15234772",
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-OUA0021",
         "WQ_MonitoringLocationName": "Ouachita River near Pencil Bluff, Arkansas",
         "Stream_Name": "Ouachita River",
@@ -455,6 +480,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "7559525",
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-WHI0089",
         "WQ_MonitoringLocationName": "Spring River at Mammoth Spring, Arkansas",
         "Stream_Name": "Spring River",
@@ -473,6 +499,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "10434608",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-C-22",
         "WQ_MonitoringLocationName": "Little Wabash River",
         "Stream_Name": "Little Wabash River",
@@ -491,6 +518,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "10423520",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-CA-05",
         "WQ_MonitoringLocationName": "Skillet Fork",
         "Stream_Name": "Skillet Fork",
@@ -509,6 +537,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "13463925",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-1907",
         "WQ_MonitoringLocationName": "UMC030-0004",
         "Stream_Name": "East Arm Little Calumet River",
@@ -527,6 +556,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "13438397",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-1986",
         "WQ_MonitoringLocationName": "UMK110-0002",
         "Stream_Name": "Kankakee River",
@@ -545,6 +575,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "18503041",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2221",
         "WQ_MonitoringLocationName": "WMI060-0005",
         "Stream_Name": "Mississinewa River",
@@ -563,6 +594,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "18486348",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2277",
         "WQ_MonitoringLocationName": "WTI010-0001",
         "Stream_Name": "Tippecanoe River",
@@ -581,6 +613,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "20100492",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2284",
         "WQ_MonitoringLocationName": "WDE050-0002",
         "Stream_Name": "Deer Creek",
@@ -599,6 +632,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "10210063",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2337",
         "WQ_MonitoringLocationName": "WLV150-0001",
         "Stream_Name": "Wabash River",
@@ -617,6 +651,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "18475727",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2410",
         "WQ_MonitoringLocationName": "WWU100-0001",
         "Stream_Name": "Fall Creek",
@@ -635,6 +670,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "18476353",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2434",
         "WQ_MonitoringLocationName": "WWU090-0002",
         "Stream_Name": "White River",
@@ -653,6 +689,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "18471066",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2514",
         "WQ_MonitoringLocationName": "WWL100-0005",
         "Stream_Name": "White River",
@@ -671,6 +708,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "2423631",
         "WQ_MonitoringLocationIdentifier": "MNPCA-S000-163",
         "WQ_MonitoringLocationName": "WATONWAN R BR ON CSAH-13, 1 MI W OF GARDEN CITY",
         "Stream_Name": "Watonwan River",
@@ -689,6 +727,7 @@
     {
       "type": "Feature",
       "properties": {
+        "COMID": "13107421",
         "WQ_MonitoringLocationIdentifier": "WIDNR_WQX-473008",
         "WQ_MonitoringLocationName": "Chippewa River - Sth 10 Bridge",
         "Stream_Name": "Chippewa River",

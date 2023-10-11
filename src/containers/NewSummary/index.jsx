@@ -104,11 +104,29 @@ const renderIcon = (feature) => {
     
 };
 
+const renderWaterSheds = () => {
+    const style = new Style({
+        stroke: new Stroke({
+            color: 'blue',
+            width: 2
+        }),
+        fill: new Fill({
+            color: 'rgba(0, 0, 0, 0.01)'
+        })
+    });
+    return style;
+};
+
 const Summary = () => {
     const classes = useStyles();
 
+    // This state variable is used to keep track of the selected station
     const[selectedStation, setSelectedStation] = React.useState(null);
     const[oldSelectedStation, setOldSelectedStation] = React.useState(null);
+
+    // This state variable is used to keep track of the selected watershed
+    const[selectedWatershed, setSelectedWatershed] = React.useState(null);
+    const[oldSelectedWatershed, setOldSelectedWatershed] = React.useState(null);
 
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
@@ -172,15 +190,7 @@ const Summary = () => {
                     format: new GeoJSON()
                 }),
                 interactive: true,
-                style: new Style({
-                    stroke: new Stroke({
-                        color: 'blue',
-                        width: 2
-                    }),
-                    fill: new Fill({
-                        color: 'rgba(0, 0, 0, 0.01)'
-                    })
-                })
+                style: renderWaterSheds
             })
         ]
     });
@@ -214,9 +224,10 @@ const Summary = () => {
             </div>
         </div>
     ), []);
-    
-    React.useEffect(() => {
 
+    // Set styling for selected station
+    React.useEffect(() => {
+        // This is the interaction to set style for the selected station
         if(oldSelectedStation !== selectedStation){
             if(oldSelectedStation){
                 oldSelectedStation.setStyle(renderIcon);
@@ -235,15 +246,48 @@ const Summary = () => {
             selectedStation.setStyle(selectedStyle);
         }
         setOldSelectedStation(selectedStation);
+
     }, [selectedStation]);
+
+    // Set styling for selected watershed
+    React.useEffect(() => {
+        // This is the interaction to set style for the selected watershed
+        if(oldSelectedWatershed !== selectedWatershed){
+            if(oldSelectedWatershed){
+                oldSelectedWatershed.setStyle(renderWaterSheds);
+            }
+        }
+
+        if(selectedWatershed){
+            // Remove feature and add feature back to the map to make sure it is on top of the other layers
+            const selectedStyle = new Style({
+                stroke: new Stroke({
+                    color: 'red',
+                    width: 2
+                }),
+                fill: new Fill({
+                    color: 'rgba(0, 0, 0, 0.01)'
+                })
+            });
+
+            selectedWatershed.setStyle(selectedStyle);
+        }
+        setOldSelectedWatershed(selectedWatershed);
+
+    }, [selectedWatershed]);
+
 
     // Interaction when you click on a trend station
     const handleMapClick = (event) => {
         const selectedFeature = event.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
-        if (selectedFeature) {
+        // Get correspoding watershed by COMID if the selected feature is a trend station
+        if (selectedFeature && selectedFeature.getGeometry().getType() === 'Point'){
+            const correspondingWatershed = watershedsLayer.getLayersArray()[0].getSource().getFeatures().find((feature) => feature.get('comid') === selectedFeature.get('COMID'));
             setSelectedStation(selectedFeature);
+            setSelectedWatershed(correspondingWatershed);
         }else{
             setSelectedStation(null);
+            setSelectedWatershed(null);
         }
     };
 

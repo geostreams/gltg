@@ -2,6 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import trendStationsData from '../../data/trend_station_data_dates_aggregated.json';
 import SummaryGraph from './SummaryGraph';
+import { Box, FormControl, FormLabel, InputBase, NativeSelect } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
+import { BOUNDARIES, VARIABLES_INFO } from '../Summary/config';
+import { entries } from '../../../../../geodashboard/packages/core/src/utils/array';
 
 const useStyles = makeStyles((theme) => ({
     sidebar: {
@@ -20,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     chartsContainer: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     chart: {
         backgroundColor: '#fff',

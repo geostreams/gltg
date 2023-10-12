@@ -13,6 +13,9 @@ import { Circle, Stroke, Icon } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import { TileWMS } from 'ol/source';
+import LayersControl from '@geostreams/core/src/components/ol/LayersControl';
+import { Control } from 'ol/control';
+import { Layers } from '@material-ui/icons';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import HighUpwardTrendIcon from '../../images/Highly_Upward_Trending_Icon.png';
 import HighDownwardTrendIcon from '../../images/Highly_Downward_Trending_Icon.png';
@@ -56,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
-    }
+    },
+    legendFooter: {
+        marginTop: theme.spacing(1),
+        fontSize: '0.75rem',
+        alignItems: 'center',
+    },
 }));
 
 const renderIcon = (feature) => {
@@ -193,34 +201,52 @@ const Summary = () => {
             })
         ]
     });
+
+    const riversLayer = new GroupLayer({
+        title: 'Rivers',
+        layers: [
+            new TileLayer({
+                source: new TileWMS({
+                    url:  `${GEOSERVER_URL}/ows?`,
+                    params: { LAYERS: 'gltg:us-rivers', TILED: true },
+                    visible: true,
+                    serverType: 'geoserver'
+                })
+            })
+        ]
+    });
     
     // Create legend for trend stations
     const trendStationsLegend = React.useMemo(() => (
         <div>
-            <h3>Trend Icons</h3>
+            <h3>Trend Icons <sup>*</sup></h3>
             <br />  
             <div className={classes.legendContainer}>
                 <div className={classes.legendItem}>
                     <img src={HighUpwardTrendIcon} alt="High Upward Trend Icon" className={classes.legendIcon} />
-                    <span>High Likely Upward </span>
+                    <span>Highly Likely Upward (90% - 100%) </span>
                 </div>
                 <div className={classes.legendItem}>
                     <img src={UpwardTrendIcon} alt="Upward Trend Icon" className={classes.legendIcon} />
-                    <span>Likely Upward </span>
+                    <span>Likely Upward (66% - 90%)</span>
                 </div>
                 <div className={classes.legendItem}>
                     <img src={NoSignificantTrendIcon} alt="No Significant Trend Icon" className={classes.legendIcon} />
-                    <span>No Significant Trend</span>
+                    <span>No Significant Trend (33% - 66%)</span>
                 </div>
                 <div className={classes.legendItem}>
                     <img src={DownwardTrendIcon} alt="Downward Trend Icon" className={classes.legendIcon} />
-                    <span>Likely Downward</span>
+                    <span>Likely Downward(10% - 33%)</span>
                 </div>
                 <div className={classes.legendItem}>
                     <img src={HighDownwardTrendIcon} alt="High Downward Trend Icon" className={classes.legendIcon} />
-                    <span>High Likely Downward </span>
+                    <span>Highly Likely Downward(0% - 10%) </span>
+                </div>
+                <div className={classes.legendFooter}>
+                    <span> <sup>*</sup> Percentage ranges represent the probability that the trend is upwards</span>
                 </div>
             </div>
+
         </div>
     ), []);
 
@@ -293,6 +319,7 @@ const Summary = () => {
 
     const layers = {
         basemaps,
+        riversLayer,
         watershedsLayer,
         trendstations
     };
@@ -319,6 +346,7 @@ const Summary = () => {
                     events={{
                         click: handleMapClick
                     }}
+                    layerSwitcherOptions={{}}
                 />
             </Grid>
             <Grid

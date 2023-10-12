@@ -107,13 +107,12 @@ const renderIcon = (feature) => {
 const renderWaterSheds = () => {
     const style = new Style({
         stroke: new Stroke({
-            color: 'blue',
-            width: 2
+            color: 'rgba(0, 0, 0, 0)', // Transparent color
+            width: 0 // No stroke width
         }),
         fill: new Fill({
-            color: 'rgba(0, 0, 0, 0.01)'
-        })
-    });
+            color: 'rgba(0, 0, 0, 0)' // Transparent fill color
+        }) });
     return style;
 };
 
@@ -262,11 +261,11 @@ const Summary = () => {
             // Remove feature and add feature back to the map to make sure it is on top of the other layers
             const selectedStyle = new Style({
                 stroke: new Stroke({
-                    color: 'red',
-                    width: 2
+                    color: 'blue',
+                    width: 1
                 }),
                 fill: new Fill({
-                    color: 'rgba(0, 0, 0, 0.01)'
+                    color: 'rgba(0, 0, 0, 0.1)'
                 })
             });
 

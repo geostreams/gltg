@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import trendStationsData from '../../data/trend_station_data_dates_aggregated.json';
-import SummaryGraph from './SummaryGraph';
 import { Box, FormControl, FormLabel, InputBase, NativeSelect } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
-import { BOUNDARIES, VARIABLES_INFO } from '../Summary/config';
-import { entries } from '../../../../../geodashboard/packages/core/src/utils/array';
+import trendStationsData_30years from '../../data/trend_station_data_dates_aggregated.json';
+import trendStationsData_20years from '../../data/trend_station_data_dates_aggregated.json';
+import trendStationsData_10years from '../../data/trend_station_data_dates_aggregated.json';
+import SummaryGraph from './SummaryGraph';
 
 const useStyles = makeStyles((theme) => ({
     sidebar: {
@@ -36,20 +35,120 @@ const useStyles = makeStyles((theme) => ({
     chartHeader: {
         color: '#333',
         marginBottom: theme.spacing(1)
+    },
+    dropdownsContainer: {
+        background: '#e2ebf4'
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        width: '150%'
+    },
+    formLabel: {
+        padding: theme.spacing(1),
+        fontSize: '.88rem'
+    },
+    infoIcon: {
+        color: '#0D73C5',
+        fontSize: '1rem'
+    },
+    selectButton: {
+        'background': theme.palette.primary.main,
+        'borderRadius': 4,
+        'color': theme.palette.primary.contrastText,
+        'position': 'relative',
+        'height': 42,
+        'padding': theme.spacing(2),
+        'fontSize': '.75rem',
+        '&:focus': {
+            borderRadius: 4
+        }
+
     }
 }));
 
-const Sidebar = ({ stationData, legend }) => {
+const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient, selectedTimePeriod,setSelectedTimePeriod }) => {
     const classes = useStyles();
 
     let data = null;
-
     if (stationData) {
         data = trendStationsData[stationData.WQ_MonitoringLocationIdentifier];
     }
+    React.useState(() => {
+        if (stationData) {
+            switch (selectedTimePeriod) {
+                case '10_years':
+                    data = trendStationsData_10years[stationData.WQ_MonitoringLocationIdentifier];
+                    break;
+                case '20_years':
+                    data = trendStationsData_20years[stationData.WQ_MonitoringLocationIdentifier];
+                    break;
+                case '30_years':
+                    data = trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier];
+                    break;
+            }
+        }
+    }, [selectedTimePeriod]);
+
+
+
 
     return (
         <div className={classes.sidebar}>
+            <Box
+                className={classes.dropdownsContainer}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <FormControl
+                    component="fieldset"
+                    className={classes.formControl}
+                >
+                    <FormLabel
+                        component="legend"
+                        className={classes.formLabel}
+                    >
+                        <Box display="flex" alignItems="center">
+                            Nutrient
+                        </Box>
+                    </FormLabel>
+                    <NativeSelect
+                        className={classes.selectButton}
+                        value={selectedNutrient}
+                        onChange={({ target: { value } }) => {
+                            selectedNutrient(value);
+                        }}
+                        input={<InputBase />}
+                    >
+                        <option value="Nitrogen">Nitrogen</option>
+                    </NativeSelect>
+                </FormControl>
+                <FormControl
+                    component="fieldset"
+                    className={classes.formControl}
+                >
+                    <FormLabel
+                        component="legend"
+                        className={classes.formLabel}
+                    >
+                        <Box display="flex" alignItems="center">
+                            Time Period
+                        </Box>
+                    </FormLabel>
+                    <NativeSelect
+                        className={classes.selectButton}
+                        value={selectedTimePeriod}
+                        onChange={({ target: { value } }) => {
+                            setSelectedTimePeriod(value);
+                        }}
+                        input={<InputBase />}
+                    >
+                        <option value="10_years">Last 10 years</option>
+                        <option value="20_years">Last 20 years</option>
+                        <option value="30_years">Last 30 years</option>
+                    </NativeSelect>
+                </FormControl>
+            </Box>
             <div className={classes.header}>
                 <h3 className={classes.headerText}>Station Name</h3>
                 <h4 className={classes.headerText}>{stationData ? stationData.WQ_MonitoringLocationName : null}</h4>

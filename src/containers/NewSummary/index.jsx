@@ -13,16 +13,15 @@ import { Circle, Stroke, Icon } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import { TileWMS } from 'ol/source';
-import LayersControl from '@geostreams/core/src/components/ol/LayersControl';
-import { Control } from 'ol/control';
-import { Layers } from '@material-ui/icons';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import HighUpwardTrendIcon from '../../images/Highly_Upward_Trending_Icon.png';
 import HighDownwardTrendIcon from '../../images/Highly_Downward_Trending_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import { GEOSERVER_URL , MAP_BOUNDS } from './config';
-import trendStationsJSON from '../../data/trend_stations.geojson';
+import trendStationsJSON_30years from '../../data/trend_stations.geojson';
+import trendStationsJSON_20years from '../../data/trend_stations.geojson';
+import trendStationsJSON_10years from '../../data/trend_stations.geojson';
 import waterShedsJSON from '../../data/trend_station_watersheds.geojson';
 import Sidebar from './Sidebar';
 
@@ -134,6 +133,23 @@ const Summary = () => {
     // This state variable is used to keep track of the selected watershed
     const[selectedWatershed, setSelectedWatershed] = React.useState(null);
     const[oldSelectedWatershed, setOldSelectedWatershed] = React.useState(null);
+
+    // State variable to keep track of sidebar inputs
+    const [selectedNutrient, setSelectedNutrient] = React.useState('Nitrogen');
+    const [selectedTimePeriod, setSelectedTimePeriod] = React.useState('30_years');
+
+    // State variable to keep track of the JSON data
+    const [trendStationsJSON, setTrendStationsJSON] = React.useState(trendStationsJSON_30years);
+
+    React.useEffect(() => {
+        if (selectedTimePeriod === '30_years') {
+            setTrendStationsJSON(trendStationsJSON_30years);
+        } else if (selectedTimePeriod === '20_years') {
+            setTrendStationsJSON(trendStationsJSON_20years);
+        } else if (selectedTimePeriod === '10_years') {
+            setTrendStationsJSON(trendStationsJSON_10years);
+        }
+    }, [selectedTimePeriod]);
 
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
@@ -325,6 +341,7 @@ const Summary = () => {
     };
 
 
+
     return(
         <Grid
             className={classes.mainContainer}
@@ -357,6 +374,10 @@ const Summary = () => {
                 <Sidebar
                     stationData={selectedStation ? selectedStation.values_ : null}
                     legend={trendStationsLegend}
+                    selectedNutrient={selectedNutrient}
+                    setSelectedNutrient={setSelectedNutrient}
+                    selectedTimePeriod={selectedTimePeriod}
+                    setSelectedTimePeriod={setSelectedTimePeriod}
                 />
             </Grid>
         </Grid>

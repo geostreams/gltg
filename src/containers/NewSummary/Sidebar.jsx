@@ -71,7 +71,7 @@ const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient, se
 
     let data = null;
     if (stationData) {
-        data = trendStationsData[stationData.WQ_MonitoringLocationIdentifier];
+        data = trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier];
     }
     React.useState(() => {
         if (stationData) {

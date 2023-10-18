@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, FormControl, FormLabel, InputBase, NativeSelect } from '@material-ui/core';
-import trendStationsData_30years from '../../data/trend_station_data_dates_aggregated.json';
-import trendStationsData_20years from '../../data/trend_station_data_dates_aggregated.json';
-import trendStationsData_10years from '../../data/trend_station_data_dates_aggregated.json';
+import trendStationsData_30years from '../../data/trend_station_data_30years.json';
+import trendStationsData_20years from '../../data/trend_station_data_20years.json';
+import trendStationsData_10years from '../../data/trend_station_data_10years.json';
 import SummaryGraph from './SummaryGraph';
 
 const useStyles = makeStyles((theme) => ({
@@ -66,29 +66,29 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient, selectedTimePeriod,setSelectedTimePeriod }) => {
+const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod }) => {
     const classes = useStyles();
 
-    let data = null;
-    if (stationData) {
-        data = trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier];
-    }
-    React.useState(() => {
+    const [data,setData] = React.useState(null);
+
+    React.useEffect(() => {
         if (stationData) {
             switch (selectedTimePeriod) {
                 case '10_years':
-                    data = trendStationsData_10years[stationData.WQ_MonitoringLocationIdentifier];
+                    setData(trendStationsData_10years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
                 case '20_years':
-                    data = trendStationsData_20years[stationData.WQ_MonitoringLocationIdentifier];
+                    setData(trendStationsData_20years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
                 case '30_years':
-                    data = trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier];
+                    setData(trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
-            }
-        }
-    }, [selectedTimePeriod]);
 
+            }
+        } else {
+            setData(null);
+        }
+    }, [selectedTimePeriod,stationData]);
 
 
 

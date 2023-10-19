@@ -10,7 +10,7 @@ import { BaseControlPortal, Map } from '@geostreams/core/src/components/ol';
 import Control from '@geostreams/core/src/components/ol/Control';
 import { updateLoadingStatus } from '@geostreams/core/src/actions/page';
 import logger from '@geostreams/core/src/utils/logger';
-
+import OverallMap from './OverallMap';
 import type {
     Feature as FeatureType,
     Layer as LayerType,
@@ -22,7 +22,7 @@ import { BMP_API_URL, BOUNDARIES, INITIAL_FILTERS, LAYERS, MAP_CENTER, getStyle 
 import { BMPContext } from './Context';
 import Header from './Header';
 import Sidebar from './Sidebar';
-
+import SpecificMap from './SpecificMap';
 import type { Config, Filters, FiltersAction } from './flowtype';
 
 const useStyle = makeStyles({
@@ -30,9 +30,7 @@ const useStyle = makeStyles({
         position: 'absolute',
         height: '100%'
     },
-    mapContainer: {
-        height: 'calc(100% - 50px)'
-    },
+   
     boundaryInfoMapControl: {
         top: '0.5em',
         right: '2em',
@@ -102,6 +100,12 @@ const BMP = ({ dispatch }: Props) => {
     });
 
     const [hoveredBoundaryInfo, updateHoveredBoundaryInfo] = React.useState<[[string, string]]>([]);
+    const [selectedTab, setSelectedTab] = React.useState('overall');
+    const [parameterString,setParameterString] = React.useState("gltg:state_bmp_EPA_319_2004_funding");
+    //create state
+    const handleTabChange = (newValue) => {
+        setSelectedTab(newValue);
+    };
 
     React.useEffect(
         () => {
@@ -277,42 +281,19 @@ const BMP = ({ dispatch }: Props) => {
                     <Grid item xs={12}>
                         <Header />
                     </Grid>
-                    <Grid
-                        className={classes.mapContainer}
-                        item
-                        xs={6}
-                    >
-                        <Map
-                            className="fillContainer"
-                            zoom={5}
-                            center={MAP_CENTER}
-                            layers={Object.values(LAYERS)}
-                            layerSwitcherOptions={{}}
-                            controls={[mapControlsRef.current.boundaryInfo]}
-                            events={{
-                                click: handleMapClick,
-                                pointermove: handleMapHover
-                            }}
-                        >
-                            <BaseControlPortal el={mapControlsRef.current.boundaryInfo.element}>
-                                <Container>
-                                    <Typography variant="subtitle2">
-                                        Select boundaries using the map or the form on the right
-                                    </Typography>
-                                    <Divider />
-                                    {hoveredBoundaryInfo.map(([label, value]) => (
-                                        <Typography key={label} variant="body2">{label}: {value}</Typography>
-                                    ))}
-                                </Container>
-                            </BaseControlPortal>
-                        </Map>
-                    </Grid>
+                    {selectedTab === "specific"?
+                    <SpecificMap
+                    handleMapClick={handleMapClick}
+                handleMapHover={handleMapHover}
+                hoveredBoundaryInfo={hoveredBoundaryInfo}
+                    />:<OverallMap parameterString={parameterString} />}
+                    
                     <Grid
                         className={classes.sidebar}
                         item
                         xs={6}
                     >
-                        <Sidebar />
+                        <Sidebar onTabChange={handleTabChange} setParameterString={setParameterString}  /> 
                     </Grid>
                 </Grid> :
                 null}

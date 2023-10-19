@@ -10,12 +10,13 @@ import OverallFilters from './OverallFilters';
 
 
 
-const Sidebar = () => {
+const Sidebar = ({ onTabChange, setParameterString }) => {
     const [value, setValue] = React.useState('overall');
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        onTabChange(newValue);
     };
-
+   
     return (
         <Container disableGutters>
             <Tabs
@@ -29,7 +30,7 @@ const Sidebar = () => {
                 <Tab value="overall" label="Overall" />
                 <Tab value="specific" label="Specific" />
             </Tabs>
-            { value === 'overall' ? <OverallFilters /> : <SpecificFilters /> }
+            { value === 'overall' ? <OverallFilters  setParameterString={setParameterString} /> : <SpecificFilters /> }
             { value === 'overall' ? null : <Results /> }
         </Container>
     );

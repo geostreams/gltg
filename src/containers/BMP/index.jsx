@@ -10,13 +10,13 @@ import { BaseControlPortal, Map } from '@geostreams/core/src/components/ol';
 import Control from '@geostreams/core/src/components/ol/Control';
 import { updateLoadingStatus } from '@geostreams/core/src/actions/page';
 import logger from '@geostreams/core/src/utils/logger';
-import OverallMap from './OverallMap';
 import type {
     Feature as FeatureType,
     Layer as LayerType,
     MapBrowserEventType
 } from 'ol';
 import type { Action as PageAction } from '@geostreams/core/src/actions/page';
+import OverallMap from './OverallMap';
 
 import { BMP_API_URL, BOUNDARIES, INITIAL_FILTERS, LAYERS, MAP_CENTER, getStyle } from './config';
 import { BMPContext } from './Context';
@@ -93,16 +93,10 @@ const BMP = ({ dispatch }: Props) => {
     const configRef = React.useRef<Config | null>(null);
     const hasConfig = Object.keys(config).length > 0;
 
-    const mapControlsRef = React.useRef({
-        boundaryInfo: new Control({
-            className: classes.boundaryInfoMapControl
-        })
-    });
-
     const [hoveredBoundaryInfo, updateHoveredBoundaryInfo] = React.useState<[[string, string]]>([]);
     const [selectedTab, setSelectedTab] = React.useState('overall');
-    const [parameterString,setParameterString] = React.useState("gltg:state_bmp_EPA_319_2004_funding");
-    //create state
+    const [parameterString,setParameterString] = React.useState('gltg:state_bmp_EPA_319_2004_funding');
+    // create state
     const handleTabChange = (newValue) => {
         setSelectedTab(newValue);
     };
@@ -281,19 +275,19 @@ const BMP = ({ dispatch }: Props) => {
                     <Grid item xs={12}>
                         <Header />
                     </Grid>
-                    {selectedTab === "specific"?
-                    <SpecificMap
-                    handleMapClick={handleMapClick}
-                handleMapHover={handleMapHover}
-                hoveredBoundaryInfo={hoveredBoundaryInfo}
-                    />:<OverallMap parameterString={parameterString} />}
+                    {selectedTab === 'specific' ?
+                        <SpecificMap
+                            handleMapClick={handleMapClick}
+                            handleMapHover={handleMapHover}
+                            hoveredBoundaryInfo={hoveredBoundaryInfo}
+                        /> : <OverallMap parameterString={parameterString} />}
                     
                     <Grid
                         className={classes.sidebar}
                         item
                         xs={6}
                     >
-                        <Sidebar onTabChange={handleTabChange} setParameterString={setParameterString}  /> 
+                        <Sidebar onTabChange={handleTabChange} setParameterString={setParameterString} /> 
                     </Grid>
                 </Grid> :
                 null}

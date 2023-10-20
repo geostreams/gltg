@@ -80,7 +80,7 @@ const OverallMap = ({ parameterString }) => {
     const geoserverLayer = createGeoServerLayer(urlParameters, styleUrl);
     mapRef.current.addLayer(geoserverLayer);
     layerRef.current = geoserverLayer;
-
+    //rendering legends
     const legendUrl = `${GEOSERVER_URL}/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=${urlParameters}&STYLE=${styleUrl}`;
     setLegendSrc(legendUrl);
   }, [parameterString, urlParameters, styleUrl]);

@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, FormControl, FormLabel, InputBase, NativeSelect } from '@material-ui/core';
-import trendStationsData_30years from '../../data/trend_station_data_30years.json';
-import trendStationsData_20years from '../../data/trend_station_data_20years.json';
-import trendStationsData_10years from '../../data/trend_station_data_10years.json';
+import trendStationsData_30years from '../../data/trend_station_data.json';
+import trendStationsData_20years from '../../data/trend_station_data.json';
+import trendStationsData_10years from '../../data/trend_station_data.json';
 import SummaryGraph from './SummaryGraph';
 
 const useStyles = makeStyles((theme) => ({
@@ -161,7 +161,13 @@ const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient,sel
                     <div className={classes.chart}>
                         <h4 className={classes.chartHeader}>Flux Graph</h4>
                         <SummaryGraph graph_data={data.flux} width={350} height={300} startAtZero={false}
-                            y_line_field="FNFlux" y_scatter_field="FluxDay"
+                            stationary_y_line_field="stationaryFNFlux"
+                            stationary_high_interval="stationaryFNFluxHigh"
+                            stationary_low_interval="stationaryFNFluxLow"
+                            non_stationary_y_line_field="nonStationaryFNFlux"
+                            non_stationary_high_interval="nonStationaryFNFluxHigh"
+                            non_stationary_low_interval="nonStationaryFNFluxLow"
+                            y_scatter_field="stationaryFluxDay"
                             y_label="Flux in 10^6 kg/yr"
                             x_label='Years'
                             title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
@@ -171,7 +177,13 @@ const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient,sel
                     <div className={classes.chart}>
                         <h4 className={classes.chartHeader}>Concentration Graph</h4>
                         <SummaryGraph graph_data={data.concentration} width={350} height={300} startAtZero={false}
-                            y_line_field="FNConc" y_scatter_field="ConcDay"
+                            stationary_y_line_field="stationaryFNConc"
+                            stationary_high_interval="stationaryFNConcHigh"
+                            stationary_low_interval="stationaryFNConcLow"
+                            non_stationary_y_line_field="nonStationaryFNConc"
+                            non_stationary_high_interval="nonStationaryFNConcHigh"
+                            non_stationary_low_interval="nonStationaryFNConcLow"
+                            y_scatter_field="stationaryConcDay"
                             y_label="Concentration in mg/L"
                             x_label='Years'
                             title="Mean (dots) & Flow-Normalized (line) Concentration " />

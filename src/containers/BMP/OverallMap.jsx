@@ -32,6 +32,7 @@ const generateStyleUrl = (urlParameters, inputString) => {
 };
 
 const OverallMap = ({ parameterString }) => {
+  //Adding Map References
   const mapRef = useRef(null);
   const layerRef = useRef(null);
   const urlParameters = generateUrlParameters(parameterString);
@@ -93,7 +94,7 @@ const OverallMap = ({ parameterString }) => {
           className="legend"
           style={{
             position: "absolute",
-            bottom: "5%",
+            bottom: "8%",
             right: "2%",
             backgroundColor: "rgba(255, 255, 255, 0.7)",
             padding: "1%",

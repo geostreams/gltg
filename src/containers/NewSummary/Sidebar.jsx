@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod }) => {
+const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod }) => {
     const classes = useStyles();
 
     const [data,setData] = React.useState(null);
@@ -190,9 +190,6 @@ const Sidebar = ({ stationData, legend, selectedNutrient,setSelectedNutrient,sel
                     </div>}
             </div>
             <br />
-            <div>
-                {legend}
-            </div>
         </div>
     );
 };

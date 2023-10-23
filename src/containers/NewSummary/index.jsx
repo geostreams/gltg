@@ -355,7 +355,7 @@ const Summary = () => {
             // Remove feature and add feature back to the map to make sure it is on top of the other layers
             const selectedStyle = new Style({
                 stroke: new Stroke({
-                    color: 'blue',
+                    color: 'yellow',
                     width: 1
                 }),
                 fill: new Fill({

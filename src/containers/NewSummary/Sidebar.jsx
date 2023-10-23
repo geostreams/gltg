@@ -158,7 +158,7 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
                 {data &&
                     <div className={classes.chart}>
                         <h4 className={classes.chartHeader}>Flux Graph</h4>
-                        <SummaryGraph graph_data={data.flux} width={350} height={300} startAtZero={false}
+                        <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
                             stationary_y_line_field="stationaryFNFlux"
                             stationary_high_interval="stationaryFNFluxHigh"
                             stationary_low_interval="stationaryFNFluxLow"
@@ -174,7 +174,7 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
                 {data &&
                     <div className={classes.chart}>
                         <h4 className={classes.chartHeader}>Concentration Graph</h4>
-                        <SummaryGraph graph_data={data.concentration} width={350} height={300} startAtZero={false}
+                        <SummaryGraph graph_data={data.concentration} width={350} height={330} startAtZero={false}
                             stationary_y_line_field="stationaryFNConc"
                             stationary_high_interval="stationaryFNConcHigh"
                             stationary_low_interval="stationaryFNConcLow"

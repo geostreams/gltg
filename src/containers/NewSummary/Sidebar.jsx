@@ -109,7 +109,7 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
                         className={classes.formLabel}
                     >
                         <Box display="flex" alignItems="center">
-                            Nutrient
+                           Select Nutrient
                         </Box>
                     </FormLabel>
                     <NativeSelect
@@ -132,7 +132,7 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
                         className={classes.formLabel}
                     >
                         <Box display="flex" alignItems="center">
-                            Time Period
+                           Select Time Period
                         </Box>
                     </FormLabel>
                     <NativeSelect
@@ -155,8 +155,6 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
             </div>
             <br />
             <div className={classes.chartsContainer}>
-                <h3 className={classes.headerText}>Charts</h3>
-                <br />
                 {data &&
                     <div className={classes.chart}>
                         <h4 className={classes.chartHeader}>Flux Graph</h4>

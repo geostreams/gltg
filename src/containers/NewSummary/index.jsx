@@ -6,6 +6,8 @@ import XYZ from 'ol/source/XYZ';
 import OSM, { ATTRIBUTION as OSM_ATTRIBUTION } from 'ol/source/OSM';
 import { Map } from '@geostreams/core/src/components/ol';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import { Close } from '@material-ui/icons';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
@@ -18,6 +20,7 @@ import HighUpwardTrendIcon from '../../images/Highly_Upward_Trending_Icon.png';
 import HighDownwardTrendIcon from '../../images/Highly_Downward_Trending_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 import trendStationsJSON_30years from '../../data/trend_stations.geojson';
 import trendStationsJSON_20years from '../../data/trend_stations.geojson';
@@ -42,6 +45,33 @@ const useStyles = makeStyles((theme) => ({
         '& a': {
             color: '#0D73C5'
         }
+    },
+    legend:{
+        position: 'absolute',
+        bottom: '8%',
+        right: '42%',
+        backgroundColor: 'white',
+        padding: '1%',
+        borderRadius: '5%',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+        opacity: 0.8,
+        zIndex: 1000 // Added z-index here
+    },
+    legendButton: {
+        position: 'absolute',
+        bottom: '5%',
+        right: '42.25%',
+        width: '2.25em',
+        height: '2.25m',
+        backgroundColor: '#a0cdf4',
+        borderRadius: '10%',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+        opacity: 0.8,
+        zIndex: 1000,
+        border: 'none',
+        padding: 0,
+        outline: 'none',
+        cursor: 'pointer'
     },
     legendItem: {
         display: 'flex',
@@ -166,6 +196,9 @@ const Summary = () => {
         trendStationsJSON_30years
     );
 
+    // State variable to make legend collapsible
+    const [legendOpen, setLegendOpen] = React.useState(false);
+
     React.useEffect(() => {
         if (selectedTimePeriod === '30_years') {
             setTrendStationsJSON(trendStationsJSON_30years);
@@ -261,9 +294,17 @@ const Summary = () => {
     const trendStationsLegend = React.useMemo(
         () => (
             <div>
-                <h3>
-          Trend Icons <sup>*</sup>
-                </h3>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <h3>
+                        Trend Icons <sup>*</sup>
+                    </h3>
+                    <IconButton
+                        className={classes.closeButton}
+                        onClick={() => setLegendOpen(false)}
+                    >
+                        <Close />
+                    </IconButton>
+                </div>
                 <br />
                 <div className={classes.legendContainer}>
                     <div className={classes.legendItem}>
@@ -403,9 +444,9 @@ const Summary = () => {
 
     return (
         <Grid className={classes.mainContainer} container alignItems="stretch">
-            <Grid className="fillContainer" item xs={7}>
+            <Grid className={classes.fillContainer} item xs={7}>
                 <Map
-                    className="fillContainer"
+                    className={classes.fillContainer}
                     zoom={6}
                     minZoom={4}
                     extent={MAP_BOUNDS}
@@ -416,23 +457,21 @@ const Summary = () => {
                     }}
                     layerSwitcherOptions={{}}
                 >
-       
-                    <div
-                        className="legend"
-                        style={{
-                            position: 'absolute',
-                            bottom: '8%',
-                            right: '42%',
-                            backgroundColor: 'white',
-                            padding: '1%',
-                            borderRadius: '5%',
-                            boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
-                            zIndex: 1000 // Added z-index here
-                        }}
-                    >
-                        {trendStationsLegend}
-                    </div>
-       
+                    {/* Toggle Legend */}
+                    {!legendOpen && (
+                        <button onClick={() => setLegendOpen(true)} className={classes.legendButton}>
+                            <img src={MapLegendIcon} alt="Map Legend Icon" style={{ width: '100%', height: '100%', display: 'block' }} />
+                        </button>
+
+                    )}
+
+                    {legendOpen && (
+                        <div
+                            className={classes.legend}
+                        >
+                            {trendStationsLegend}
+                        </div>
+                    )}
                 </Map>
             </Grid>
             <Grid className={classes.sidebar} item xs={5}>

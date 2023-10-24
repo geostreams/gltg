@@ -32,6 +32,7 @@ import {
 import { BMPContext } from './Context';
 
 const useStyle = makeStyles((theme) => ({
+  
     container: {
         'background': '#F0F6F9',
         'padding': theme.spacing(2),
@@ -124,6 +125,7 @@ const OverallFilters = ({ setParameterString }) => {
             <FormControl>
                 <Typography variant="h6">Select Funding Agency</Typography>
                 <RadioGroup
+                
                     aria-label="funding-agency"
                     name="funding-agency"
                     value={fundingAgency}
@@ -141,13 +143,13 @@ const OverallFilters = ({ setParameterString }) => {
                         <FormControlLabel
                             key={agency.value}
                             value={agency.value}
-                            control={<Radio />}
+                            control={<Radio color='primary' />}
                             label={agency.label}
                         />
                     ))}
                 </RadioGroup>
                 <br />
-                <Typography variant="h6">Select State Boundary</Typography>
+                <Typography variant="h6">Select  Boundary</Typography>
                 <ToggleButtonGroup
                     value={selectedStateBoundary}
                     exclusive

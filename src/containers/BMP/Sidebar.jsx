@@ -22,8 +22,8 @@ const Sidebar = ({ onTabChange, setParameterString }) => {
             <Tabs
                 value={value}
                 onChange={handleChange}
-                textColor="secondary"
-                indicatorColor="secondary"
+                textColor="primary"
+                indicatorColor="primary"
                 aria-label="secondary tabs example"
                 centered
             >

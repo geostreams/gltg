@@ -46,7 +46,10 @@ const SummaryGraph: React.FC<Props> = (props) => {
         width,
         height,
         data: { name: 'table' },
-        title,
+        title:{
+            text:title,
+            anchor:'middle'
+        },
         hconcat:[
             {
                 layer: [

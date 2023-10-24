@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     stationNameText:{
         color: '#E05769',
-        fontSize: '1.2rem'
+        fontSize: '1rem'
     },
     headerText: {
         margin: 0,
@@ -63,12 +63,16 @@ const useStyles = makeStyles((theme) => ({
     },
     chart: {
         backgroundColor: '#fff',
+        // TODO: Change padding
         padding: theme.spacing(2),
         borderRadius: '5px',
         marginBottom: theme.spacing(2),
         boxShadow: '0px 0px 10px rgba(0,0,0,0.1)'
     },
     chartHeader: {
+        // Centre the text
+        textAlign: 'center',
+        fontSize: '1.2rem',
         color: '#333',
         marginBottom: theme.spacing(1)
     },
@@ -204,13 +208,13 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                     (<>
                         <Typography
                             className={classes.headerText}
-                            variant="h5"
+                            variant="h6"
                         >
-                            Station - <span className={classes.stationNameText}>{stationData.WQ_MonitoringLocationName}</span>
+                            Station Name - <span className={classes.stationNameText}>{stationData.WQ_MonitoringLocationName}</span>
                         </Typography>
-                        <div className={classes.chartsContainer}>
+                        <div>
                             {data &&
-                        <div className={classes.chart}>
+                        <Box className={classes.chart}>
                             <h4 className={classes.chartHeader}>Flux Graph</h4>
                             <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
                                 stationary_y_line_field="stationaryFNFlux"
@@ -223,10 +227,12 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 y_label="Flux in 10^6 kg/yr"
                                 x_label='Years'
                                 title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
-                        </div>}
+                        </Box>}
+
+                            <Divider />
                             <br />
                             {data &&
-                        <div className={classes.chart}>
+                        <Box className={classes.chart}>
                             <h4 className={classes.chartHeader}>Concentration Graph</h4>
                             <SummaryGraph graph_data={data.concentration} width={350} height={330} startAtZero={false}
                                 stationary_y_line_field="stationaryFNConc"
@@ -239,7 +245,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 y_label="Concentration in mg/L"
                                 x_label='Years'
                                 title="Mean (dots) & Flow-Normalized (line) Concentration " />
-                        </div>}
+                        </Box>}
                         </div>
                     </>)}
                 <br />

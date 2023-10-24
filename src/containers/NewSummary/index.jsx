@@ -6,8 +6,6 @@ import XYZ from 'ol/source/XYZ';
 import OSM, { ATTRIBUTION as OSM_ATTRIBUTION } from 'ol/source/OSM';
 import { Map } from '@geostreams/core/src/components/ol';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { Close } from '@material-ui/icons';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
@@ -22,10 +20,9 @@ import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
-import trendStationsJSON_30years from '../../data/trend_stations.geojson';
+import trendStationsJSON_30years from '../../data/trend_stations_30_years.geojson';
 import trendStationsJSON_20years from '../../data/trend_stations.geojson';
-import trendStationsJSON_10years from '../../data/trend_stations.geojson';
-import waterShedsJSON from '../../data/trend_station_watersheds.geojson';
+import waterShedsJSON from '../../data/trend_watersheds.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -49,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
     legend:{
         position: 'absolute',
-        bottom: '8%',
+        bottom: '8.25%',
         right: '42%',
         backgroundColor: 'white',
         padding: '1%',
@@ -77,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     legendItem: {
         display: 'flex',
         alignItems: 'center',
-        marginBottom: theme.spacing(1) // Use theme.spacing for consistent spacing
+        marginBottom: '0.2em'
     },
     legendIcon: {
         width: '1.75em',
@@ -88,13 +85,20 @@ const useStyles = makeStyles((theme) => ({
     // centre items in the legend
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'flex-start',
+        marginBottom: theme.spacing(1)
     },
-    legendFooter: {
-        marginTop: theme.spacing(1),
-        fontSize: '0.75rem',
-        alignItems: 'center'
+    legendCloseButton: {
+        position: 'absolute',
+        top: theme.spacing(1),
+        right: theme.spacing(1)
+    },
+    dialogCloseButton:{
+        position: 'absolute',
+        top: theme.spacing(1),
+        right: theme.spacing(1)
     }
+
 }));
 
 const renderIcon = (feature) => {
@@ -192,6 +196,9 @@ const Summary = () => {
     const [selectedTimePeriod, setSelectedTimePeriod] =
     React.useState('30_years');
 
+    // State to display dialog box
+    const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
+
     // State variable to keep track of the JSON data
     const [trendStationsJSON, setTrendStationsJSON] = React.useState(
         trendStationsJSON_30years
@@ -205,10 +212,13 @@ const Summary = () => {
             setTrendStationsJSON(trendStationsJSON_30years);
         } else if (selectedTimePeriod === '20_years') {
             setTrendStationsJSON(trendStationsJSON_20years);
-        } else if (selectedTimePeriod === '10_years') {
-            setTrendStationsJSON(trendStationsJSON_10years);
         }
     }, [selectedTimePeriod]);
+
+    React.useEffect(() => {
+        setOpenInfoDialog(true);
+    }, []);
+
 
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
@@ -295,18 +305,6 @@ const Summary = () => {
     const trendStationsLegend = React.useMemo(
         () => (
             <div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <h3>
-                        Trend Icons <sup>*</sup>
-                    </h3>
-                    <IconButton
-                        className={classes.closeButton}
-                        onClick={() => setLegendOpen(false)}
-                    >
-                        <Close />
-                    </IconButton>
-                </div>
-                <br />
                 <div className={classes.legendContainer}>
                     <div className={classes.legendItem}>
                         <img
@@ -347,13 +345,6 @@ const Summary = () => {
                             className={classes.legendIcon}
                         />
                         <span>Highly Likely Downward(0% - 10%) </span>
-                    </div>
-                    <div className={classes.legendFooter}>
-                        <span>
-                            {' '}
-                            <sup>*</sup> Percentage ranges represent the probability that the
-              trend is upwards
-                        </span>
                     </div>
                 </div>
             </div>
@@ -426,7 +417,7 @@ const Summary = () => {
                 .getSource()
                 .getFeatures()
                 .find(
-                    (feature) => feature.get('comid') === selectedFeature.get('COMID')
+                    (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
                 );
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);
@@ -443,48 +434,52 @@ const Summary = () => {
         trendstations
     };
 
+    const removeSelectedStation = () => {
+        setSelectedStation(null);
+        setSelectedWatershed(null);
+    };
+
     return (
-        <Grid className={classes.mainContainer} container alignItems="stretch">
-            <Grid className={classes.fillContainer} item xs={7}>
-                <Map
-                    className={classes.fillContainer}
-                    zoom={6}
-                    minZoom={4}
-                    extent={MAP_BOUNDS}
-                    center={[-9972968, 4972295]}
-                    layers={Object.values(layers)}
-                    events={{
-                        click: handleMapClick
-                    }}
-                    layerSwitcherOptions={{}}
-                >
-                    {/* Toggle Legend */}
-                    {!legendOpen && (
-                        <button onClick={() => setLegendOpen(true)} className={classes.legendButton}>
+        <>
+            <Grid className={classes.mainContainer} container alignItems="stretch">
+                <Grid className={classes.fillContainer} item xs={7}>
+                    <Map
+                        className={classes.fillContainer}
+                        zoom={6}
+                        minZoom={4}
+                        extent={MAP_BOUNDS}
+                        center={[-9972968, 4972295]}
+                        layers={Object.values(layers)}
+                        events={{
+                            click: handleMapClick
+                        }}
+                        layerSwitcherOptions={{}}
+                    >
+                        <button onClick={() => setLegendOpen(!legendOpen)} className={classes.legendButton}>
                             <img src={MapLegendIcon} alt="Map Legend Icon" style={{ width: '100%', height: '100%', display: 'block' }} />
                         </button>
 
-                    )}
-
-                    {legendOpen && (
-                        <div
-                            className={classes.legend}
-                        >
-                            {trendStationsLegend}
-                        </div>
-                    )}
-                </Map>
+                        {legendOpen && (
+                            <div
+                                className={classes.legend}
+                            >
+                                {trendStationsLegend}
+                            </div>
+                        )}
+                    </Map>
+                </Grid>
+                <Grid className={classes.sidebar} item xs={5}>
+                    <Sidebar
+                        stationData={selectedStation ? selectedStation.values_ : null}
+                        selectedNutrient={selectedNutrient}
+                        setSelectedNutrient={setSelectedNutrient}
+                        selectedTimePeriod={selectedTimePeriod}
+                        setSelectedTimePeriod={setSelectedTimePeriod}
+                        removeSelectedStation={removeSelectedStation}
+                    />
+                </Grid>
             </Grid>
-            <Grid className={classes.sidebar} item xs={5}>
-                <Sidebar
-                    stationData={selectedStation ? selectedStation.values_ : null}
-                    selectedNutrient={selectedNutrient}
-                    setSelectedNutrient={setSelectedNutrient}
-                    selectedTimePeriod={selectedTimePeriod}
-                    setSelectedTimePeriod={setSelectedTimePeriod}
-                />
-            </Grid>
-        </Grid>
+        </>
     );
 };
 

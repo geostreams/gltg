@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     sidebar: {
         'height': '100%',
+        'width': '100%',
         'overflowY': 'auto',
         'overflowX': 'clip',
         '& a': {

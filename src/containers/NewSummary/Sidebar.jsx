@@ -1,23 +1,59 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, InputBase, NativeSelect } from '@material-ui/core';
+import { Box, FormControl, FormLabel, InputBase, NativeSelect, Typography } from '@material-ui/core';
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
+import Divider from '@material-ui/core/Divider';
 import trendStationsData_30years from '../../data/trend_station_data.json';
 import trendStationsData_20years from '../../data/trend_station_data.json';
 import trendStationsData_10years from '../../data/trend_station_data.json';
 import SummaryGraph from './SummaryGraph';
 
 const useStyles = makeStyles((theme) => ({
-    sidebar: {
-        backgroundColor: '#f4f4f4',
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        maxWidth: '100%',
-        margin: '0 auto'
+    sidebarBody: {
+        width: '100%',
+        paddingLeft: '1em',
+        paddingRight: '1em'
+    },
+    divider: {
+        borderTop: '1px dashed #000',
+        backgroundColor: 'unset'
     },
     header: {
-        marginBottom: theme.spacing(2)
+        display: 'flex',       // Using flexbox
+        flexDirection: 'column',  // Align items vertically
+        alignItems: 'flex-start',
+        paddingTop: '0.5em',
+        paddingRight: '1em',
+        margin: '10px auto'
+    },
+    featureProp:{
+        color: '#E05769'
+    },
+    stationNameText:{
+        color: '#E05769',
+        fontSize: '1.2rem'
     },
     headerText: {
+        margin: 0,
+        color: '#333',
+        letterSpacing: '0.5px',
+        whiteSpace: 'nowrap',  // prevent wrapping
+        overflow: 'hidden',    // hide overflow
+        textOverflow: 'ellipsis'  // show ellipsis when text overflows
+    },
+    subHeaderText:{
+        margin: 0,
+        color: '#333',
+        letterSpacing: '0.5px',
+        alignSelf: 'center' ,
+        paddingTop: '0.5em'
+    },
+    infoIcon: {
+        verticalAlign: 'super',
+        fontSize: '0.8rem',
+        marginLeft: '4px',
+        cursor: 'pointer',
         color: '#333'
     },
     chartsContainer: {
@@ -37,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1)
     },
     dropdownsContainer: {
-        background: '#e2ebf4'
+        background: '#e2ebf4',
+        width: '100%'
     },
     formControl: {
         margin: theme.spacing(1),
@@ -46,10 +83,6 @@ const useStyles = makeStyles((theme) => ({
     formLabel: {
         padding: theme.spacing(1),
         fontSize: '.88rem'
-    },
-    infoIcon: {
-        color: '#0D73C5',
-        fontSize: '1rem'
     },
     selectButton: {
         'background': theme.palette.primary.main,
@@ -66,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod }) => {
+const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod }) => {
     const classes = useStyles();
 
     const [data,setData] = React.useState(null);
@@ -93,7 +126,7 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
 
 
     return (
-        <div className={classes.sidebar}>
+        <div>
             <Box
                 className={classes.dropdownsContainer}
                 display="flex"
@@ -149,45 +182,68 @@ const Sidebar = ({ stationData,  selectedNutrient,setSelectedNutrient,selectedTi
                     </NativeSelect>
                 </FormControl>
             </Box>
-            <div className={classes.header}>
-                <h3 className={classes.headerText}>Station Name</h3>
-                <h4 className={classes.headerText}>{stationData ? stationData.WQ_MonitoringLocationName : null}</h4>
-            </div>
-            <br />
-            <div className={classes.chartsContainer}>
-                {data &&
-                    <div className={classes.chart}>
-                        <h4 className={classes.chartHeader}>Flux Graph</h4>
-                        <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
-                            stationary_y_line_field="stationaryFNFlux"
-                            stationary_high_interval="stationaryFNFluxHigh"
-                            stationary_low_interval="stationaryFNFluxLow"
-                            non_stationary_y_line_field="nonStationaryFNFlux"
-                            non_stationary_high_interval="nonStationaryFNFluxHigh"
-                            non_stationary_low_interval="nonStationaryFNFluxLow"
-                            y_scatter_field="stationaryFluxDay"
-                            y_label="Flux in 10^6 kg/yr"
-                            x_label='Years'
-                            title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
-                    </div>}
+            <div className={classes.sidebarBody}>
+                <Typography
+                    className={classes.header}
+                    variant="h5"
+                >
+                    Nutrient Trend Dashboard
+                </Typography>
+                <Divider className={classes.divider} />
+                {!stationData ?
+                    (<>
+                        <div className={classes.headerText}>
+                            <h3 className={classes.featureProp}>
+                        Select Station
+                                <Tooltip title="Click on any station to view nutrient data graphs." arrow placement="top">
+                                    <InfoIcon className={classes.infoIcon} />
+                                </Tooltip>
+                            </h3>
+                        </div>
+                    </>) :
+                    (<>
+                        <Typography
+                            className={classes.headerText}
+                            variant="h5"
+                        >
+                            Station - <span className={classes.stationNameText}>{stationData.WQ_MonitoringLocationName}</span>
+                        </Typography>
+                        <div className={classes.chartsContainer}>
+                            {data &&
+                        <div className={classes.chart}>
+                            <h4 className={classes.chartHeader}>Flux Graph</h4>
+                            <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
+                                stationary_y_line_field="stationaryFNFlux"
+                                stationary_high_interval="stationaryFNFluxHigh"
+                                stationary_low_interval="stationaryFNFluxLow"
+                                non_stationary_y_line_field="nonStationaryFNFlux"
+                                non_stationary_high_interval="nonStationaryFNFluxHigh"
+                                non_stationary_low_interval="nonStationaryFNFluxLow"
+                                y_scatter_field="stationaryFluxDay"
+                                y_label="Flux in 10^6 kg/yr"
+                                x_label='Years'
+                                title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
+                        </div>}
+                            <br />
+                            {data &&
+                        <div className={classes.chart}>
+                            <h4 className={classes.chartHeader}>Concentration Graph</h4>
+                            <SummaryGraph graph_data={data.concentration} width={350} height={330} startAtZero={false}
+                                stationary_y_line_field="stationaryFNConc"
+                                stationary_high_interval="stationaryFNConcHigh"
+                                stationary_low_interval="stationaryFNConcLow"
+                                non_stationary_y_line_field="nonStationaryFNConc"
+                                non_stationary_high_interval="nonStationaryFNConcHigh"
+                                non_stationary_low_interval="nonStationaryFNConcLow"
+                                y_scatter_field="stationaryConcDay"
+                                y_label="Concentration in mg/L"
+                                x_label='Years'
+                                title="Mean (dots) & Flow-Normalized (line) Concentration " />
+                        </div>}
+                        </div>
+                    </>)}
                 <br />
-                {data &&
-                    <div className={classes.chart}>
-                        <h4 className={classes.chartHeader}>Concentration Graph</h4>
-                        <SummaryGraph graph_data={data.concentration} width={350} height={330} startAtZero={false}
-                            stationary_y_line_field="stationaryFNConc"
-                            stationary_high_interval="stationaryFNConcHigh"
-                            stationary_low_interval="stationaryFNConcLow"
-                            non_stationary_y_line_field="nonStationaryFNConc"
-                            non_stationary_high_interval="nonStationaryFNConcHigh"
-                            non_stationary_low_interval="nonStationaryFNConcLow"
-                            y_scatter_field="stationaryConcDay"
-                            y_label="Concentration in mg/L"
-                            x_label='Years'
-                            title="Mean (dots) & Flow-Normalized (line) Concentration " />
-                    </div>}
             </div>
-            <br />
         </div>
     );
 };

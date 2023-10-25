@@ -393,8 +393,8 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 non_stationary_high_interval="nonStationaryFNFluxHigh"
                                 non_stationary_low_interval="nonStationaryFNFluxLow"
                                 y_scatter_field="stationaryFluxDay"
-                                y_label="Flux in 10^6 kg/yr"
-                                x_label='Years'
+                                y_label="Yearly Cumulative Flux (10^6 kg/yr)"
+                                x_label='Year'
                                 title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
                         </Box>}
 
@@ -411,8 +411,8 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 non_stationary_high_interval="nonStationaryFNConcHigh"
                                 non_stationary_low_interval="nonStationaryFNConcLow"
                                 y_scatter_field="stationaryConcDay"
-                                y_label="Concentration in mg/L"
-                                x_label='Years'
+                                y_label="Yearly Average Concentration (mg/L)"
+                                x_label='Year'
                                 title="Mean (dots) & Flow-Normalized (line) Concentration " />
                         </Box>}
                         </div>

@@ -389,7 +389,7 @@ const Summary = () => {
             const selectedStyle = new Style({
                 stroke: new Stroke({
                     color: 'yellow',
-                    width: 1
+                    width: 3
                 }),
                 fill: new Fill({
                     color: 'rgba(0, 0, 0, 0.1)'
@@ -417,7 +417,7 @@ const Summary = () => {
                 .getSource()
                 .getFeatures()
                 .find(
-                    (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                    (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
                 );
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);

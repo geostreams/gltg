@@ -5,6 +5,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
+import IconButton from '@material-ui/core/IconButton';
 import trendStationsData_30years from '../../data/trend_station_data_30years.json';
 import trendStationsData_20years from '../../data/trend_station_data_20years.json';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
@@ -13,7 +14,6 @@ import HighDownwardTrendIcon from '../../images/Highly_Downward_Trending_Icon.pn
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import SummaryGraph from './SummaryGraph';
-import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
     sidebarBody: {
@@ -170,7 +170,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
     const infoDialog = (
         <Dialog open={openInfoDialog} onClose={() => {setOpenInfoDialog(false);}}>
 
-            <DialogTitle>Map Information</DialogTitle>
+            <DialogTitle>Trend Information</DialogTitle>
             <IconButton
                 className={classes.dialogCloseButton}
                 onClick={() => setOpenInfoDialog(false)}
@@ -179,7 +179,24 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
             </IconButton>
             <DialogContent>
                 <DialogContentText>
-                    This map shows the trends in nutrient concentrations and fluxes in the Chesapeake Bay watershed. The trends are based on the results of the <a href="https://www.usgs.gov/mission-areas/water-resources/science/chesapeake-bay-nutrient-and-sediment-trends-assessment">Chesapeake Bay Nutrient and Sediment Trends Assessment</a> (NSA) conducted by the USGS. The NSA is a long-term study that began in 1985 and is designed to assess the effectiveness of nutrient management actions in the Chesapeake Bay watershed. The NSA uses data from 100+ monitoring stations in the watershed to assess trends in nutrient concentrations and fluxes. The trends are based on the <a href="https://www.usgs.gov/mission-areas/water-resources/science/chesapeake-bay-nutrient-and-sediment-trends-assessment">USGS Weighted Regressions on Time, Discharge, and Season (WRTDS)</a> model.
+                    <div>
+                        <p>
+                            The symbols used are similar to those used by the <a href="https://nawqatrends.wim.usgs.gov/swtrends/" target="_blank" rel="noreferrer"><strong>USGS Water-Quality Changes in the Nation’s Streams and Rivers</strong></a> website.
+                        </p>
+                        <br />
+                        <p>
+                            A likelihood-based approach was used to report these trend results. When the trend is "likely up" or "likely down", the trend likelihood value associated with the trend is between 0.85 and 1.0 -- in other words, the chance of the trend occurring in the specified direction is at least an 85 out of 100. When the trend is "somewhat likely up" or "somewhat likely down", the trend likelihood value associated with the trend is between 0.7 and 0.85 -- in other words, the chance of the trend occurring in the specified direction is between 70 and 85 out of 100. When the trend is "about as likely as not", the trend likelihood value associated with the trend is less than 0.7 -- in other words, the chance of the trend being either upward or downward is less than 70 out of 100.
+                        </p>
+                        <br />
+                        <p>
+                            This likelihood-based approach is used as an alternative to the null-hypothesis significance testing (NHST) approach that is often used when reporting water-quality trends. The likelihood-based approach gives people more intuitive information on the certainty of a trend estimate, and provides more evidence of a growing problem or initial clean-up successes. Consider an example where the chance of an upward trend in nitrate concentrations at a site is 80 out of 100 (a trend likelihood value of 0.80). Using the NHST approach and a traditional alpha value of either 0.05 or 0.1, the trend would be reported as nonsignificant. Using the likelihood-based approach, the trend would be reported instead as "somewhat likely up". The NHST approach could lead to a false sense of security because it indicates that there isn't strong proof of a growing problem. The likelihood-based approach indicates instead that it is somewhat likely conditions in the stream are not improving, giving people more information to use when making decisions about watershed management.
+                        </p>
+                        <br />
+                        <p>
+                            For more information on the philosophy of the likelihood-based approach, please see Hirsch and others (2015), "A bootstrap method for estimating uncertainty of water quality trends", at <a href="http://dx.doi.org/10.1016/j.envsoft.2015.07.017" target="_blank" rel="noreferrer">http://dx.doi.org/10.1016/j.envsoft.2015.07.017</a>. Trend likelihood values for nutrients, sediment, salinity, major ions, and carbon were determined using the bootstrap approach in that same report. Trend likelihood values for pesticides and aquatic ecology metrics were determined using the p-value reported from their respective trend tests, using the equation 1-(p-value/2). See Vecchia and others (2008), "Modeling Variability and Trends in Pesticide Concentrations in Streams", at <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf" target="_blank" rel="noreferrer">http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf</a> for more information on calculating p-values in the pesticide models. See Oelsner, G.P., Sprague, L.A., Murphy, J.C., Zuellig, R.E., Johnson, H.M., Ryberg, K.R.,...
+                        </p>
+                    </div>
+
                 </DialogContentText>
             </DialogContent>
         </Dialog>
@@ -281,7 +298,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 >
                                     Trend Results
                                     <InfoIcon className={classes.infoIcon}
-                                    onClick={() => setOpenInfoDialog(true) }
+                                        onClick={() => setOpenInfoDialog(true) }
                                     />
                                 </Typography>
                                
@@ -294,7 +311,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="High Upward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Highly Likely Upward (90% - 100%) </span>
+                                    <span>Highly Likely Upward (90% - 100%)<sup>*</sup></span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
@@ -302,7 +319,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="Upward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Likely Upward (66% - 90%)</span>
+                                    <span>Likely Upward (66% - 90%)<sup>*</sup></span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
@@ -310,7 +327,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="No Significant Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>No Significant Trend (33% - 66%)</span>
+                                    <span>No Significant Trend (33% - 66%)<sup>*</sup></span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
@@ -318,7 +335,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="Downward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Likely Downward(10% - 33%)</span>
+                                    <span>Likely Downward (10% - 33%)<sup>*</sup></span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
@@ -326,7 +343,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="High Downward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Highly Likely Downward(0% - 10%) </span>
+                                    <span>Highly Likely Downward (0% - 10%)<sup>*</sup> </span>
                                 </div>
                                 <div className={classes.legendFooter}>
                                     <span>
@@ -346,7 +363,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 className={classes.headerText}
                                 variant="h6"
                             >
-                                Station Name:
+                                Water Quality Station Name:
                             </Typography>
                             <IconButton
                                 className={classes.backButton}

@@ -336,7 +336,7 @@ const Summary = () => {
                             alt="Downward Trend Icon"
                             className={classes.legendIcon}
                         />
-                        <span>Likely Downward(10% - 33%)</span>
+                        <span>Likely Downward (10% - 33%)</span>
                     </div>
                     <div className={classes.legendItem}>
                         <img
@@ -344,7 +344,7 @@ const Summary = () => {
                             alt="High Downward Trend Icon"
                             className={classes.legendIcon}
                         />
-                        <span>Highly Likely Downward(0% - 10%) </span>
+                        <span>Highly Likely Downward (0% - 10%) </span>
                     </div>
                 </div>
             </div>

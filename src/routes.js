@@ -20,7 +20,6 @@ import BMP from './containers/BMP';
 import Summary from './containers/Summary';
 import Tests from './tests/Tests';
 import Partners from './containers/Partners';
-import NewSummary from './containers/NewSummary';
 
 const routes = Object.assign(
     coreRoutes,
@@ -35,8 +34,7 @@ const routes = Object.assign(
         '/explore/:stations': { component: hocs.withLayout(GLTGLayout, GeoStreamingExplore), exact: true },
         '/search': { component: hocs.withLayout(GLTGLayout, __old_Search), exact: true },
         '/analysis': { component: hocs.withLayout(GLTGLayout, __old_Analysis), exact: true },
-        '/bmp': { component: hocs.withLayout(GLTGLayout, BMP), exact: true },
-        '/newsummary': { component: hocs.withLayout(GLTGLayout, NewSummary, { hasFooter: true, stickyFooter: true }) }
+        '/bmp': { component: hocs.withLayout(GLTGLayout, BMP), exact: true }
     }
 );
 

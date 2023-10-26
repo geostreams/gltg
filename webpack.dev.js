@@ -24,9 +24,10 @@ module.exports = webpackMerge.merge(commonConfig, {
         new BundleAnalyzerPlugin({ openAnalyzer: false, analyzerPort: 5050 }),
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"',
-            'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://gltg-geoserver.ncsa.illinois.edu/geoserver'),
+            'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://greatlakestogulf.org/geoserver'),
             'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || 'https://greatlakestogulf.org/geostreams'),
-            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://gltg-apps-dev.ncsa.illinois.edu/bmp-api')
+            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://greatlakestogulf.org/bmp-api')
+
         })
     ]
 });

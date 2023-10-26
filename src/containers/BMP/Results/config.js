@@ -4,7 +4,6 @@ import { entries } from '@geostreams/core/src/utils/array';
 import ProgramsCount, { config as programsCountConfig } from './ProgramsCount';
 import ProgramsFunding, { config as programsFundingConfig } from './ProgramsFunding';
 import ProgramsAreaTreated, { config as programsAreaTreatedConfig } from './ProgramsAreaTreated';
-import NutrientReduction, { config as nutrientReductionConfig } from './NutrientReduction';
 import TopPracticesByArea, { config as topPracticesByAreaConfig } from './TopPracticesByArea';
 
 import type { Filters, QueryParams } from '../flowtype';
@@ -21,10 +20,6 @@ export const RESULTS = {
     programsAreaTreated: {
         component: ProgramsAreaTreated,
         config: programsAreaTreatedConfig
-    },
-    nutrientReduction: {
-        component: NutrientReduction,
-        config: nutrientReductionConfig
     },
     topPracticesByArea: {
         component: TopPracticesByArea,

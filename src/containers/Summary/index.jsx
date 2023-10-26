@@ -445,8 +445,9 @@ const Summary = () => {
                 <Grid className={classes.fillContainer} item xs={7}>
                     <Map
                         className={classes.fillContainer}
-                        zoom={6}
-                        minZoom={4}
+                        zoom={4}
+                        maxZoom={10}
+                        minZoom={2}
                         extent={MAP_BOUNDS}
                         center={[-9972968, 4972295]}
                         layers={Object.values(layers)}

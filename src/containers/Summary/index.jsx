@@ -1,62 +1,35 @@
-// @flow
-import * as React from 'react';
-import { format } from 'd3';
-import {
-    Container,
-    Grid,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    Typography,
-    withStyles
-} from '@material-ui/core';
-import DownTrendIcon from '@material-ui/icons/ArrowDropDown';
-import UpTrendIcon from '@material-ui/icons/ArrowDropUp';
-import FlatTrendIcon from '@material-ui/icons/FiberManualRecord';
-import Control from '@geostreams/core/src/components/ol/Control';
-import { createEmpty as createEmptyExtent, extend as extendExtent } from 'ol/extent';
-import GeoJSON from 'ol/format/GeoJSON';
-import GroupLayer from 'ol/layer/Group';
-import ImageLayer from 'ol/layer/Image';
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import TileLayer from 'ol/layer/Tile';
-import VectorLayer from 'ol/layer/Vector';
-import ImageWMSSource from 'ol/source/ImageWMS';
-import OSM, { ATTRIBUTION as OSM_ATTRIBUTION } from 'ol/source/OSM';
-import VectorSource from 'ol/source/Vector';
+import GroupLayer from 'ol/layer/Group';
 import XYZ from 'ol/source/XYZ';
-import { decode } from 'geobuf';
-import Pbf from 'pbf';
-import { Map, BaseControlPortal } from '@geostreams/core/src/components/ol';
-import { entries } from '@geostreams/core/src/utils/array';
-import { SLRSlope } from '@geostreams/core/src/utils/math';
-
-import type {
-    Feature as FeatureType,
-    Map as MapType,
-    MapBrowserEventType
-} from 'ol';
-import type { Layer as LayerType } from 'ol/layer';
-
-import annualYieldData from '../../data/annual_yield.json';
-import overallData from '../../data/overall_data.json';
-import { HEADERS_HEIGHT } from '../Layout/Header';
-
+import OSM, { ATTRIBUTION as OSM_ATTRIBUTION } from 'ol/source/OSM';
+import { Map } from '@geostreams/core/src/components/ol';
+import { makeStyles } from '@material-ui/core/styles';
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
+import GeoJSON from 'ol/format/GeoJSON';
+import { Circle, Stroke, Icon } from 'ol/style';
+import Fill from 'ol/style/Fill';
+import Style from 'ol/style/Style';
+import { TileWMS } from 'ol/source';
+import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
+import HighUpwardTrendIcon from '../../images/Highly_Upward_Trending_Icon.png';
+import HighDownwardTrendIcon from '../../images/Highly_Downward_Trending_Icon.png';
+import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
+import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+import MapLegendIcon from '../../images/Map_Legend_Icon.png';
+import { GEOSERVER_URL, MAP_BOUNDS } from './config';
+import trendStationsJSON_30years from '../../data/trend_stations_30_years.geojson';
+import trendStationsJSON_20years from '../../data/trend_stations.geojson';
+import waterShedsJSON from '../../data/trend_watersheds.geojson';
 import Sidebar from './Sidebar';
-import {
-    CONTEXTUAL_LAYERS,
-    MAP_BOUNDS,
-    BOUNDARIES,
-    GEOSERVER_URL,
-    getLayerExtent,
-    getOverallFeatureLabels,
-    getFeatureStyle,
-    initialState
-} from './config';
 
-const styles = {
-    main: {
-        height: `calc(100% - ${HEADERS_HEIGHT}px)`
+// Styling for different components of Summary Dashboard
+const useStyles = makeStyles((theme) => ({
+    fillContainer: {
+        width: '100%',
+        height: '100%'
     },
     mainContainer: {
         position: 'absolute',
@@ -64,523 +37,450 @@ const styles = {
     },
     sidebar: {
         'height': '100%',
+        'width': '100%',
         'overflowY': 'auto',
+        'overflowX': 'clip',
         '& a': {
             color: '#0D73C5'
         }
     },
-    fillContainer: {
-        width: '100%',
-        height: '100%'
+    legend:{
+        position: 'absolute',
+        bottom: '8.25%',
+        right: '42%',
+        backgroundColor: 'white',
+        padding: '1%',
+        borderRadius: '5%',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+        opacity: 0.8,
+        zIndex: 1000 // Added z-index here
     },
-    trendIcon: {
-        'fontSize': 18,
-        '&.red': {
-            color: '#ff0000'
-        },
-        '&.blue': {
-            color: '#1e90ff'
-        },
-        '&.black': {
-            color: '#000'
-        }
-    },
-    boundaryInfoControl: {
-        top: '0.5em',
-        left: '3em',
-        background: '#fff',
-        border: '2px solid #aaa',
-        paddingTop: 10
-    },
-    legendControl: {
-        bottom: '0.5em',
-        left: '0.5em',
-        background: '#fff',
-        border: '2px solid #aaa'
+    legendButton: {
+        position: 'absolute',
+        bottom: '5%',
+        right: '42.25%',
+        width: '2.25em',
+        height: '2.25m',
+        backgroundColor: '#a0cdf4',
+        borderRadius: '10%',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+        opacity: 0.8,
+        zIndex: 1000,
+        border: 'none',
+        padding: 0,
+        outline: 'none',
+        cursor: 'pointer'
     },
     legendItem: {
-        padding: '0 8px'
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: '0.2em'
     },
-    legendItemIcon: {
-        minWidth: 25
+    legendIcon: {
+        width: '1.75em',
+        height: 'auto',
+        marginRight: theme.spacing(1)
+    },
+    legendContainer: {
+    // centre items in the legend
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        marginBottom: theme.spacing(1)
+    },
+    legendCloseButton: {
+        position: 'absolute',
+        top: theme.spacing(1),
+        right: theme.spacing(1)
+    },
+    dialogCloseButton:{
+        position: 'absolute',
+        top: theme.spacing(1),
+        right: theme.spacing(1)
     }
+
+}));
+
+const renderIcon = (feature) => {
+    if (
+        feature.get('significance_concent') ===
+      'Upward trend in concentration is very likely' ||
+    feature.get('significance_concent') ===
+      'Upward trend in concentration is highly likely' ||
+    feature.get('significance_flux') ===
+      'Upward trend in flux is very likely' ||
+    feature.get('significance_flux') === 'Upward trend in flux is highly likely'
+    ) {
+        return new Style({
+            image: new Icon({
+                src: HighUpwardTrendIcon,
+                scale: 0.75
+            })
+        });
+    }
+    if (
+        (feature.get('significance_concent') ===
+      'Downward trend in concentration is very likely' ||
+      feature.get('significance_concent') ===
+        'Downward trend in concentration is highly likely') &&
+    (feature.get('significance_flux') ===
+      'Downward trend in flux is very likely' ||
+      feature.get('significance_flux') ===
+        'Downward trend in flux is highly likely')
+    ) {
+        return new Style({
+            image: new Icon({
+                src: HighDownwardTrendIcon,
+                scale: 0.75
+            })
+        });
+    }
+    if (
+        feature.get('significance_concent') ===
+      'Upward trend in concentration is likely' ||
+    feature.get('significance_flux') === 'Upward trend in flux is likely'
+    ) {
+        return new Style({
+            image: new Icon({
+                src: UpwardTrendIcon,
+                scale: 0.75
+            })
+        });
+    }
+    if (
+        feature.get('significance_concent') ===
+      'Downward trend in concentration is likely' &&
+    feature.get('significance_flux') === 'Downward trend in flux is likely'
+    ) {
+        return new Style({
+            image: new Icon({
+                src: DownwardTrendIcon,
+                scale: 0.75
+            })
+        });
+    }
+    return new Style({
+        image: new Icon({
+            src: NoSignificantTrendIcon,
+            scale: 0.75
+        })
+    });
 };
 
-type Props = {
-    classes: {
-        main: string;
-        mainContainer: string;
-        sidebar: string;
-        fillContainer: string;
-        trendIcon: string;
-        boundaryInfoControl: string;
-        legendControl: string;
-        legendItem: string;
-        legendItemIcon: string;
-    }
-}
+const renderWaterSheds = () => {
+    const style = new Style({
+        stroke: new Stroke({
+            color: 'rgba(0, 0, 0, 0)', // Transparent color
+            width: 0 // No stroke width
+        }),
+        fill: new Fill({
+            color: 'rgba(0, 0, 0, 0)' // Transparent fill color
+        })
+    });
+    return style;
+};
 
-type State = {
-    boundary: string;
-    featureId: string | null;
-    regionLabel: string | null;
-    selectedFeature: FeatureType | null;
-    year: number;
-    nutrient: string;
-}
+const Summary = () => {
+    const classes = useStyles();
 
-class Summary extends React.Component<Props, State> {
-    map: MapType;
+    // This state variable is used to keep track of the selected station
+    const [selectedStation, setSelectedStation] = React.useState(null);
+    const [oldSelectedStation, setOldSelectedStation] = React.useState(null);
 
-    boundaryInfoControl: Control;
+    // This state variable is used to keep track of the selected watershed
+    const [selectedWatershed, setSelectedWatershed] = React.useState(null);
+    const [oldSelectedWatershed, setOldSelectedWatershed] = React.useState(null);
 
-    legendControl: Control;
+    // State variable to keep track of sidebar inputs
+    const [selectedNutrient, setSelectedNutrient] = React.useState('Nitrogen');
+    const [selectedTimePeriod, setSelectedTimePeriod] =
+    React.useState('30_years');
 
-    layers: {
-        [key: string]: LayerType
-    };
+    // State to display dialog box
+    const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
 
-    legends: Array<{
-        layerId: string;
-        title: string;
-        url: string;
-        boundaries?: Array<string>;
-        visible: boolean;
-    }>;
+    // State variable to keep track of the JSON data
+    const [trendStationsJSON, setTrendStationsJSON] = React.useState(
+        trendStationsJSON_30years
+    );
 
-    constructor(props) {
-        super(props);
+    // State variable to make legend collapsible
+    const [legendOpen, setLegendOpen] = React.useState(false);
 
-        const [regionLabel, featureId] = getOverallFeatureLabels('drainage');
-        this.state = {
-            featureId,
-            regionLabel,
-            selectedFeature: null,
-            ...initialState
-        };
+    React.useEffect(() => {
+        if (selectedTimePeriod === '30_years') {
+            setTrendStationsJSON(trendStationsJSON_30years);
+        } else if (selectedTimePeriod === '20_years') {
+            setTrendStationsJSON(trendStationsJSON_20years);
+        }
+    }, [selectedTimePeriod]);
 
-        this.boundaryInfoControl = new Control({
-            className: this.props.classes.boundaryInfoControl
-        });
+    React.useEffect(() => {
+        setOpenInfoDialog(true);
+    }, []);
 
-        this.legendControl = new Control({
-            className: this.props.classes.legendControl
-        });
 
-        const geoJSONFormat = new GeoJSON({
-            dataProjection: 'EPSG:4326',
-            featureProjection: 'EPSG:3857'
-        });
-
-        this.legends = [];
-
-        this.layers = {
-            basemaps: new GroupLayer({
-                title: 'Base Maps',
-                layers: [
-                    new TileLayer({
-                        type: 'base',
-                        visible: true,
-                        title: 'Carto',
-                        source: new XYZ({
-                            url: 'https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
-                            attributions: [
-                                '&#169; <a href="https://www.carto.com">Carto</a>,',
-                                OSM_ATTRIBUTION
-                            ]
-                        })
-                    }),
-                    new TileLayer({
-                        type: 'base',
-                        visible: false,
-                        title: 'OSM',
-                        source: new OSM()
-                    })
-                ]
-            }),
-            contextual: new GroupLayer({
-                title: 'Layers',
-                layers: CONTEXTUAL_LAYERS.map(({ title, id, boundaries, zIndex }) => {
-                    const source = new ImageWMSSource({
-                        url: `${GEOSERVER_URL}/wms`,
-                        params: { LAYERS: id },
-                        ratio: 1,
-                        serverType: 'geoserver'
-                    });
-                    const visible = !boundaries || boundaries.indexOf(initialState.boundary) > -1;
-                    const layer = new ImageLayer({
-                        title,
-                        source,
-                        visible,
-                        zIndex
-                    });
-                    this.legends.push({
-                        layerId: layer.ol_uid,
-                        title,
-                        url: source.getLegendUrl(),
-                        boundaries,
-                        visible
-                    });
-                    return layer;
+    // This group layer contains the base map and the state boundaries layer
+    const basemaps = new GroupLayer({
+        title: 'Base Maps',
+        layers: [
+            new TileLayer({
+                type: 'base',
+                visible: true,
+                title: 'Carto',
+                source: new XYZ({
+                    url: 'https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png',
+                    attributions: [
+                        '&#169; <a href="https://www.carto.com">Carto</a>,',
+                        OSM_ATTRIBUTION
+                    ]
                 })
             }),
-            ...entries(BOUNDARIES).reduce(
-                (boundaryLayers, [name, { visible, layers }]) => {
-                    const group = new GroupLayer({
-                        layers: layers.map(({ url, style, interactive = false, zIndex = undefined }) => {
-                            const source = new VectorSource({
-                                loader: (extent) => {
-                                    const xhr = new XMLHttpRequest();
-                                    xhr.open('GET', url);
-                                    xhr.responseType = 'arraybuffer';
-                                    const onError = () => {
-                                        source.removeLoadedExtent(extent);
-                                    };
-                                    xhr.onerror = onError;
-                                    xhr.onload = () => {
-                                        if (xhr.status === 200) {
-                                            const geojson = decode(new Pbf(xhr.response));
-                                            source.addFeatures(geoJSONFormat.readFeatures(geojson));
-                                        } else {
-                                            onError();
-                                        }
-                                    };
-                                    xhr.send();
-                                },
-                                useSpatialIndex: true,
-                                format: geoJSONFormat
-                            });
-                            const layer = new VectorLayer({
-                                source,
-                                name,
-                                style: (feature, resolution) => {
-                                    const { nutrient, year } = this.state;
-                                    return style(feature, resolution, nutrient, year);
-                                }
-                            });
-                            layer.set('interactive', interactive);
-                            layer.setZIndex(zIndex);
-                            source.on(
-                                'change',
-                                () => {
-                                    if (!group.isReady && source.getState() === 'ready') {
-                                        group.isReady = true;
-                                        group.setVisible(visible);
-                                    }
-                                }
-                            );
-                            return layer;
-                        })
-                    });
-                    boundaryLayers[name] = group;
-                    return boundaryLayers;
-                },
-                {}
-            )
-        };
-    }
+            new TileLayer({
+                type: 'base',
+                visible: false,
+                title: 'OSM',
+                source: new OSM()
+            }),
+            new TileLayer({
+                source: new TileWMS({
+                    url: `${GEOSERVER_URL}/ows?`,
+                    params: { LAYERS: 'gltg:us-states', TILED: true },
+                    visible: true,
+                    serverType: 'geoserver'
+                })
+            })
+        ]
+    });
 
-    updateMap = (map) => {
-        this.map = map;
+    // This layer is the one with trendstations.
+    const trendstations = new GroupLayer({
+        title: 'Trend Stations',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Trend Stations',
+                source: new VectorSource({
+                    url: trendStationsJSON,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderIcon
+            })
+        ]
+    });
 
-        const extent = createEmptyExtent();
-        extendExtent(extent, getLayerExtent(initialState.boundary));
-        this.map.getView().fit(extent, { duration: 300 });
+    // This layer is the one with watersheds.
+    const watershedsLayer = new GroupLayer({
+        title: 'Watersheds',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Watersheds',
+                source: new VectorSource({
+                    url: waterShedsJSON,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderWaterSheds
+            })
+        ]
+    });
 
-        // change cursor when mouse is over interactive layers
-        this.map.on('pointermove', (e) => {
-            const pixel = map.getEventPixel(e.originalEvent);
-            const feature = map.forEachFeatureAtPixel(pixel, (_, layer) => {
-                return layer.get('interactive');
-            });
-            map.getTarget().style.cursor = feature ? 'pointer' : '';
-        });
-    };
+    const riversLayer = new GroupLayer({
+        title: 'Rivers',
+        layers: [
+            new TileLayer({
+                source: new TileWMS({
+                    url: `${GEOSERVER_URL}/ows?`,
+                    params: { LAYERS: 'gltg:us-rivers', TILED: true },
+                    visible: true,
+                    serverType: 'geoserver'
+                })
+            })
+        ]
+    });
 
-    handleBoundaryChange = (boundary) => {
-        const { selectedFeature } = this.state;
-        if (selectedFeature) {
-            const { nutrient, year } = this.state;
-            selectedFeature.setStyle(
-                getFeatureStyle(
-                    selectedFeature,
-                    null,
-                    nutrient,
-                    year,
-                    false
-                )
-            );
+    // Create legend for trend stations
+    const trendStationsLegend = React.useMemo(
+        () => (
+            <div>
+                <div className={classes.legendContainer}>
+                    <div className={classes.legendItem}>
+                        <img
+                            src={HighUpwardTrendIcon}
+                            alt="High Upward Trend Icon"
+                            className={classes.legendIcon}
+                        />
+                        <span>Highly Likely Upward (90% - 100%) </span>
+                    </div>
+                    <div className={classes.legendItem}>
+                        <img
+                            src={UpwardTrendIcon}
+                            alt="Upward Trend Icon"
+                            className={classes.legendIcon}
+                        />
+                        <span>Likely Upward (66% - 90%)</span>
+                    </div>
+                    <div className={classes.legendItem}>
+                        <img
+                            src={NoSignificantTrendIcon}
+                            alt="No Significant Trend Icon"
+                            className={classes.legendIcon}
+                        />
+                        <span>No Significant Trend (33% - 66%)</span>
+                    </div>
+                    <div className={classes.legendItem}>
+                        <img
+                            src={DownwardTrendIcon}
+                            alt="Downward Trend Icon"
+                            className={classes.legendIcon}
+                        />
+                        <span>Likely Downward (10% - 33%)</span>
+                    </div>
+                    <div className={classes.legendItem}>
+                        <img
+                            src={HighDownwardTrendIcon}
+                            alt="High Downward Trend Icon"
+                            className={classes.legendIcon}
+                        />
+                        <span>Highly Likely Downward (0% - 10%) </span>
+                    </div>
+                </div>
+            </div>
+        ),
+        []
+    );
+
+    // Set styling for selected station
+    React.useEffect(() => {
+    // This is the interaction to set style for the selected station
+        if (oldSelectedStation !== selectedStation) {
+            if (oldSelectedStation) {
+                oldSelectedStation.setStyle(renderIcon);
+            }
         }
-        this.layers[this.state.boundary].setVisible(false);
 
-        this.layers[boundary].setVisible(true);
-        const extent = createEmptyExtent();
-        extendExtent(extent, getLayerExtent(boundary));
-        this.map.getView().fit(extent, { duration: 300 });
+        if (selectedStation) {
+            const selectedStyle = new Style({
+                image: new Circle({
+                    radius: 8,
+                    fill: new Fill({ color: 'rgba(0, 0, 255, 0.5)' }),
+                    stroke: new Stroke({ color: 'blue', width: 1 })
+                })
+            });
 
-        this.legends.forEach((legend) => {
-            const { layerId, boundaries } = legend;
-            const layer = this.layers.contextual.getLayersArray().find(({ ol_uid }) => ol_uid === layerId);
-            const visible = !boundaries || boundaries.indexOf(boundary) > -1;
-            layer.setVisible(visible);
-            legend.visible = visible;
-        });
+            selectedStation.setStyle(selectedStyle);
+        }
+        setOldSelectedStation(selectedStation);
+    }, [selectedStation]);
 
-        const [regionLabel, featureId] = getOverallFeatureLabels(boundary);
-        this.setState({ boundary, featureId, regionLabel, selectedFeature: null });
-    };
-
-    handleVariableChange = (value, variable) => {
-        this.setState(
-            { [variable]: value },
-            () => {
-                this.layers[this.state.boundary].getLayers().forEach((layer) => layer.changed());
-                const { selectedFeature } = this.state;
-                if (selectedFeature) {
-                    const { nutrient, year } = this.state;
-                    selectedFeature.setStyle(
-                        getFeatureStyle(
-                            selectedFeature,
-                            null,
-                            nutrient,
-                            year,
-                            true
-                        )
-                    );
-                }
+    // Set styling for selected watershed
+    React.useEffect(() => {
+    // This is the interaction to set style for the selected watershed
+        if (oldSelectedWatershed !== selectedWatershed) {
+            if (oldSelectedWatershed) {
+                oldSelectedWatershed.setStyle(renderWaterSheds);
             }
-        );
-    };
+        }
 
-    handleMapClick = (event: MapBrowserEventType) => {
-        const {
-            featureId: previousFeatureId,
-            selectedFeature: previousFeature
-        } = this.state;
+        if (selectedWatershed) {
+            // Remove feature and add feature back to the map to make sure it is on top of the other layers
+            const selectedStyle = new Style({
+                stroke: new Stroke({
+                    color: 'yellow',
+                    width: 3
+                }),
+                fill: new Fill({
+                    color: 'rgba(0, 0, 0, 0.1)'
+                })
+            });
 
-        const clickedStationId = event.map.forEachFeatureAtPixel(
-            event.pixel,
-            (feature, layer) => {
-                if (layer.get('interactive')) {
-                    return feature.get('Station_ID');
-                }
-                return false;
-            }
-        );
+            selectedWatershed.setStyle(selectedStyle);
+        }
+        setOldSelectedWatershed(selectedWatershed);
+    }, [selectedWatershed]);
+
+    // Interaction when you click on a trend station
+    const handleMapClick = (event) => {
         const selectedFeature = event.map.forEachFeatureAtPixel(
             event.pixel,
-            (feature) => {
-                if (feature.get('Station_ID') === clickedStationId && feature.getGeometry().getType().indexOf('Polygon') > -1) {
-                    return feature;
-                }
-                return false;
-            },
-            {
-                hitTolerance: 10
-            }
+            (feature) => feature
         );
-
-        if (selectedFeature) {
-            const { boundary, nutrient, year } = this.state;
-            const [regionLabel, overallFeatureId] = getOverallFeatureLabels(boundary);
-            if (previousFeatureId !== overallFeatureId && previousFeature) {
-                previousFeature.setStyle(
-                    getFeatureStyle(
-                        previousFeature,
-                        null,
-                        nutrient,
-                        year,
-                        false
-                    )
+        // Get correspoding watershed by COMID if the selected feature is a trend station
+        if (
+            selectedFeature &&
+      selectedFeature.getGeometry().getType() === 'Point'
+        ) {
+            const correspondingWatershed = watershedsLayer
+                .getLayersArray()[0]
+                .getSource()
+                .getFeatures()
+                .find(
+                    (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
                 );
-            }
-
-            const featureId = selectedFeature.get('Name') || selectedFeature.get('Station_ID');
-            if (featureId !== previousFeatureId) {
-                // Feature is selected
-                selectedFeature.setStyle(getFeatureStyle(
-                    selectedFeature,
-                    null,
-                    nutrient,
-                    year,
-                    true
-                ));
-                this.setState({ featureId, selectedFeature });
-            } else {
-                // Feature is deselected
-                this.setState({ featureId: overallFeatureId, regionLabel, selectedFeature: null });
-            }
-        }
-    };
-
-    getNutrientTrend = (nutrient: string, featureName: string): number => {
-        const x = [];
-        const y = [];
-        Object.entries(annualYieldData[nutrient][featureName]).forEach(([year, value]) => {
-            x.push(parseInt(year, 10));
-            y.push(parseFloat(value));
-        });
-        return SLRSlope(x, y) || 0;
-    };
-
-    getTrends = (featureName: string) => {
-        const classes = this.props.classes;
-        const nitrogenTrend = this.getNutrientTrend('Nitrogen', featureName);
-        const phosphorusTrend = this.getNutrientTrend('Phosphorus', featureName);
-        return [['Nitrogen', nitrogenTrend], ['Phosphorus', phosphorusTrend]].map(([nutrient, trend]) => {
-            let Icon;
-            let color;
-            if (trend > 0) {
-                Icon = UpTrendIcon;
-                color = 'red';
-            } else if (trend < 0) {
-                Icon = DownTrendIcon;
-                color = 'blue';
-            } else {
-                Icon = FlatTrendIcon;
-                color = 'black';
-            }
-            return (
-                <>
-                    <br />
-                    <span>
-                        {nutrient} Trend
-                        <Icon className={`${classes.trendIcon} ${color}`} />
-                    </span>
-                </>
-            );
-        });
-    };
-
-    getBoundaryInfoContent = () => {
-        const { selectedFeature, boundary } = this.state;
-        let featureName;
-        let contributingWaterways;
-        let cumulativeAcres;
-
-        if (selectedFeature) {
-            featureName = selectedFeature.get('Name') || selectedFeature.get('Station_ID');
-            const featureProps = selectedFeature.getProperties();
-            contributingWaterways = featureProps.contributing_waterways;
-            cumulativeAcres = featureProps.cumulative_acres;
+            setSelectedStation(selectedFeature);
+            setSelectedWatershed(correspondingWatershed);
         } else {
-            featureName = getOverallFeatureLabels(boundary).join(' - ');
-            contributingWaterways = overallData[boundary].contributing_waterways;
-            cumulativeAcres = overallData[boundary].cumulative_acres;
+            setSelectedStation(null);
+            setSelectedWatershed(null);
         }
-
-        return (
-            <>
-                <Typography variant="subtitle2" gutterBottom>
-                    <span><b>{featureName}</b></span>
-                </Typography>
-                <Typography variant="caption">
-                    {contributingWaterways ?
-                        <span>{format(',')(contributingWaterways)} Contributing Waterways</span> :
-                        null}
-                    <br />
-                    {cumulativeAcres ?
-                        <span>{format(',')(cumulativeAcres)} Cumulative Acres</span> :
-                        null}
-                </Typography>
-            </>
-        );
     };
 
-    render() {
-        const { classes } = this.props;
-        const {
-            boundary,
-            regionLabel,
-            featureId,
-            nutrient,
-            year
-        } = this.state;
+    const layers = {
+        basemaps,
+        riversLayer,
+        watershedsLayer,
+        trendstations
+    };
 
-        return (
-            <Grid
-                className={classes.mainContainer}
-                container
-                alignItems="stretch"
-            >
-                <Grid
-                    className="fillContainer"
-                    item
-                    xs={8}
-                >
+    const removeSelectedStation = () => {
+        setSelectedStation(null);
+        setSelectedWatershed(null);
+    };
+
+    return (
+        <>
+            <Grid className={classes.mainContainer} container alignItems="stretch">
+                <Grid className={classes.fillContainer} item xs={7}>
                     <Map
-                        className="fillContainer"
-                        zoom={7}
-                        minZoom={5}
+                        className={classes.fillContainer}
+                        zoom={6}
+                        minZoom={4}
                         extent={MAP_BOUNDS}
                         center={[-9972968, 4972295]}
-                        controls={[this.boundaryInfoControl, this.legendControl]}
-                        layers={Object.values(this.layers)}
-                        legends={this.legends}
-                        layerSwitcherOptions={{
-                            onShow: () => {
-                                this.legends.forEach((legend) => {
-                                    const { title, visible } = legend;
-                                    document.querySelectorAll('.layer-switcher li.layer').forEach((el) => {
-                                        if (el.innerText === title) {
-                                            if (visible) {
-                                                el.classList.remove('hidden');
-                                            } else {
-                                                el.classList.add('hidden');
-                                            }
-                                        }
-                                    });
-                                });
-                            }
-                        }}
-                        updateMap={this.updateMap}
+                        layers={Object.values(layers)}
                         events={{
-                            click: this.handleMapClick
+                            click: handleMapClick
                         }}
+                        layerSwitcherOptions={{}}
                     >
-                        <BaseControlPortal el={this.boundaryInfoControl.element}>
-                            <Container>{this.getBoundaryInfoContent()}</Container>
-                        </BaseControlPortal>
+                        <button onClick={() => setLegendOpen(!legendOpen)} className={classes.legendButton}>
+                            <img src={MapLegendIcon} alt="Map Legend Icon" style={{ width: '100%', height: '100%', display: 'block' }} />
+                        </button>
 
-                        <BaseControlPortal el={this.legendControl.element}>
-                            <List dense disablePadding>
-                                {this.legends.map(({ title, url, visible }) => (
-                                    visible ?
-                                        <ListItem
-                                            key={title}
-                                            classes={{
-                                                root: classes.legendItem
-                                            }}
-                                        >
-                                            <ListItemIcon classes={{ root: classes.legendItemIcon }}>
-                                                <img src={url} alt={title} />
-                                            </ListItemIcon>
-                                            <ListItemText primary={title} />
-                                        </ListItem> :
-                                        null
-                                ))}
-                            </List>
-                        </BaseControlPortal>
+                        {legendOpen && (
+                            <div
+                                className={classes.legend}
+                            >
+                                {trendStationsLegend}
+                            </div>
+                        )}
                     </Map>
                 </Grid>
-                <Grid
-                    className={classes.sidebar}
-                    item
-                    xs={4}
-                >
+                <Grid className={classes.sidebar} item xs={5}>
                     <Sidebar
-                        regionLabel={regionLabel}
-                        featureId={featureId}
-                        selectedBoundary={boundary}
-                        selectedNutrient={nutrient}
-                        selectedYear={year}
-                        handleBoundaryChange={this.handleBoundaryChange}
-                        handleVariableChange={this.handleVariableChange}
+                        stationData={selectedStation ? selectedStation.values_ : null}
+                        selectedNutrient={selectedNutrient}
+                        setSelectedNutrient={setSelectedNutrient}
+                        selectedTimePeriod={selectedTimePeriod}
+                        setSelectedTimePeriod={setSelectedTimePeriod}
+                        removeSelectedStation={removeSelectedStation}
                     />
                 </Grid>
             </Grid>
-        );
-    }
-}
+        </>
+    );
+};
 
-export default withStyles(styles)(Summary);
+export default Summary;

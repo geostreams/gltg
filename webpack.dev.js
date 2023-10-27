@@ -27,6 +27,7 @@ module.exports = webpackMerge.merge(commonConfig, {
             'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://greatlakestogulf.org/geoserver'),
             'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || 'https://greatlakestogulf.org/geostreams'),
             'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://greatlakestogulf.org/bmp-api')
+
         })
     ]
 });

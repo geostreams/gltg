@@ -65,7 +65,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                             y: {
                                 field: stationary_y_line_field,
                                 type: 'quantitative',
-                                axis: { title: y_label, format: 's' }
+                                axis: { title: y_label, format: '.2f' }
                             },
                             color: { value: '#90EE90' }
                         }
@@ -101,7 +101,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                             y: {
                                 field: stationary_low_interval,
                                 type: 'quantitative',
-                                axis: { title: y_label, format: 's' }
+                                axis: { title: y_label, format: '.2f' }
                             },
                             color: { value: '#90EE90' },
                             strokeDash: { value: [5, 5] },
@@ -120,7 +120,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                             y: {
                                 field: non_stationary_y_line_field,
                                 type: 'quantitative',
-                                axis: { title: y_label, format: 's' }
+                                axis: { title: y_label, format: '.2f' }
                             },
                             color: { value: 'red' }
                         }
@@ -137,7 +137,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                             y: {
                                 field: non_stationary_high_interval,
                                 type: 'quantitative',
-                                axis: { title: y_label, format: 's' }
+                                axis: { title: y_label, format: '.2f' }
                             },
                             color: { value: 'red' },
                             strokeDash: { value: [5, 5] },
@@ -156,7 +156,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                             y: {
                                 field: non_stationary_low_interval,
                                 type: 'quantitative',
-                                axis: { title: y_label, format: 's' }
+                                axis: { title: y_label, format: '.2f' }
                             },
                             color: { value: 'red' },
                             strokeDash: { value: [5, 5] },

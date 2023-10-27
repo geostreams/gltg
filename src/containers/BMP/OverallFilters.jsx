@@ -141,7 +141,11 @@ const OverallFilters = ({ setParameterString }) => {
       </p>
     </>
   );
-
+  React.useEffect(() => {
+    if (fundingAgency === "csp") {
+      setSelectedFunding(false);
+    }
+  }, [fundingAgency]);
   React.useEffect(() => {
     let urlEndPoint = "gltg:";
 
@@ -234,29 +238,6 @@ const OverallFilters = ({ setParameterString }) => {
           </RadioGroup>
           <br />
           <Typography variant="h6">Select Boundary</Typography>
-          {/* <ToggleButtonGroup
-                        value={selectedStateBoundary}
-                        exclusive
-                        onChange={(event, value) => setSelectedStateBoundary(value)}
-                        className={classes.boundaryToggleContainer}
-                    >
-                        <ToggleButton
-                            value
-                            className={`${classes.boundaryToggleGroup} ${
-                                selectedStateBoundary ? classes.boundaryToggleGroupSelected : ''
-                            }`}
-                        >
-            State
-                        </ToggleButton>
-                        <ToggleButton
-                            value={false}
-                            className={`${classes.boundaryToggleGroup} ${
-                                !selectedStateBoundary ? classes.boundaryToggleGroupSelected : ''
-                            }`}
-                        >
-            HUC8
-                        </ToggleButton>
-                    </ToggleButtonGroup> */}
           <RadioGroup
             aria-label="boundary"
             name="boundary"
@@ -290,31 +271,6 @@ const OverallFilters = ({ setParameterString }) => {
               }}
             />
           </Typography>
-          {/* <ToggleButtonGroup
-            value={selectedFunding}
-            disabled={fundingAgency === "CSP"}
-            exclusive
-            onChange={(event, value) => setSelectedFunding(value)}
-            className={classes.boundaryToggleContainer}
-          >
-            <ToggleButton
-              value
-              disabled={fundingAgency === "CSP"}
-              className={`${classes.boundaryToggleGroup} ${
-                selectedFunding ? classes.boundaryToggleGroupSelected : ""
-              }`}
-            >
-              Funding
-            </ToggleButton>
-            <ToggleButton
-              value={false}
-              className={`${classes.boundaryToggleGroup} ${
-                !selectedFunding ? classes.boundaryToggleGroupSelected : ""
-              }`}
-            >
-              Program Count
-            </ToggleButton>
-          </ToggleButtonGroup> */}
           <RadioGroup
             aria-label="funding-type"
             name="funding-type"

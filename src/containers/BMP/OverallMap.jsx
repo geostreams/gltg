@@ -12,7 +12,12 @@ const generateUrlParameters = (inputString) => {
   const lastUnderscoreIndex = inputString.lastIndexOf("_");
   if (lastUnderscoreIndex === -1) return defaultParam;
 
-  return inputString.slice(0, lastUnderscoreIndex);
+  inputString =  inputString.slice(0, lastUnderscoreIndex);
+  // If string ends with all, replace with all_years
+  if (inputString.endsWith("_all")) {
+    inputString = inputString.replace("_all", "_all_years");
+  }
+  return inputString
 };
 
 const generateStyleUrl = (urlParameters, inputString) => {
@@ -23,12 +28,24 @@ const generateStyleUrl = (urlParameters, inputString) => {
   const lastPart = inputString.slice(lastUnderscoreIndex + 1);
   let mainPart = urlParameters.split(":")[1];
   let parts = mainPart.split("_");
-  
-  if (parts[2] === "EPA") {
-    return `${parts[0]}_${parts[2].toLowerCase()}_319_${parts[1]}_${lastPart}_style_one_year`;
-  }
+  let style_name = ""
 
-  return `${parts[0]}_${parts[2].toLowerCase()}_${parts[1]}_${lastPart}_style_one_year`;
+  // if _all in inputstring us all_years style
+  if (inputString.includes("_all")){
+    if (parts[2] === "EPA") {
+      style_name =  `${parts[0]}_${parts[2].toLowerCase()}_319_${parts[1]}_${lastPart}_style_all_years`;
+    }else {
+      style_name = `${parts[0]}_${parts[2].toLowerCase()}_${parts[1]}_${lastPart}_style_all_years`;
+    }
+  }
+  else {
+    if (parts[2] === "EPA") {
+      style_name = `${parts[0]}_${parts[2].toLowerCase()}_319_${parts[1]}_${lastPart}_style_one_year`;
+    }else {
+      style_name = `${parts[0]}_${parts[2].toLowerCase()}_${parts[1]}_${lastPart}_style_one_year`;
+    }
+  }
+  return style_name;
 };
 
 const OverallMap = ({ parameterString }) => {

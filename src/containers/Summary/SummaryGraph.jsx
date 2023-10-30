@@ -50,7 +50,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
             text:title,
             anchor:'middle'
         },
-        hconcat:[
+        vconcat:[
             {
                 layer: [
                     {
@@ -189,7 +189,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                         ]
                     }
                 ],
-                width: 335
+                width: 500
             },
             // The following concat is for the legend, using dummy data, quite hacky but it works
             {
@@ -214,7 +214,7 @@ const SummaryGraph: React.FC<Props> = (props) => {
                         }
                     }
                 ],
-                width: 15
+                width: 30
             }
         ]
     };

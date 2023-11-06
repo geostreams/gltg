@@ -41,15 +41,24 @@ const ImageRow = (props) => {
   } = props;
   const [image1Hover, setImage1Hover] = React.useState(false);
   const [image2Hover, setImage2Hover] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorElIA, setAnchorElIA] = React.useState(null);
+  const [anchorElIN, setAnchorElIN] = React.useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClickIA = (event) => {
+      setAnchorElIA(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseIA = () => {
+      setAnchorElIA(null);
   };
+
+const handleClickIN = (event) => {
+    setAnchorElIN(event.currentTarget);
+};
+
+const handleCloseIN = () => {
+    setAnchorElIN(null);
+};
 
   return (
     <div className={classes.row}>
@@ -129,16 +138,16 @@ const ImageRow = (props) => {
                 style={{ color: "black", margin: "0em 0em 0em 1em" }}
                 aria-controls="simple-menu"
                 aria-haspopup="true"
-                onClick={handleClick}
+                onClick={handleClickIA}
               >
                 {" "}
                 Iowa
               </Button>
 
               <Popover
-                open={Boolean(anchorEl)}
-                anchorEl={anchorEl}
-                onClose={handleClose}
+                open={Boolean(anchorElIA)}
+                anchorEl={anchorElIA}
+                onClose={handleCloseIA}
                 anchorOrigin={{
                   vertical: "bottom",
                   horizontal: "left",
@@ -177,16 +186,16 @@ const ImageRow = (props) => {
                         style={{ color: "black", margin: "0em 0em 0em 1em" }}
                         aria-controls="simple-menu"
                         aria-haspopup="true"
-                        onClick={handleClick}
+                        onClick={handleClickIN}
                     >
                         {" "}
-                        Iowa
+                        Indiana
                     </Button>
 
                     <Popover
-                        open={Boolean(anchorEl)}
-                        anchorEl={anchorEl}
-                        onClose={handleClose}
+                        open={Boolean(anchorElIN)}
+                        anchorEl={anchorElIN}
+                        onClose={handleCloseIN}
                         anchorOrigin={{
                             vertical: "bottom",
                             horizontal: "left",

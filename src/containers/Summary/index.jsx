@@ -21,7 +21,7 @@ import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 import trendStationsJSON_30years from '../../data/trend_stations_30_years.geojson';
-import trendStationsJSON_20years from '../../data/trend_stations.geojson';
+import trendStationsJSON_20years from '../../data/trend_stations_20_years.geojson';
 import waterShedsJSON from '../../data/trend_watersheds.geojson';
 import Sidebar from './Sidebar';
 
@@ -442,7 +442,7 @@ const Summary = () => {
     return (
         <>
             <Grid className={classes.mainContainer} container alignItems="stretch">
-                <Grid className={classes.fillContainer} item xs={7}>
+                <Grid className={classes.fillContainer} item xs={7} key={trendStationsJSON}>
                     <Map
                         className={classes.fillContainer}
                         zoom={4}

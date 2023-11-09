@@ -196,28 +196,8 @@ const Summary = () => {
     const [selectedTimePeriod, setSelectedTimePeriod] =
     React.useState('30_years');
 
-    // State to display dialog box
-    const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
-
-    // State variable to keep track of the JSON data
-    const [trendStationsJSON, setTrendStationsJSON] = React.useState(
-        trendStationsJSON_30years
-    );
-
     // State variable to make legend collapsible
     const [legendOpen, setLegendOpen] = React.useState(false);
-
-    React.useEffect(() => {
-        if (selectedTimePeriod === '30_years') {
-            setTrendStationsJSON(trendStationsJSON_30years);
-        } else if (selectedTimePeriod === '20_years') {
-            setTrendStationsJSON(trendStationsJSON_20years);
-        }
-    }, [selectedTimePeriod]);
-
-    React.useEffect(() => {
-        setOpenInfoDialog(true);
-    }, []);
 
 
     // This group layer contains the base map and the state boundaries layer
@@ -254,14 +234,30 @@ const Summary = () => {
     });
 
     // This layer is the one with trendstations.
-    const trendstations = new GroupLayer({
+    const trendstations_30_years = new GroupLayer({
         title: 'Trend Stations',
         layers: [
             new VectorLayer({
                 visible: true,
                 title: 'Trend Stations',
                 source: new VectorSource({
-                    url: trendStationsJSON,
+                    url: trendStationsJSON_30years,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderIcon
+            })
+        ]
+    });
+
+    const trendstations_20_years = new GroupLayer({
+        title: 'Trend Stations',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Trend Stations',
+                source: new VectorSource({
+                    url: trendStationsJSON_20years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -427,11 +423,23 @@ const Summary = () => {
         }
     };
 
+    // Set layer visibility depending on time period
+    React.useEffect(() => {
+        if (selectedTimePeriod === '30_years') {
+            trendstations_30_years.getLayersArray()[0].setVisible(true);
+            trendstations_20_years.getLayersArray()[0].setVisible(false);
+        } else {
+            trendstations_30_years.getLayersArray()[0].setVisible(false);
+            trendstations_20_years.getLayersArray()[0].setVisible(true);
+        }
+    }, [selectedTimePeriod]);
+
     const layers = {
         basemaps,
         riversLayer,
         watershedsLayer,
-        trendstations
+        trendstations_30_years,
+        trendstations_20_years
     };
 
     const removeSelectedStation = () => {
@@ -442,7 +450,7 @@ const Summary = () => {
     return (
         <>
             <Grid className={classes.mainContainer} container alignItems="stretch">
-                <Grid className={classes.fillContainer} item xs={7} key={trendStationsJSON}>
+                <Grid className={classes.fillContainer} item xs={7} key={selectedTimePeriod}>
                     <Map
                         className={classes.fillContainer}
                         zoom={4}

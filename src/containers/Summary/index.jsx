@@ -420,7 +420,7 @@ const Summary = () => {
             event.pixel,
             (feature) => feature
         );
-        // Get correspoding watershed by COMID if the selected feature is a trend station
+        // Get corresponding watershed by SF_site_no if the selected feature is a trend station
         if (
             selectedFeature &&
       selectedFeature.getGeometry().getType() === 'Point'
@@ -440,10 +440,11 @@ const Summary = () => {
                     .getSource()
                     .getFeatures()
                     .find(
-                        (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
+                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
                     );
             }
-
+            console.log("corresponding watershed");
+            console.log(correspondingWatershed);
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);
         } else {

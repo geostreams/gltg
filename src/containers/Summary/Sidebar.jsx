@@ -165,7 +165,12 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
         } else {
             setData(null);
         }
-    }, [selectedTimePeriod,stationData]);
+    }, [stationData]);
+
+    // Remove the selected station when the time period is changed
+    React.useEffect(() => {
+        removeSelectedStation();
+    }, [selectedTimePeriod]);
 
     const infoDialog = (
         <Dialog open={openInfoDialog} onClose={() => {setOpenInfoDialog(false);}}>

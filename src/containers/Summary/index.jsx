@@ -22,7 +22,8 @@ import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 import trendStationsJSON_30years from '../../data/trend_stations_30_years.geojson';
 import trendStationsJSON_20years from '../../data/trend_stations_20_years.geojson';
-import waterShedsJSON from '../../data/trend_watersheds.geojson';
+import waterShedsJSON_30_years from '../../data/trend_watersheds_30_years.geojson';
+import waterShedsJSON_20_years from '../../data/trend_watersheds_20_years.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -266,15 +267,31 @@ const Summary = () => {
         ]
     });
 
-    // This layer is the one with watersheds.
-    const watershedsLayer = new GroupLayer({
+    // These layers are the one with watersheds for 30 and 20 years
+    const watershedsLayer_30_years = new GroupLayer({
         title: 'Watersheds',
         layers: [
             new VectorLayer({
                 visible: true,
                 title: 'Watersheds',
                 source: new VectorSource({
-                    url: waterShedsJSON,
+                    url: waterShedsJSON_30_years,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderWaterSheds
+            })
+        ]
+    });
+
+    const watershedsLayer_20_years = new GroupLayer({
+        title: 'Watersheds',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Watersheds',
+                source: new VectorSource({
+                    url: waterShedsJSON_20_years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -408,13 +425,25 @@ const Summary = () => {
             selectedFeature &&
       selectedFeature.getGeometry().getType() === 'Point'
         ) {
-            const correspondingWatershed = watershedsLayer
-                .getLayersArray()[0]
-                .getSource()
-                .getFeatures()
-                .find(
-                    (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
-                );
+            let correspondingWatershed;
+            if (selectedTimePeriod === '30_years') {
+                correspondingWatershed = watershedsLayer_30_years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
+                    );
+            } else {
+                correspondingWatershed = watershedsLayer_20_years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
+                    );
+            }
+
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);
         } else {
@@ -428,16 +457,21 @@ const Summary = () => {
         if (selectedTimePeriod === '30_years') {
             trendstations_30_years.getLayersArray()[0].setVisible(true);
             trendstations_20_years.getLayersArray()[0].setVisible(false);
+            watershedsLayer_30_years.getLayersArray()[0].setVisible(true);
+            watershedsLayer_20_years.getLayersArray()[0].setVisible(false);
         } else {
             trendstations_30_years.getLayersArray()[0].setVisible(false);
             trendstations_20_years.getLayersArray()[0].setVisible(true);
+            watershedsLayer_30_years.getLayersArray()[0].setVisible(false);
+            watershedsLayer_20_years.getLayersArray()[0].setVisible(true);
         }
     }, [selectedTimePeriod]);
 
     const layers = {
         basemaps,
         riversLayer,
-        watershedsLayer,
+        watershedsLayer_30_years,
+        watershedsLayer_20_years,
         trendstations_30_years,
         trendstations_20_years
     };

@@ -21,8 +21,9 @@ import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 import trendStationsJSON_30years from '../../data/trend_stations_30_years.geojson';
-import trendStationsJSON_20years from '../../data/trend_stations.geojson';
-import waterShedsJSON from '../../data/trend_watersheds.geojson';
+import trendStationsJSON_20years from '../../data/trend_stations_20_years.geojson';
+import waterShedsJSON_30_years from '../../data/trend_watersheds_30_years.geojson';
+import waterShedsJSON_20_years from '../../data/trend_watersheds_20_years.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -196,28 +197,8 @@ const Summary = () => {
     const [selectedTimePeriod, setSelectedTimePeriod] =
     React.useState('30_years');
 
-    // State to display dialog box
-    const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
-
-    // State variable to keep track of the JSON data
-    const [trendStationsJSON, setTrendStationsJSON] = React.useState(
-        trendStationsJSON_30years
-    );
-
     // State variable to make legend collapsible
     const [legendOpen, setLegendOpen] = React.useState(false);
-
-    React.useEffect(() => {
-        if (selectedTimePeriod === '30_years') {
-            setTrendStationsJSON(trendStationsJSON_30years);
-        } else if (selectedTimePeriod === '20_years') {
-            setTrendStationsJSON(trendStationsJSON_20years);
-        }
-    }, [selectedTimePeriod]);
-
-    React.useEffect(() => {
-        setOpenInfoDialog(true);
-    }, []);
 
 
     // This group layer contains the base map and the state boundaries layer
@@ -254,14 +235,14 @@ const Summary = () => {
     });
 
     // This layer is the one with trendstations.
-    const trendstations = new GroupLayer({
+    const trendstations_30_years = new GroupLayer({
         title: 'Trend Stations',
         layers: [
             new VectorLayer({
                 visible: true,
                 title: 'Trend Stations',
                 source: new VectorSource({
-                    url: trendStationsJSON,
+                    url: trendStationsJSON_30years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -270,15 +251,47 @@ const Summary = () => {
         ]
     });
 
-    // This layer is the one with watersheds.
-    const watershedsLayer = new GroupLayer({
+    const trendstations_20_years = new GroupLayer({
+        title: 'Trend Stations',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Trend Stations',
+                source: new VectorSource({
+                    url: trendStationsJSON_20years,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderIcon
+            })
+        ]
+    });
+
+    // These layers are the one with watersheds for 30 and 20 years
+    const watershedsLayer_30_years = new GroupLayer({
         title: 'Watersheds',
         layers: [
             new VectorLayer({
                 visible: true,
                 title: 'Watersheds',
                 source: new VectorSource({
-                    url: waterShedsJSON,
+                    url: waterShedsJSON_30_years,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderWaterSheds
+            })
+        ]
+    });
+
+    const watershedsLayer_20_years = new GroupLayer({
+        title: 'Watersheds',
+        layers: [
+            new VectorLayer({
+                visible: true,
+                title: 'Watersheds',
+                source: new VectorSource({
+                    url: waterShedsJSON_20_years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -407,18 +420,31 @@ const Summary = () => {
             event.pixel,
             (feature) => feature
         );
-        // Get correspoding watershed by COMID if the selected feature is a trend station
+        // Get corresponding watershed by SF_site_no if the selected feature is a trend station
         if (
             selectedFeature &&
       selectedFeature.getGeometry().getType() === 'Point'
         ) {
-            const correspondingWatershed = watershedsLayer
-                .getLayersArray()[0]
-                .getSource()
-                .getFeatures()
-                .find(
-                    (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
-                );
+            let correspondingWatershed;
+            if (selectedTimePeriod === '30_years') {
+                correspondingWatershed = watershedsLayer_30_years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('SF_site_no') === selectedFeature.get('SF_site_no')
+                    );
+            } else {
+                correspondingWatershed = watershedsLayer_20_years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                    );
+            }
+            console.log("corresponding watershed");
+            console.log(correspondingWatershed);
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);
         } else {
@@ -427,11 +453,28 @@ const Summary = () => {
         }
     };
 
+    // Set layer visibility depending on time period
+    React.useEffect(() => {
+        if (selectedTimePeriod === '30_years') {
+            trendstations_30_years.getLayersArray()[0].setVisible(true);
+            trendstations_20_years.getLayersArray()[0].setVisible(false);
+            watershedsLayer_30_years.getLayersArray()[0].setVisible(true);
+            watershedsLayer_20_years.getLayersArray()[0].setVisible(false);
+        } else {
+            trendstations_30_years.getLayersArray()[0].setVisible(false);
+            trendstations_20_years.getLayersArray()[0].setVisible(true);
+            watershedsLayer_30_years.getLayersArray()[0].setVisible(false);
+            watershedsLayer_20_years.getLayersArray()[0].setVisible(true);
+        }
+    }, [selectedTimePeriod]);
+
     const layers = {
         basemaps,
         riversLayer,
-        watershedsLayer,
-        trendstations
+        watershedsLayer_30_years,
+        watershedsLayer_20_years,
+        trendstations_30_years,
+        trendstations_20_years
     };
 
     const removeSelectedStation = () => {
@@ -442,7 +485,7 @@ const Summary = () => {
     return (
         <>
             <Grid className={classes.mainContainer} container alignItems="stretch">
-                <Grid className={classes.fillContainer} item xs={7}>
+                <Grid className={classes.fillContainer} item xs={7} key={selectedTimePeriod}>
                     <Map
                         className={classes.fillContainer}
                         zoom={4}

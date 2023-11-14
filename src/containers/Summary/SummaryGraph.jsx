@@ -35,13 +35,6 @@ const SummaryGraph: React.FC<Props> = (props) => {
         title
     } = props;
 
-    const legendData = [
-        { label: 'Yearly Values', color: 'black', shape: 'circle' },
-        { label: 'FN Stationary SF with 90% CI', color: '#90EE90', shape: 'line' },
-        { label: 'FN Non-Stationary SF with 90% CI', color: 'red', shape: 'line' }
-    ];
-
-
     const spec = {
         width,
         height,
@@ -194,7 +187,11 @@ const SummaryGraph: React.FC<Props> = (props) => {
             // The following concat is for the legend, using dummy data, quite hacky but it works
             {
                 data: {
-                    values: legendData
+                    values: [
+                        { label: 'Yearly Values', key: 'Y', color: 'black', shape: 'circle' },
+                        { label: 'Source/Sink Component', key: 'X', color: '#90EE90', shape: 'line' },
+                        { label: 'Total Trend', key: 'T', color: 'red', shape: 'line' }
+                    ]
                 },
                 layer: [
                     {

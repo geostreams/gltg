@@ -237,7 +237,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         }}
                         input={<InputBase />}
                     >
-                        <option value="Nitrogen">Nitrogen</option>
+                        <option value="Nitrogen">Nitrate-N</option>
                     </NativeSelect>
                 </FormControl>
                 <FormControl
@@ -421,6 +421,12 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 title="Mean (dots) & Flow-Normalized (line) Concentration " />
                         </Box>}
                         </div>
+                        <a><b>Total Trend</b>: Flow-Normalized Non-Stationary Streamflow with 90% Confidence Interval</a>
+                        <br/><br/>
+                        <a><b>Source/Sink Component</b>: Flow-Normalized Stationary Streamflow with 90% Confidence Interval</a>
+                        <br/><br/>
+                        <a><b>Flow Component</b>: Total Trend - Source/Sink Component</a>
+                        <br/><br/>
                     </>)}
                 <br />
             </div>

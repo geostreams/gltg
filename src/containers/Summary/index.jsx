@@ -551,6 +551,7 @@ const Summary = () => {
               position: "absolute",
               left: `${tooltipPosition.x}px`,
               top: `${tooltipPosition.y}px`,
+              backgroundColor: 'white',
               display: tooltipContent ? "block" : "none",
              
             }}

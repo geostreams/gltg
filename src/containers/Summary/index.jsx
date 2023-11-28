@@ -203,7 +203,7 @@ const Summary = () => {
   // State variable to keep track of sidebar inputs
   const [selectedNutrient, setSelectedNutrient] = React.useState("Nitrogen");
   const [selectedTimePeriod, setSelectedTimePeriod] =
-    React.useState("30_years");
+    React.useState("20_years");
 
   // State variable to make legend collapsible
   const [legendOpen, setLegendOpen] = React.useState(false);

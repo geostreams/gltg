@@ -1,5 +1,52 @@
 {
-  "extends": [
-    "@geostreams"
-  ]
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": ["react"],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
+		"no-unused-vars": "warn",
+		"react/jsx-uses-react": "off",
+		"react/jsx-uses-vars": "warn",
+		"indent": ["error", "tab"], // enforce tab indentation
+		"space-before-blocks": "error",
+		"keyword-spacing": ["error", { "before": true, "after": true }],
+		"space-infix-ops": "error",
+		"eol-last": ["error", "always"],
+		"newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+		"jsx-quotes": ["error", "prefer-double"],
+		"react/jsx-curly-spacing": [
+			"error",
+			{ "when": "always", "children": true }
+		],
+		"react/jsx-tag-spacing": [
+			"error",
+			{
+				"closingSlash": "never",
+				"beforeSelfClosing": "always",
+				"afterOpening": "never",
+				"beforeClosing": "never"
+			}
+		]
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
 }

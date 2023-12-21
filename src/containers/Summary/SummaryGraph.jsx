@@ -2,23 +2,23 @@ import React from 'react';
 import { VegaLite } from 'react-vega';
 
 type Props = {
-    graph_data: {};
-    width: number;
-    height: number;
-    startAtZero: boolean;
-    stationary_y_line_field: string;
-    stationary_high_interval:string;
-    stationary_low_interval:string;
-    non_stationary_y_line_field: string;
-    non_stationary_high_interval:string;
-    non_stationary_low_interval:string;
-    y_scatter_field: string;
-    y_label?: string;
-    x_label?: string;
-    title?: string;
+    graph_data: {},
+    width: number,
+    height: number,
+    startAtZero: boolean,
+    stationary_y_line_field: string,
+    stationary_high_interval:string,
+    stationary_low_interval:string,
+    non_stationary_y_line_field: string,
+    non_stationary_high_interval:string,
+    non_stationary_low_interval:string,
+    y_scatter_field: string,
+    y_label?: string,
+    x_label?: string,
+    title?: string
 }
 
-const SummaryGraph: React.FC<Props> = (props) => {
+const SummaryGraph= (props) => {
     const {
         graph_data,
         width,

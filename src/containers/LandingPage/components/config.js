@@ -1,1 +1,1 @@
-export const RSS = 'https://greatlakestogulf.web.illinois.edu/feed';
+export const RSS = "https://greatlakestogulf.web.illinois.edu/feed";

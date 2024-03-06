@@ -45,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
         color: '#E05769',
         fontSize: '1.15rem'
     },
+    trendText:{
+        color: '#073296',
+        fontSize: '1rem'
+    },
     headerText: {
         margin: 0,
         color: '#333',
@@ -303,28 +307,20 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 >
                                     Trend Results
                                     <InfoIcon className={classes.infoIcon}
-                                        onClick={() => setOpenInfoDialog(true) }
+                                        onClick={() => setOpenInfoDialog(true)}
                                     />
                                 </Typography>
-                               
+
                             </div>
                             <br />
                             <div className={classes.legendContainer}>
                                 <div className={classes.legendItem}>
                                     <img
                                         src={HighUpwardTrendIcon}
-                                        alt="High Upward Trend Icon"
-                                        className={classes.legendIcon}
-                                    />
-                                    <span>Highly Likely Upward (90% - 100%)<sup>*</sup></span>
-                                </div>
-                                <div className={classes.legendItem}>
-                                    <img
-                                        src={UpwardTrendIcon}
                                         alt="Upward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Likely Upward (66% - 90%)<sup>*</sup></span>
+                                    <span>Upward Trend </span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
@@ -332,32 +328,18 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="No Significant Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>No Significant Trend (33% - 66%)<sup>*</sup></span>
+                                    <span>No Significant Trend</span>
                                 </div>
-                                <div className={classes.legendItem}>
-                                    <img
-                                        src={DownwardTrendIcon}
-                                        alt="Downward Trend Icon"
-                                        className={classes.legendIcon}
-                                    />
-                                    <span>Likely Downward (10% - 33%)<sup>*</sup></span>
-                                </div>
+
                                 <div className={classes.legendItem}>
                                     <img
                                         src={HighDownwardTrendIcon}
-                                        alt="High Downward Trend Icon"
+                                        alt=" Downward Trend "
                                         className={classes.legendIcon}
                                     />
-                                    <span>Highly Likely Downward (0% - 10%)<sup>*</sup> </span>
-                                </div>
-                                <div className={classes.legendFooter}>
-                                    <span>
-                                        {' '}
-                                        <sup>*</sup> Percentage ranges represent the probability that the trend is upwards
-                                    </span>
+                                    <span>Downward Trend </span>
                                 </div>
                             </div>
-
                         </Box>
 
 
@@ -368,7 +350,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 className={classes.headerText}
                                 variant="h6"
                             >
-                                Water Quality Station Name:
+                    Water Quality Station Name:
                             </Typography>
                             <IconButton
                                 className={classes.backButton}
@@ -401,6 +383,12 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 y_label="Yearly Cumulative Flux (10^6 kg/yr)"
                                 x_label='Year'
                                 title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
+                            <Typography
+                              className={classes.trendText}
+                              variant="span"
+                            >
+                              Flux Trend -  {stationData.significance_flux}
+                            </Typography>
                         </Box>}
 
                             <Divider />
@@ -419,14 +407,20 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 y_label="Yearly Average Concentration (mg/L)"
                                 x_label='Year'
                                 title="Mean (dots) & Flow-Normalized (line) Concentration " />
+                            <Typography
+                              className={classes.trendText}
+                              variant="span"
+                            >
+                                Concentration Trend -  {stationData.significance_concent}
+                            </Typography>
                         </Box>}
                         </div>
                         <a><b>Total Trend</b>: Flow-Normalized Non-Stationary Streamflow with 90% Confidence Interval</a>
-                        <br/><br/>
+                        <br /><br />
                         <a><b>Source/Sink Component</b>: Flow-Normalized Stationary Streamflow with 90% Confidence Interval</a>
-                        <br/><br/>
+                        <br /><br />
                         <a><b>Flow Component</b>: Total Trend - Source/Sink Component</a>
-                        <br/><br/>
+                        <br /><br />
                     </>)}
                 <br />
             </div>

@@ -362,81 +362,89 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
 
                     </>) :
                     (<>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} >
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                             <Typography
-                                className={classes.headerText}
-                                variant="h6"
+                              className={classes.headerText}
+                              variant="h6"
                             >
-                    Water Quality Station Name:
+                                Water Quality Station Name:
                             </Typography>
                             <IconButton
-                                className={classes.backButton}
-                                onClick={() => {
-                                    removeSelectedStation();
-                                }}
+                              className={classes.backButton}
+                              onClick={() => {
+                                  removeSelectedStation();
+                              }}
                             >
                                 <Clear />
                             </IconButton>
                         </div>
                         <Typography
-                            className={classes.stationNameText}
-                            variant="span"
+                          className={classes.stationNameText}
+                          variant="span"
                         >
                             {stationData.WQ_MonitoringLocationName}
                         </Typography>
                         <Divider />
                         <div>
                             {data &&
-                        <Box className={classes.chart}>
-                            <h4 className={classes.chartHeader}>Flux Graph</h4>
-                            <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
-                                stationary_y_line_field="stationaryFNFlux"
-                                stationary_high_interval="stationaryFNFluxHigh"
-                                stationary_low_interval="stationaryFNFluxLow"
-                                non_stationary_y_line_field="nonStationaryFNFlux"
-                                non_stationary_high_interval="nonStationaryFNFluxHigh"
-                                non_stationary_low_interval="nonStationaryFNFluxLow"
-                                y_scatter_field="stationaryFluxDay"
-                                y_label="Yearly Cumulative Flux (10^6 kg/yr)"
-                                x_label='Year'
-                                title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
-                            <Typography
-                                className={classes.trendText}
-                                variant="span"
-                            >
-                              Flux Trend -  {convertTrend(stationData.significance_flux)}
-                            </Typography>
-                        </Box>}
+                              <Box className={classes.chart}>
+                                  <h4 className={classes.chartHeader}>Flux Graph</h4>
+                                  <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
+                                                stationary_y_line_field="stationaryFNFlux"
+                                                stationary_high_interval="stationaryFNFluxHigh"
+                                                stationary_low_interval="stationaryFNFluxLow"
+                                                non_stationary_y_line_field="nonStationaryFNFlux"
+                                                non_stationary_high_interval="nonStationaryFNFluxHigh"
+                                                non_stationary_low_interval="nonStationaryFNFluxLow"
+                                                y_scatter_field="stationaryFluxDay"
+                                                y_label="Yearly Cumulative Flux (10^6 kg/yr)"
+                                                x_label="Year"
+                                                title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
+                                  <Typography
+                                    className={classes.trendText}
+                                    variant="span"
+                                  >
+                                      Flux Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
+                                  </Typography>
+                              </Box>}
 
                             <Divider />
                             <br />
                             {data &&
-                        <Box className={classes.chart}>
-                            <h4 className={classes.chartHeader}>Concentration Graph</h4>
-                            <SummaryGraph graph_data={data.concentration} width={350} height={330} startAtZero={false}
-                                stationary_y_line_field="stationaryFNConc"
-                                stationary_high_interval="stationaryFNConcHigh"
-                                stationary_low_interval="stationaryFNConcLow"
-                                non_stationary_y_line_field="nonStationaryFNConc"
-                                non_stationary_high_interval="nonStationaryFNConcHigh"
-                                non_stationary_low_interval="nonStationaryFNConcLow"
-                                y_scatter_field="stationaryConcDay"
-                                y_label="Yearly Average Concentration (mg/L)"
-                                x_label='Year'
-                                title="Mean (dots) & Flow-Normalized (line) Concentration " />
-                            <Typography
-                                className={classes.trendText}
-                                variant="span"
-                            >
-                                Concentration Trend -  {convertTrend(stationData.significance_concent)}
-                            </Typography>
-                        </Box>}
+                              <Box className={classes.chart}>
+                                  <h4 className={classes.chartHeader}>Concentration Graph</h4>
+                                  <SummaryGraph graph_data={data.concentration} width={350} height={330}
+                                                startAtZero={false}
+                                                stationary_y_line_field="stationaryFNConc"
+                                                stationary_high_interval="stationaryFNConcHigh"
+                                                stationary_low_interval="stationaryFNConcLow"
+                                                non_stationary_y_line_field="nonStationaryFNConc"
+                                                non_stationary_high_interval="nonStationaryFNConcHigh"
+                                                non_stationary_low_interval="nonStationaryFNConcLow"
+                                                y_scatter_field="stationaryConcDay"
+                                                y_label="Yearly Average Concentration (mg/L)"
+                                                x_label="Year"
+                                                title="Mean (dots) & Flow-Normalized (line) Concentration " />
+                                  <Typography
+                                    className={classes.trendText}
+                                    variant="span"
+                                  >
+                                      Concentration Trend - {convertTrend(stationData.significance_concent)}<sup>*</sup>
+                                  </Typography>
+                              </Box>}
                         </div>
-                        <a><b>Total Trend</b>: Flow-Normalized Non-Stationary Streamflow with 90% Confidence Interval</a>
+                        <span>
+                            <sup>*</sup> Percentage ranges represent the probability that the trend is upwards
+                        </span>
                         <br /><br />
-                        <a><b>Source/Sink Component</b>: Flow-Normalized Stationary Streamflow with 90% Confidence Interval</a>
+                        <a><b>Total Trend</b>: Flow-Normalized Non-Stationary Streamflow with 90% Confidence
+                            Interval</a>
+                        <br /><br />
+                        <a><b>Source/Sink Component</b>: Flow-Normalized Stationary Streamflow with 90% Confidence
+                            Interval</a>
                         <br /><br />
                         <a><b>Flow Component</b>: Total Trend - Source/Sink Component</a>
+                        <br /><br />
                         <br /><br />
                     </>)}
                 <br />

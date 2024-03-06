@@ -149,9 +149,26 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+function convertTrend(inputString) {
+    const conversionDict = {
+        'Downward trend in concentration is highly likely': 'Highly Likely Downward (0% - 10%)',
+        'Upward trend in concentration is highly likely': 'Highly Likely Upward (90% - 100%)',
+        'No Significant Trend': 'No Significant Trend (33% - 66%)',
+        'Upward trend in concentration is likely': 'Likely Upward (66% - 90%)',
+        'Downward trend in concentration is likely': 'Likely Downward (10% - 33%)',
+        'Downward trend in flux is highly likely': 'Highly Likely Downward (0% - 10%)',
+        'Upward trend in flux is highly likely': 'Highly Likely Upward (90% - 100%)',
+        'Upward trend in flux is likely': 'Likely Upward (66% - 90%)',
+        'Downward trend in flux is likely': 'Likely Downward (10% - 33%)'
+    };
+
+    return conversionDict[inputString];
+}
+
+
 const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation }) => {
     const classes = useStyles();
-
+    console.log(stationData)
     const [data,setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
 
@@ -384,10 +401,10 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 x_label='Year'
                                 title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
                             <Typography
-                              className={classes.trendText}
-                              variant="span"
+                                className={classes.trendText}
+                                variant="span"
                             >
-                              Flux Trend -  {stationData.significance_flux}
+                              Flux Trend -  {convertTrend(stationData.significance_flux)}
                             </Typography>
                         </Box>}
 
@@ -408,10 +425,10 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 x_label='Year'
                                 title="Mean (dots) & Flow-Normalized (line) Concentration " />
                             <Typography
-                              className={classes.trendText}
-                              variant="span"
+                                className={classes.trendText}
+                                variant="span"
                             >
-                                Concentration Trend -  {stationData.significance_concent}
+                                Concentration Trend -  {convertTrend(stationData.significance_concent)}
                             </Typography>
                         </Box>}
                         </div>

@@ -110,70 +110,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const renderIcon = (feature) => {
-  if (
-    feature.get("significance_concent") ===
-      "Upward trend in concentration is very likely" ||
-    feature.get("significance_concent") ===
-      "Upward trend in concentration is highly likely" ||
-    feature.get("significance_flux") ===
-      "Upward trend in flux is very likely" ||
-    feature.get("significance_flux") === "Upward trend in flux is highly likely"
-  ) {
+  let icon_trend = feature.get("icon_trend");
+  if (icon_trend === "Upward Trend"){
     return new Style({
       image: new Icon({
         src: HighUpwardTrendIcon,
         scale: 0.75,
       }),
     });
-  }
-  if (
-    (feature.get("significance_concent") ===
-      "Downward trend in concentration is very likely" ||
-      feature.get("significance_concent") ===
-        "Downward trend in concentration is highly likely") &&
-    (feature.get("significance_flux") ===
-      "Downward trend in flux is very likely" ||
-      feature.get("significance_flux") ===
-        "Downward trend in flux is highly likely")
-  ) {
+  } else if (icon_trend === "Downward Trend"){
     return new Style({
       image: new Icon({
         src: HighDownwardTrendIcon,
         scale: 0.75,
       }),
     });
-  }
-  if (
-    feature.get("significance_concent") ===
-      "Upward trend in concentration is likely" ||
-    feature.get("significance_flux") === "Upward trend in flux is likely"
-  ) {
+  } else if (icon_trend === "No Significant Trend"){
     return new Style({
       image: new Icon({
-        src: UpwardTrendIcon,
+        src: NoSignificantTrendIcon,
         scale: 0.75,
       }),
     });
   }
-  if (
-    feature.get("significance_concent") ===
-      "Downward trend in concentration is likely" &&
-    feature.get("significance_flux") === "Downward trend in flux is likely"
-  ) {
-    return new Style({
-      image: new Icon({
-        src: DownwardTrendIcon,
-        scale: 0.75,
-      }),
-    });
-  }
-  return new Style({
-    image: new Icon({
-      src: NoSignificantTrendIcon,
-      scale: 0.75,
-    }),
-  });
 };
 
 const renderWaterSheds = () => {
@@ -333,18 +295,10 @@ const Summary = () => {
           <div className={classes.legendItem}>
             <img
               src={HighUpwardTrendIcon}
-              alt="High Upward Trend Icon"
-              className={classes.legendIcon}
-            />
-            <span>Highly Likely Upward (90% - 100%) </span>
-          </div>
-          <div className={classes.legendItem}>
-            <img
-              src={UpwardTrendIcon}
               alt="Upward Trend Icon"
               className={classes.legendIcon}
             />
-            <span>Likely Upward (66% - 90%)</span>
+            <span>Upward Trend </span>
           </div>
           <div className={classes.legendItem}>
             <img
@@ -352,23 +306,16 @@ const Summary = () => {
               alt="No Significant Trend Icon"
               className={classes.legendIcon}
             />
-            <span>No Significant Trend (33% - 66%)</span>
+            <span>No Significant Trend</span>
           </div>
-          <div className={classes.legendItem}>
-            <img
-              src={DownwardTrendIcon}
-              alt="Downward Trend Icon"
-              className={classes.legendIcon}
-            />
-            <span>Likely Downward (10% - 33%)</span>
-          </div>
+
           <div className={classes.legendItem}>
             <img
               src={HighDownwardTrendIcon}
-              alt="High Downward Trend Icon"
+              alt=" Downward Trend "
               className={classes.legendIcon}
             />
-            <span>Highly Likely Downward (0% - 10%) </span>
+            <span>Downward Trend </span>
           </div>
         </div>
       </div>

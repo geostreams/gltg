@@ -400,6 +400,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                                 y_label="Yearly Cumulative Flux (10^6 kg/yr)"
                                                 x_label="Year"
                                                 title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
+                                  <br/>
                                   <Typography
                                     className={classes.trendText}
                                     variant="span"
@@ -425,6 +426,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                                 y_label="Yearly Average Concentration (mg/L)"
                                                 x_label="Year"
                                                 title="Mean (dots) & Flow-Normalized (line) Concentration " />
+                                  <br />
                                   <Typography
                                     className={classes.trendText}
                                     variant="span"

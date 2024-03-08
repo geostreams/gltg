@@ -6,7 +6,7 @@
 .column {
     float: left;
     width: 50%;
-    height: 15vh;
+    height: 10em;
     position: relative;
     transition: transform .5s ease;
 }

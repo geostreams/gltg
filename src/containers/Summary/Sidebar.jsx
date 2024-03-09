@@ -181,7 +181,6 @@ function convertTrend(inputString) {
 
 const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation }) => {
     const classes = useStyles();
-    console.log(stationData);
     const [data,setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
 

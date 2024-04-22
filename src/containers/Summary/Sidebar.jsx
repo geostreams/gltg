@@ -261,11 +261,12 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         className={classes.selectButton}
                         value={selectedNutrient}
                         onChange={({ target: { value } }) => {
-                            selectedNutrient(value);
+                            setSelectedNutrient(value);
                         }}
                         input={<InputBase />}
                     >
                         <option value="Nitrogen">Nitrate-N</option>
+                        <option value="Phosphorus">Phosphorus</option>
                     </NativeSelect>
                 </FormControl>
                 <FormControl

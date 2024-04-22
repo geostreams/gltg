@@ -20,8 +20,10 @@ import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
-import nitrateTrendStationsJSON_20years from '../../data/nitrate_trend_stations_20_years.geojson';
+import nitrateTrendStationsJSON20years from '../../data/nitrate_trend_stations_20_years.geojson';
 import nitrateWaterShedsJSON20Years from '../../data/nitrate_trend_watersheds_20_years.geojson';
+import phosTrendStationsJSON20years from '../../data/phos_trend_stations_20_years.geojson';
+import phosWaterShedsJSON20Years from '../../data/nitrate_trend_watersheds_20_years.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -172,7 +174,7 @@ const Summary = () => {
     const [tooltipContent, setTooltipContent] = React.useState('');
     const [tooltipPosition, setTooltipPosition] = React.useState({ x: 0, y: 0 });
     const tooltipRef = React.useRef();
-    
+
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
         title: 'Base Maps',
@@ -209,13 +211,13 @@ const Summary = () => {
 
     // Create group layer for trend stations and watersheds
     const nitrateTrendstations20Years = new GroupLayer({
-        title: 'Trend Stations',
+        title: 'Nitrate Trend Stations',
         layers: [
             new VectorLayer({
                 visible: true,
-                title: 'Trend Stations',
+                title: 'Nitrate Trend Stations',
                 source: new VectorSource({
-                    url: nitrateTrendStationsJSON_20years,
+                    url: nitrateTrendStationsJSON20years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -227,13 +229,45 @@ const Summary = () => {
 
 
     const nitrateWatershedsLayer20Years = new GroupLayer({
-        title: 'Watersheds',
+        title: 'Nitrate Watersheds',
         layers: [
             new VectorLayer({
                 visible: true,
-                title: 'Watersheds',
+                title: 'Nitrate Watersheds',
                 source: new VectorSource({
                     url: nitrateWaterShedsJSON20Years,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderWaterSheds
+            })
+        ]
+    });
+
+    const phosTrendStations20Years = new GroupLayer({
+        title: 'Phosphorus Trend Stations',
+        layers: [
+            new VectorLayer({
+                visible: false,
+                title: 'Phosphorus Trend Stations',
+                source: new VectorSource({
+                    url: phosTrendStationsJSON20years,
+                    format: new GeoJSON()
+                }),
+                interactive: true,
+                style: renderIcon
+            })
+        ]
+    });
+
+    const phosWaterShedsLayer20Years = new GroupLayer({
+        title: 'Phosphorus Watersheds',
+        layers: [
+            new VectorLayer({
+                visible: false,
+                title: 'Phosphorus Watersheds',
+                source: new VectorSource({
+                    url: phosWaterShedsJSON20Years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -256,11 +290,6 @@ const Summary = () => {
         ]
     });
 
-    // Variables that store the watershed and trend station to be displayed
-    let watershedslayer = nitrateWatershedsLayer20Years;
-    let trendstationslayer = nitrateTrendstations20Years;
-    
-    
 
     // Create legend for trend stations
     const trendStationsLegend = React.useMemo(
@@ -359,8 +388,17 @@ const Summary = () => {
       selectedFeature.getGeometry().getType() === 'Point'
         ) {
             let correspondingWatershed;
-            if (selectedTimePeriod === '20_years') {
-                correspondingWatershed = watershedslayer
+            if (selectedNutrient === 'Nitrogen') {
+                correspondingWatershed = nitrateWatershedsLayer20Years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                    );
+            }
+            if (selectedNutrient === 'Phosphorus') {
+                correspondingWatershed = phosWaterShedsLayer20Years
                     .getLayersArray()[0]
                     .getSource()
                     .getFeatures()
@@ -389,18 +427,15 @@ const Summary = () => {
         }
     };
     // Set layer visibility depending on time period
-    React.useEffect(() => {
-        if (selectedTimePeriod === '20_years') {
-            trendstationslayer.getLayersArray()[0].setVisible(true);
-            watershedslayer.getLayersArray()[0].setVisible(true);
-        }
-    }, [selectedTimePeriod]);
+    // TODO: When we have data apart from 20 years, switch between layeers
 
     const layers = {
         basemaps,
         riversLayer,
-        watershedslayer,
-        trendstationslayer
+        nitrateTrendstations20Years,
+        nitrateWatershedsLayer20Years,
+        phosTrendStations20Years,
+        phosWaterShedsLayer20Years
     };
 
     const removeSelectedStation = () => {

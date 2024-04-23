@@ -17,13 +17,12 @@ import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import HighUpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 
-
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
-import nitrateTrendStationsJSON20years from '../../data/nitrate_trend_stations_20_years.geojson';
-import nitrateWaterShedsJSON20Years from '../../data/nitrate_trend_watersheds_20_years.geojson';
-import phosTrendStationsJSON20years from '../../data/phos_trend_stations_20_years.geojson';
-import phosWaterShedsJSON20Years from '../../data/phos_trend_watersheds_20_years.geojson';
+import nitrateTrendStationsJSON20Years from '../../data/nitrate_trend_stations_20_years.geojson';
+import nitrateWaterShedsJSON20years from '../../data/nitrate_trend_watersheds_20_years.geojson';
+import phosTrendStationsJSON20Years from '../../data/phos_trend_stations_20_years.geojson';
+import phosWaterShedsJSON20years from '../../data/phos_trend_watersheds_20_years.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -83,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(1)
     },
     legendContainer: {
-    // centre items in the legend
+        // centre items in the legend
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -165,7 +164,7 @@ const Summary = () => {
     // State variable to keep track of sidebar inputs
     const [selectedNutrient, setSelectedNutrient] = React.useState('Nitrogen');
     const [selectedTimePeriod, setSelectedTimePeriod] =
-    React.useState('20_years');
+      React.useState('20_years');
 
     // State variable to make legend collapsible
     const [legendOpen, setLegendOpen] = React.useState(false);
@@ -174,7 +173,6 @@ const Summary = () => {
     const [tooltipContent, setTooltipContent] = React.useState('');
     const [tooltipPosition, setTooltipPosition] = React.useState({ x: 0, y: 0 });
     const tooltipRef = React.useRef();
-
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
         title: 'Base Maps',
@@ -209,15 +207,15 @@ const Summary = () => {
     });
 
 
-    // Create group layer for trend stations and watersheds
-    const nitrateTrendStations20Years = new GroupLayer({
+
+    const nitrateTrendStationsLayer20years = new GroupLayer({
         title: 'Nitrate Trend Stations',
         layers: [
             new VectorLayer({
                 visible: true,
-                title: 'Nitrate Trend Stations',
+                title: 'Trend Stations',
                 source: new VectorSource({
-                    url: nitrateTrendStationsJSON20years,
+                    url: nitrateTrendStationsJSON20Years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -226,16 +224,16 @@ const Summary = () => {
         ]
     });
 
+    
 
-
-    const nitrateWaterShedsLayer20Years = new GroupLayer({
+    const nitrateWaterShedsLayer20years = new GroupLayer({
         title: 'Nitrate Watersheds',
         layers: [
             new VectorLayer({
                 visible: true,
-                title: 'Nitrate Watersheds',
+                title: 'Watersheds',
                 source: new VectorSource({
-                    url: nitrateWaterShedsJSON20Years,
+                    url: nitrateWaterShedsJSON20years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -244,14 +242,14 @@ const Summary = () => {
         ]
     });
 
-    const phosTrendStations20Years = new GroupLayer({
+    const phosTrendStationsLayer20years = new GroupLayer({
         title: 'Phosphorus Trend Stations',
         layers: [
             new VectorLayer({
-                visible: false,
-                title: 'Phosphorus Trend Stations',
+                visible: true,
+                title: 'Trend Stations',
                 source: new VectorSource({
-                    url: phosTrendStationsJSON20years,
+                    url: phosTrendStationsJSON20Years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -260,14 +258,14 @@ const Summary = () => {
         ]
     });
 
-    const phosWaterShedsLayer20Years = new GroupLayer({
+    const phosWaterShedsLayer20years = new GroupLayer({
         title: 'Phosphorus Watersheds',
         layers: [
             new VectorLayer({
-                visible: false,
-                title: 'Phosphorus Watersheds',
+                visible: true,
+                title: 'Watersheds',
                 source: new VectorSource({
-                    url: phosWaterShedsJSON20Years,
+                    url: phosWaterShedsJSON20years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -275,6 +273,7 @@ const Summary = () => {
             })
         ]
     });
+
 
     const riversLayer = new GroupLayer({
         title: 'Rivers',
@@ -328,7 +327,7 @@ const Summary = () => {
 
     // Set styling for selected station
     React.useEffect(() => {
-    // This is the interaction to set style for the selected station
+        // This is the interaction to set style for the selected station
         if (oldSelectedStation !== selectedStation) {
             if (oldSelectedStation) {
                 oldSelectedStation.setStyle(renderIcon);
@@ -351,7 +350,7 @@ const Summary = () => {
 
     // Set styling for selected watershed
     React.useEffect(() => {
-    // This is the interaction to set style for the selected watershed
+        // This is the interaction to set style for the selected watershed
         if (oldSelectedWatershed !== selectedWatershed) {
             if (oldSelectedWatershed) {
                 oldSelectedWatershed.setStyle(renderWaterSheds);
@@ -384,33 +383,18 @@ const Summary = () => {
         // Get corresponding watershed by SF_site_no if the selected feature is a trend station
         if (
             selectedFeature &&
-      selectedFeature.getGeometry().getType() === 'Point'
+          selectedFeature.getGeometry().getType() === 'Point'
         ) {
-            console.log(selectedFeature.get('SF_site_no'));
-            if (selectedNutrient === 'Nitrogen'){
-                const correspondingWatershed = nitrateWaterShedsLayer20Years
-                    .getLayersArray()[0]
-                    .getSource()
-                    .getFeatures()
-                    .find(
-                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
-                    );
-                console.log(correspondingWatershed);
-                setSelectedStation(selectedFeature);
-                setSelectedWatershed(correspondingWatershed);
-            } else {
-                console.log('Phosphorus');
-                const correspondingWatershed = phosWaterShedsLayer20Years
-                    .getLayersArray()[0]
-                    .getSource()
-                    .getFeatures()
-                    .find(
-                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
-                    );
-                console.log(correspondingWatershed);
-                setSelectedStation(selectedFeature);
-                setSelectedWatershed(correspondingWatershed);
-            }
+            const correspondingWatershed = nitrateWaterShedsLayer20years
+                .getLayersArray()[0]
+                .getSource()
+                .getFeatures()
+                .find(
+                    (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                );
+            
+            setSelectedStation(selectedFeature);
+            setSelectedWatershed(correspondingWatershed);
         } else {
             setSelectedStation(null);
             setSelectedWatershed(null);
@@ -430,19 +414,18 @@ const Summary = () => {
         }
     };
 
-
     const nitratelayers = {
         basemaps,
         riversLayer,
-        nitrateTrendStations20Years,
-        nitrateWaterShedsLayer20Years
+        nitrateWaterShedsLayer20years,
+        nitrateTrendStationsLayer20years
     };
 
     const phosLayers = {
         basemaps,
         riversLayer,
-        phosTrendStations20Years,
-        phosWaterShedsLayer20Years
+        phosWaterShedsLayer20years,
+        phosTrendStationsLayer20years
     };
 
     const removeSelectedStation = () => {
@@ -459,7 +442,8 @@ const Summary = () => {
                     xs={7}
                     key={selectedTimePeriod}
                 >
-                    {selectedNutrient === 'Nitrogen' &&
+                    {
+                        selectedNutrient == 'Nitrogen' &&
                     <Map
                         className={classes.fillContainer}
                         zoom={4}
@@ -488,8 +472,10 @@ const Summary = () => {
                         {legendOpen && (
                             <div className={classes.legend}>{trendStationsLegend}</div>
                         )}
-                    </Map>}
-                    {selectedNutrient === 'Phosphorus' &&
+                    </Map>
+                    }
+                    {
+                        selectedNutrient == 'Phosphorus' &&
                       <Map
                           className={classes.fillContainer}
                           zoom={4}
@@ -518,17 +504,18 @@ const Summary = () => {
                           {legendOpen && (
                               <div className={classes.legend}>{trendStationsLegend}</div>
                           )}
-                      </Map>}
+                      </Map>
+                    }
                     <div
                         ref={tooltipRef}
-                        className="tooltip" 
+                        className="tooltip"
                         style={{
                             position: 'absolute',
                             left: `${tooltipPosition.x}px`,
                             top: `${tooltipPosition.y}px`,
                             backgroundColor: 'white',
                             display: tooltipContent ? 'block' : 'none'
-             
+
                         }}
                     >
                         {tooltipContent}

@@ -210,7 +210,7 @@ const Summary = () => {
 
 
     // Create group layer for trend stations and watersheds
-    const nitrateTrendstations20Years = new GroupLayer({
+    const nitrateTrendStations20Years = new GroupLayer({
         title: 'Nitrate Trend Stations',
         layers: [
             new VectorLayer({
@@ -228,7 +228,7 @@ const Summary = () => {
 
 
 
-    const nitrateWatershedsLayer20Years = new GroupLayer({
+    const nitrateWaterShedsLayer20Years = new GroupLayer({
         title: 'Nitrate Watersheds',
         layers: [
             new VectorLayer({
@@ -388,7 +388,7 @@ const Summary = () => {
         ) {
             console.log(selectedFeature.get('SF_site_no'));
             if (selectedNutrient === 'Nitrogen'){
-                const correspondingWatershed = nitrateWatershedsLayer20Years
+                const correspondingWatershed = nitrateWaterShedsLayer20Years
                     .getLayersArray()[0]
                     .getSource()
                     .getFeatures()
@@ -399,7 +399,7 @@ const Summary = () => {
                 setSelectedStation(selectedFeature);
                 setSelectedWatershed(correspondingWatershed);
             } else {
-                console.log("Phosphorus");
+                console.log('Phosphorus');
                 const correspondingWatershed = phosWaterShedsLayer20Years
                     .getLayersArray()[0]
                     .getSource()
@@ -429,29 +429,18 @@ const Summary = () => {
             setTooltipContent('');
         }
     };
-    // Set layer visibility depending on nutrtient
-    React.useEffect(() => {
-        console.log(selectedNutrient);
-        if (selectedNutrient === 'Phosphorus') {
-            nitrateTrendstations20Years.getLayersArray()[0].setVisible(false);
-            phosTrendStations20Years.getLayersArray()[0].setVisible(true);
-            nitrateWatershedsLayer20Years.getLayersArray()[0].setVisible(false);
-            phosWaterShedsLayer20Years.getLayersArray()[0].setVisible(true);
-        } else {
-            nitrateTrendstations20Years.getLayersArray()[0].setVisible(true);
-            phosTrendStations20Years.getLayersArray()[0].setVisible(false);
-            nitrateWatershedsLayer20Years.getLayersArray()[0].setVisible(true);
-            phosWaterShedsLayer20Years.getLayersArray()[0].setVisible(false);
-        }
-    }, [selectedNutrient]);
 
-    // TODO: When we have data apart from 20 years, switch between layeers
 
-    const layers = {
+    const nitratelayers = {
         basemaps,
         riversLayer,
-        nitrateTrendstations20Years,
-        nitrateWatershedsLayer20Years,
+        nitrateTrendStations20Years,
+        nitrateWaterShedsLayer20Years
+    };
+
+    const phosLayers = {
+        basemaps,
+        riversLayer,
         phosTrendStations20Years,
         phosWaterShedsLayer20Years
     };
@@ -470,6 +459,7 @@ const Summary = () => {
                     xs={7}
                     key={selectedTimePeriod}
                 >
+                    {selectedNutrient === 'Nitrogen' &&
                     <Map
                         className={classes.fillContainer}
                         zoom={4}
@@ -477,7 +467,7 @@ const Summary = () => {
                         minZoom={2}
                         extent={MAP_BOUNDS}
                         center={[-9972968, 4972295]}
-                        layers={Object.values(layers)}
+                        layers={Object.values(nitratelayers)}
                         events={{
                             click: handleMapClick,
                             pointermove: handleMapHover
@@ -498,7 +488,37 @@ const Summary = () => {
                         {legendOpen && (
                             <div className={classes.legend}>{trendStationsLegend}</div>
                         )}
-                    </Map>
+                    </Map>}
+                    {selectedNutrient === 'Phosphorus' &&
+                      <Map
+                          className={classes.fillContainer}
+                          zoom={4}
+                          maxZoom={10}
+                          minZoom={2}
+                          extent={MAP_BOUNDS}
+                          center={[-9972968, 4972295]}
+                          layers={Object.values(phosLayers)}
+                          events={{
+                              click: handleMapClick,
+                              pointermove: handleMapHover
+                          }}
+                          layerSwitcherOptions={{}}
+                      >
+                          <button
+                              onClick={() => setLegendOpen(!legendOpen)}
+                              className={classes.legendButton}
+                          >
+                              <img
+                                  src={MapLegendIcon}
+                                  alt="Map Legend Icon"
+                                  style={{ width: '100%', height: '100%', display: 'block' }}
+                              />
+                          </button>
+
+                          {legendOpen && (
+                              <div className={classes.legend}>{trendStationsLegend}</div>
+                          )}
+                      </Map>}
                     <div
                         ref={tooltipRef}
                         className="tooltip" 

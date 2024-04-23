@@ -23,7 +23,7 @@ import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 import nitrateTrendStationsJSON20years from '../../data/nitrate_trend_stations_20_years.geojson';
 import nitrateWaterShedsJSON20Years from '../../data/nitrate_trend_watersheds_20_years.geojson';
 import phosTrendStationsJSON20years from '../../data/phos_trend_stations_20_years.geojson';
-import phosWaterShedsJSON20Years from '../../data/nitrate_trend_watersheds_20_years.geojson';
+import phosWaterShedsJSON20Years from '../../data/phos_trend_watersheds_20_years.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Summary Dashboard
@@ -290,7 +290,6 @@ const Summary = () => {
         ]
     });
 
-
     // Create legend for trend stations
     const trendStationsLegend = React.useMemo(
         () => (
@@ -387,27 +386,31 @@ const Summary = () => {
             selectedFeature &&
       selectedFeature.getGeometry().getType() === 'Point'
         ) {
-            let correspondingWatershed;
-            if (selectedNutrient === 'Nitrogen') {
-                correspondingWatershed = nitrateWatershedsLayer20Years
+            console.log(selectedFeature.get('SF_site_no'));
+            if (selectedNutrient === 'Nitrogen'){
+                const correspondingWatershed = nitrateWatershedsLayer20Years
                     .getLayersArray()[0]
                     .getSource()
                     .getFeatures()
                     .find(
                         (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
                     );
-            }
-            if (selectedNutrient === 'Phosphorus') {
-                correspondingWatershed = phosWaterShedsLayer20Years
+                console.log(correspondingWatershed);
+                setSelectedStation(selectedFeature);
+                setSelectedWatershed(correspondingWatershed);
+            } else {
+                console.log("Phosphorus");
+                const correspondingWatershed = phosWaterShedsLayer20Years
                     .getLayersArray()[0]
                     .getSource()
                     .getFeatures()
                     .find(
                         (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
                     );
+                console.log(correspondingWatershed);
+                setSelectedStation(selectedFeature);
+                setSelectedWatershed(correspondingWatershed);
             }
-            setSelectedStation(selectedFeature);
-            setSelectedWatershed(correspondingWatershed);
         } else {
             setSelectedStation(null);
             setSelectedWatershed(null);
@@ -426,7 +429,22 @@ const Summary = () => {
             setTooltipContent('');
         }
     };
-    // Set layer visibility depending on time period
+    // Set layer visibility depending on nutrtient
+    React.useEffect(() => {
+        console.log(selectedNutrient);
+        if (selectedNutrient === 'Phosphorus') {
+            nitrateTrendstations20Years.getLayersArray()[0].setVisible(false);
+            phosTrendStations20Years.getLayersArray()[0].setVisible(true);
+            nitrateWatershedsLayer20Years.getLayersArray()[0].setVisible(false);
+            phosWaterShedsLayer20Years.getLayersArray()[0].setVisible(true);
+        } else {
+            nitrateTrendstations20Years.getLayersArray()[0].setVisible(true);
+            phosTrendStations20Years.getLayersArray()[0].setVisible(false);
+            nitrateWatershedsLayer20Years.getLayersArray()[0].setVisible(true);
+            phosWaterShedsLayer20Years.getLayersArray()[0].setVisible(false);
+        }
+    }, [selectedNutrient]);
+
     // TODO: When we have data apart from 20 years, switch between layeers
 
     const layers = {

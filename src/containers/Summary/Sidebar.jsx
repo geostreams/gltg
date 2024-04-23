@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
 import nitrateTrendStationsData20Years from '../../data/nitrate_trend_station_data_20years.json';
+import phosTrendStationData20Years from '../../data/phos_trend_station_data_20years.json';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
@@ -185,9 +186,12 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
 
     React.useEffect(() => {
         if (stationData) {
-            switch (selectedTimePeriod) {
-                case '20_years':
+            switch (selectedNutrient) {
+                case 'Nitrogen':
                     setData(nitrateTrendStationsData20Years[stationData.WQ_MonitoringLocationIdentifier]);
+                    break;
+                case 'Phosphorus':
+                    setData(phosTrendStationData20Years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
             }
         } else {

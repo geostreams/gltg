@@ -374,6 +374,12 @@ const Summary = () => {
         setOldSelectedWatershed(selectedWatershed);
     }, [selectedWatershed]);
 
+    // Reset selected station and watershed when nutrient is changed
+    React.useEffect(() => {
+        setSelectedStation(null);
+        setSelectedWatershed(null);
+    }, [selectedNutrient]);
+
     // Interaction when you click on a trend station
     const handleMapClick = (event) => {
         const selectedFeature = event.map.forEachFeatureAtPixel(
@@ -385,16 +391,28 @@ const Summary = () => {
             selectedFeature &&
           selectedFeature.getGeometry().getType() === 'Point'
         ) {
-            const correspondingWatershed = nitrateWaterShedsLayer20years
-                .getLayersArray()[0]
-                .getSource()
-                .getFeatures()
-                .find(
-                    (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
-                );
-            
-            setSelectedStation(selectedFeature);
-            setSelectedWatershed(correspondingWatershed);
+            if (selectedNutrient === 'Nitrogen') {
+                const correspondingWatershed = nitrateWaterShedsLayer20years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                    );
+                setSelectedStation(selectedFeature);
+                setSelectedWatershed(correspondingWatershed);
+            }
+            if (selectedNutrient === 'Phosphorus') {
+                const correspondingWatershed = phosWaterShedsLayer20years
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                    );
+                setSelectedStation(selectedFeature);
+                setSelectedWatershed(correspondingWatershed);
+            }
         } else {
             setSelectedStation(null);
             setSelectedWatershed(null);

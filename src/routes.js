@@ -26,8 +26,7 @@ const routes = Object.assign(
     coreRoutes,
     {
         '/': { exact: true, component: hocs.withLayout(GLTGLandingLayout, LandingPage, { hasFooter: true }) },
-        '/summary': { exact: true, component: hocs.withLayout(GLTGLayout, Summary, { hasFooter: true, stickyFooter: true }) },
-        '/summary-new-2023-evaluation': { exact: true, component: hocs.withLayout(GLTGLayout, NewSummary, { hasFooter: true, stickyFooter: true }) },
+        '/summary': { exact: true, component: hocs.withLayout(GLTGLayout, NewSummary, { hasFooter: true, stickyFooter: true }) },
         '/data-stories': { component: hocs.withLayout(GLTGLayout, DataStories, { hasFooter: true }) },
         '/help': { exact: true, component: hocs.withLayout(GLTGLayout, Help, { hasFooter: true }) },
         '/partners': { exact: true, component: hocs.withLayout(GLTGLayout, Partners, { hasFooter: false }) },

@@ -148,7 +148,7 @@ const Header = ({ location }: Props) => {
               component={Link}
               to="summary"
             >
-              Summary Dashboard
+              Trends Dashboard
             </MenuItem>
             <MenuItem
               classes={{ root: classes.menuItem }}

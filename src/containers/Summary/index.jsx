@@ -12,6 +12,7 @@ import GeoJSON from 'ol/format/GeoJSON';
 import { Circle, Stroke, Icon } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
+import RegularShape from 'ol/style/RegularShape';
 import { TileWMS } from 'ol/source';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import HighUpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
@@ -115,26 +116,48 @@ const renderIcon = (feature) => {
     const icon_trend = feature.get('icon_trend');
     if (icon_trend === 'Upward Trend'){
         return new Style({
-            image: new Icon({
-                src: HighUpwardTrendIcon,
-                scale: 0.75
+            image: new RegularShape({
+                fill: new Fill({
+                    color: 'red'
+                }),
+                points: 3,
+                radius: 8,
+                angle: 0
             })
         });
     } if (icon_trend === 'Downward Trend'){
         return new Style({
-            image: new Icon({
-                src: HighDownwardTrendIcon,
-                scale: 0.75
+            image: new RegularShape({
+                fill: new Fill({
+                    color: 'black'
+                }),
+                points: 3,
+                radius: 8,
+                angle: Math.PI / 3
             })
         });
     } if (icon_trend === 'No Significant Trend'){
-        return new Style({
-            image: new Icon({
-                src: NoSignificantTrendIcon,
-                scale: 0.75
+        const circleStyle = new Style({
+            image: new Circle({
+                radius: 8,
+                fill: new Fill({
+                    color: 'yellow'
+                })
             })
         });
+
+        const innerCircleStyle = new Style({
+            image: new Circle({
+                radius: 2,
+                fill: new Fill({
+                    color: 'black'
+                })
+            })
+        });
+
+        return [circleStyle, innerCircleStyle];
     }
+    return null;
 };
 
 const renderWaterSheds = () => {
@@ -335,13 +358,63 @@ const Summary = () => {
         }
 
         if (selectedStation) {
-            const selectedStyle = new Style({
-                image: new Circle({
-                    radius: 8,
-                    fill: new Fill({ color: 'rgba(0, 0, 255, 0.5)' }),
-                    stroke: new Stroke({ color: 'blue', width: 1 })
-                })
-            });
+            let selectedStyle = null;
+            const icon_trend = selectedStation.get('icon_trend');
+            if (icon_trend === 'Upward Trend'){
+                selectedStyle = new Style({
+                    image: new RegularShape({
+                        fill: new Fill({
+                            color: 'red'
+                        }),
+                        stroke: new Stroke({
+                            color: 'blue',
+                            width: 3
+                        }),
+                        points: 3,
+                        radius: 8,
+                        angle: 0
+                    }),
+                });
+            } if (icon_trend === 'Downward Trend'){
+                selectedStyle = new Style({
+                    image: new RegularShape({
+                        fill: new Fill({
+                            color: 'black'
+                        }),
+                        stroke: new Stroke({
+                            color: 'blue',
+                            width: 3
+                        }),
+                        points: 3,
+                        radius: 8,
+                        angle: Math.PI / 3
+                    })
+                });
+            } if (icon_trend === 'No Significant Trend') {
+                const circleStyle = new Style({
+                    image: new Circle({
+                        radius: 8,
+                        fill: new Fill({
+                            color: 'yellow'
+                        }),
+                        stroke: new Stroke({
+                            color: 'blue',
+                            width: 3
+                        })
+                    })
+                });
+
+                const innerCircleStyle = new Style({
+                    image: new Circle({
+                        radius: 2,
+                        fill: new Fill({
+                            color: 'black'
+                        })
+                    })
+                });
+
+                selectedStyle = [circleStyle, innerCircleStyle];
+            }
 
             selectedStation.setStyle(selectedStyle);
         }

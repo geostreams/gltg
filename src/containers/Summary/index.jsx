@@ -14,6 +14,7 @@ import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import RegularShape from 'ol/style/RegularShape';
 import { TileWMS } from 'ol/source';
+import type { Map as MapType } from "ol";
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import HighUpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
@@ -176,6 +177,9 @@ const renderWaterSheds = () => {
 const Summary = () => {
     const classes = useStyles();
 
+    // Holds an instance of @geostreams/core/ol/Map component
+    const mapRef = React.useRef();
+
     // This state variable is used to keep track of the selected station
     const [selectedStation, setSelectedStation] = React.useState(null);
     const [oldSelectedStation, setOldSelectedStation] = React.useState(null);
@@ -196,6 +200,7 @@ const Summary = () => {
     const [tooltipContent, setTooltipContent] = React.useState('');
     const [tooltipPosition, setTooltipPosition] = React.useState({ x: 0, y: 0 });
     const tooltipRef = React.useRef();
+
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
         title: 'Base Maps',
@@ -229,8 +234,6 @@ const Summary = () => {
         ]
     });
 
-
-
     const nitrateTrendStationsLayer20years = new GroupLayer({
         title: 'Nitrate Trend Stations',
         layers: [
@@ -246,8 +249,6 @@ const Summary = () => {
             })
         ]
     });
-
-    
 
     const nitrateWaterShedsLayer20years = new GroupLayer({
         title: 'Nitrate Watersheds',
@@ -296,7 +297,6 @@ const Summary = () => {
             })
         ]
     });
-
 
     const riversLayer = new GroupLayer({
         title: 'Rivers',
@@ -451,6 +451,18 @@ const Summary = () => {
     React.useEffect(() => {
         setSelectedStation(null);
         setSelectedWatershed(null);
+
+        // Change the visibility of the layers ccording to the nutrient
+
+        const map: MapType = mapRef.current;
+        if (map) {
+            map.getLayers().forEach((layer) => {
+                if (layer.get('title').startsWith('Nitrate'))
+                    layer.setVisible(selectedNutrient === 'Nitrogen');
+                if (layer.get('title').startsWith('Phosphorus'))
+                    layer.setVisible(selectedNutrient === 'Phosphorus');
+            });
+        }
     }, [selectedNutrient]);
 
     // Interaction when you click on a trend station
@@ -476,6 +488,7 @@ const Summary = () => {
                 setSelectedWatershed(correspondingWatershed);
             }
             if (selectedNutrient === 'Phosphorus') {
+                // Go through mapRef.current.layers() and find this layer, then setSelected
                 const correspondingWatershed = phosWaterShedsLayer20years
                     .getLayersArray()[0]
                     .getSource()
@@ -505,16 +518,11 @@ const Summary = () => {
         }
     };
 
-    const nitratelayers = {
+    const layers = {
         basemaps,
         riversLayer,
         nitrateWaterShedsLayer20years,
-        nitrateTrendStationsLayer20years
-    };
-
-    const phosLayers = {
-        basemaps,
-        riversLayer,
+        nitrateTrendStationsLayer20years,
         phosWaterShedsLayer20years,
         phosTrendStationsLayer20years
     };
@@ -533,8 +541,6 @@ const Summary = () => {
                     xs={7}
                     key={selectedTimePeriod}
                 >
-                    {
-                        selectedNutrient == 'Nitrogen' &&
                     <Map
                         className={classes.fillContainer}
                         zoom={4}
@@ -542,10 +548,13 @@ const Summary = () => {
                         minZoom={2}
                         extent={MAP_BOUNDS}
                         center={[-9972968, 4972295]}
-                        layers={Object.values(nitratelayers)}
+                        layers={Object.values(layers)}
                         events={{
                             click: handleMapClick,
                             pointermove: handleMapHover
+                        }}
+                        updateMap={(map) => {
+                            mapRef.current = map;
                         }}
                         layerSwitcherOptions={{}}
                     >
@@ -564,39 +573,6 @@ const Summary = () => {
                             <div className={classes.legend}>{trendStationsLegend}</div>
                         )}
                     </Map>
-                    }
-                    {
-                        selectedNutrient == 'Phosphorus' &&
-                      <Map
-                          className={classes.fillContainer}
-                          zoom={4}
-                          maxZoom={10}
-                          minZoom={2}
-                          extent={MAP_BOUNDS}
-                          center={[-9972968, 4972295]}
-                          layers={Object.values(phosLayers)}
-                          events={{
-                              click: handleMapClick,
-                              pointermove: handleMapHover
-                          }}
-                          layerSwitcherOptions={{}}
-                      >
-                          <button
-                              onClick={() => setLegendOpen(!legendOpen)}
-                              className={classes.legendButton}
-                          >
-                              <img
-                                  src={MapLegendIcon}
-                                  alt="Map Legend Icon"
-                                  style={{ width: '100%', height: '100%', display: 'block' }}
-                              />
-                          </button>
-
-                          {legendOpen && (
-                              <div className={classes.legend}>{trendStationsLegend}</div>
-                          )}
-                      </Map>
-                    }
                     <div
                         ref={tooltipRef}
                         className="tooltip"

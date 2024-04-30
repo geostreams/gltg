@@ -26,7 +26,7 @@ import phosTrendStationsJSON20Years from '../../data/phos_trend_stations_20_year
 import waterShedsJSON20years from '../../data/watersheds_20years.geojson';
 import Sidebar from './Sidebar';
 
-// Styling for different components of Trends Dashboard
+// Styling for different components of Nutrient Trends Dashboard
 const useStyles = makeStyles((theme) => ({
     fillContainer: {
         width: '100%',

@@ -302,7 +302,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                     className={classes.header}
                     variant="h5"
                 >
-                    Nutrient Trend Dashboard
+                    Nutrient Trends Dashboard
                 </Typography>
                 <Divider className={classes.divider} />
                 {!stationData ?

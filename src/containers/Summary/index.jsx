@@ -9,12 +9,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
-import { Circle, Stroke, Icon } from 'ol/style';
+import { Circle, Stroke } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import RegularShape from 'ol/style/RegularShape';
 import { TileWMS } from 'ol/source';
-import type { Map as MapType } from "ol";
+import type { Map as MapType } from 'ol';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import HighUpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
@@ -22,9 +22,8 @@ import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 import nitrateTrendStationsJSON20Years from '../../data/nitrate_trend_stations_20_years.geojson';
-import nitrateWaterShedsJSON20years from '../../data/nitrate_trend_watersheds_20_years.geojson';
 import phosTrendStationsJSON20Years from '../../data/phos_trend_stations_20_years.geojson';
-import phosWaterShedsJSON20years from '../../data/phos_trend_watersheds_20_years.geojson';
+import waterShedsJSON20years from '../../data/watersheds_20years.geojson';
 import Sidebar from './Sidebar';
 
 // Styling for different components of Trends Dashboard
@@ -250,22 +249,6 @@ const Summary = () => {
         ]
     });
 
-    const nitrateWaterShedsLayer20years = new GroupLayer({
-        title: 'Nitrate Watersheds',
-        layers: [
-            new VectorLayer({
-                visible: true,
-                title: 'Watersheds',
-                source: new VectorSource({
-                    url: nitrateWaterShedsJSON20years,
-                    format: new GeoJSON()
-                }),
-                interactive: true,
-                style: renderWaterSheds
-            })
-        ]
-    });
-
     const phosTrendStationsLayer20years = new GroupLayer({
         title: 'Phosphorus Trend Stations',
         layers: [
@@ -282,14 +265,14 @@ const Summary = () => {
         ]
     });
 
-    const phosWaterShedsLayer20years = new GroupLayer({
-        title: 'Phosphorus Watersheds',
+    const waterShedsLayer20years = new GroupLayer({
+        title: 'Watershed Layer',
         layers: [
             new VectorLayer({
                 visible: true,
                 title: 'Watersheds',
                 source: new VectorSource({
-                    url: phosWaterShedsJSON20years,
+                    url: waterShedsJSON20years,
                     format: new GeoJSON()
                 }),
                 interactive: true,
@@ -373,7 +356,7 @@ const Summary = () => {
                         points: 3,
                         radius: 8,
                         angle: 0
-                    }),
+                    })
                 });
             } if (icon_trend === 'Downward Trend'){
                 selectedStyle = new Style({
@@ -438,7 +421,7 @@ const Summary = () => {
                     width: 3
                 }),
                 fill: new Fill({
-                    color: 'rgba(0, 0, 0, 0.1)'
+                    color: 'rgba(0, 0, 0, 0.2)'
                 })
             });
 
@@ -446,6 +429,37 @@ const Summary = () => {
         }
         setOldSelectedWatershed(selectedWatershed);
     }, [selectedWatershed]);
+
+
+
+    // Interaction when you click on a trend station
+
+    const handleMapClick = (event) => {
+        const selectedFeature = event.map.forEachFeatureAtPixel(
+            event.pixel,
+            (feature) => feature
+        );
+        // Get corresponding watershed by SF_site_no if the selected feature is a trend station
+        if (
+            selectedFeature &&
+          selectedFeature.getGeometry().getType() === 'Point'
+        ) {
+            // This always shows nitrogen my worry is the function passed to openlayers is not getting the updated value of selectedNutrient
+
+            const correspondingWatershed = waterShedsLayer20years
+                .getLayersArray()[0]
+                .getSource()
+                .getFeatures()
+                .find(
+                    (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                );
+            setSelectedStation(selectedFeature);
+            setSelectedWatershed(correspondingWatershed);
+        } else {
+            setSelectedStation(null);
+            setSelectedWatershed(null);
+        }
+    };
 
     // Reset selected station and watershed when nutrient is changed
     React.useEffect(() => {
@@ -465,46 +479,6 @@ const Summary = () => {
         }
     }, [selectedNutrient]);
 
-    // Interaction when you click on a trend station
-    const handleMapClick = (event) => {
-        const selectedFeature = event.map.forEachFeatureAtPixel(
-            event.pixel,
-            (feature) => feature
-        );
-        // Get corresponding watershed by SF_site_no if the selected feature is a trend station
-        if (
-            selectedFeature &&
-          selectedFeature.getGeometry().getType() === 'Point'
-        ) {
-            if (selectedNutrient === 'Nitrogen') {
-                const correspondingWatershed = nitrateWaterShedsLayer20years
-                    .getLayersArray()[0]
-                    .getSource()
-                    .getFeatures()
-                    .find(
-                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
-                    );
-                setSelectedStation(selectedFeature);
-                setSelectedWatershed(correspondingWatershed);
-            }
-            if (selectedNutrient === 'Phosphorus') {
-                // Go through mapRef.current.layers() and find this layer, then setSelected
-                const correspondingWatershed = phosWaterShedsLayer20years
-                    .getLayersArray()[0]
-                    .getSource()
-                    .getFeatures()
-                    .find(
-                        (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
-                    );
-                setSelectedStation(selectedFeature);
-                setSelectedWatershed(correspondingWatershed);
-            }
-        } else {
-            setSelectedStation(null);
-            setSelectedWatershed(null);
-        }
-    };
-
     const handleMapHover = (event) => {
         const pixel = event.pixel;
         const feature = event.map.forEachFeatureAtPixel(pixel, (feat) => feat);
@@ -521,9 +495,8 @@ const Summary = () => {
     const layers = {
         basemaps,
         riversLayer,
-        nitrateWaterShedsLayer20years,
+        waterShedsLayer20years,
         nitrateTrendStationsLayer20years,
-        phosWaterShedsLayer20years,
         phosTrendStationsLayer20years
     };
 

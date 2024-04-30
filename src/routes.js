@@ -17,7 +17,6 @@ import Help from './containers/Help';
 import GLTGLayout from './containers/Layout';
 import GLTGLandingLayout from './containers/LandingPageLayout';
 import BMP from './containers/BMP';
-import Summary from './containers/OldSummary';
 import NewSummary from './containers/Summary';
 import Tests from './tests/Tests';
 import Partners from './containers/Partners';

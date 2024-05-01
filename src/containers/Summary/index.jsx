@@ -520,7 +520,7 @@ const Summary = () => {
                         maxZoom={10}
                         minZoom={1}
                         extent={MAP_BOUNDS}
-                        center={[-9972968, 4972295]}
+                        center={[-10072968, 4972295]}
                         layers={Object.values(layers)}
                         events={{
                             click: handleMapClick,

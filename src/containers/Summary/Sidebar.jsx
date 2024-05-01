@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, InputBase, NativeSelect, Typography, Dialog, DialogTitle, DialogContent,
+import { Box, FormControl, FormLabel, InputBase, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
     DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
@@ -285,16 +285,15 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                            Select Time Period
                         </Box>
                     </FormLabel>
-                    <NativeSelect
+                    <Select
                         className={classes.selectButton}
                         value={selectedTimePeriod}
                         onChange={({ target: { value } }) => {
                             setSelectedTimePeriod(value);
                         }}
-                        input={<InputBase />}
                     >
-                        <option value="20_years">Last 20 years</option>
-                    </NativeSelect>
+                        <MenuItem value="20_years">Last 20 years</MenuItem>
+                    </Select>
                 </FormControl>
             </Box>
             <div className={classes.sidebarBody}>

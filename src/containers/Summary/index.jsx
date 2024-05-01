@@ -516,9 +516,9 @@ const Summary = () => {
                 >
                     <Map
                         className={classes.fillContainer}
-                        zoom={4}
+                        zoom={2}
                         maxZoom={10}
-                        minZoom={2}
+                        minZoom={1}
                         extent={MAP_BOUNDS}
                         center={[-9972968, 4972295]}
                         layers={Object.values(layers)}

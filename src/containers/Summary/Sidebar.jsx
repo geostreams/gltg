@@ -261,17 +261,16 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                            Select Nutrient
                         </Box>
                     </FormLabel>
-                    <NativeSelect
+                    <Select
                         className={classes.selectButton}
                         value={selectedNutrient}
                         onChange={({ target: { value } }) => {
                             setSelectedNutrient(value);
                         }}
-                        input={<InputBase />}
                     >
-                        <option value="Nitrogen">Nitrate-N</option>
-                        <option value="Phosphorus">Phosphorus</option>
-                    </NativeSelect>
+                        <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
+                        <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+                    </Select>
                 </FormControl>
                 <FormControl
                     component="fieldset"

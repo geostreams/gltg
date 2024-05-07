@@ -5,6 +5,9 @@ ARG GEOSERVER_URL=https://gltg-geoserver.ncsa.illinois.edu/geoserver
 ARG GEOSTREAMS_URL=/geostreams
 ARG BMP_API_URL=/bmp-api
 ARG GA_TOKEN=UA-8681001-7
+# Build argument to decide if image build has to be password protected
+ARG USE_AUTH=false
+
 
 ENV GEOSERVER_URL=$GEOSERVER_URL
 ENV GEOSTREAMS_URL=$GEOSTREAMS_URL
@@ -16,7 +19,7 @@ WORKDIR /tmp/geodashboard
 RUN if [[ -z "${GEODASHBOARD_VERSION}" ]] ; then git switch --detach $GEODASHBOARD_VERSION ; fi
 RUN yarn && yarn link:all
 
-COPY ./ /tmp/gltg/
+COPY ../ /tmp/gltg/
 WORKDIR /tmp/gltg/
 RUN yarn
 RUN yarn link @geostreams/core && \
@@ -26,7 +29,11 @@ RUN yarn build
 
 FROM nginx:stable-alpine
 RUN rm /etc/nginx/conf.d/default.conf
-COPY docker/nginx.conf /etc/nginx/conf.d
+
+# Copy .htpasswd file
+COPY ../conf/.htpasswd /etc/nginx/.htpasswd
+
+COPY ../docker/nginx_with_auth.conf /etc/nginx/conf.d/nginx.conf
 
 COPY --from=build /tmp/gltg/build /usr/share/nginx/html
 EXPOSE 80

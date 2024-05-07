@@ -15,68 +15,68 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import LogoApp from '../../images/logo_app.png';
+import StatePortalsMenu from './StatePortalsMenu';
 
 export const HEADERS_HEIGHT = 61;
 
-const useStyles = makeStyles((theme) =>{
-    return ({
-        appbar: {
-            zIndex: theme.zIndex.drawer + 1
-        },
-        mainHeader: {
-            'background': theme.palette.primary.main,
-            'color': theme.palette.primary.contrastText,
-            'textDecoration': 'none',
-            'height': HEADERS_HEIGHT,
-            'minHeight': HEADERS_HEIGHT,
-            '& a': {
-                margin: 5
-            }
-        },
-        headerText: {
-            color: theme.palette.primary.contrastText,
-            textDecoration: 'none'
-        },
-        contactText:{
-            fontSize: '1rem',
-            color: '#BEC4C9',
-            textDecoration: 'none'
-        },
-        headerButton:{
-            fontSize: 16,
-            flexGrow: 1
-        },
-        tabsRoot: {
-            marginLeft: '6em',
-            fontSize: 16,
-            flexGrow: 1,
-        },
-        menuItem: {
-            '&:hover': {
-                backgroundColor: theme.palette.primary.main,
-                color: 'white'
-            }
-        },
-        tabsIndicator: {
-            backgroundColor: '#fff'
-        },
-        tabRoot: {
-            fontSize: '1rem'
-        },
-        dropdown: {
-            zIndex: 1100
-        },
-        dropdownIcon: {
-            display: 'flex'
-        },
-        menuIcon: {
-            display: 'block',
-            marginLeft: 'auto',
-            marginRight: 0
+const useStyles = makeStyles((theme) =>({
+    appbar: {
+        zIndex: theme.zIndex.drawer + 1
+    },
+    mainHeader: {
+        'background': theme.palette.primary.main,
+        'color': theme.palette.primary.contrastText,
+        'textDecoration': 'none',
+        'height': HEADERS_HEIGHT,
+        'minHeight': HEADERS_HEIGHT,
+        '& a': {
+            margin: 5
         }
-    });
-});
+    },
+    headerText: {
+        color: theme.palette.primary.contrastText,
+        textDecoration: 'none'
+    },
+    contactText:{
+        fontSize: '1rem',
+        color: '#BEC4C9',
+        textDecoration: 'none'
+    },
+    headerButton:{
+        fontSize: 16,
+        flexGrow: 1
+    },
+    tabsRoot: {
+        marginLeft: '6em',
+        fontSize: 16,
+        flexGrow: 1
+    },
+    menuItem: {
+        '&:hover': {
+            backgroundColor: theme.palette.primary.main,
+            color: 'white'
+        }
+    },
+    tabsIndicator: {
+        backgroundColor: '#fff'
+    },
+    tabRoot: {
+        fontSize: '1rem'
+    },
+    dropdown: {
+        zIndex: 1100
+    },
+    dropdownIcon: {
+        display: 'flex'
+    },
+    menuIcon: {
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 0
+    }
+}));
 
 type Props = {
     location: {
@@ -115,6 +115,12 @@ const SmallHeader = ({ location }: Props) => {
     const geoAppHandleClose = () => {
         setGeoAppAnchorEl(null);
         setMenuAnchorEL(null);
+    };
+
+    // State and handler for the State Portals submenu
+    const [statePortalsAnchorEl, setStatePortalsAnchorEl] = React.useState(null);
+    const statePortalsHandleClick = (event) => {
+        setStatePortalsAnchorEl(event.currentTarget);
     };
 
     return (
@@ -196,10 +202,15 @@ const SmallHeader = ({ location }: Props) => {
                         </MenuItem>
                         <MenuItem
                             classes={{ root: classes.menuItem }}
-                            onClick={dashboardHandleClose}
-                            component={Link}
-                            to="/summary">
-                            State Portals
+                            onClick={statePortalsHandleClick}
+                        ><div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                flexWrap: 'wrap'
+                            }}>
+                                <ArrowLeftIcon />
+                                <span>State Portals</span>
+                            </div>
                         </MenuItem>
                     </Menu>
                 </div>

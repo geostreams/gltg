@@ -27,7 +27,7 @@ import WaltonFamily from './Images/Partners/WaltonFamily.png';
 const Home = () => {
 
     // First Image Row Text
-    const firstRowHeader1 = 'Summary Dashboard';
+    const firstRowHeader1 = 'Nutrient Trends Dashboard';
     const firstRowSubHeader1 = 'Review all state portals in a single view. Current states available: Illinois. \n' +
         '\n' +
         'More to come!';
@@ -69,7 +69,7 @@ const Home = () => {
         <>
             <About />
             <RssFeed></RssFeed>
-            <TextBox title = 'Explore GLTG Dashboards' text = 'GLTG dashboards provide Mississippi River water quality analyses that have been developed by our team of experts. Take in the big picture at the summary dashboard; review water quality state-by-state; and see the impact of a variety of best management practices on the river.' />
+            <TextBox title = 'Explore GLTG Dashboards' text = 'GLTG dashboards provide Mississippi River water quality analyses that have been developed by our team of experts. Take in the big picture at the Nutrient Trends Dashboard; review water quality state-by-state; and see the impact of a variety of best management practices on the river.' />
             <Imagerow image1 = {SummaryDashboard} image2 = {StatePortal} image3 ={ConservationPractices}
                 header1={firstRowHeader1} header2={firstRowHeader2} header3 = {firstRowHeader3}
                 subheader1={firstRowSubHeader1} subheader2={firstRowSubHeader2} subheader3={firstRowSubHeader3}

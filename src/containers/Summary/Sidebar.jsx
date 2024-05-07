@@ -1,14 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, InputBase, NativeSelect, Typography, Dialog, DialogTitle, DialogContent,
+import { Box, FormControl, FormLabel, InputBase, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
     DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
-import trendStationsData_30years from '../../data/trend_station_data_30years.json';
-import trendStationsData_20years from '../../data/trend_station_data_20years.json';
+import nitrateTrendStationsData20Years from '../../data/nitrate_trend_station_data_20years.json';
+import phosTrendStationData20Years from '../../data/phos_trend_station_data_20years.json';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
@@ -186,14 +186,13 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
 
     React.useEffect(() => {
         if (stationData) {
-            switch (selectedTimePeriod) {
-                case '20_years':
-                    setData(trendStationsData_20years[stationData.WQ_MonitoringLocationIdentifier]);
+            switch (selectedNutrient) {
+                case 'Nitrogen':
+                    setData(nitrateTrendStationsData20Years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
-                case '30_years':
-                    setData(trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier]);
+                case 'Phosphorus':
+                    setData(phosTrendStationData20Years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
-
             }
         } else {
             setData(null);
@@ -262,16 +261,16 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                            Select Nutrient
                         </Box>
                     </FormLabel>
-                    <NativeSelect
+                    <Select
                         className={classes.selectButton}
                         value={selectedNutrient}
                         onChange={({ target: { value } }) => {
-                            selectedNutrient(value);
+                            setSelectedNutrient(value);
                         }}
-                        input={<InputBase />}
                     >
-                        <option value="Nitrogen">Nitrate-N</option>
-                    </NativeSelect>
+                        <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
+                        <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+                    </Select>
                 </FormControl>
                 <FormControl
                     component="fieldset"
@@ -285,17 +284,15 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                            Select Time Period
                         </Box>
                     </FormLabel>
-                    <NativeSelect
+                    <Select
                         className={classes.selectButton}
                         value={selectedTimePeriod}
                         onChange={({ target: { value } }) => {
                             setSelectedTimePeriod(value);
                         }}
-                        input={<InputBase />}
                     >
-                        <option value="20_years">Last 20 years</option>
-                        <option value="30_years">Last 30 years</option>
-                    </NativeSelect>
+                        <MenuItem value="20_years">Last 20 years</MenuItem>
+                    </Select>
                 </FormControl>
             </Box>
             <div className={classes.sidebarBody}>
@@ -303,7 +300,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                     className={classes.header}
                     variant="h5"
                 >
-                    Nutrient Trend Dashboard
+                    Nutrient Trends Dashboard
                 </Typography>
                 <Divider className={classes.divider} />
                 {!stationData ?

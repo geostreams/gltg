@@ -79,8 +79,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '0.2em'
     },
     legendIcon: {
-        width: '1.75em',
-        height: 'auto',
+        width: '1em',
+        height: '1em',
         marginRight: theme.spacing(1)
     },
     legendContainer: {

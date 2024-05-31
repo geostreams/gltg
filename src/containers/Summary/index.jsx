@@ -9,15 +9,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
-import { Circle, Stroke } from 'ol/style';
+import { Stroke } from 'ol/style';
 import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import RegularShape from 'ol/style/RegularShape';
 import { TileWMS } from 'ol/source';
 import type { Map as MapType } from 'ol';
-import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
-import HighUpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
-import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+import { Box, FormControl, FormLabel, MenuItem, Select } from '@material-ui/core';
+import NoSignificantTrendIcon from '../../images/NoSignificantTrendIcon.png';
+import UpwardTrendIcon from '../../images/UpwardTrendIcon.png';
+import DownwardTrendIcon from '../../images/DownwardTrendIcon.png';
 
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
@@ -107,6 +108,33 @@ const useStyles = makeStyles((theme) => ({
         zIndex: 1000,
         pointerEvents: 'none',
         display: 'none' // Initially hidden
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        width: '150%'
+    },
+    formLabel: {
+        padding: theme.spacing(1),
+        fontSize: '.88rem'
+    },
+    selectButton: {
+        'background': theme.palette.primary.main,
+        'borderRadius': 4,
+        'color': theme.palette.primary.contrastText,
+        'position': 'relative',
+        'height': 42,
+        'padding': theme.spacing(2),
+        'fontSize': '.75rem',
+        '&:focus': {
+            borderRadius: 4
+        }
+    },
+    floatingTimePeriodDiv: {
+        position: 'absolute',
+        top: '1em',
+        left: '41em',
+        backgroundColor: 'white',
+        radius: '6px'
     }
 }));
 
@@ -118,7 +146,11 @@ const renderIcon = (feature) => {
         return new Style({
             image: new RegularShape({
                 fill: new Fill({
-                    color: 'red'
+                    color: '#E78998'
+                }),
+                border: new Stroke({
+                    color: 'red',
+                    width: 5
                 }),
                 points: 3,
                 radius: 8,
@@ -129,7 +161,11 @@ const renderIcon = (feature) => {
         return new Style({
             image: new RegularShape({
                 fill: new Fill({
-                    color: 'black'
+                    color: '#81A8E6'
+                }),
+                border: new Stroke({
+                    color: '#1557FE',
+                    width: 5
                 }),
                 points: 3,
                 radius: 8,
@@ -137,25 +173,20 @@ const renderIcon = (feature) => {
             })
         });
     } if (icon_trend === 'No Significant Trend'){
-        const circleStyle = new Style({
-            image: new Circle({
+        return new Style({
+            image: new RegularShape({
+                fill: new Fill({
+                    color: '#AEAEAA'
+                }),
+                border: new Stroke({
+                    color: 'black',
+                    width: 5
+                }),
+                points: 4,
                 radius: 8,
-                fill: new Fill({
-                    color: 'yellow'
-                })
+                angle: Math.PI / 4
             })
         });
-
-        const innerCircleStyle = new Style({
-            image: new Circle({
-                radius: 2,
-                fill: new Fill({
-                    color: 'black'
-                })
-            })
-        });
-
-        return [circleStyle, innerCircleStyle];
     }
     return null;
 };
@@ -302,7 +333,7 @@ const Summary = () => {
                 <div className={classes.legendContainer}>
                     <div className={classes.legendItem}>
                         <img
-                            src={HighUpwardTrendIcon}
+                            src={UpwardTrendIcon}
                             alt="Upward Trend Icon"
                             className={classes.legendIcon}
                         />
@@ -319,7 +350,7 @@ const Summary = () => {
 
                     <div className={classes.legendItem}>
                         <img
-                            src={HighDownwardTrendIcon}
+                            src={DownwardTrendIcon}
                             alt=" Downward Trend "
                             className={classes.legendIcon}
                         />
@@ -350,8 +381,8 @@ const Summary = () => {
                             color: 'red'
                         }),
                         stroke: new Stroke({
-                            color: 'blue',
-                            width: 3
+                            color: 'red',
+                            width: 1
                         }),
                         points: 3,
                         radius: 8,
@@ -362,11 +393,11 @@ const Summary = () => {
                 selectedStyle = new Style({
                     image: new RegularShape({
                         fill: new Fill({
-                            color: 'black'
+                            color: 'blue'
                         }),
                         stroke: new Stroke({
                             color: 'blue',
-                            width: 3
+                            width: 1
                         }),
                         points: 3,
                         radius: 8,
@@ -374,29 +405,20 @@ const Summary = () => {
                     })
                 });
             } if (icon_trend === 'No Significant Trend') {
-                const circleStyle = new Style({
-                    image: new Circle({
-                        radius: 8,
+                selectedStyle = new Style({
+                    image: new RegularShape({
                         fill: new Fill({
-                            color: 'yellow'
+                            color: '#000000'
                         }),
-                        stroke: new Stroke({
-                            color: 'blue',
-                            width: 3
-                        })
+                        border: new Stroke({
+                            color: '#000000',
+                            width: 1
+                        }),
+                        points: 4,
+                        radius: 8,
+                        angle: Math.PI / 4
                     })
                 });
-
-                const innerCircleStyle = new Style({
-                    image: new Circle({
-                        radius: 2,
-                        fill: new Fill({
-                            color: 'black'
-                        })
-                    })
-                });
-
-                selectedStyle = [circleStyle, innerCircleStyle];
             }
 
             selectedStation.setStyle(selectedStyle);
@@ -505,7 +527,34 @@ const Summary = () => {
         setSelectedWatershed(null);
     };
 
-    return (
+
+    // FLoating components
+
+    const timePeriodSelect = <FormControl
+        component="fieldset"
+        className={classes.formControl}
+        color={"#FFFFFF"}
+    >
+        <FormLabel
+            component="legend"
+            className={classes.formLabel}
+        >
+            <Box display="flex" alignItems="center">
+                Select Time Period
+            </Box>
+        </FormLabel>
+        <Select
+            className={classes.selectButton}
+            value={selectedTimePeriod}
+            onChange={({ target: { value } }) => {
+                setSelectedTimePeriod(value);
+            }}
+        >
+            <MenuItem value="20_years">Last 20 years</MenuItem>
+        </Select>
+    </FormControl>;
+
+    return(
         <>
             <Grid className={classes.mainContainer} container alignItems="stretch">
                 <Grid
@@ -572,6 +621,10 @@ const Summary = () => {
                     />
                 </Grid>
             </Grid>
+            {/*    Floating div top left */}
+            <div className={classes.floatingTimePeriodDiv}>
+                {timePeriodSelect}
+            </div>
         </>
     );
 };

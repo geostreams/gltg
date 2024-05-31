@@ -9,9 +9,9 @@ import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
 import nitrateTrendStationsData20Years from '../../data/nitrate_trend_station_data_20years.json';
 import phosTrendStationData20Years from '../../data/phos_trend_station_data_20years.json';
-import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
-import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
-import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+import NoSignificantTrendIcon from '../../images/NoSignificantTrendIcon.png';
+import UpwardTrendIcon from '../../images/UpwardTrendIcon.png';
+import DownwardTrendIcon from '../../images/DownwardTrendIcon.png';
 
 
 
@@ -124,8 +124,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2, 0)
     },
     legendIcon: {
-        width: '1.75em',
-        height: 'auto',
+        width: '1em',
+        height: '1em',
         marginRight: theme.spacing(1)
     },
     legendContainer: {

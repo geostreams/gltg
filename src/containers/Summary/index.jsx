@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        width: '150%'
+        width: '90%'
     },
     formLabel: {
         padding: theme.spacing(1),
@@ -120,6 +120,7 @@ const useStyles = makeStyles((theme) => ({
     selectButton: {
         'background': theme.palette.primary.main,
         'borderRadius': 4,
+        'width': '100%',
         'color': theme.palette.primary.contrastText,
         'position': 'relative',
         'height': 42,
@@ -132,9 +133,10 @@ const useStyles = makeStyles((theme) => ({
     floatingTimePeriodDiv: {
         position: 'absolute',
         top: '1em',
-        left: '41em',
+        left: '45%',
         backgroundColor: 'white',
-        radius: '6px'
+        radius: '6px',
+        width: '10%'
     }
 }));
 

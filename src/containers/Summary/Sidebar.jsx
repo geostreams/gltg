@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, InputBase, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
+import { Box, Tabs, Tab, Typography, Dialog, DialogTitle, DialogContent,
     DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        width: '150%'
+        width: '90%'
     },
     formLabel: {
         padding: theme.spacing(1),
@@ -239,6 +239,18 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
         </Dialog>
     );
 
+    const columnTabs = (
+        <Tabs
+            value={selectedNutrient}
+            onChange={(event, newValue) => setSelectedNutrient(newValue)}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+        >
+            <Tab label="Nitrogen" value="Nitrogen" />
+            <Tab label="Phosphorus" value="Phosphorus" />
+        </Tabs>
+    );
 
     return (
         <div>
@@ -249,51 +261,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                 justifyContent="center"
                 alignItems="center"
             >
-                <FormControl
-                    component="fieldset"
-                    className={classes.formControl}
-                >
-                    <FormLabel
-                        component="legend"
-                        className={classes.formLabel}
-                    >
-                        <Box display="flex" alignItems="center">
-                           Select Nutrient
-                        </Box>
-                    </FormLabel>
-                    <Select
-                        className={classes.selectButton}
-                        value={selectedNutrient}
-                        onChange={({ target: { value } }) => {
-                            setSelectedNutrient(value);
-                        }}
-                    >
-                        <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
-                        <MenuItem value="Phosphorus">Phosphorus</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl
-                    component="fieldset"
-                    className={classes.formControl}
-                >
-                    <FormLabel
-                        component="legend"
-                        className={classes.formLabel}
-                    >
-                        <Box display="flex" alignItems="center">
-                           Select Time Period
-                        </Box>
-                    </FormLabel>
-                    <Select
-                        className={classes.selectButton}
-                        value={selectedTimePeriod}
-                        onChange={({ target: { value } }) => {
-                            setSelectedTimePeriod(value);
-                        }}
-                    >
-                        <MenuItem value="20_years">Last 20 years</MenuItem>
-                    </Select>
-                </FormControl>
+                {columnTabs}
             </Box>
             <div className={classes.sidebarBody}>
                 <Typography

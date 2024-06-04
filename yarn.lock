@@ -10041,7 +10041,7 @@ marked@~0.3.6:
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
   integrity sha512-ea2eGWOqNxPcXv8dyERdSr/6FmzvWwzjMxpfGB/sbMccXoct+xY+YukPD+QTUZwyvK7BZwcr4m21WBOW41pAkg==
 
-material-components-web@0.26.0, material-components-web@^0.26.0:
+material-components-web@^0.26.0:
   version "0.26.0"
   resolved "https://registry.yarnpkg.com/material-components-web/-/material-components-web-0.26.0.tgz#02066768afc635dd2f06dc1d0d7658737b257cd3"
   integrity sha512-PHWksxD449yJagLtTn4FAZBaZ2iISVBdFvIg48r1qehZAf+E3aBse09pQDVw50yimBfsIlOjLef7Gcb7XMHFMQ==

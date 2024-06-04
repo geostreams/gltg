@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Tabs, Tab, Typography, Dialog, DialogTitle, DialogContent,
+import { Box, Typography, Dialog, DialogTitle, DialogContent,
     DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
@@ -238,31 +238,10 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
             </DialogContent>
         </Dialog>
     );
-
-    const columnTabs = (
-        <Tabs
-            value={selectedNutrient}
-            onChange={(event, newValue) => setSelectedNutrient(newValue)}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-        >
-            <Tab label="Nitrogen" value="Nitrogen" />
-            <Tab label="Phosphorus" value="Phosphorus" />
-        </Tabs>
-    );
-
+    
     return (
         <div>
             {infoDialog}
-            <Box
-                className={classes.dropdownsContainer}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-            >
-                {columnTabs}
-            </Box>
             <div className={classes.sidebarBody}>
                 <Typography
                     className={classes.header}

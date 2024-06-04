@@ -14,8 +14,7 @@ import Fill from 'ol/style/Fill';
 import Style from 'ol/style/Style';
 import RegularShape from 'ol/style/RegularShape';
 import { TileWMS } from 'ol/source';
-import type { Map as MapType } from 'ol';
-import { Box, FormControl, FormLabel, MenuItem, Select } from '@material-ui/core';
+import { Map as MapType } from 'ol';
 import NoSignificantTrendIcon from '../../images/NoSignificantTrendIcon.png';
 import UpwardTrendIcon from '../../images/UpwardTrendIcon.png';
 import DownwardTrendIcon from '../../images/DownwardTrendIcon.png';
@@ -26,6 +25,7 @@ import nitrateTrendStationsJSON20Years from '../../data/nitrate_trend_stations_2
 import phosTrendStationsJSON20Years from '../../data/phos_trend_stations_20_years.geojson';
 import waterShedsJSON20years from '../../data/watersheds_20years.geojson';
 import Sidebar from './Sidebar';
+import Topbar from './Topbar';
 
 // Styling for different components of Nutrient Trends Dashboard
 const useStyles = makeStyles((theme) => ({
@@ -129,14 +129,6 @@ const useStyles = makeStyles((theme) => ({
         '&:focus': {
             borderRadius: 4
         }
-    },
-    floatingTimePeriodDiv: {
-        position: 'absolute',
-        top: '1em',
-        left: '45%',
-        backgroundColor: 'white',
-        radius: '6px',
-        width: '10%'
     }
 }));
 
@@ -530,35 +522,12 @@ const Summary = () => {
     };
 
 
-    // FLoating components
-
-    const timePeriodSelect = <FormControl
-        component="fieldset"
-        className={classes.formControl}
-        color={"#FFFFFF"}
-    >
-        <FormLabel
-            component="legend"
-            className={classes.formLabel}
-        >
-            <Box display="flex" alignItems="center">
-                Select Time Period
-            </Box>
-        </FormLabel>
-        <Select
-            className={classes.selectButton}
-            value={selectedTimePeriod}
-            onChange={({ target: { value } }) => {
-                setSelectedTimePeriod(value);
-            }}
-        >
-            <MenuItem value="20_years">Last 20 years</MenuItem>
-        </Select>
-    </FormControl>;
-
     return(
         <>
             <Grid className={classes.mainContainer} container alignItems="stretch">
+                <Grid item xs={12}>
+                    <Topbar />
+                </Grid>
                 <Grid
                     className={classes.fillContainer}
                     item
@@ -623,10 +592,6 @@ const Summary = () => {
                     />
                 </Grid>
             </Grid>
-            {/*    Floating div top left */}
-            <div className={classes.floatingTimePeriodDiv}>
-                {timePeriodSelect}
-            </div>
         </>
     );
 };

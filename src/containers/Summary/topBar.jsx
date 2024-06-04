@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, FormControl, InputLabel, Select, MenuItem, RadioGroup, FormControlLabel,FormLabel, NativeSelect, Radio, Button,InputBase } from '@material-ui/core';
+import { Box, Typography, FormControl, RadioGroup, FormControlLabel,FormLabel, NativeSelect, Radio, Button,InputBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -7,17 +7,13 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: theme.spacing(2),
         backgroundColor: theme.palette.background.default,
         boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-        height: '15%'
     },
     formControl: {
-        margin: theme.spacing(1),
-        width: '150%'
+        width: '10%'
     },
     formLabel: {
-        padding: theme.spacing(1),
         fontSize: '.88rem'
     },
     selectButton: {
@@ -25,21 +21,13 @@ const useStyles = makeStyles((theme) => ({
         'borderRadius': 4,
         'color': theme.palette.primary.contrastText,
         'position': 'relative',
-        'height': 42,
-        'padding': theme.spacing(2),
-        'fontSize': '.75rem',
-        '&:focus': {
-            borderRadius: 4
-        }
-    },
-    divider: {
-        height: 28,
-        margin: 4
-    },
-    button: {
-        margin: theme.spacing(1)
+    'padding': theme.spacing(2),
+    'fontSize': '.75rem',
+    '&:focus': {
+        borderRadius: 4
     }
-}));
+}
+});
 
 const TopBar = () => {
     const classes = useStyles();
@@ -74,13 +62,28 @@ const TopBar = () => {
     );
 
     const selectPeriodComponent = (
-        <FormControl className={classes.formControl}>
-            <InputLabel>Choose a Period</InputLabel>
-            <Select className={classes.selectButton} value={period} onChange={(e) => setPeriod(e.target.value)}>
-                <MenuItem value="daily">Daily</MenuItem>
-                <MenuItem value="weekly">Weekly</MenuItem>
-                <MenuItem value="monthly">Monthly</MenuItem>
-            </Select>
+        <FormControl
+            component="fieldset"
+            className={classes.formControl}
+        >
+            <FormLabel
+                component="legend"
+                className={classes.formLabel}
+            >
+                <Box display="flex" alignItems="center">
+                  Select Period
+                </Box>
+            </FormLabel>
+            <NativeSelect
+                className={classes.selectButton}
+                value={period}
+                onChange={({ target: { value } }) => {
+                    setPeriod(value);
+                }}
+                input={<InputBase />}
+            >
+                <option value="2010-2019">2010-2019</option>
+            </NativeSelect>
         </FormControl>
     );
 

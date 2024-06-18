@@ -7,9 +7,9 @@ import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
-import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
-import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
-import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+import NoSignificantTrendIcon from '../../images/NoSignificantTrendIcon.png';
+import UpwardTrendIcon from '../../images/UpwardTrendIcon.png';
+import DownwardTrendIcon from '../../images/DownwardTrendIcon.png';
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, FormControl, RadioGroup, FormControlLabel,FormLabel, NativeSelect, Radio, Button,InputBase } from '@material-ui/core';
+import { Box, Typography, FormControl, Grid, RadioGroup, FormControlLabel,FormLabel, NativeSelect, Radio, Button,InputBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,7 +8,9 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: theme.palette.background.default,
-        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+    },
+    topBarItem:{
+        padding: '20px'
     },
     formControl: {
         width: '10%'
@@ -21,13 +23,13 @@ const useStyles = makeStyles((theme) => ({
         'borderRadius': 4,
         'color': theme.palette.primary.contrastText,
         'position': 'relative',
-    'padding': theme.spacing(2),
-    'fontSize': '.75rem',
-    '&:focus': {
-        borderRadius: 4
+        'padding': theme.spacing(2),
+        'fontSize': '.75rem',
+        '&:focus': {
+            borderRadius: 4
+        }
     }
-}
-});
+}));
 
 const TopBar = () => {
     const classes = useStyles();
@@ -96,17 +98,29 @@ const TopBar = () => {
         </FormControl>
     );
     return (
-        <Box className={classes.topBar}>
-            <Typography variant="h6">
-        Nutrient Trend Dashboard
-            </Typography>
-            {selectNutrientComponent}
-            {selectPeriodComponent}
-            {selectVariableComponent}
-            <Button variant="outlined" className={classes.button}>
-        Advanced Search
-            </Button>
-        </Box>
+        <div>
+            <Grid container spacing={2} className={classes.topBar}>
+                <Grid item className={classes.topBarItem}>
+                    <Typography variant="h6">
+                        Nutrient Trend Dashboard
+                    </Typography>
+                </Grid>
+                <Grid item className={classes.topBarItem}>
+                    {selectNutrientComponent}
+                </Grid>
+                <Grid item className={classes.topBarItem}>
+                    {selectPeriodComponent}
+                </Grid>
+                <Grid item className={classes.topBarItem}>
+                    {selectVariableComponent}
+                </Grid>
+                <Grid item className={classes.topBarItem}>
+                    <Button variant="outlined" className={classes.button}>
+                        Advanced Search
+                    </Button>
+                </Grid>
+            </Grid>
+        </div>
     );
 };
 

@@ -117,145 +117,77 @@ const Header = ({ location }: Props) => {
                     noWrap
                 >
           Great Lakes to Gulf
-                </Typography>
-                <Tabs
-                    classes={{
-                        root: classes.tabsRoot,
-                        indicator: classes.tabsIndicator
-                    }}
-                >
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Dashboards"
-                        component={Button}
-                        id="dashboard-button"
-                        aria-controls={dashboardOpen ? 'dashboard-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={dashboardOpen ? 'true' : undefined}
-                        onClick={dashboardHandleClick}
-                        classes={classes.headerButton}
-                    />
-                    <Menu
-                        id="dashboard-menu"
-                        anchorEl={dashboardAnchorEl}
-                        open={dashboardOpen}
-                        onClose={dashboardHandleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'dashboard-button'
-                        }}
-                        getContentAnchorEl={null}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                        transformOrigin={{ horizontal: 'center' }}
-                        className={classes.dropdown}
-                    >
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={dashboardHandleClose}
-                            component={Link}
-                            to="summary"
-                        >
-              Summary Dashboard
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={dashboardHandleClose}
-                            component={Link}
-                            to="/bmp"
-                        >
+        </Typography>
+        <Tabs
+          classes={{
+            root: classes.tabsRoot,
+            indicator: classes.tabsIndicator,
+          }}
+        >
+          <Tab
+            className={classes.tabRoot}
+            label="Dashboards"
+            component={Button}
+            id="dashboard-button"
+            aria-controls={dashboardOpen ? "dashboard-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={dashboardOpen ? "true" : undefined}
+            onClick={dashboardHandleClick}
+            classes={classes.headerButton}
+          />
+          <Menu
+            id="dashboard-menu"
+            anchorEl={dashboardAnchorEl}
+            open={dashboardOpen}
+            onClose={dashboardHandleClose}
+            MenuListProps={{
+              "aria-labelledby": "dashboard-button",
+            }}
+            getContentAnchorEl={null}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            transformOrigin={{ horizontal: "center" }}
+            className={classes.dropdown}
+          >
+            <MenuItem
+              classes={{ root: classes.menuItem }}
+              onClick={dashboardHandleClose}
+              component={Link}
+              to="summary"
+            >
+              Nutrient Trends Dashboard
+            </MenuItem>
+            <MenuItem
+              classes={{ root: classes.menuItem }}
+              onClick={dashboardHandleClose}
+              component={Link}
+              to="/bmp"
+            >
               Best Management Practices
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={statePortalsHandleClick}
-                        ><div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                flexWrap: 'wrap'
-                            }}>
-                                <span>State Portals</span>
-                                <ArrowRightIcon className={classes.dropdownIcon} />
-                            </div>
-                        </MenuItem>
-                    </Menu>
-                    <StatePortalsMenu
-                        anchorEl={statePortalsAnchorEl}
-                        open={Boolean(statePortalsAnchorEl)}
-                        onClose={() => setStatePortalsAnchorEl(null)}
-                        classes={classes}
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Geostreaming App"
-                        component={Button}
-                        id="geoApp-button"
-                        aria-controls={geoAppOpen ? 'geoApp-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={geoAppOpen ? 'true' : undefined}
-                        onClick={geoAppHandleClick}
-                        classes={classes.headerButton}
-                    />
-                    <Menu
-                        id="geoApp-menu"
-                        anchorEl={geoAppAnchorEl}
-                        open={geoAppOpen}
-                        onClose={geoAppHandleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'geoApp-button'
-                        }}
-                        getContentAnchorEl={null}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                        transformOrigin={{ horizontal: 'center' }}
-                        className={classes.dropdown}
-                    >
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/explore/all"
-                        >
-              Explore
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/search"
-                        >
-              Download
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/analysis"
-                        >
-              Analysis
-                        </MenuItem>
-                    </Menu>
-                    <Tab
-                        className={classes.tabRoot}
-                        label="FAQ"
-                        component={Link}
-                        to="/help"
-                        value="faq"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="GLTG News"
-                        component={Link}
-                        to="/"
-                        onClick={event => window.location.href = 'https://greatlakestogulf.web.illinois.edu'}
-                        value="gltg news"
-                    />
-                </Tabs>
-
-                <Typography
-                    component="a"
-                    to="/"
-                    href="mailto:gltg-support@lists.illinois.edu"
-                    className={classes.contactText}
-                    noWrap
-                >
+            </MenuItem>
+          </Menu>
+          <Tab
+            className={classes.tabRoot}
+            label="Explore Data"
+            component={Link}
+            id="geoApp-button"
+            to="/explore/all"
+          />
+           <Tab
+            className={classes.tabRoot}
+            label="GLTG News"
+            component={Link}
+            to="/"
+            onClick={event => window.location.href='https://greatlakestogulf.web.illinois.edu'}
+            value="gltg news"
+          />
+        </Tabs>
+        <Typography
+          component="a"
+          to="/"
+          href="mailto:gltg-support@lists.illinois.edu"
+          className={classes.contactText}
+          noWrap
+        >
           CONTACT
                 </Typography>
             </Toolbar>

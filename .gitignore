@@ -10,4 +10,4 @@ yarn-error.log
 .idea/modules.xml
 .idea/vcs.xml
 src/.DS_Store
-.DS_Store
+.DS_Store/

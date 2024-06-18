@@ -165,16 +165,10 @@ const SmallHeader = ({ location }: Props) => {
                             <ArrowLeftIcon />
                             <span>Dashboards</span>
                         </div>  </MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClick}> <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            flexWrap: 'wrap'
-                        }}>
-                            <ArrowLeftIcon />
-                            <span>Geostreaming App</span>
-                        </div>  </MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="/help">FAQ</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="data-stories">Data Stories</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="/explore/all">Explore Data</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }}
+                            onClick={event => window.location.href = 'https://greatlakestogulf.web.illinois.edu'}
+                            component={Link} to="data-stories">GLTG News</MenuItem>
                     </Menu>
                     <Menu
                         id="dashboard-menu"
@@ -191,7 +185,7 @@ const SmallHeader = ({ location }: Props) => {
                             onClick={dashboardHandleClose}
                             component={Link}
                             to="summary">
-                            Summary Dashboard
+                            Nutrient Trends Dashboard
                         </MenuItem>
                         <MenuItem 
                             classes={{ root: classes.menuItem }}

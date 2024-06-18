@@ -149,7 +149,7 @@ const Header = ({ location }: Props) => {
                                   onClick={dashboardHandleClose}
                                   component={Link}
                                   to="/summary">
-                            Summary Dashboard
+                            Nutrient Trends Dashboard
                         </MenuItem>
                         <MenuItem
                             classes={{ root: classes.menuItem }}
@@ -158,65 +158,21 @@ const Header = ({ location }: Props) => {
                             to="/bmp">
                             Best Management Practices
                         </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={dashboardHandleClose}
-                            component={Link}
-                            to="/summary">
-                            State Portals
-                        </MenuItem>
                     </Menu>
                     <Tab
                         className={classes.tabRoot}
-                        label="Geostreaming App"
-                        component={Button}
-                        id = "geoApp-button"
-                        aria-controls={geoAppOpen ? 'geoApp-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={geoAppOpen ? 'true' : undefined}
-                        onClick={geoAppHandleClick}
-                        classes={classes.headerButton}
-                    />
-                    <Menu
-                        id="geoApp-menu"
-                        anchorEl={geoAppAnchorEl}
-                        open={geoAppOpen}
-                        onClose={geoAppHandleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'geoApp-button'
-                        }}
-                        getContentAnchorEl={null}
-                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                        transformOrigin={{ horizontal: 'center' }}
-                        className={classes.dropdown}>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/explore/all">
-                            Explore
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/search">
-                            Download
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/analysis">
-                            Analysis
-                        </MenuItem>
-                    </Menu>
-                    <Tab
-                        className={classes.tabRoot}
-                        label="FAQ"
+                        label="Explore Data"
                         component={Link}
-                        to="/help"
-                        value="faq"
+                        id="geoApp-button"
+                        to="/explore/all"
+                    />
+                    <Tab
+                        className={classes.tabRoot}
+                        label="GLTG News"
+                        component={Link}
+                        to="/"
+                        onClick={event => window.location.href='https://greatlakestogulf.web.illinois.edu'}
+                        value="gltg news"
                     />
                 </Tabs>
                 <Typography

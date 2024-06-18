@@ -17,7 +17,7 @@ import Help from './containers/Help';
 import GLTGLayout from './containers/Layout';
 import GLTGLandingLayout from './containers/LandingPageLayout';
 import BMP from './containers/BMP';
-import Summary from './containers/OldSummary';
+import NewSummary from './containers/Summary';
 import Tests from './tests/Tests';
 import Partners from './containers/Partners';
 
@@ -25,7 +25,7 @@ const routes = Object.assign(
     coreRoutes,
     {
         '/': { exact: true, component: hocs.withLayout(GLTGLandingLayout, LandingPage, { hasFooter: true }) },
-        '/summary': { exact: true, component: hocs.withLayout(GLTGLayout, Summary, { hasFooter: true, stickyFooter: true }) },
+        '/summary': { exact: true, component: hocs.withLayout(GLTGLayout, NewSummary, { hasFooter: true, stickyFooter: true }) },
         '/data-stories': { component: hocs.withLayout(GLTGLayout, DataStories, { hasFooter: true }) },
         '/help': { exact: true, component: hocs.withLayout(GLTGLayout, Help, { hasFooter: true }) },
         '/partners': { exact: true, component: hocs.withLayout(GLTGLayout, Partners, { hasFooter: false }) },

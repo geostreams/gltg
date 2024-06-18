@@ -1,18 +1,20 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, InputBase, NativeSelect, Typography, Dialog, DialogTitle, DialogContent, DialogContentText } from '@material-ui/core';
+import { Box, FormControl, FormLabel, InputBase, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
+    DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
-import trendStationsData_30years from '../../data/trend_station_data_30years.json';
-import trendStationsData_20years from '../../data/trend_station_data_20years.json';
+import nitrateTrendStationsData20Years from '../../data/nitrate_trend_station_data_20years.json';
+import phosTrendStationData20Years from '../../data/phos_trend_station_data_20years.json';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
-import HighUpwardTrendIcon from '../../images/Highly_Upward_Trending_Icon.png';
-import HighDownwardTrendIcon from '../../images/Highly_Downward_Trending_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+
+
+
 import SummaryGraph from './SummaryGraph';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
     stationNameText:{
         color: '#E05769',
         fontSize: '1.15rem'
+    },
+    trendText:{
+        color: '#073296',
+        fontSize: '1rem'
     },
     headerText: {
         margin: 0,
@@ -141,31 +147,62 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         top: theme.spacing(1),
         right: theme.spacing(1)
+    },
+    table: {
+        minWidth: 650
+    },
+    tableHeader: {
+        fontWeight: 'bold',
+        backgroundColor: '#f5f5f5' // This sets the background color for the header
+    },
+    title: {
+        padding: 16, // Add padding around the title text
+        fontWeight: 'bold'
     }
 
 }));
 
+function convertTrend(inputString) {
+    const conversionDict = {
+        'Downward trend in concentration is highly likely': 'Highly Likely Downward (0% - 10%)',
+        'Upward trend in concentration is highly likely': 'Highly Likely Upward (90% - 100%)',
+        'No Significant Trend': 'No Significant Trend (33% - 66%)',
+        'Upward trend in concentration is likely': 'Likely Upward (66% - 90%)',
+        'Downward trend in concentration is likely': 'Likely Downward (10% - 33%)',
+        'Downward trend in flux is highly likely': 'Highly Likely Downward (0% - 10%)',
+        'Upward trend in flux is highly likely': 'Highly Likely Upward (90% - 100%)',
+        'Upward trend in flux is likely': 'Likely Upward (66% - 90%)',
+        'Downward trend in flux is likely': 'Likely Downward (10% - 33%)'
+    };
+
+    return conversionDict[inputString];
+}
+
+
 const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation }) => {
     const classes = useStyles();
-
     const [data,setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
 
     React.useEffect(() => {
         if (stationData) {
-            switch (selectedTimePeriod) {
-                case '20_years':
-                    setData(trendStationsData_20years[stationData.WQ_MonitoringLocationIdentifier]);
+            switch (selectedNutrient) {
+                case 'Nitrogen':
+                    setData(nitrateTrendStationsData20Years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
-                case '30_years':
-                    setData(trendStationsData_30years[stationData.WQ_MonitoringLocationIdentifier]);
+                case 'Phosphorus':
+                    setData(phosTrendStationData20Years[stationData.WQ_MonitoringLocationIdentifier]);
                     break;
-
             }
         } else {
             setData(null);
         }
-    }, [selectedTimePeriod,stationData]);
+    }, [stationData]);
+
+    // Remove the selected station when the time period is changed
+    React.useEffect(() => {
+        removeSelectedStation();
+    }, [selectedTimePeriod]);
 
     const infoDialog = (
         <Dialog open={openInfoDialog} onClose={() => {setOpenInfoDialog(false);}}>
@@ -224,16 +261,16 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                            Select Nutrient
                         </Box>
                     </FormLabel>
-                    <NativeSelect
+                    <Select
                         className={classes.selectButton}
                         value={selectedNutrient}
                         onChange={({ target: { value } }) => {
-                            selectedNutrient(value);
+                            setSelectedNutrient(value);
                         }}
-                        input={<InputBase />}
                     >
-                        <option value="Nitrogen">Nitrogen</option>
-                    </NativeSelect>
+                        <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
+                        <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+                    </Select>
                 </FormControl>
                 <FormControl
                     component="fieldset"
@@ -247,17 +284,15 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                            Select Time Period
                         </Box>
                     </FormLabel>
-                    <NativeSelect
+                    <Select
                         className={classes.selectButton}
                         value={selectedTimePeriod}
                         onChange={({ target: { value } }) => {
                             setSelectedTimePeriod(value);
                         }}
-                        input={<InputBase />}
                     >
-                        <option value="20_years">Last 20 years</option>
-                        <option value="30_years">Last 30 years</option>
-                    </NativeSelect>
+                        <MenuItem value="20_years">Last 20 years</MenuItem>
+                    </Select>
                 </FormControl>
             </Box>
             <div className={classes.sidebarBody}>
@@ -265,7 +300,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                     className={classes.header}
                     variant="h5"
                 >
-                    Nutrient Trend Dashboard
+                    Nutrient Trends Dashboard
                 </Typography>
                 <Divider className={classes.divider} />
                 {!stationData ?
@@ -298,28 +333,20 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 >
                                     Trend Results
                                     <InfoIcon className={classes.infoIcon}
-                                        onClick={() => setOpenInfoDialog(true) }
+                                        onClick={() => setOpenInfoDialog(true)}
                                     />
                                 </Typography>
-                               
+
                             </div>
                             <br />
                             <div className={classes.legendContainer}>
-                                <div className={classes.legendItem}>
-                                    <img
-                                        src={HighUpwardTrendIcon}
-                                        alt="High Upward Trend Icon"
-                                        className={classes.legendIcon}
-                                    />
-                                    <span>Highly Likely Upward (90% - 100%)<sup>*</sup></span>
-                                </div>
                                 <div className={classes.legendItem}>
                                     <img
                                         src={UpwardTrendIcon}
                                         alt="Upward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Likely Upward (66% - 90%)<sup>*</sup></span>
+                                    <span>Upward Trend </span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
@@ -327,38 +354,51 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                         alt="No Significant Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>No Significant Trend (33% - 66%)<sup>*</sup></span>
+                                    <span>No Significant Trend</span>
                                 </div>
+
                                 <div className={classes.legendItem}>
                                     <img
                                         src={DownwardTrendIcon}
-                                        alt="Downward Trend Icon"
+                                        alt=" Downward Trend "
                                         className={classes.legendIcon}
                                     />
-                                    <span>Likely Downward (10% - 33%)<sup>*</sup></span>
-                                </div>
-                                <div className={classes.legendItem}>
-                                    <img
-                                        src={HighDownwardTrendIcon}
-                                        alt="High Downward Trend Icon"
-                                        className={classes.legendIcon}
-                                    />
-                                    <span>Highly Likely Downward (0% - 10%)<sup>*</sup> </span>
-                                </div>
-                                <div className={classes.legendFooter}>
-                                    <span>
-                                        {' '}
-                                        <sup>*</sup> Percentage ranges represent the probability that the trend is upwards
-                                    </span>
+                                    <span>Downward Trend </span>
                                 </div>
                             </div>
-
                         </Box>
-
-
+                        <TableContainer component={Paper}>
+                            <TableHead>
+                                <Typography variant="span" className={classes.title} gutterBottom>
+                                    Definition of Labels
+                                </Typography>
+                            </TableHead>
+                            <Table className={classes.table} aria-label="simple table">
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row" className={classes.tableHeader}>
+                                            Upward trend Site:
+                                        </TableCell>
+                                        <TableCell>Flux OR Concentration have an upward trend</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row" className={classes.tableHeader}>
+                                            Downward trend Site:
+                                        </TableCell>
+                                        <TableCell>Flux OR Concentration have a downward trend AND neither has an upward trend</TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row" className={classes.tableHeader}>
+                                            No significant trend Site:
+                                        </TableCell>
+                                        <TableCell>Flux AND concentration have No significant trend</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                     </>) :
                     (<>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <Typography
                                 className={classes.headerText}
                                 variant="h6"
@@ -383,39 +423,67 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         <Divider />
                         <div>
                             {data &&
-                        <Box className={classes.chart}>
-                            <h4 className={classes.chartHeader}>Flux Graph</h4>
-                            <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
-                                stationary_y_line_field="stationaryFNFlux"
-                                stationary_high_interval="stationaryFNFluxHigh"
-                                stationary_low_interval="stationaryFNFluxLow"
-                                non_stationary_y_line_field="nonStationaryFNFlux"
-                                non_stationary_high_interval="nonStationaryFNFluxHigh"
-                                non_stationary_low_interval="nonStationaryFNFluxLow"
-                                y_scatter_field="stationaryFluxDay"
-                                y_label="Yearly Cumulative Flux (10^6 kg/yr)"
-                                x_label='Year'
-                                title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
-                        </Box>}
+                              <Box className={classes.chart}>
+                                  <h4 className={classes.chartHeader}>Flux Graph</h4>
+                                  <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
+                                      stationary_y_line_field="stationaryFNFlux"
+                                      stationary_high_interval="stationaryFNFluxHigh"
+                                      stationary_low_interval="stationaryFNFluxLow"
+                                      non_stationary_y_line_field="nonStationaryFNFlux"
+                                      non_stationary_high_interval="nonStationaryFNFluxHigh"
+                                      non_stationary_low_interval="nonStationaryFNFluxLow"
+                                      y_scatter_field="stationaryFluxDay"
+                                      y_label="Yearly Cumulative Flux (10^6 kg/yr)"
+                                      x_label="Year"
+                                      title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
+                                  <br />
+                                  <Typography
+                                      className={classes.trendText}
+                                      variant="span"
+                                  >
+                                      Flux Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
+                                  </Typography>
+                              </Box>}
 
                             <Divider />
                             <br />
                             {data &&
-                        <Box className={classes.chart}>
-                            <h4 className={classes.chartHeader}>Concentration Graph</h4>
-                            <SummaryGraph graph_data={data.concentration} width={350} height={330} startAtZero={false}
-                                stationary_y_line_field="stationaryFNConc"
-                                stationary_high_interval="stationaryFNConcHigh"
-                                stationary_low_interval="stationaryFNConcLow"
-                                non_stationary_y_line_field="nonStationaryFNConc"
-                                non_stationary_high_interval="nonStationaryFNConcHigh"
-                                non_stationary_low_interval="nonStationaryFNConcLow"
-                                y_scatter_field="stationaryConcDay"
-                                y_label="Yearly Average Concentration (mg/L)"
-                                x_label='Year'
-                                title="Mean (dots) & Flow-Normalized (line) Concentration " />
-                        </Box>}
+                              <Box className={classes.chart}>
+                                  <h4 className={classes.chartHeader}>Concentration Graph</h4>
+                                  <SummaryGraph graph_data={data.concentration} width={350} height={330}
+                                      startAtZero={false}
+                                      stationary_y_line_field="stationaryFNConc"
+                                      stationary_high_interval="stationaryFNConcHigh"
+                                      stationary_low_interval="stationaryFNConcLow"
+                                      non_stationary_y_line_field="nonStationaryFNConc"
+                                      non_stationary_high_interval="nonStationaryFNConcHigh"
+                                      non_stationary_low_interval="nonStationaryFNConcLow"
+                                      y_scatter_field="stationaryConcDay"
+                                      y_label="Yearly Average Concentration (mg/L)"
+                                      x_label="Year"
+                                      title="Mean (dots) & Flow-Normalized (line) Concentration " />
+                                  <br />
+                                  <Typography
+                                      className={classes.trendText}
+                                      variant="span"
+                                  >
+                                      Concentration Trend - {convertTrend(stationData.significance_concent)}<sup>*</sup>
+                                  </Typography>
+                              </Box>}
                         </div>
+                        <span>
+                            <sup>*</sup> Percentage ranges represent the probability that the trend is upwards
+                        </span>
+                        <br /><br />
+                        <a><b>Total Trend</b>: Flow-Normalized Non-Stationary Streamflow with 90% Confidence
+                            Interval</a>
+                        <br /><br />
+                        <a><b>Source/Sink Component</b>: Flow-Normalized Stationary Streamflow with 90% Confidence
+                            Interval</a>
+                        <br /><br />
+                        <a><b>Flow Component</b>: Total Trend - Source/Sink Component</a>
+                        <br /><br />
+                        <br /><br />
                     </>)}
                 <br />
             </div>

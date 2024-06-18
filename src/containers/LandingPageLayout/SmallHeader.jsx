@@ -9,7 +9,7 @@ import {
     MenuItem,
     Toolbar,
     Typography,
-    makeStyles
+    makeStyles, Tab, Tabs
 } from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
@@ -171,16 +171,10 @@ const SmallHeader = ({ location }: Props) => {
                             <ArrowLeftIcon />
                             <span>Dashboards</span>
                         </div>  </MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={geoAppHandleClick}> <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            flexWrap: 'wrap'
-                        }}>
-                            <ArrowLeftIcon />
-                            <span>Geostreaming App</span>
-                        </div>  </MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="/help">FAQ</MenuItem>
-                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="data-stories">Data Stories</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }} onClick={menuHandleClose} component={Link} to="/explore/all">Explore Data</MenuItem>
+                        <MenuItem classes={{ root: classes.menuItem }}
+                            onClick={event => window.location.href = 'https://greatlakestogulf.web.illinois.edu'}
+                            omponent={Link} to="data-stories">GLTG News</MenuItem>
                     </Menu>
                     <Menu
                         id="dashboard-menu"
@@ -197,7 +191,7 @@ const SmallHeader = ({ location }: Props) => {
                             onClick={dashboardHandleClose}
                             component={Link}
                             to="summary">
-                                Summary Dashboard
+                                Nutrient Trends Dashboard
                         </MenuItem>
                         <MenuItem 
                             classes={{ root: classes.menuItem }}
@@ -217,46 +211,6 @@ const SmallHeader = ({ location }: Props) => {
                                 <ArrowLeftIcon />
                                 <span>State Portals</span>
                             </div>
-                        </MenuItem>
-                    </Menu>
-                    <StatePortalsMenu
-                        anchorEl={statePortalsAnchorEl}
-                        open={Boolean(statePortalsAnchorEl)}
-                        onClose={() => setStatePortalsAnchorEl(null)}
-                        classes={classes}
-                        orientation={'left'}
-                    />
-                    <Menu
-                        id="geoApp-menu"
-                        anchorEl={geoAppAnchorEl}
-                        open={geoAppOpen}
-                        onClose={geoAppHandleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'geoApp-button'
-                        }}
-                        getContentAnchorEl={null}
-                        anchorOrigin={{ vertical: 0, horizontal: -100 }}
-                        className={classes.dropdown}>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/explore/all">
-                            Explore
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/search">
-                            Download
-                        </MenuItem>
-                        <MenuItem
-                            classes={{ root: classes.menuItem }}
-                            onClick={geoAppHandleClose}
-                            component={Link}
-                            to="/analysis">
-                            Analysis
                         </MenuItem>
                     </Menu>
                 </div>

@@ -7,8 +7,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
-import nitrateTrendStationsData20Years from '../../data/nitrate_trend_station_data_20years.json';
-import phosTrendStationData20Years from '../../data/phos_trend_station_data_20years.json';
 import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
@@ -179,7 +177,7 @@ function convertTrend(inputString) {
 }
 
 
-const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation }) => {
+const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, nitrateTrendStationsData20Years, phosTrendStationData20Years }) => {
     const classes = useStyles();
     const [data,setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);

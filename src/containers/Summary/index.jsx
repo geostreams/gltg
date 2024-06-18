@@ -198,10 +198,12 @@ const Summary = () => {
     const [tooltipPosition, setTooltipPosition] = React.useState({ x: 0, y: 0 });
     const tooltipRef = React.useRef();
 
-    // Lazy load the geoJSON files
+    // Lazy load the geoJSON and json files
     const [nitrateTrendStationsLayer20years, setNitrateTrendStationsLayer20years] = React.useState(null);
     const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] = React.useState(null);
     const [waterShedsLayer20years, setWaterShedsLayer20years] = React.useState(null);
+    const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null)
+    const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null)
 
     // useEffect to lazy load the geoJSON files
     React.useEffect(()=>{
@@ -264,6 +266,8 @@ const Summary = () => {
                 })
             );
         });
+        import ("../../data/phos_trend_station_data_20years.json").then((data)=>setPhosTrendStationData20Years(data.default))
+        import ("../../data/nitrate_trend_station_data_20years.json").then((data)=>setNitrateTrendStationsData20Years(data.default))
     },[]);
 
     
@@ -526,7 +530,9 @@ const Summary = () => {
         setSelectedWatershed(null);
     };
 
-    if (nitrateTrendStationsLayer20years === null || phosTrendStationsLayer20years === null || waterShedsLayer20years === null) return <div>Loading...</div>;
+    if (nitrateTrendStationsLayer20years === null || phosTrendStationsLayer20years === null ||
+      waterShedsLayer20years === null || nitrateTrendStationsData20Years === null ||
+      phosTrendStationData20Years === null) return <div>Loading...</div>;
 
 
     return (
@@ -593,6 +599,8 @@ const Summary = () => {
                         selectedTimePeriod={selectedTimePeriod}
                         setSelectedTimePeriod={setSelectedTimePeriod}
                         removeSelectedStation={removeSelectedStation}
+                        nitrateTrendStationsData20Years={nitrateTrendStationsData20Years}
+                        phosTrendStationData20Years={phosTrendStationData20Years}
                     />
                 </Grid>
             </Grid>

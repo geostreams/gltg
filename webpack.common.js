@@ -27,6 +27,7 @@ module.exports = {
         filename: 'js/[name]-[chunkhash].js',
         crossOriginLoading: 'anonymous'
     },
+
     optimization: {
         splitChunks: {
             chunks: 'all'
@@ -120,6 +121,19 @@ module.exports = {
                     }
                 ]
             },
+            // loader for specific json files
+            {
+                type: 'javascript/auto',
+                test: /data_20years\.json$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'files/[name]-[contenthash].[ext]'
+                        }
+                    }
+                ]  
+            },
             {
                 test: /\.svg$/,
                 use: [
@@ -172,7 +186,7 @@ module.exports = {
         }),
         new Webpack.DefinePlugin({
             'process.env.VERSION': JSON.stringify(
-              dependencies['@geostreams/core']
+                dependencies['@geostreams/core']
             ),
             'process.env.CONTEXT': JSON.stringify(process.env.CONTEXT)
         }),

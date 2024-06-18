@@ -236,7 +236,7 @@ const Summary = () => {
                     title: 'Phosphorus Trend Stations',
                     layers: [
                         new VectorLayer({
-                            visible: false,
+                            visible: true,
                             title: 'Trend Stations',
                             source: new VectorSource({
                                 url: phosTrendStationsJSON20Years,
@@ -504,7 +504,7 @@ const Summary = () => {
                     layer.setVisible(selectedNutrient === 'Phosphorus');
             });
         }
-    }, [selectedNutrient]);
+    }, [selectedNutrient, phosTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
         const pixel = event.pixel;

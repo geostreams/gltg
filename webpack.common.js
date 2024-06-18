@@ -28,6 +28,12 @@ module.exports = {
         crossOriginLoading: 'anonymous'
     },
 
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
+
     module: {
         rules: [
             {
@@ -114,6 +120,19 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            // loader for specific json files
+            {
+                type: 'javascript/auto',
+                test: /data_20years\.json$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'files/[name]-[contenthash].[ext]'
+                        }
+                    }
+                ]  
             },
             {
                 test: /\.svg$/,

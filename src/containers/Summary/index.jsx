@@ -191,6 +191,7 @@ const Summary = () => {
     const [selectedNutrient, setSelectedNutrient] = React.useState('Nitrogen');
     const [selectedTimePeriod, setSelectedTimePeriod] =
       React.useState('20_years');
+    const [selectedParameter, setSelectedParameter] = React.useState('concentration');
 
     // State variable to make legend collapsible
     const [legendOpen, setLegendOpen] = React.useState(false);
@@ -619,6 +620,8 @@ const Summary = () => {
                         setSelectedNutrient={setSelectedNutrient}
                         selectedTimePeriod={selectedTimePeriod}
                         setSelectedTimePeriod={setSelectedTimePeriod}
+                        selectedParameter={selectedParameter}
+                        setSelectedParameter={setSelectedParameter}
                         removeSelectedStation={removeSelectedStation}
                     />
                 </Grid>

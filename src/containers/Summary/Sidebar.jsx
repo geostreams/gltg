@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, InputBase, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
+import { Box, FormControl, FormLabel, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
     DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
@@ -11,6 +11,8 @@ import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
 import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
 import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 
+import phosTrendStationDataUrl from '../../data/phos_trend_station_data_20years.json';
+import nitrateTrendStationsDataUrl from '../../data/nitrate_trend_station_data_20years.json';
 
 
 import SummaryGraph from './SummaryGraph';
@@ -176,11 +178,25 @@ function convertTrend(inputString) {
     return conversionDict[inputString];
 }
 
-
-const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, nitrateTrendStationsData20Years, phosTrendStationData20Years }) => {
+const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation }) => {
     const classes = useStyles();
-    const [data,setData] = React.useState(null);
+    const [data, setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
+    const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
+    const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
+
+    React.useEffect(() => {
+        fetch(nitrateTrendStationsDataUrl)
+            .then(response => response.json())
+            .then(nitrateData => {
+                setNitrateTrendStationsData20Years(nitrateData);
+            });
+        fetch(phosTrendStationDataUrl)
+            .then(response => response.json())
+            .then(phosData => {
+                setPhosTrendStationData20Years(phosData);
+            });
+    }, []);
 
     React.useEffect(() => {
         if (stationData) {
@@ -195,7 +211,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
         } else {
             setData(null);
         }
-    }, [stationData]);
+    }, [stationData,nitrateTrendStationsData20Years, phosTrendStationData20Years]);
 
     // Remove the selected station when the time period is changed
     React.useEffect(() => {

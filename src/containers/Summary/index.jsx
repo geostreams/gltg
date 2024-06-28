@@ -207,6 +207,19 @@ const Summary = () => {
     const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
     const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
 
+    const makeLayerVisible = () =>{
+        const map: MapType = mapRef.current;
+        if (map) {
+            map.getLayers().forEach((layer) => {
+                console.log('Layer title', layer.get('title'));
+                if (layer.get('title').startsWith('Nitrate'))
+                    layer.setVisible(selectedNutrient === 'Nitrogen');
+                if (layer.get('title').startsWith('Phosphorus'))
+                    layer.setVisible(selectedNutrient === 'Phosphorus');
+            });
+        }
+    };
+    
     // useEffect to lazy load the geoJSON files
     React.useEffect(()=>{
         import('../../data/nitrate_trend_stations_20_years.geojson').then((data) => {
@@ -268,8 +281,14 @@ const Summary = () => {
                 })
             );
         });
-        import ('../../data/phos_trend_station_data_20years.json').then((data)=>setPhosTrendStationData20Years(data.default));
-        import ('../../data/nitrate_trend_station_data_20years.json').then((data)=>setNitrateTrendStationsData20Years(data.default));
+        import ('../../data/phos_trend_station_data_20years.json').then((data)=>{
+            const phosData = data.default;
+            setPhosTrendStationData20Years(phosData);
+        });
+        import ('../../data/nitrate_trend_station_data_20years.json').then((data)=>{
+            const nitrateData = data.default;
+            setNitrateTrendStationsData20Years(nitrateData);
+        });
     },[]);
 
     
@@ -494,16 +513,7 @@ const Summary = () => {
         setSelectedWatershed(null);
 
         // Change the visibility of the layers ccording to the nutrient
-
-        const map: MapType = mapRef.current;
-        if (map) {
-            map.getLayers().forEach((layer) => {
-                if (layer.get('title').startsWith('Nitrate'))
-                    layer.setVisible(selectedNutrient === 'Nitrogen');
-                if (layer.get('title').startsWith('Phosphorus'))
-                    layer.setVisible(selectedNutrient === 'Phosphorus');
-            });
-        }
+        makeLayerVisible();
     }, [selectedNutrient, phosTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
@@ -527,6 +537,7 @@ const Summary = () => {
         phosTrendStationsLayer20years
     };
 
+    makeLayerVisible();
     const removeSelectedStation = () => {
         setSelectedStation(null);
         setSelectedWatershed(null);
@@ -610,8 +621,6 @@ const Summary = () => {
                         selectedTimePeriod={selectedTimePeriod}
                         setSelectedTimePeriod={setSelectedTimePeriod}
                         removeSelectedStation={removeSelectedStation}
-                        nitrateTrendStationsData20Years={nitrateTrendStationsData20Years}
-                        phosTrendStationData20Years={phosTrendStationData20Years}
                     />
                 </Grid>
             </Grid>

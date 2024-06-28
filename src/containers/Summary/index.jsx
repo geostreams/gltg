@@ -208,10 +208,9 @@ const Summary = () => {
     const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
 
     const makeLayerVisible = () =>{
-        const map: MapType = mapRef.current;
+        const map= mapRef.current;
         if (map) {
             map.getLayers().forEach((layer) => {
-                console.log('Layer title', layer.get('title'));
                 if (layer.get('title').startsWith('Nitrate'))
                     layer.setVisible(selectedNutrient === 'Nitrogen');
                 if (layer.get('title').startsWith('Phosphorus'))

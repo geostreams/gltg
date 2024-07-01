@@ -1,5 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
 import TileLayer from 'ol/layer/Tile';
 import GroupLayer from 'ol/layer/Group';
 import XYZ from 'ol/source/XYZ';
@@ -21,9 +23,7 @@ import HighDownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
 
 import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
-import nitrateTrendStationsJSON20Years from '../../data/nitrate_trend_stations_20_years.geojson';
-import phosTrendStationsJSON20Years from '../../data/phos_trend_stations_20_years.geojson';
-import waterShedsJSON20years from '../../data/watersheds_20years.geojson';
+
 import Sidebar from './Sidebar';
 
 // Styling for different components of Nutrient Trends Dashboard
@@ -200,6 +200,98 @@ const Summary = () => {
     const [tooltipPosition, setTooltipPosition] = React.useState({ x: 0, y: 0 });
     const tooltipRef = React.useRef();
 
+    // Lazy load the geoJSON and json files
+    const [nitrateTrendStationsLayer20years, setNitrateTrendStationsLayer20years] = React.useState(null);
+    const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] = React.useState(null);
+    const [waterShedsLayer20years, setWaterShedsLayer20years] = React.useState(null);
+    const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
+    const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
+
+    const makeLayerVisible = () =>{
+        const map= mapRef.current;
+        if (map) {
+            map.getLayers().forEach((layer) => {
+                if (layer.get('title').startsWith('Nitrate'))
+                    layer.setVisible(selectedNutrient === 'Nitrogen');
+                if (layer.get('title').startsWith('Phosphorus'))
+                    layer.setVisible(selectedNutrient === 'Phosphorus');
+            });
+        }
+    };
+    
+    // useEffect to lazy load the geoJSON files
+    React.useEffect(()=>{
+        import('../../data/nitrate_trend_stations_20_years.geojson').then((data) => {
+            const nitrateTrendStationsJSON20Years = data.default;
+            setNitrateTrendStationsLayer20years(
+                new GroupLayer({
+                    title: 'Nitrate Trend Stations',
+                    layers: [
+                        new VectorLayer({
+                            visible: true,
+                            title: 'Trend Stations',
+                            source: new VectorSource({
+                                url: nitrateTrendStationsJSON20Years,
+                                format: new GeoJSON()
+                            }),
+                            interactive: true,
+                            style: renderIcon
+                        })
+                    ]
+                })
+            );
+        });
+        import('../../data/phos_trend_stations_20_years.geojson').then((data) => {
+            const phosTrendStationsJSON20Years = data.default;
+            setPhosTrendStationsLayer20years(
+                new GroupLayer({
+                    title: 'Phosphorus Trend Stations',
+                    layers: [
+                        new VectorLayer({
+                            visible: true,
+                            title: 'Trend Stations',
+                            source: new VectorSource({
+                                url: phosTrendStationsJSON20Years,
+                                format: new GeoJSON()
+                            }),
+                            interactive: true,
+                            style: renderIcon
+                        })
+                    ] })
+            );
+        });
+        import ('../../data/watersheds_20years.geojson').then((data) => {
+            const waterShedsJSON20years = data.default;
+            setWaterShedsLayer20years(
+                new GroupLayer({
+                    title: 'Watershed Layer',
+                    layers: [
+                        new VectorLayer({
+                            visible: true,
+                            title: 'Watersheds',
+                            source: new VectorSource({
+                                url: waterShedsJSON20years,
+                                format: new GeoJSON()
+                            }),
+                            interactive: true,
+                            style: renderWaterSheds
+                        })
+                    ]
+                })
+            );
+        });
+        import ('../../data/phos_trend_station_data_20years.json').then((data)=>{
+            const phosData = data.default;
+            setPhosTrendStationData20Years(phosData);
+        });
+        import ('../../data/nitrate_trend_station_data_20years.json').then((data)=>{
+            const nitrateData = data.default;
+            setNitrateTrendStationsData20Years(nitrateData);
+        });
+    },[]);
+
+    
+
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
         title: 'Base Maps',
@@ -233,53 +325,6 @@ const Summary = () => {
         ]
     });
 
-    const nitrateTrendStationsLayer20years = new GroupLayer({
-        title: 'Nitrate Trend Stations',
-        layers: [
-            new VectorLayer({
-                visible: true,
-                title: 'Trend Stations',
-                source: new VectorSource({
-                    url: nitrateTrendStationsJSON20Years,
-                    format: new GeoJSON()
-                }),
-                interactive: true,
-                style: renderIcon
-            })
-        ]
-    });
-
-    const phosTrendStationsLayer20years = new GroupLayer({
-        title: 'Phosphorus Trend Stations',
-        layers: [
-            new VectorLayer({
-                visible: true,
-                title: 'Trend Stations',
-                source: new VectorSource({
-                    url: phosTrendStationsJSON20Years,
-                    format: new GeoJSON()
-                }),
-                interactive: true,
-                style: renderIcon
-            })
-        ]
-    });
-
-    const waterShedsLayer20years = new GroupLayer({
-        title: 'Watershed Layer',
-        layers: [
-            new VectorLayer({
-                visible: true,
-                title: 'Watersheds',
-                source: new VectorSource({
-                    url: waterShedsJSON20years,
-                    format: new GeoJSON()
-                }),
-                interactive: true,
-                style: renderWaterSheds
-            })
-        ]
-    });
 
     const riversLayer = new GroupLayer({
         title: 'Rivers',
@@ -467,17 +512,8 @@ const Summary = () => {
         setSelectedWatershed(null);
 
         // Change the visibility of the layers ccording to the nutrient
-
-        const map: MapType = mapRef.current;
-        if (map) {
-            map.getLayers().forEach((layer) => {
-                if (layer.get('title').startsWith('Nitrate'))
-                    layer.setVisible(selectedNutrient === 'Nitrogen');
-                if (layer.get('title').startsWith('Phosphorus'))
-                    layer.setVisible(selectedNutrient === 'Phosphorus');
-            });
-        }
-    }, [selectedNutrient]);
+        makeLayerVisible();
+    }, [selectedNutrient, phosTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
         const pixel = event.pixel;
@@ -500,10 +536,25 @@ const Summary = () => {
         phosTrendStationsLayer20years
     };
 
+    makeLayerVisible();
     const removeSelectedStation = () => {
         setSelectedStation(null);
         setSelectedWatershed(null);
     };
+
+    if (nitrateTrendStationsLayer20years === null || phosTrendStationsLayer20years === null ||
+      waterShedsLayer20years === null || nitrateTrendStationsData20Years === null ||
+      phosTrendStationData20Years === null){
+        return (
+            <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+                <Box textAlign="center">
+                    <CircularProgress />
+                    <p>Loading data...</p>
+                </Box>
+            </Box>
+        );
+    }
+
 
     return (
         <>

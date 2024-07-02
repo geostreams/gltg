@@ -190,7 +190,7 @@ const Summary = () => {
     // State variable to keep track of sidebar inputs
     const [selectedNutrient, setSelectedNutrient] = React.useState('Nitrogen');
     const [selectedTimePeriod, setSelectedTimePeriod] =
-      React.useState('20_years');
+        React.useState('20_years');
     const [selectedParameter, setSelectedParameter] = React.useState('concentration');
 
     // State variable to make legend collapsible
@@ -202,10 +202,13 @@ const Summary = () => {
     const tooltipRef = React.useRef();
 
     // Lazy load the geoJSON and json files
-    const [nitrateTrendStationsLayer20years, setNitrateTrendStationsLayer20years] = React.useState(null);
+    // const [nitrateTrendStationsLayer20years, setNitrateTrendStationsLayer20years] = React.useState(null);
+    const [nitrateConcTrendStationsLayer20years, setNitrateConcTrendStationsLayer20years] = React.useState(null);
+    const [nitrateFluxTrendStationsLayer20years, setNitrateFluxTrendStationsLayer20years] = React.useState(null);
+
     // const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] = React.useState(null);
     const [phosConcTrendStationsLayer20years, setPhosConcTrendStationsLayer20years] = React.useState(null);
-    const [phosFLuxTrendStationsLayer20years, setPhosFluxTrendStationsLayer20years] = React.useState(null);
+    const [phosFluxTrendStationsLayer20years, setPhosFluxTrendStationsLayer20years] = React.useState(null);
 
     const [waterShedsLayer20years, setWaterShedsLayer20years] = React.useState(null);
     const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
@@ -213,46 +216,90 @@ const Summary = () => {
 
 
     const makeLayerVisible = () =>{
-        const map= mapRef.current;
+        const map = mapRef.current;
         if (map) {
             if (selectedParameter === 'concentration')
             {
                 if (selectedNutrient === 'Nitrogen') {
-                    nitrateTrendStationsLayer20years.setVisible(true);
+                    nitrateConcTrendStationsLayer20years.setVisible(true);
+                    nitrateFluxTrendStationsLayer20years.setVisible(false);
                     phosConcTrendStationsLayer20years.setVisible(false);
-                    phosFLuxTrendStationsLayer20years.setVisible(false);
+                    phosFluxTrendStationsLayer20years.setVisible(false);
                 } else {
-                    nitrateTrendStationsLayer20years.setVisible(false);
+                    nitrateConcTrendStationsLayer20years.setVisible(false);
+                    nitrateFluxTrendStationsLayer20years.setVisible(false);
                     phosConcTrendStationsLayer20years.setVisible(true);
-                    phosFLuxTrendStationsLayer20years.setVisible(false);
+                    phosFluxTrendStationsLayer20years.setVisible(false);
                 }
             } else if (selectedParameter === 'flux') {
                 if (selectedNutrient === 'Nitrogen') {
-                    nitrateTrendStationsLayer20years.setVisible(true);
+                    nitrateConcTrendStationsLayer20years.setVisible(false);
+                    nitrateFluxTrendStationsLayer20years.setVisible(true);
                     phosConcTrendStationsLayer20years.setVisible(false);
-                    phosFLuxTrendStationsLayer20years.setVisible(true);
+                    phosFluxTrendStationsLayer20years.setVisible(false);
                 } else {
-                    nitrateTrendStationsLayer20years.setVisible(false);
+                    nitrateConcTrendStationsLayer20years.setVisible(false);
+                    nitrateFluxTrendStationsLayer20years.setVisible(false);
                     phosConcTrendStationsLayer20years.setVisible(false);
-                    phosFLuxTrendStationsLayer20years.setVisible(true);
+                    phosFluxTrendStationsLayer20years.setVisible(true);
                 }
             }
         }
     };
-    
+
     // useEffect to lazy load the geoJSON files
     React.useEffect(()=>{
-        import('../../data/nitrate_trend_stations_20_years.geojson').then((data) => {
-            const nitrateTrendStationsJSON20Years = data.default;
-            setNitrateTrendStationsLayer20years(
+        // import('../../data/nitrate_trend_stations_20_years.geojson').then((data) => {
+        //     const nitrateTrendStationsJSON20Years = data.default;
+        //     setNitrateTrendStationsLayer20years(
+        //         new GroupLayer({
+        //             title: 'Nitrate Trend Stations',
+        //             layers: [
+        //                 new VectorLayer({
+        //                     visible: true,
+        //                     title: 'Trend Stations',
+        //                     source: new VectorSource({
+        //                         url: nitrateTrendStationsJSON20Years,
+        //                         format: new GeoJSON()
+        //                     }),
+        //                     interactive: true,
+        //                     style: renderIcon
+        //                 })
+        //             ]
+        //         })
+        //     );
+        // });
+        import('../../data/nitrate_conc_trend_stations_20_years.geojson').then((data) => {
+            const nitrateConcTrendStationsJSON20Years = data.default;
+            setNitrateConcTrendStationsLayer20years(
                 new GroupLayer({
-                    title: 'Nitrate Trend Stations',
+                    title: 'Nitrate Concentration Trend Stations',
                     layers: [
                         new VectorLayer({
                             visible: true,
                             title: 'Trend Stations',
                             source: new VectorSource({
-                                url: nitrateTrendStationsJSON20Years,
+                                url: nitrateConcTrendStationsJSON20Years,
+                                format: new GeoJSON()
+                            }),
+                            interactive: true,
+                            style: renderIcon
+                        })
+                    ]
+                })
+            );
+        });
+        import('../../data/nitrate_flux_trend_stations_20_years.geojson').then((data) => {
+            const nitrateFluxTrendStationsJSON20Years = data.default;
+            setNitrateFluxTrendStationsLayer20years(
+                new GroupLayer({
+                    title: 'Nitrate Flux Trend Stations',
+                    layers: [
+                        new VectorLayer({
+                            visible: true,
+                            title: 'Trend Stations',
+                            source: new VectorSource({
+                                url: nitrateFluxTrendStationsJSON20Years,
                                 format: new GeoJSON()
                             }),
                             interactive: true,
@@ -351,7 +398,7 @@ const Summary = () => {
         });
     },[]);
 
-    
+
 
     // This group layer contains the base map and the state boundaries layer
     const basemaps = new GroupLayer({
@@ -548,7 +595,7 @@ const Summary = () => {
         // Get corresponding watershed by SF_site_no if the selected feature is a trend station
         if (
             selectedFeature &&
-          selectedFeature.getGeometry().getType() === 'Point'
+            selectedFeature.getGeometry().getType() === 'Point'
         ) {
             // This always shows nitrogen my worry is the function passed to openlayers is not getting the updated value of selectedNutrient
 
@@ -574,7 +621,7 @@ const Summary = () => {
 
         // Change the visibility of the layers ccording to the nutrient
         makeLayerVisible();
-    }, [selectedNutrient, phosFLuxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
+    }, [selectedNutrient, phosFluxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
         const pixel = event.pixel;
@@ -593,9 +640,10 @@ const Summary = () => {
         basemaps,
         riversLayer,
         waterShedsLayer20years,
-        nitrateTrendStationsLayer20years,
+        nitrateConcTrendStationsLayer20years,
+        nitrateFluxTrendStationsLayer20years,
         phosConcTrendStationsLayer20years,
-        phosFLuxTrendStationsLayer20years
+        phosFluxTrendStationsLayer20years
     };
 
     makeLayerVisible();
@@ -604,9 +652,9 @@ const Summary = () => {
         setSelectedWatershed(null);
     };
 
-    if (nitrateTrendStationsLayer20years === null || phosConcTrendStationsLayer20years === null ||
-        phosFLuxTrendStationsLayer20years === null || waterShedsLayer20years === null ||
-        nitrateTrendStationsData20Years === null || phosTrendStationData20Years === null){
+    if (nitrateConcTrendStationsLayer20years === null || nitrateFluxTrendStationsLayer20years === null ||
+        phosConcTrendStationsLayer20years === null || phosFluxTrendStationsLayer20years === null ||
+        waterShedsLayer20years === null || nitrateTrendStationsData20Years === null || phosTrendStationData20Years === null){
         return (
             <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
                 <Box textAlign="center">

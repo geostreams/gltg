@@ -203,20 +203,40 @@ const Summary = () => {
 
     // Lazy load the geoJSON and json files
     const [nitrateTrendStationsLayer20years, setNitrateTrendStationsLayer20years] = React.useState(null);
-    const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] = React.useState(null);
+    // const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] = React.useState(null);
+    const [phosConcTrendStationsLayer20years, setPhosConcTrendStationsLayer20years] = React.useState(null);
+    const [phosFLuxTrendStationsLayer20years, setPhosFluxTrendStationsLayer20years] = React.useState(null);
+
     const [waterShedsLayer20years, setWaterShedsLayer20years] = React.useState(null);
     const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
     const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
 
+
     const makeLayerVisible = () =>{
         const map= mapRef.current;
         if (map) {
-            map.getLayers().forEach((layer) => {
-                if (layer.get('title').startsWith('Nitrate'))
-                    layer.setVisible(selectedNutrient === 'Nitrogen');
-                if (layer.get('title').startsWith('Phosphorus'))
-                    layer.setVisible(selectedNutrient === 'Phosphorus');
-            });
+            if (selectedParameter === 'concentration')
+            {
+                if (selectedNutrient === 'Nitrogen') {
+                    nitrateTrendStationsLayer20years.setVisible(true);
+                    phosConcTrendStationsLayer20years.setVisible(false);
+                    phosFLuxTrendStationsLayer20years.setVisible(false);
+                } else {
+                    nitrateTrendStationsLayer20years.setVisible(false);
+                    phosConcTrendStationsLayer20years.setVisible(true);
+                    phosFLuxTrendStationsLayer20years.setVisible(false);
+                }
+            } else if (selectedParameter === 'flux') {
+                if (selectedNutrient === 'Nitrogen') {
+                    nitrateTrendStationsLayer20years.setVisible(true);
+                    phosConcTrendStationsLayer20years.setVisible(false);
+                    phosFLuxTrendStationsLayer20years.setVisible(true);
+                } else {
+                    nitrateTrendStationsLayer20years.setVisible(false);
+                    phosConcTrendStationsLayer20years.setVisible(false);
+                    phosFLuxTrendStationsLayer20years.setVisible(true);
+                }
+            }
         }
     };
     
@@ -242,25 +262,65 @@ const Summary = () => {
                 })
             );
         });
-        import('../../data/phos_trend_stations_20_years.geojson').then((data) => {
-            const phosTrendStationsJSON20Years = data.default;
-            setPhosTrendStationsLayer20years(
+        // import('../../data/phos_trend_stations_20_years.geojson').then((data) => {
+        //     const phosTrendStationsJSON20Years = data.default;
+        //     setPhosTrendStationsLayer20years(
+        //         new GroupLayer({
+        //             title: 'Phosphorus Trend Stations',
+        //             layers: [
+        //                 new VectorLayer({
+        //                     visible: true,
+        //                     title: 'Trend Stations',
+        //                     source: new VectorSource({
+        //                         url: phosTrendStationsJSON20Years,
+        //                         format: new GeoJSON()
+        //                     }),
+        //                     interactive: true,
+        //                     style: renderIcon
+        //                 })
+        //             ] })
+        //     );
+        // });
+        import('../../data/phos_conc_trend_stations_20_years.geojson').then((data) => {
+            const phosConcTrendStationsJSON20Years = data.default;
+            setPhosConcTrendStationsLayer20years(
                 new GroupLayer({
-                    title: 'Phosphorus Trend Stations',
+                    title: 'Phosphorus Concentration Trend Stations',
                     layers: [
                         new VectorLayer({
                             visible: true,
                             title: 'Trend Stations',
                             source: new VectorSource({
-                                url: phosTrendStationsJSON20Years,
+                                url: phosConcTrendStationsJSON20Years,
                                 format: new GeoJSON()
                             }),
                             interactive: true,
                             style: renderIcon
                         })
-                    ] })
+                    ]
+                })
             );
         });
+        import('../../data/phos_flux_trend_stations_20_years.geojson').then((data) => {
+            const phosFluxTrendStationsJSON20Years = data.default;
+            setPhosFluxTrendStationsLayer20years(
+                new GroupLayer({
+                    title: 'Phosphorus Flux Trend Stations',
+                    layers: [
+                        new VectorLayer({
+                            visible: true,
+                            title: 'Trend Stations',
+                            source: new VectorSource({
+                                url: phosFluxTrendStationsJSON20Years,
+                                format: new GeoJSON()
+                            }),
+                            interactive: true,
+                            style: renderIcon
+                        })
+                    ]
+                })
+            );
+        }
         import ('../../data/watersheds_20years.geojson').then((data) => {
             const waterShedsJSON20years = data.default;
             setWaterShedsLayer20years(
@@ -514,7 +574,7 @@ const Summary = () => {
 
         // Change the visibility of the layers ccording to the nutrient
         makeLayerVisible();
-    }, [selectedNutrient, phosTrendStationsLayer20years, nitrateTrendStationsData20Years]);
+    }, [selectedNutrient, phosFLuxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
         const pixel = event.pixel;
@@ -534,7 +594,8 @@ const Summary = () => {
         riversLayer,
         waterShedsLayer20years,
         nitrateTrendStationsLayer20years,
-        phosTrendStationsLayer20years
+        phosConcTrendStationsLayer20years,
+        phosFLuxTrendStationsLayer20years
     };
 
     makeLayerVisible();
@@ -543,9 +604,9 @@ const Summary = () => {
         setSelectedWatershed(null);
     };
 
-    if (nitrateTrendStationsLayer20years === null || phosTrendStationsLayer20years === null ||
-      waterShedsLayer20years === null || nitrateTrendStationsData20Years === null ||
-      phosTrendStationData20Years === null){
+    if (nitrateTrendStationsLayer20years === null || phosConcTrendStationsLayer20years === null ||
+        phosFLuxTrendStationsLayer20years === null || waterShedsLayer20years === null ||
+        nitrateTrendStationsData20Years === null || phosTrendStationData20Years === null){
         return (
             <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
                 <Box textAlign="center">

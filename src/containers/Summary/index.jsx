@@ -216,7 +216,7 @@ const Summary = () => {
 
 
     const makeLayerVisible = () =>{
-        const map= mapRef.current;
+        const map = mapRef.current;
         if (map) {
             if (selectedParameter === 'concentration')
             {
@@ -236,7 +236,7 @@ const Summary = () => {
                     nitrateConcTrendStationsLayer20years.setVisible(false);
                     nitrateFluxTrendStationsLayer20years.setVisible(true);
                     phosConcTrendStationsLayer20years.setVisible(false);
-                    phosFluxTrendStationsLayer20years.setVisible(true);
+                    phosFluxTrendStationsLayer20years.setVisible(false);
                 } else {
                     nitrateConcTrendStationsLayer20years.setVisible(false);
                     nitrateFluxTrendStationsLayer20years.setVisible(false);

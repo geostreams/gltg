@@ -320,7 +320,7 @@ const Summary = () => {
                     ]
                 })
             );
-        }
+        });
         import ('../../data/watersheds_20years.geojson').then((data) => {
             const waterShedsJSON20years = data.default;
             setWaterShedsLayer20years(

@@ -604,7 +604,7 @@ const Summary = () => {
                 .getSource()
                 .getFeatures()
                 .find(
-                    (feature) => feature.get('id') === selectedFeature.get('SF_site_no')
+                    (feature) => feature.get('site_id') === selectedFeature.get('WQ_MonitoringLocationIdentifier')
                 );
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);

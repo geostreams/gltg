@@ -293,7 +293,7 @@ const Summary = () => {
             const nitrateFluxTrendStationsJSON20Years = data.default;
             setNitrateFluxTrendStationsLayer20years(
                 new GroupLayer({
-                    title: 'Nitrate Flux Trend Stations',
+                    title: 'Nitrate Load Trend Stations',
                     layers: [
                         new VectorLayer({
                             visible: true,
@@ -352,7 +352,7 @@ const Summary = () => {
             const phosFluxTrendStationsJSON20Years = data.default;
             setPhosFluxTrendStationsLayer20years(
                 new GroupLayer({
-                    title: 'Phosphorus Flux Trend Stations',
+                    title: 'Phosphorus Load Trend Stations',
                     layers: [
                         new VectorLayer({
                             visible: true,
@@ -619,9 +619,9 @@ const Summary = () => {
         setSelectedStation(null);
         setSelectedWatershed(null);
 
-        // Change the visibility of the layers ccording to the nutrient
+        // Change the visibility of the layers according to the nutrient
         makeLayerVisible();
-    }, [selectedNutrient, phosFluxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
+    }, [selectedNutrient, selectedParameter, phosFluxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
         const pixel = event.pixel;

@@ -178,7 +178,7 @@ function convertTrend(inputString) {
     return conversionDict[inputString];
 }
 
-const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation }) => {
+const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedParameter }) => {
     const classes = useStyles();
     const [data, setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
@@ -284,6 +284,29 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                     >
                         <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
                         <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+                    </Select>
+                </FormControl>
+                <FormControl
+                    component="fieldset"
+                    className={classes.formControl}
+                >
+                    <FormLabel
+                        component="legend"
+                        className={classes.formLabel}
+                    >
+                        <Box display="flex" alignItems="center">
+                            Select Parameter
+                        </Box>
+                    </FormLabel>
+                    <Select
+                        className={classes.selectButton}
+                        value={selectedParameter}
+                        onChange={({ target: { value } }) => {
+                            setSelectedParameter(value);
+                        }}
+                    >
+                        <MenuItem value="concentration">Concentration</MenuItem>
+                        <MenuItem value="flux">Flux</MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl

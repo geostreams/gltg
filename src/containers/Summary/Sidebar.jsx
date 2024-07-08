@@ -178,6 +178,8 @@ function convertTrend(inputString) {
     return conversionDict[inputString];
 }
 
+// TO NOTE - The model by default provides "flux" but in the website use the more common term Load
+
 const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedParameter }) => {
     const classes = useStyles();
     const [data, setData] = React.useState(null);
@@ -306,7 +308,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         }}
                     >
                         <MenuItem value="concentration">Concentration</MenuItem>
-                        <MenuItem value="flux">Flux</MenuItem>
+                        <MenuItem value="flux">Load</MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl
@@ -328,7 +330,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                             setSelectedTimePeriod(value);
                         }}
                     >
-                        <MenuItem value="20_years">Last 20 years</MenuItem>
+                        <MenuItem value="20_years">2000-2020</MenuItem>
                     </Select>
                 </FormControl>
             </Box>
@@ -404,35 +406,6 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                 </div>
                             </div>
                         </Box>
-                        <TableContainer component={Paper}>
-                            <TableHead>
-                                <Typography variant="span" className={classes.title} gutterBottom>
-                                    Definition of Labels
-                                </Typography>
-                            </TableHead>
-                            <Table className={classes.table} aria-label="simple table">
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell component="th" scope="row" className={classes.tableHeader}>
-                                            Upward trend Site:
-                                        </TableCell>
-                                        <TableCell>Flux OR Concentration have an upward trend</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell component="th" scope="row" className={classes.tableHeader}>
-                                            Downward trend Site:
-                                        </TableCell>
-                                        <TableCell>Flux OR Concentration have a downward trend AND neither has an upward trend</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell component="th" scope="row" className={classes.tableHeader}>
-                                            No significant trend Site:
-                                        </TableCell>
-                                        <TableCell>Flux AND concentration have No significant trend</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
                     </>) :
                     (<>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -461,7 +434,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         <div>
                             {data &&
                               <Box className={classes.chart}>
-                                  <h4 className={classes.chartHeader}>Flux Graph</h4>
+                                  <h4 className={classes.chartHeader}>Load Graph</h4>
                                   <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
                                       stationary_y_line_field="stationaryFNFlux"
                                       stationary_high_interval="stationaryFNFluxHigh"
@@ -470,15 +443,15 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                                       non_stationary_high_interval="nonStationaryFNFluxHigh"
                                       non_stationary_low_interval="nonStationaryFNFluxLow"
                                       y_scatter_field="stationaryFluxDay"
-                                      y_label="Yearly Cumulative Flux (10^6 kg/yr)"
+                                      y_label="Yearly Cumulative Load (10^6 kg/yr)"
                                       x_label="Year"
-                                      title="Mean (dots) & Flow-Normalized (line) Flux Estimates" />
+                                      title="Mean (dots) & Flow-Normalized (line) Load Estimates" />
                                   <br />
                                   <Typography
                                       className={classes.trendText}
                                       variant="span"
                                   >
-                                      Flux Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
+                                      Load Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
                                   </Typography>
                               </Box>}
 

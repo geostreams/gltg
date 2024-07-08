@@ -4,17 +4,15 @@ import { Link, withRouter } from 'react-router-dom';
 import {
     AppBar,
     Avatar,
-    ClickAwayListener,
+    Button,
+    Menu,
     MenuItem,
-    Paper,
-    Popper,
     Tab,
     Tabs,
     Toolbar,
     Typography,
     makeStyles
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import LogoApp from '../../images/logo_app.png';
 
@@ -39,18 +37,31 @@ const useStyles = makeStyles((theme) =>{
             color: theme.palette.primary.contrastText,
             textDecoration: 'none'
         },
-        tabsRoot: {
+        contactText:{
+            fontSize: '1rem',
+            color: '#BEC4C9',
+            textDecoration: 'none'
+        },
+        headerButton:{
             fontSize: 16,
             flexGrow: 1
+        },
+        tabsRoot: {
+            marginLeft: '6em',
+            fontSize: 16,
+            flexGrow: 1
+        },
+        menuItem: {
+            '&:hover': {
+                backgroundColor: theme.palette.primary.main,
+                color: 'white'
+            }
         },
         tabsIndicator: {
             backgroundColor: '#fff'
         },
         tabRoot: {
             fontSize: '1rem'
-        },
-        marginLeftAuto: {
-            marginLeft: 'auto !important'
         },
         dropdown: {
             zIndex: 1100
@@ -70,10 +81,23 @@ type Props = {
 const Header = ({ location }: Props) => {
     const classes = useStyles();
 
-    const geostreamingMenuEl = React.useRef(null);
-    const [geostreamingMenuOpen, updateGeostreamingMenuOpen] = React.useState(false);
+    const [dashboardAnchorEl, setDashboardAnchorEl] = React.useState(null);
+    const dashboardOpen = Boolean(dashboardAnchorEl);
+    const dashboardHandleClick = (event) => {
+        setDashboardAnchorEl(event.currentTarget);
+    };
+    const dashboardHandleClose = () => {
+        setDashboardAnchorEl(null);
+    };
 
-    const activeTab = location.pathname.split('/')[1];
+    const [geoAppAnchorEl, setGeoAppAnchorEl] = React.useState(null);
+    const geoAppOpen = Boolean(geoAppAnchorEl);
+    const geoAppHandleClick = (event) => {
+        setGeoAppAnchorEl(event.currentTarget);
+    };
+    const geoAppHandleClose = () => {
+        setGeoAppAnchorEl(null);
+    };
 
     return (
         <AppBar position="fixed" className={classes.appbar}>
@@ -97,93 +121,69 @@ const Header = ({ location }: Props) => {
                         root: classes.tabsRoot,
                         indicator: classes.tabsIndicator
                     }}
-                    centered
-                    value={activeTab.search(/^(explore|search|analysis)/) === 0 ? 'geostreaming' : activeTab}
                 >
                     <Tab
-                        className={`${classes.marginLeftAuto} ${classes.tabRoot}`}
-                        label="Home"
+                        className={classes.tabRoot}
+                        label="Dashboards"
+                        component={Button}
+                        id = "dashboard-button"
+                        aria-controls={dashboardOpen ? 'dashboard-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={dashboardOpen ? 'true' : undefined}
+                        onClick={dashboardHandleClick}
+                        classes={classes.headerButton}
+                    />
+                    <Menu
+                        id="dashboard-menu"
+                        anchorEl={dashboardAnchorEl}
+                        open={dashboardOpen}
+                        onClose={dashboardHandleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'dashboard-button'
+                        }}
+                        getContentAnchorEl={null}
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                        transformOrigin={{ horizontal: 'center' }}
+                        className={classes.dropdown}>
+                        <MenuItem classes={{ root: classes.menuItem }}
+                                  onClick={dashboardHandleClose}
+                                  component={Link}
+                                  to="/summary">
+                            Nutrient Trends Dashboard
+                        </MenuItem>
+                        <MenuItem
+                            classes={{ root: classes.menuItem }}
+                            onClick={dashboardHandleClose}
+                            component={Link}
+                            to="/bmp">
+                            Best Management Practices
+                        </MenuItem>
+                    </Menu>
+                    <Tab
+                        className={classes.tabRoot}
+                        label="Explore Data"
+                        component={Link}
+                        id="geoApp-button"
+                        to="/explore/all"
+                    />
+                    <Tab
+                        className={classes.tabRoot}
+                        label="GLTG News"
                         component={Link}
                         to="/"
-                        value=""
+                        onClick={event => window.location.href='https://greatlakestogulf.web.illinois.edu'}
+                        value="gltg news"
                     />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="BMP"
-                        component={Link}
-                        to="/bmp"
-                        value="bmp"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Data Stories"
-                        component={Link}
-                        to="/data-stories"
-                        value="data-stories"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="Partners"
-                        component={Link}
-                        to="/partners"
-                        value="partners"
-                    />
-                    <Tab
-                        className={classes.tabRoot}
-                        label="FAQ"
-                        component={Link}
-                        to="/faq"
-                        value="faq"
-                    />
-                    <Tab
-                        ref={geostreamingMenuEl}
-                        component="a"
-                        className={`${classes.marginLeftAuto} ${classes.tabRoot}`}
-                        label={
-                            <span className={classes.dropdownIcon}>
-                                Geostreaming App <ArrowDropDownIcon />
-                            </span>
-                        }
-                        value="geostreaming"
-                        onClick={() => updateGeostreamingMenuOpen(true)}
-                    />
-                    <Popper
-                        className={classes.dropdown}
-                        anchorEl={geostreamingMenuEl.current}
-                        open={geostreamingMenuOpen}
-                    >
-                        <ClickAwayListener
-                            onClickAway={() => updateGeostreamingMenuOpen(false)}
-                        >
-                            <Paper>
-                                <MenuItem
-                                    component={Link}
-                                    to="/geostreaming"
-                                >
-                                    About
-                                </MenuItem>
-                                <MenuItem
-                                    component={Link}
-                                    to="/explore/all"
-                                >
-                                    Explore
-                                </MenuItem>
-                                <MenuItem
-                                    component={Link}
-                                    to="/search"
-                                >
-                                    Download
-                                </MenuItem>
-                                <MenuItem
-                                    component={Link}
-                                    to="/analysis"
-                                >
-                                    Analysis
-                                </MenuItem>
-                            </Paper>
-                        </ClickAwayListener>
-                    </Popper>
                 </Tabs>
+                <Typography
+                    component='a'
+                    to="/"
+                    href='mailto:gltg-support@lists.illinois.edu'
+                    className={classes.contactText}
+                    noWrap
+                >
+                    CONTACT
+                </Typography>
             </Toolbar>
         </AppBar>
     );

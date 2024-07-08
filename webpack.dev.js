@@ -13,6 +13,7 @@ module.exports = webpackMerge.merge(commonConfig, {
         host: 'localhost',
         port: 8080,
         inline: true,
+        watchContentBase: true,
         stats: { 'errors-only': true, 'colors': true },
         historyApiFallback: true,
         allowedHosts: JSON.parse(process.env.ALLOWED_HOSTS || '["localhost"]'),
@@ -23,9 +24,10 @@ module.exports = webpackMerge.merge(commonConfig, {
         new BundleAnalyzerPlugin({ openAnalyzer: false, analyzerPort: 5050 }),
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': '"development"',
-            'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://gltg-dev.ncsa.illinois.edu/geoserver'),
-            'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || 'https://gltg-dev.ncsa.illinois.edu/geostreams'),
-            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://gltg-dev.ncsa.illinois.edu/bmp-api/v1.0')
+            'process.env.GEOSERVER_URL': JSON.stringify(process.env.GEOSERVER_URL || 'https://greatlakestogulf.org/geoserver'),
+            'process.env.GEOSTREAMS_URL': JSON.stringify(process.env.GEOSTREAMS_URL || 'https://greatlakestogulf.org/geostreams'),
+            'process.env.BMP_API_URL': JSON.stringify(process.env.BMP_API_URL || 'https://greatlakestogulf.org/bmp-api')
+
         })
     ]
 });

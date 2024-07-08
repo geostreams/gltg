@@ -5,6 +5,7 @@ import { Box, CircularProgress, makeStyles } from '@material-ui/core';
 
 import Footer from './Footer';
 import Header, { HEADERS_HEIGHT } from './Header';
+import SmallHeader from './SmallHeader';
 
 const useStyles = makeStyles({
     scrim: {
@@ -25,10 +26,24 @@ type Props = {
     extraMainClasses: string;
     children: React.Node;
     hasFooter: boolean;
+    stickyFooter: boolean;
 }
 
-const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => {
+const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter }: Props) => {
     const classes = useStyles();
+
+    // Handle screen resizing
+    const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+    const widthBreakpoint = 1340;
+    React.useEffect(() => {
+        const handleResizeWindow = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize',handleResizeWindow);
+        return () => {
+            window.removeEventListener('resize',handleResizeWindow);
+        };
+    },[]);
+
+
     return (
         <>
             {isLoading ?
@@ -41,10 +56,13 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => 
                     <CircularProgress />
                 </Box> :
                 null}
-            <Header />
+            {(windowWidth > widthBreakpoint) ?
+                <Header /> :
+                <SmallHeader />
+            }
             <main className={`${classes.main} ${extraMainClasses}`}>
                 {children}
-                {hasFooter ? <Footer /> : null}
+                {hasFooter ? <Footer sticky={stickyFooter} /> : null}
             </main>
         </>
     );
@@ -53,7 +71,8 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter }: Props) => 
 Layout.defaultProps = {
     extraMainClasses: '',
     children: null,
-    hasFooter: false
+    hasFooter: false,
+    stickyFooter: false
 };
 
 const mapStateToProps = (state) => ({

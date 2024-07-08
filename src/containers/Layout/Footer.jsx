@@ -7,23 +7,27 @@ import {
 } from '@material-ui/core';
 
 
-const useStyles = makeStyles((theme) =>{
+const useStyles = makeStyles((theme) => {
     return ({
         footer: {
-            'position': 'absolute',
             'width': '100%',
-            'height': 110,
-            'bottom': -110,
-            'left': 0,
             'background': theme.palette.primary.lighter,
             'color': theme.palette.primary.contrastText,
             'textDecoration': 'none',
             'textAlign': 'center',
             'padding': '10px 180px',
+            'marginTop': '20px',
             '& a': {
                 margin: 15
             },
             'fontSize': 13
+        },
+        sticky: {
+            position: 'absolute',
+            height: 110,
+            bottom: -110,
+            left: 0,
+            marginTop: 0
         },
         content: {
             color: 'gray',
@@ -34,11 +38,15 @@ const useStyles = makeStyles((theme) =>{
     });
 });
 
-const Footer = () => {
+type Props = {
+    sticky: boolean;
+}
+
+const Footer = ({ sticky }: Props) => {
     const classes = useStyles();
 
     return (
-        <footer className={classes.footer}>
+        <footer className={`${classes.footer} ${sticky ? classes.sticky : ''}`}>
             <Grid container>
                 <Grid item xs={12}>
                     <p className={classes.content}>
@@ -62,6 +70,11 @@ const Footer = () => {
             </Grid>
         </footer>
     );
+};
+
+
+Footer.defaultProps = {
+    sticky: false
 };
 
 export default Footer;

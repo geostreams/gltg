@@ -11,7 +11,7 @@ const { dependencies } = require('./package.json');
 module.exports = {
     target: 'web',
 
-    entry: {        
+    entry: {
         index: path.resolve(__dirname, './src/index.jsx'),
         olStyle: 'ol/ol.css',
         olLayerSwitcherStyle: 'ol-layerswitcher/src/ol-layerswitcher.css',
@@ -28,6 +28,12 @@ module.exports = {
         crossOriginLoading: 'anonymous'
     },
 
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
+
     module: {
         rules: [
             {
@@ -37,6 +43,7 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         options: {
+                            cacheDirectory: true,
                             presets: [
                                 '@babel/env',
                                 '@babel/flow',
@@ -114,6 +121,19 @@ module.exports = {
                     }
                 ]
             },
+            // loader for specific json files
+            {
+                type: 'javascript/auto',
+                test: /data_20years\.json$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'files/[name]-[contenthash].[ext]'
+                        }
+                    }
+                ]  
+            },
             {
                 test: /\.svg$/,
                 use: [
@@ -155,11 +175,15 @@ module.exports = {
             'redux': path.resolve('./node_modules/redux'),
             'react-router-dom': path.resolve('./node_modules/react-router-dom'),
             'react-redux': path.resolve('./node_modules/react-redux'),
-            '@material-ui': path.resolve('./node_modules/@material-ui')
+            '@material-ui': path.resolve('./node_modules/@material-ui'),
+            'process': path.resolve('./node_modules/process')
         }
     },
 
     plugins: [
+        new Webpack.ProvidePlugin({
+            process: 'process/browser'
+        }),
         new Webpack.DefinePlugin({
             'process.env.VERSION': JSON.stringify(
                 dependencies['@geostreams/core']
@@ -179,7 +203,8 @@ module.exports = {
         new MiniCssExtractPlugin({ filename: 'css/[name]-[chunkhash].css' }),
         new CleanWebpackPlugin(),
         new ESLintPlugin({
-            emitWarning: true
+            emitWarning: true,
+            failOnError: false
         })
     ]
 };

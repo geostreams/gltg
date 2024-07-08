@@ -14,7 +14,7 @@ import { precision } from '@geostreams/core/src/utils/format';
 
 import type { ElementRect } from '@geostreams/core/src/utils/flowtype';
 
-import type { Filters, QueryParams } from 'src/containers/BMP/flowtype';
+import type { Filters, QueryParams } from '../flowtype';
 
 
 export const config = {
@@ -122,7 +122,10 @@ const ProgramsCount = (props: Props) => {
 
     return (
         <>
-            <Typography variant="body1" paragraph>LOREM IPSUM</Typography>
+            <Typography variant="body1" paragraph>
+                Distribution of the number of total conservation practices across selected area by year.
+                Conservation practices are distinguished by funding source.
+            </Typography>
             <VegaLite
                 width={(containerRect.width || 0) * 0.6}
                 height={(containerRect.height || 0) * 0.6}

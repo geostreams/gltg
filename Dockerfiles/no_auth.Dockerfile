@@ -30,9 +30,6 @@ RUN yarn build
 FROM nginx:stable-alpine
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy .htpasswd file
-COPY ../conf/.htpasswd /etc/nginx/.htpasswd
-
 COPY ../docker/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 COPY --from=build /tmp/gltg/build /usr/share/nginx/html

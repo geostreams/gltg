@@ -385,30 +385,8 @@
         "displayOnlineStatus":true
     },
     "source":{
-        "epa":{
-            "label":"EPA Pollutant Loading",
-            "order":1,
-            "color":"#a87c03",
-            "description":"These locations contain data related to EPA Pollutant Loading.",
-            "more_info":"Click here for more information about EPA Pollutant Loading",
-            "link":"https://cfpub.epa.gov/dmr/",
-            "useSeasonFilter":true
-        },
         "glfmsp":{
             "order":2
-        },
-        "greon":{
-            "label":"Great Rivers Ecological Observation Network",
-            "color":"#BDBFA6",
-            "description":"The GREON℠ program seeks to establish a network of real-time water quality monitoring platforms on great rivers around the world. NGRREC℠ partnered with YSI Inc. to design and launch a monitoring buoy capable of real-time, continuous collection of water quality and phytoplankton data. The first YSI PISCES (Pontoon for In-situ Characterization of Environmental Systems) buoy launched in May 2013 on the Upper Mississippi River System, but the program aims to expand to deploy platforms across the globe on other international great river systems.",
-            "qaqc":"Note: This data is not QA/QC.",
-            "more_info":"More information about GREON",
-            "link":"http://www.ngrrec.org/GREON/"
-        },
-        "gac":{
-            "label":"Gustavus Adolphus College",
-            "color":"#8c1ace",
-            "description":"Spreadsheet data from 2016"
         },
         "heidelberg":{
             "order":3
@@ -423,30 +401,8 @@
             "more_info":"Click here for more information about the IEPA Ambient Water Quality Monitoring Network (AWQMN)",
             "link":"http://www.epa.illinois.gov/topics/water-quality/monitoring/river-and-stream/"
         },
-        "iwqis":{
-            "label":"Iowa Water Quality Information System",
-            "color":"#31CFC1",
-            "description":"The IWQIS allows access to real-time water-quality data and information such as nitrate, pH, and dissolved oxygen concentrations, discharge rates, and temperature.",
-            "more_info":"Click here for more information about IWQIS",
-            "link":"http://iwqis.iowawis.org/"
-        },
         "lec":{
             "order":5
-        },
-        "metc":{
-            "label":"Metropolitan Council",
-            "color":"#D2E11D",
-            "description":"These locations contain data related to the Metropolitan Council Environmental Information Management Systems.",
-            "more_info":"Click here for more information about the Metropolitan Council",
-            "link":"https://eims.metc.state.mn.us/"
-        },
-        "noaa":{
-            "label":"National Oceanic and Atmospheric Administration",
-            "order":7,
-            "color":"#043C82",
-            "description":"NOAA's National Data Buoy Center (NDBC) collects wind, wave, and other marine data. The data are collected from NDBC moored buoys and from C-MAN (Coastal-Marine Automated Network) stations located on piers, offshore towers, lighthouses, and beaches. Parameters reported by both buoys and C-MAN stations include air temperature and pressure, wind speed and direction, wind gust, and sea surface temperature. The buoys (and a few C-MAN stations located on offshore towers) also report wave data, usually including wave height, wave period, and wave spectra. We've chosen to focus on buoys on the Mississippi River that are equipped with continuous water quality sensors for this website.",
-            "more_info":"For more information and for access to all NOAA buoy data.",
-            "link":"http://www.nodc.noaa.gov/"
         },
         "sierra-club":{
             "label":"Fox River Study Group",
@@ -454,11 +410,6 @@
             "description":"These locations contain data related to the Fox River Study Group.",
             "more_info":"Click here for more information about the Fox River Study Group",
             "link":"http://foxriverstudygroup.org/"
-        },
-        "tennessee":{
-            "label":"Tennessee",
-            "color":"#d80d50",
-            "description":"These locations contain data related to Tennessee."
         },
         "usgs":{
             "label":"United States Geological Survey",

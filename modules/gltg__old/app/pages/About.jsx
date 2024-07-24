@@ -132,8 +132,7 @@ class About extends Component {
                         <div className={styles.about_what_left}>
                             <p className={styles.custom_left_text + " " + styles.custom_left_text_font_02}>
                                 GLTG℠ efforts focus on a suite of water quality parameters integrated from numerous
-                                geospatially referenced sources, including the Great Rivers Ecological Observatory
-                                Network (GREON<sup>SM</sup>), in addition to continuous and discrete long term water quality data
+                                geospatially referenced sources, in addition to continuous and discrete long term water quality data
                                 sets (as appropriate and available) from federal and state agencies, water utilities,
                                 and other sources.
                             </p>

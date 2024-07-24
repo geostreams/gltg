@@ -28,9 +28,9 @@
         "SF_station_nm": "Upper Iowa River near Dorchester  IA",
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10030001",
         "WQ_MonitoringLocationName": "Upper Iowa River near Dorchester",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -47,9 +47,9 @@
         "SF_station_nm": "Cedar River at Janesville  IA",
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10090001",
         "WQ_MonitoringLocationName": "Cedar River near Janesville",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -66,9 +66,9 @@
         "SF_station_nm": "Bloody Run Creek near Marquette  IA",
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10220003",
         "WQ_MonitoringLocationName": "Bloody Run Creek Site #1 (BR01)",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -86,7 +86,7 @@
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10250001",
         "WQ_MonitoringLocationName": "South Raccoon River near Redfield",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -104,7 +104,7 @@
         "SF_station_nm": "Thompson River at Davis City  IA",
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10270001",
         "WQ_MonitoringLocationName": "Thompson Fork - Grand River at Davis City",
-        "significance_concent": "Downward trend in concentration is likely",
+        "significance_concent": "Downward trend in concentration is highly likely",
         "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
@@ -142,7 +142,7 @@
         "SF_station_nm": "South Skunk River near Oskaloosa  IA",
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10620001",
         "WQ_MonitoringLocationName": "South Skunk River near Oskaloosa",
-        "significance_concent": "Downward trend in concentration is likely",
+        "significance_concent": "Downward trend in concentration is highly likely",
         "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
@@ -180,9 +180,9 @@
         "SF_station_nm": "Cedar River near Conesville  IA",
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10700001",
         "WQ_MonitoringLocationName": "Cedar River near Conesville",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -200,8 +200,8 @@
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10750001",
         "WQ_MonitoringLocationName": "Floyd River near Sioux City",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -219,8 +219,8 @@
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10770001",
         "WQ_MonitoringLocationName": "Beaver Creek near Grimes",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -257,8 +257,8 @@
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10910001",
         "WQ_MonitoringLocationName": "Middle River near Indianola",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -276,7 +276,7 @@
         "WQ_MonitoringLocationIdentifier": "21IOWA_WQX-10910002",
         "WQ_MonitoringLocationName": "North River near Norwalk",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -294,8 +294,8 @@
         "SF_station_nm": "Cimarron River near Forgan  OK",
         "WQ_MonitoringLocationIdentifier": "21KAN001_WQX-SC222",
         "WQ_MonitoringLocationName": "Cimarron River Near Forgan  Oklahoma",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -313,7 +313,7 @@
         "SF_station_nm": "NEOSHO R NR AMERICUS  KS",
         "WQ_MonitoringLocationIdentifier": "21KAN001_WQX-SC581",
         "WQ_MonitoringLocationName": "Neosho River Near Americus",
-        "significance_concent": "Upward trend in concentration is likely",
+        "significance_concent": "Upward trend in concentration is highly likely",
         "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
@@ -351,9 +351,9 @@
         "SF_station_nm": "GREEN RIVER AT MUNFORDVILLE  KY",
         "WQ_MonitoringLocationIdentifier": "21KY_WQX-PRI018",
         "WQ_MonitoringLocationName": "Green River",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -389,9 +389,9 @@
         "SF_station_nm": "ELKHORN CREEK NEAR FRANKFORT  KY",
         "WQ_MonitoringLocationIdentifier": "21KY_WQX-PRI098",
         "WQ_MonitoringLocationName": "Elkhorn Creek",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -427,9 +427,9 @@
         "SF_station_nm": "FRENCH BROAD RIVER AT ASHEVILLE  NC",
         "WQ_MonitoringLocationIdentifier": "21NC03WQ-E4280000",
         "WQ_MonitoringLocationName": "FRENCH BROAD RIV AT SR 1348 AT ASHEVILLE X REF E3420000",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -466,7 +466,7 @@
         "WQ_MonitoringLocationIdentifier": "21NC03WQ-E8200000",
         "WQ_MonitoringLocationName": "S TOE RIV AT SR 1168 NR CELO",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -503,9 +503,9 @@
         "SF_station_nm": "SOUTH FORK NEW RIVER NEAR JEFFERSON  NC",
         "WQ_MonitoringLocationIdentifier": "21NC03WQ-K3250000",
         "WQ_MonitoringLocationName": "S FORK NEW RIV AT NC 16 AND 88 NR JEFFERSON",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -541,7 +541,7 @@
         "SF_station_nm": "JAMES RIVER AT JAMESTOWN  ND",
         "WQ_MonitoringLocationIdentifier": "21NDHDWQ_WQX-380013",
         "WQ_MonitoringLocationName": "James River S Side of Jamestown",
-        "significance_concent": "Downward trend in concentration is likely",
+        "significance_concent": "Downward trend in concentration is highly likely",
         "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
@@ -560,8 +560,8 @@
         "SF_station_nm": "NORTH PLATTE RIVER AT WYOMING-NEBRASKA STATE LINE",
         "WQ_MonitoringLocationIdentifier": "21NEB001_WQX-SNP3NPLAT577",
         "WQ_MonitoringLocationName": "North Platte River at Nebraska-Wyoming State Line",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -656,7 +656,7 @@
         "WQ_MonitoringLocationIdentifier": "21OHIO_WQX-602280",
         "WQ_MonitoringLocationName": "MAHONING R. AT LEAVITTSBURG @ LEAVITT RD.",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -675,8 +675,8 @@
         "WQ_MonitoringLocationIdentifier": "21OHIO_WQX-R12P02",
         "WQ_MonitoringLocationName": "KOKOSING R. AT MT. VERNON  @ TILDEN AVE. GAGE",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -713,8 +713,8 @@
         "WQ_MonitoringLocationIdentifier": "21PA_WQX-WQN0807",
         "WQ_MonitoringLocationName": "ALLEGHENY RIVER",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -731,7 +731,7 @@
         "SF_station_nm": "Redbank Creek at St. Charles  PA",
         "WQ_MonitoringLocationIdentifier": "21PA_WQX-WQN0820",
         "WQ_MonitoringLocationName": "REDBANK CREEK",
-        "significance_concent": "Upward trend in concentration is likely",
+        "significance_concent": "Upward trend in concentration is highly likely",
         "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
@@ -769,7 +769,7 @@
         "SF_station_nm": "Brokenstraw Creek at Youngsville  PA",
         "WQ_MonitoringLocationIdentifier": "21PA_WQX-WQN0831",
         "WQ_MonitoringLocationName": "BROKENSTRAW CREEK",
-        "significance_concent": "No Significant Trend",
+        "significance_concent": "Downward trend in concentration is likely",
         "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
@@ -788,7 +788,7 @@
         "SF_station_nm": "Conewango Creek at Russell  PA",
         "WQ_MonitoringLocationIdentifier": "21PA_WQX-WQN0832",
         "WQ_MonitoringLocationName": "CONEWANGO CREEK",
-        "significance_concent": "Upward trend in concentration is likely",
+        "significance_concent": "No Significant Trend",
         "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
@@ -864,7 +864,7 @@
         "SF_station_nm": "Little Shenango River at Greenville  PA",
         "WQ_MonitoringLocationIdentifier": "21PA_WQX-WQN0913",
         "WQ_MonitoringLocationName": "LITTLE SHENANGO RIVER",
-        "significance_concent": "Downward trend in concentration is likely",
+        "significance_concent": "No Significant Trend",
         "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
@@ -884,8 +884,8 @@
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-OUA0013",
         "WQ_MonitoringLocationName": "Bayou Bartholomew near Jones  Louisiana",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -903,7 +903,7 @@
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-OUA0021",
         "WQ_MonitoringLocationName": "Ouachita River near Pencil Bluff  Arkansas",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -922,8 +922,8 @@
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-RED0009",
         "WQ_MonitoringLocationName": "Red River near Doddridge  Arkansas",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -940,9 +940,9 @@
         "SF_station_nm": "Saline River near Lockesburg  AR",
         "WQ_MonitoringLocationIdentifier": "ARDEQH2O_WQX-RED0021",
         "WQ_MonitoringLocationName": "Saline River near Lockesburg  Arkansas",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -960,8 +960,8 @@
         "WQ_MonitoringLocationIdentifier": "ARS-IASF-IASF450",
         "WQ_MonitoringLocationName": "IASF450",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -978,8 +978,8 @@
         "SF_station_nm": "CACHE RIVER AT FORMAN  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-AD-02",
         "WQ_MonitoringLocationName": "Cache River",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -1035,9 +1035,9 @@
         "SF_station_nm": "LITTLE WABASH RIVER BELOW CLAY CITY  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-C-22",
         "WQ_MonitoringLocationName": "Little Wabash River",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1054,9 +1054,9 @@
         "SF_station_nm": "SKILLET FORK AT WAYNE CITY  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-CA-05",
         "WQ_MonitoringLocationName": "Skillet Fork",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1093,8 +1093,8 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-DA-06",
         "WQ_MonitoringLocationName": "Macoupin Creek",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1112,7 +1112,7 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-DG-01",
         "WQ_MonitoringLocationName": "La Moine River",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1150,7 +1150,7 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-DJL-01",
         "WQ_MonitoringLocationName": "Indian Creek",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1264,7 +1264,7 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-E-26",
         "WQ_MonitoringLocationName": "Sangamon River",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1320,7 +1320,7 @@
         "SF_station_nm": "KICKAPOO CREEK AT WAYNESVILLE  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-EIE-04",
         "WQ_MonitoringLocationName": "Kickapoo Creek",
-        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_concent": "Downward trend in concentration is likely",
         "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
@@ -1359,7 +1359,7 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-EL-01",
         "WQ_MonitoringLocationName": "Spring Creek",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1378,7 +1378,7 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-FL-04",
         "WQ_MonitoringLocationName": "Iroquois River",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1434,8 +1434,8 @@
         "SF_station_nm": "HICKORY CREEK AT JOLIET  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-GG-22",
         "WQ_MonitoringLocationName": "Hickory Creek",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1453,9 +1453,9 @@
         "SF_station_nm": "THORN CREEK AT THORNTON  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-HBD-04",
         "WQ_MonitoringLocationName": "Thorn Creek",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1472,9 +1472,9 @@
         "SF_station_nm": "NORTH BRANCH CHICAGO RIVER AT NILES  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-HCC-07",
         "WQ_MonitoringLocationName": "North Branch Chicago River",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1491,9 +1491,9 @@
         "SF_station_nm": "CAHOKIA CREEK AT EDWARDSVILLE  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-JQ-05",
         "WQ_MonitoringLocationName": "Cahokia Creek",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1510,8 +1510,8 @@
         "SF_station_nm": "BEAR CREEK NEAR MARCELLINE  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-KI-02",
         "WQ_MonitoringLocationName": "Bear Creek",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -1625,8 +1625,8 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-OD-07",
         "WQ_MonitoringLocationName": "Silver Creek",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1643,9 +1643,9 @@
         "SF_station_nm": "HURRICANE CREEK NEAR MULBERRY GROVE  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-OL-02",
         "WQ_MonitoringLocationName": "Hurricane Creek",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1663,8 +1663,8 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-P-04",
         "WQ_MonitoringLocationName": "Rock River",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1681,8 +1681,8 @@
         "SF_station_nm": "GREEN RIVER NEAR GENESEO  IL",
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-PB-04",
         "WQ_MonitoringLocationName": "Green River",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1701,7 +1701,7 @@
         "WQ_MonitoringLocationIdentifier": "IL_EPA_WQX-PQ-12",
         "WQ_MonitoringLocationName": "Kishwaukee River",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1738,9 +1738,9 @@
         "SF_station_nm": "KANKAKEE RIVER AT SHELBY  IN",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-1986",
         "WQ_MonitoringLocationName": "UMK110-0002",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1814,7 +1814,7 @@
         "SF_station_nm": "TIPPECANOE RIVER NEAR DELPHI  IN",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2235",
         "WQ_MonitoringLocationName": "WTI150-0011",
-        "significance_concent": "Upward trend in concentration is likely",
+        "significance_concent": "Upward trend in concentration is highly likely",
         "significance_flux": "Upward trend in flux is likely",
         "icon_trend": "Upward Trend"
       },
@@ -1852,7 +1852,7 @@
         "SF_station_nm": "WABASH RIVER AT PERU  IN",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2253",
         "WQ_MonitoringLocationName": "WUW160-0006",
-        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_concent": "Downward trend in concentration is likely",
         "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
@@ -1871,7 +1871,7 @@
         "SF_station_nm": "LITTLE RIVER NEAR HUNTINGTON  IN",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2259",
         "WQ_MonitoringLocationName": "WUW120-0002",
-        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_concent": "Downward trend in concentration is likely",
         "significance_flux": "Downward trend in flux is highly likely",
         "icon_trend": "Downward Trend"
       },
@@ -1891,8 +1891,8 @@
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2277",
         "WQ_MonitoringLocationName": "WTI010-0001",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Downward trend in flux is likely",
+        "icon_trend": "Downward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1909,9 +1909,9 @@
         "SF_station_nm": "DEER CREEK NEAR DELPHI  IN",
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2284",
         "WQ_MonitoringLocationName": "WDE050-0002",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -1929,7 +1929,7 @@
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2328",
         "WQ_MonitoringLocationName": "WSU050-0002",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -1948,7 +1948,7 @@
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-2337",
         "WQ_MonitoringLocationName": "WLV150-0001",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2081,7 +2081,7 @@
         "WQ_MonitoringLocationIdentifier": "INSTOR_WQX-8194",
         "WQ_MonitoringLocationName": "WUW060-0007",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2099,9 +2099,9 @@
         "SF_station_nm": "WATONWAN RIVER NEAR GARDEN CITY  MN",
         "WQ_MonitoringLocationIdentifier": "MNPCA-S000-163",
         "WQ_MonitoringLocationName": "WATONWAN R BR ON CSAH-13  1 MI W OF GARDEN CITY",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2118,9 +2118,9 @@
         "SF_station_nm": "SNAKE RIVER NEAR PINE CITY  MN",
         "WQ_MonitoringLocationIdentifier": "MNPCA-S000-198",
         "WQ_MonitoringLocationName": "SNAKE R BELOW CROSS LAKE DAM  2 MI NE OF PINE CITY",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2157,8 +2157,8 @@
         "WQ_MonitoringLocationIdentifier": "MNPCA-S001-231",
         "WQ_MonitoringLocationName": "BLUE EARTH RIVER 150 FT DNST OF RAPIDAN DAM",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2175,9 +2175,9 @@
         "SF_station_nm": "REDWOOD RIVER NEAR REDWOOD FALLS  MN",
         "WQ_MonitoringLocationIdentifier": "MNPCA-S001-679",
         "WQ_MonitoringLocationName": "REDWOOD R AT CSAH-17  3 MILES SW OF REDWOOD FALLS",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2194,9 +2194,9 @@
         "SF_station_nm": "COTTONWOOD RIVER NEAR NEW ULM  MN",
         "WQ_MonitoringLocationIdentifier": "MNPCA-S001-918",
         "WQ_MonitoringLocationName": "COTTONWOOD R AT COTTONWOOD ST BRG IN NEW ULM. MN",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2213,9 +2213,9 @@
         "SF_station_nm": "CROW WING RIVER NEAR PILLAGER  MN",
         "WQ_MonitoringLocationIdentifier": "MNPCA-S001-926",
         "WQ_MonitoringLocationName": "CROW WING R AT CSAH 36 AT SYLVAN DAM  9 MI SW OF BRAINERD",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2290,7 +2290,7 @@
         "WQ_MonitoringLocationIdentifier": "SDDENR_WQX-460703",
         "WQ_MonitoringLocationName": "WQM 3",
         "significance_concent": "Upward trend in concentration is highly likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -2347,8 +2347,8 @@
         "WQ_MonitoringLocationIdentifier": "SDDENR_WQX-460835",
         "WQ_MonitoringLocationName": "WQM 11",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2365,9 +2365,9 @@
         "SF_station_nm": "CHEYENNE RIVER NEAR WASTA  SD",
         "WQ_MonitoringLocationIdentifier": "SDDENR_WQX-460865",
         "WQ_MonitoringLocationName": "WQM 15",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2403,7 +2403,7 @@
         "SF_station_nm": "BATTLE CREEK NEAR KEYSTONE SD",
         "WQ_MonitoringLocationIdentifier": "SDDENR_WQX-460905",
         "WQ_MonitoringLocationName": "WQM 17",
-        "significance_concent": "Upward trend in concentration is likely",
+        "significance_concent": "Upward trend in concentration is highly likely",
         "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
@@ -2441,8 +2441,8 @@
         "SF_station_nm": "Conewango Creek at Russell  PA",
         "WQ_MonitoringLocationIdentifier": "USGS-03015000",
         "WQ_MonitoringLocationName": "Conewango Creek at Russell  PA",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2479,9 +2479,9 @@
         "SF_station_nm": "Allegheny River at Kittanning  PA",
         "WQ_MonitoringLocationIdentifier": "USGS-03036500",
         "WQ_MonitoringLocationName": "Allegheny River at Kittanning  PA",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2499,8 +2499,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-03072000",
         "WQ_MonitoringLocationName": "Dunkard Creek at Shannopin  PA",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2517,9 +2517,9 @@
         "SF_station_nm": "Youghiogheny River at Sutersville  PA",
         "WQ_MonitoringLocationIdentifier": "USGS-03083500",
         "WQ_MonitoringLocationName": "Youghiogheny River at Sutersville  PA",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2632,8 +2632,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-03381495",
         "WQ_MonitoringLocationName": "LITTLE WABASH RIVER AT MAIN ST AT CARMI  IL",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2651,7 +2651,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-03460000",
         "WQ_MonitoringLocationName": "CATALOOCHEE CREEK NEAR CATALOOCHEE  NC",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2689,7 +2689,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05412500",
         "WQ_MonitoringLocationName": "Turkey River at Garber  IA",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -2707,9 +2707,9 @@
         "SF_station_nm": "Mississippi River at Clinton  IA",
         "WQ_MonitoringLocationIdentifier": "USGS-05420500",
         "WQ_MonitoringLocationName": "Mississippi River at Clinton  IA",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2727,7 +2727,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05455100",
         "WQ_MonitoringLocationName": "Old Mans Creek near Iowa City  IA",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2746,7 +2746,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05465500",
         "WQ_MonitoringLocationName": "Iowa River at Wapello  IA",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2784,7 +2784,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05490500",
         "WQ_MonitoringLocationName": "Des Moines River at Keosauqua  IA",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2802,9 +2802,9 @@
         "SF_station_nm": "South Fabius River near Taylor  MO",
         "WQ_MonitoringLocationIdentifier": "USGS-05500000",
         "WQ_MonitoringLocationName": "South Fabius River near Taylor  MO",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2897,9 +2897,9 @@
         "SF_station_nm": "SALT CREEK AT WESTERN SPRINGS  IL",
         "WQ_MonitoringLocationIdentifier": "USGS-05531500",
         "WQ_MonitoringLocationName": "SALT CREEK AT WESTERN SPRINGS  IL",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -2917,7 +2917,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05532500",
         "WQ_MonitoringLocationName": "DES PLAINES RIVER AT RIVERSIDE  IL",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2974,7 +2974,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05584500",
         "WQ_MonitoringLocationName": "LA MOINE RIVER AT COLMAR  IL",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -2993,7 +2993,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-05586100",
         "WQ_MonitoringLocationName": "ILLINOIS RIVER AT VALLEY CITY  IL",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -3030,9 +3030,9 @@
         "SF_station_nm": "Powder River at Moorhead MT",
         "WQ_MonitoringLocationIdentifier": "USGS-06324500",
         "WQ_MonitoringLocationName": "Powder River at Moorhead MT",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3050,8 +3050,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06437000",
         "WQ_MonitoringLocationName": "BELLE FOURCHE RIVER NEAR STURGIS SD",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3069,8 +3069,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06741510",
         "WQ_MonitoringLocationName": "BIG THOMPSON RIVER AT LOVELAND  CO.",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3087,7 +3087,7 @@
         "SF_station_nm": "CACHE LA POUDRE RIVER AT FORT COLLINS  CO",
         "WQ_MonitoringLocationIdentifier": "USGS-06752260",
         "WQ_MonitoringLocationName": "CACHE LA POUDRE RIVER AT FORT COLLINS  CO",
-        "significance_concent": "No Significant Trend",
+        "significance_concent": "Downward trend in concentration is likely",
         "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
@@ -3107,8 +3107,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06752280",
         "WQ_MonitoringLocationName": "CACHE LA POUDRE RIV AB BOXELDER CRK NR TIMNATH  CO",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3163,8 +3163,8 @@
         "SF_station_nm": "Elkhorn River at Waterloo  Nebr.",
         "WQ_MonitoringLocationIdentifier": "USGS-06800500",
         "WQ_MonitoringLocationName": "Elkhorn River at Waterloo  Nebr.",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -3201,9 +3201,9 @@
         "SF_station_nm": "Nishnabotna River above Hamburg  IA",
         "WQ_MonitoringLocationIdentifier": "USGS-06810000",
         "WQ_MonitoringLocationName": "Nishnabotna River above Hamburg  IA",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3220,9 +3220,9 @@
         "SF_station_nm": "Nodaway River near Graham  MO",
         "WQ_MonitoringLocationIdentifier": "USGS-06817700",
         "WQ_MonitoringLocationName": "Nodaway River near Graham  MO",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3240,8 +3240,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06821190",
         "WQ_MonitoringLocationName": "Platte River at Sharps Station  MO",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3259,8 +3259,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06887500",
         "WQ_MonitoringLocationName": "KANSAS R AT WAMEGO  KS",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3278,8 +3278,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06892350",
         "WQ_MonitoringLocationName": "KANSAS R AT DESOTO  KS",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3296,9 +3296,9 @@
         "SF_station_nm": "Grand River near Sumner  MO",
         "WQ_MonitoringLocationIdentifier": "USGS-06902000",
         "WQ_MonitoringLocationName": "Grand River near Sumner  MO",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3315,9 +3315,9 @@
         "SF_station_nm": "Chariton River near Prairie Hill  MO",
         "WQ_MonitoringLocationIdentifier": "USGS-06905500",
         "WQ_MonitoringLocationName": "Chariton River near Prairie Hill  MO",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3335,8 +3335,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-06934500",
         "WQ_MonitoringLocationName": "Missouri River at Hermann  MO",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3353,9 +3353,9 @@
         "SF_station_nm": "Meramec River near Sullivan  MO",
         "WQ_MonitoringLocationIdentifier": "USGS-07014500",
         "WQ_MonitoringLocationName": "Meramec River near Sullivan  MO",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3372,9 +3372,9 @@
         "SF_station_nm": "Mississippi River at Thebes  IL",
         "WQ_MonitoringLocationIdentifier": "USGS-07022000",
         "WQ_MonitoringLocationName": "Mississippi River at Thebes  IL",
-        "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3392,7 +3392,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07052500",
         "WQ_MonitoringLocationName": "James River at Galena  MO",
         "significance_concent": "Upward trend in concentration is highly likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {
@@ -3449,8 +3449,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07103700",
         "WQ_MonitoringLocationName": "FOUNTAIN CREEK NEAR COLORADO SPRINGS  CO.",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3525,8 +3525,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07106500",
         "WQ_MonitoringLocationName": "FOUNTAIN CREEK AT PUEBLO  CO.",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Upward trend in flux is likely",
-        "icon_trend": "Upward Trend"
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3543,9 +3543,9 @@
         "SF_station_nm": "L ARKANSAS R AT HWY 50 NR HALSTEAD  KS",
         "WQ_MonitoringLocationIdentifier": "USGS-07143672",
         "WQ_MonitoringLocationName": "L ARKANSAS R AT HWY 50 NR HALSTEAD  KS",
-        "significance_concent": "Upward trend in concentration is highly likely",
-        "significance_flux": "Upward trend in flux is likely",
-        "icon_trend": "Upward Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3563,8 +3563,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07144100",
         "WQ_MonitoringLocationName": "L ARKANSAS R NR SEDGWICK  KS",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Downward trend in flux is likely",
+        "icon_trend": "Downward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3620,8 +3620,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07189000",
         "WQ_MonitoringLocationName": "Elk River near Tiff City  Mo",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3639,8 +3639,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07191220",
         "WQ_MonitoringLocationName": "Spavinaw Creek near Sycamore  OK",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3658,7 +3658,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07195000",
         "WQ_MonitoringLocationName": "Osage Creek near Elm Springs  AR",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -3676,9 +3676,9 @@
         "SF_station_nm": "Illinois River South of Siloam Springs  AR",
         "WQ_MonitoringLocationIdentifier": "USGS-07195430",
         "WQ_MonitoringLocationName": "Illinois River South of Siloam Springs  AR",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3696,8 +3696,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07195500",
         "WQ_MonitoringLocationName": "Illinois River near Watts  OK",
         "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3714,9 +3714,9 @@
         "SF_station_nm": "Flint Creek near West Siloam Springs  OK",
         "WQ_MonitoringLocationIdentifier": "USGS-07195855",
         "WQ_MonitoringLocationName": "Flint Creek near West Siloam Springs  OK",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3734,8 +3734,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07196000",
         "WQ_MonitoringLocationName": "Flint Creek near Kansas  OK",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3752,9 +3752,9 @@
         "SF_station_nm": "Illinois River near Tahlequah  OK",
         "WQ_MonitoringLocationIdentifier": "USGS-07196500",
         "WQ_MonitoringLocationName": "Illinois River near Tahlequah  OK",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3791,7 +3791,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07197000",
         "WQ_MonitoringLocationName": "Baron Fork at Eldon  OK",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -3810,8 +3810,8 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07239450",
         "WQ_MonitoringLocationName": "North Canadian River near Calumet  OK",
         "significance_concent": "Downward trend in concentration is highly likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_flux": "Downward trend in flux is highly likely",
+        "icon_trend": "Downward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3828,7 +3828,7 @@
         "SF_station_nm": "North Canadian River at Britton Rd at OKC  OK",
         "WQ_MonitoringLocationIdentifier": "USGS-07241520",
         "WQ_MonitoringLocationName": "North Canadian River at Britton Rd at OKC  OK",
-        "significance_concent": "Downward trend in concentration is highly likely",
+        "significance_concent": "Downward trend in concentration is likely",
         "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
@@ -3866,9 +3866,9 @@
         "SF_station_nm": "Poteau River at Loving  OK",
         "WQ_MonitoringLocationIdentifier": "USGS-07247015",
         "WQ_MonitoringLocationName": "Poteau River at Loving  OK",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "Upward trend in flux is likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3886,7 +3886,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-07249400",
         "WQ_MonitoringLocationName": "James Fork near Hackett  AR",
         "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -3905,7 +3905,7 @@
         "WQ_MonitoringLocationIdentifier": "USGS-08014500",
         "WQ_MonitoringLocationName": "Ouiska Chitto Creek Near Oberlin  LA",
         "significance_concent": "Upward trend in concentration is highly likely",
-        "significance_flux": "Downward trend in flux is highly likely",
+        "significance_flux": "Downward trend in flux is likely",
         "icon_trend": "Downward Trend"
       },
       "geometry": {
@@ -3981,8 +3981,8 @@
         "WQ_MonitoringLocationIdentifier": "WIDNR_WQX-233001",
         "WQ_MonitoringLocationName": "Sugar River at Ten Eyck Rd Near Brodhead WI",
         "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -3999,9 +3999,9 @@
         "SF_station_nm": "ROCK RIVER AT WATERTOWN  WI",
         "WQ_MonitoringLocationIdentifier": "WIDNR_WQX-283220",
         "WQ_MonitoringLocationName": "Rock River - 700ft below Milwaukee St Bridge Watertown",
-        "significance_concent": "Downward trend in concentration is likely",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "No Significant Trend",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -4018,9 +4018,9 @@
         "SF_station_nm": "WISCONSIN RIVER AT MERRILL  WI",
         "WQ_MonitoringLocationIdentifier": "WIDNR_WQX-353068",
         "WQ_MonitoringLocationName": "WISCONSIN RIVER - BELOW  MERRILL DAM",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "No Significant Trend",
-        "icon_trend": "No Significant Trend"
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
+        "icon_trend": "Upward Trend"
       },
       "geometry": {
         "type": "Point",
@@ -4056,9 +4056,9 @@
         "SF_station_nm": "ROCK RIVER AT AFTON  WI",
         "WQ_MonitoringLocationIdentifier": "WIDNR_WQX-543001",
         "WQ_MonitoringLocationName": "Rock River at Afton WI",
-        "significance_concent": "No Significant Trend",
-        "significance_flux": "Downward trend in flux is likely",
-        "icon_trend": "Downward Trend"
+        "significance_concent": "Downward trend in concentration is likely",
+        "significance_flux": "No Significant Trend",
+        "icon_trend": "No Significant Trend"
       },
       "geometry": {
         "type": "Point",
@@ -4113,8 +4113,8 @@
         "SF_station_nm": "TREMPEALEAU RIVER AT DODGE  WI",
         "WQ_MonitoringLocationIdentifier": "WIDNR_WQX-623039",
         "WQ_MonitoringLocationName": "Trempeleau River at Cth P At Dodge WI",
-        "significance_concent": "Upward trend in concentration is likely",
-        "significance_flux": "Upward trend in flux is likely",
+        "significance_concent": "Upward trend in concentration is highly likely",
+        "significance_flux": "Upward trend in flux is highly likely",
         "icon_trend": "Upward Trend"
       },
       "geometry": {

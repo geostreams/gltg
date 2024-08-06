@@ -1,19 +1,22 @@
 import React from 'react';
-import { Box, Typography, FormControl, Grid, RadioGroup, FormControlLabel,FormLabel, NativeSelect, Radio, Button,InputBase } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {Typography, FormControl, Grid, RadioGroup, FormControlLabel, FormLabel, Select, MenuItem, Radio, Button, InputLabel } from '@material-ui/core';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     topBar: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         backgroundColor: theme.palette.background.default,
+        padding: theme.spacing(2),
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
     },
-    topBarItem:{
-        padding: '20px'
+    topBarItem: {
+        padding: theme.spacing(2)
     },
     formControl: {
-        width: '10%'
+        minWidth: 200,
+        margin: theme.spacing(1)
     },
     formLabel: {
         fontSize: '.88rem'
@@ -23,80 +26,72 @@ const useStyles = makeStyles((theme) => ({
         'borderRadius': 4,
         'color': theme.palette.primary.contrastText,
         'position': 'relative',
-        'padding': theme.spacing(2),
+        'padding': theme.spacing(1),
         'fontSize': '.75rem',
         '&:focus': {
             borderRadius: 4
         }
+    },
+    button: {
+        margin: theme.spacing(1)
     }
 }));
 
-const TopBar = () => {
+const TopBar = (selectedNutrient, setSelectedNutrient, selectedTimePeriod, setSelectedTimePeriod, selectedParameter, setSelectedParameter) => {
     const classes = useStyles();
-    const [nutrient, setNutrient] = React.useState('');
-    const [period, setPeriod] = React.useState('');
-    const [variable, setVariable] = React.useState('load');
 
     const selectNutrientComponent = (
-        <FormControl
-            component="fieldset"
-            className={classes.formControl}
-        >
-            <FormLabel
-                component="legend"
-                className={classes.formLabel}
-            >
-                <Box display="flex" alignItems="center">
-                  Select Nutrient
-                </Box>
-            </FormLabel>
-            <NativeSelect
-                className={classes.selectButton}
-                value={nutrient}
+        <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel>Choose a Nutrient</InputLabel>
+            <Select
+                value={selectedNutrient}
                 onChange={({ target: { value } }) => {
-                    setNutrient(value);
+                    setSelectedNutrient(value);
                 }}
-                input={<InputBase />}
+                label="Choose a Nutrient"
             >
-                <option value="Nitrogen">Nitrogen</option>
-            </NativeSelect>
+                <MenuItem value="Nitrogen">Nitate - N </MenuItem>
+                <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+            </Select>
         </FormControl>
     );
 
     const selectPeriodComponent = (
-        <FormControl
-            component="fieldset"
-            className={classes.formControl}
-        >
-            <FormLabel
-                component="legend"
-                className={classes.formLabel}
-            >
-                <Box display="flex" alignItems="center">
-                  Select Period
-                </Box>
-            </FormLabel>
-            <NativeSelect
-                className={classes.selectButton}
-                value={period}
+        <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel>Select Period</InputLabel>
+            <Select
+                value={selectedTimePeriod}
                 onChange={({ target: { value } }) => {
-                    setPeriod(value);
+                    setSelectedTimePeriod(value);
                 }}
-                input={<InputBase />}
+                label="Select Period"
             >
-                <option value="2010-2019">2010-2019</option>
-            </NativeSelect>
+                <MenuItem value="20_years">2020-2020</MenuItem>
+            </Select>
         </FormControl>
     );
 
+    // Create custom radio
+    const CustomRadio = withStyles({
+        root: {
+            '&$checked': {
+                color: '#1976D2' // Checked color
+            }
+        },
+        checked: {}
+    })((props) => <Radio color="default" {...props} />);
+
+
     const selectVariableComponent = (
         <FormControl component="fieldset" className={classes.formControl}>
-            <RadioGroup row value={variable} onChange={(e) => setVariable(e.target.value)}>
-                <FormControlLabel value="load" control={<Radio />} label="Load" />
-                <FormControlLabel value="concentration" control={<Radio />} label="Concentration" />
+            <FormLabel>Choose a Flow normalized Nutrient Variable</FormLabel>
+            <RadioGroup row value={selectedParameter} onChange={(e) => setSelectedParameter(e.target.value)}>
+                <FormControlLabel value="load" control={<CustomRadio />} label="Load" />
+                <FormControlLabel value="concentration" control={<CustomRadio />} label="Concentration" />
             </RadioGroup>
         </FormControl>
     );
+
     return (
         <div>
             <Grid container spacing={2} className={classes.topBar}>

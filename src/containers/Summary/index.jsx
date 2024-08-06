@@ -25,15 +25,10 @@ import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 
 import Sidebar from './Sidebar';
-import Topbar from './Topbar';
+import Topbar from './topBar';
 
 // Styling for different components of Nutrient Trends Dashboard
 const useStyles = makeStyles((theme) => ({
-    topBar:{
-        height:'10%',
-        marginTop: '2%',
-        width: '100%'
-    },
     fillContainer: {
         width: '100%',
         height: '100%'
@@ -689,10 +684,8 @@ const Summary = () => {
 
     return (
         <>
+            <Topbar />
             <Grid className={classes.mainContainer} container alignItems="stretch">
-                <Grid item xs={12} className={classes.topBar}>
-                    <Topbar />
-                </Grid>
                 <Grid
                     className={classes.fillContainer}
                     item

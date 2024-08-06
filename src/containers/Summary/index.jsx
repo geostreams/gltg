@@ -46,37 +46,11 @@ const useStyles = makeStyles((theme) => ({
             color: '#0D73C5'
         }
     },
-    legend: {
-        position: 'absolute',
-        bottom: '8.25%',
-        right: '42%',
-        backgroundColor: 'white',
-        padding: '1%',
-        borderRadius: '5%',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
-        opacity: 0.8,
-        zIndex: 1000 // Added z-index here
-    },
-    legendButton: {
-        position: 'absolute',
-        bottom: '5%',
-        right: '42.25%',
-        width: '2.25em',
-        height: '2.25m',
-        backgroundColor: '#a0cdf4',
-        borderRadius: '10%',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
-        opacity: 0.8,
-        zIndex: 1000,
-        border: 'none',
-        padding: 0,
-        outline: 'none',
-        cursor: 'pointer'
-    },
     legendItem: {
         display: 'flex',
         alignItems: 'center',
-        marginBottom: '0.2em'
+        marginBottom: '0.2em',
+        marginRight: theme.spacing(2)
     },
     legendIcon: {
         width: '1em',
@@ -84,21 +58,21 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(1)
     },
     legendContainer: {
-        // centre items in the legend
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        marginBottom: theme.spacing(1)
-    },
-    legendCloseButton: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap:'10%',
+        padding: '1%',
+        backgroundColor: 'white',
+        borderRadius: '5%',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
+        opacity: 0.8,
+        zIndex: 1000,
         position: 'absolute',
-        top: theme.spacing(1),
-        right: theme.spacing(1)
-    },
-    dialogCloseButton: {
-        position: 'absolute',
-        top: theme.spacing(1),
-        right: theme.spacing(1)
+        bottom: '15%',
+        left: '5%',
+        width: '45%'
     },
     tooltip: {
         position: 'absolute',
@@ -108,27 +82,6 @@ const useStyles = makeStyles((theme) => ({
         zIndex: 1000,
         pointerEvents: 'none',
         display: 'none' // Initially hidden
-    },
-    formControl: {
-        margin: theme.spacing(1),
-        width: '90%'
-    },
-    formLabel: {
-        padding: theme.spacing(1),
-        fontSize: '.88rem'
-    },
-    selectButton: {
-        'background': theme.palette.primary.main,
-        'borderRadius': 4,
-        'width': '100%',
-        'color': theme.palette.primary.contrastText,
-        'position': 'relative',
-        'height': 42,
-        'padding': theme.spacing(2),
-        'fontSize': '.75rem',
-        '&:focus': {
-            borderRadius: 4
-        }
     }
 }));
 
@@ -475,33 +428,31 @@ const Summary = () => {
     // Create legend for trend stations
     const trendStationsLegend = React.useMemo(
         () => (
-            <div>
-                <div className={classes.legendContainer}>
-                    <div className={classes.legendItem}>
-                        <img
-                            src={UpwardTrendIcon}
-                            alt="Upward Trend Icon"
-                            className={classes.legendIcon}
-                        />
-                        <span>Upward Trend </span>
-                    </div>
-                    <div className={classes.legendItem}>
-                        <img
-                            src={NoSignificantTrendIcon}
-                            alt="No Significant Trend Icon"
-                            className={classes.legendIcon}
-                        />
-                        <span>No Significant Trend</span>
-                    </div>
+            <div className={classes.legendContainer}>
+                <div className={classes.legendItem}>
+                    <img
+                        src={UpwardTrendIcon}
+                        alt="Upward Trend Icon"
+                        className={classes.legendIcon}
+                    />
+                    <span>Upward Trend </span>
+                </div>
+                <div className={classes.legendItem}>
+                    <img
+                        src={NoSignificantTrendIcon}
+                        alt="No Significant Trend Icon"
+                        className={classes.legendIcon}
+                    />
+                    <span>No Significant Trend</span>
+                </div>
 
-                    <div className={classes.legendItem}>
-                        <img
-                            src={DownwardTrendIcon}
-                            alt=" Downward Trend "
-                            className={classes.legendIcon}
-                        />
-                        <span>Downward Trend </span>
-                    </div>
+                <div className={classes.legendItem}>
+                    <img
+                        src={DownwardTrendIcon}
+                        alt=" Downward Trend "
+                        className={classes.legendIcon}
+                    />
+                    <span>Downward Trend </span>
                 </div>
             </div>
         ),
@@ -710,20 +661,7 @@ const Summary = () => {
                         }}
                         layerSwitcherOptions={{}}
                     >
-                        <button
-                            onClick={() => setLegendOpen(!legendOpen)}
-                            className={classes.legendButton}
-                        >
-                            <img
-                                src={MapLegendIcon}
-                                alt="Map Legend Icon"
-                                style={{ width: '100%', height: '100%', display: 'block' }}
-                            />
-                        </button>
-
-                        {legendOpen && (
-                            <div className={classes.legend}>{trendStationsLegend}</div>
-                        )}
+                        {trendStationsLegend}
                     </Map>
                     <div
                         ref={tooltipRef}

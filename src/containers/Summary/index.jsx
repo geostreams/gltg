@@ -243,8 +243,7 @@ const Summary = () => {
     const makeLayerVisible = () =>{
         const map = mapRef.current;
         if (map) {
-            if (selectedParameter === 'concentration')
-            {
+            if (selectedParameter === 'concentration') {
                 if (selectedNutrient === 'Nitrogen') {
                     nitrateConcTrendStationsLayer20years.setVisible(true);
                     nitrateFluxTrendStationsLayer20years.setVisible(false);
@@ -684,7 +683,9 @@ const Summary = () => {
 
     return (
         <>
-            <Topbar />
+            <Topbar selectedNutrient={selectedNutrient} setSelectedNutrient={setSelectedNutrient}
+                selectedTimePeriod={selectedTimePeriod} setSelectedTimePeriod={setSelectedTimePeriod}
+                selectedParameter={selectedParameter} setSelectedParameter={setSelectedParameter} />
             <Grid className={classes.mainContainer} container alignItems="stretch">
                 <Grid
                     className={classes.fillContainer}

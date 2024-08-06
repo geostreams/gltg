@@ -1,5 +1,5 @@
 import React from 'react';
-import {Typography, FormControl, Grid, RadioGroup, FormControlLabel, FormLabel, Select, MenuItem, Radio, Button, InputLabel } from '@material-ui/core';
+import { Typography, FormControl, Grid, RadioGroup, FormControlLabel, FormLabel, Select, MenuItem, Radio, Button, InputLabel } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +37,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const TopBar = (selectedNutrient, setSelectedNutrient, selectedTimePeriod, setSelectedTimePeriod, selectedParameter, setSelectedParameter) => {
+const TopBar = ({
+    selectedNutrient,
+    setSelectedNutrient,
+    selectedTimePeriod,
+    setSelectedTimePeriod,
+    selectedParameter,
+    setSelectedParameter
+}) => {
     const classes = useStyles();
 
     const selectNutrientComponent = (
@@ -50,7 +57,7 @@ const TopBar = (selectedNutrient, setSelectedNutrient, selectedTimePeriod, setSe
                 }}
                 label="Choose a Nutrient"
             >
-                <MenuItem value="Nitrogen">Nitate - N </MenuItem>
+                <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
                 <MenuItem value="Phosphorus">Phosphorus</MenuItem>
             </Select>
         </FormControl>
@@ -86,7 +93,8 @@ const TopBar = (selectedNutrient, setSelectedNutrient, selectedTimePeriod, setSe
         <FormControl component="fieldset" className={classes.formControl}>
             <FormLabel>Choose a Flow normalized Nutrient Variable</FormLabel>
             <RadioGroup row value={selectedParameter} onChange={(e) => setSelectedParameter(e.target.value)}>
-                <FormControlLabel value="load" control={<CustomRadio />} label="Load" />
+                {/*Common term for flux is load*/}
+                <FormControlLabel value="flux" control={<CustomRadio />} label="Load" />
                 <FormControlLabel value="concentration" control={<CustomRadio />} label="Concentration" />
             </RadioGroup>
         </FormControl>

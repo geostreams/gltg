@@ -31,7 +31,8 @@ import Topbar from './topBar';
 const useStyles = makeStyles((theme) => ({
     fillContainer: {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        marginTop:'1.1%'
     },
     mainContainer: {
         position: 'absolute',
@@ -70,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         opacity: 0.8,
         zIndex: 1000,
         position: 'absolute',
-        bottom: '15%',
+        bottom: '10%',
         left: '5%',
         width: '45%'
     },
@@ -639,7 +640,6 @@ const Summary = () => {
                 selectedParameter={selectedParameter} setSelectedParameter={setSelectedParameter} />
             <Grid className={classes.mainContainer} container alignItems="stretch">
                 <Grid
-                    className={classes.fillContainer}
                     item
                     xs={7}
                     key={selectedTimePeriod}

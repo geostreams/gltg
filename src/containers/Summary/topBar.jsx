@@ -8,8 +8,9 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'space-around',
         backgroundColor: theme.palette.background.default,
-        padding: theme.spacing(2),
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        padding: theme.spacing(1),
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        maxHeight: '14%'
     },
     topBarItem: {
         padding: theme.spacing(2)
@@ -101,29 +102,27 @@ const TopBar = ({
     );
 
     return (
-        <div>
-            <Grid container spacing={2} className={classes.topBar}>
-                <Grid item className={classes.topBarItem}>
-                    <Typography variant="h6">
-                        Nutrient Trend Dashboard
-                    </Typography>
-                </Grid>
-                <Grid item className={classes.topBarItem}>
-                    {selectNutrientComponent}
-                </Grid>
-                <Grid item className={classes.topBarItem}>
-                    {selectPeriodComponent}
-                </Grid>
-                <Grid item className={classes.topBarItem}>
-                    {selectVariableComponent}
-                </Grid>
-                <Grid item className={classes.topBarItem}>
-                    <Button variant="outlined" className={classes.button}>
-                        Advanced Search
-                    </Button>
-                </Grid>
+        <Grid container spacing={2} className={classes.topBar}>
+            <Grid item className={classes.topBarItem}>
+                <Typography variant="h6">
+                    Nutrient Trend Dashboard
+                </Typography>
             </Grid>
-        </div>
+            <Grid item className={classes.topBarItem}>
+                {selectNutrientComponent}
+            </Grid>
+            <Grid item className={classes.topBarItem}>
+                {selectPeriodComponent}
+            </Grid>
+            <Grid item className={classes.topBarItem}>
+                {selectVariableComponent}
+            </Grid>
+            <Grid item className={classes.topBarItem}>
+                <Button variant="outlined" className={classes.button}>
+                    Advanced Search
+                </Button>
+            </Grid>
+        </Grid>
     );
 };
 

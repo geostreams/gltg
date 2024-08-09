@@ -5,7 +5,7 @@
             -9972968,
             4972295
         ],
-        "useCluster":true,
+        "useCluster":false,
         "clusterDistance":45,
         "clusterExpandCountThreshold":10,
         "clusterExpandZoomThreshold":12,

@@ -384,36 +384,20 @@
         "maxDisplayParameters":10,
         "displayOnlineStatus":true
     },
+    "defaultDisableCluster":true,
+    "filterSources": true,
     "source":{
-        "glfmsp":{
-            "order":2
-        },
-        "heidelberg":{
-            "order":3
-        },
-        "iadn":{
-            "order":4
-        },
-        "illinois-epa":{
-            "label":"IEPA Ambient Water Quality Monitoring Network",
-            "color":"#d89b0d",
-            "description":"These locations contain data related to the IEPA Ambient Water Quality Monitoring Network.",
-            "more_info":"Click here for more information about the IEPA Ambient Water Quality Monitoring Network (AWQMN)",
-            "link":"http://www.epa.illinois.gov/topics/water-quality/monitoring/river-and-stream/"
-        },
-        "lec":{
-            "order":5
-        },
-        "sierra-club":{
-            "label":"Fox River Study Group",
-            "color":"#9C2C1A",
-            "description":"These locations contain data related to the Fox River Study Group.",
-            "more_info":"Click here for more information about the Fox River Study Group",
-            "link":"http://foxriverstudygroup.org/"
+        "wqp":{
+            "label":"Water Quality Portal",
+            "order": 1,
+            "color":"#F28E1E",
+            "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
+            "more_info":"Click here for more information and for access to all WQP data.",
+            "link":"http://waterqualitydata.us/"
         },
         "usgs":{
             "label":"United States Geological Survey",
-            "order":6,
+            "order":2,
             "color":"#39B54A",
             "description":"The USGS investigates the occurrence, quantity, quality, distribution, and movement of surface and underground waters and disseminates the data to the public, State and local governments, public and private utilities, and other Federal agencies involved with managing our water resources. U.S. Geological Survey conducts long-term monitoring of lakes and rivers nationwide. They have gauges throughout many rivers in the Mississippi River basin. We've chosen to focus on gauges on the Mississippi River and its tributaries that are equipped with continuous nitrate sensors for this website.",
             "more_info":"For more information and for access to all USGS water quantity and quality data.",
@@ -421,6 +405,7 @@
         },
         "usgs-sg":{
             "label":"United States Geological Survey (Super Gage Network)",
+            "order": 3,
             "color":"#228e31",
             "description":"The USGS investigates the occurrence, quantity, quality, distribution, and movement of surface and underground waters and disseminates the data to the public, State and local governments, public and private utilities, and other Federal agencies involved with managing our water resources. U.S. Geological Survey conducts long-term monitoring of lakes and rivers nationwide. They have gauges throughout many rivers in the Mississippi River basin. We've chosen to focus on gauges on the Mississippi River and its tributaries that are equipped with continuous nitrate sensors for this website.",
             "more_info":"For more information and for access to all USGS water quantity and quality data.",
@@ -428,17 +413,19 @@
         },
         "umrr-ltrm":{
             "label":"Upper Mississippi River Restoration",
+            "order": 4,
             "color":"#5F99C1",
             "description":"The UMRR LTRM water quality sampling design focuses on a subset of limnological variables related to habitat quality and ecosystem function that includes physicochemical features, suspended sediment, and major plant nutrients known to be significant to aquatic habitat in this system. We've chosen to focus on long term nitrate data sets available on the Mississippi River for this website.",
             "more_info":"Click here for more information and for access to all original UMRR LTRM data.",
             "link":"http://www.umesc.usgs.gov/data_library/water_quality/water1_query.shtml"
         },
-        "wqp":{
-            "label":"Water Quality Portal",
-            "color":"#F28E1E",
-            "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
-            "more_info":"Click here for more information and for access to all WQP data.",
-            "link":"http://waterqualitydata.us/"
+        "sierra-club":{
+            "label":"Fox River Study Group",
+            "order": 5,
+            "color":"#9C2C1A",
+            "description":"These locations contain data related to the Fox River Study Group.",
+            "more_info":"Click here for more information about the Fox River Study Group",
+            "link":"http://foxriverstudygroup.org/"
         }
     }
 }

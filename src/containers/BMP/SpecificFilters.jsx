@@ -65,7 +65,7 @@ const useStyle = makeStyles((theme) => ({
     }
 }));
 
-const Filters = () => {
+const SpecificFilters = () => {
     const classes = useStyle();
 
     const { dispatchFilterUpdate, filters, config } = React.useContext(BMPContext);
@@ -198,4 +198,4 @@ const Filters = () => {
     );
 };
 
-export default Filters;
+export default SpecificFilters;

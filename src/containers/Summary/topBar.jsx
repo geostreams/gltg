@@ -12,6 +12,12 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
         maxHeight: '14%'
     },
+    topBarTitle:{
+        fontFamily: 'Poppins',
+        fontSize: '2em',
+        fontWeight: 700,
+        textAlign: 'left'
+    },
     topBarItem: {
         padding: theme.spacing(2)
     },
@@ -104,7 +110,7 @@ const TopBar = ({
     return (
         <Grid container spacing={2} className={classes.topBar}>
             <Grid item className={classes.topBarItem}>
-                <Typography variant="h6">
+                <Typography variant="h1" className={classes.topBarTitle} >
                     Nutrient Trend Dashboard
                 </Typography>
             </Grid>
@@ -116,11 +122,6 @@ const TopBar = ({
             </Grid>
             <Grid item className={classes.topBarItem}>
                 {selectVariableComponent}
-            </Grid>
-            <Grid item className={classes.topBarItem}>
-                <Button variant="outlined" className={classes.button}>
-                    Advanced Search
-                </Button>
             </Grid>
         </Grid>
     );

@@ -11249,12 +11249,6 @@ ol-mapbox-style@^6.1.1:
     mapbox-to-css-font "^2.4.0"
     webfont-matcher "^1.1.0"
 
-"ol3-layerswitcher@git+https://github.com/walkermatt/ol3-layerswitcher.git#master":
-  version "1.1.2"
-  resolved "git+ssh://git@github.com/walkermatt/ol3-layerswitcher.git#c06477ef6bc0a5bc7fba42b43e80ec1a68c88971"
-  dependencies:
-    openlayers "~4.0.1"
-
 ol@~6.5.0:
   version "6.5.0"
   resolved "https://registry.npmjs.org/ol/-/ol-6.5.0.tgz"

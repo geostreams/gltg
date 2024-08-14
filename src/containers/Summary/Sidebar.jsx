@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
-    DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
+import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
@@ -16,6 +15,7 @@ import nitrateTrendStationsDataUrl from '../../data/nitrate_trend_station_data_2
 
 
 import SummaryGraph from './SummaryGraph';
+import TrendTable from './TrendTable';
 
 const useStyles = makeStyles((theme) => ({
     sidebarBody: {
@@ -374,6 +374,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                             </Tooltip>
                         </Typography>
                         <Divider />
+                        <TrendTable />
                         <Box className={classes.summaryBox}>
                             <Typography variant="h6" gutterBottom>
                                 Dashboard Summary

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Accordion,
     AccordionSummary,
@@ -8,7 +8,9 @@ import {
     TableHead,
     TableBody,
     TableCell,
-    TableRow
+    TableRow,
+    TableSortLabel,
+    Box
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -20,12 +22,28 @@ const mockData = [
     { station: 'Bear Creek', value: 220, confidence: '90%-100%' },
     { station: 'Ouiska Chitto Creek Near Oberlin LA', value: 220, confidence: '66%-90%' },
     { station: 'Powder River at Moorhead MT', value: 100, confidence: '66%-90%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' },
     // Repeat the entry for demonstration
-    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' }
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '66%-90%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '33%-66%' },
+    { station: 'Baraboo River Rowley Creek Bridge at CTH X', value: 100, confidence: '33%-66%' }
     // Add more rows as needed
 ];
 
 export default function TrendTable() {
+    const [sortOrder, setSortOrder] = useState('asc');
+
+    const sortedData = [...mockData].sort((a, b) =>
+        sortOrder === 'asc' ? a.value - b.value : b.value - a.value);
+
+    const handleSortRequest = () => {
+        setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+    };
+
     return (
         <Accordion>
             <AccordionSummary
@@ -36,42 +54,53 @@ export default function TrendTable() {
                 <Typography variant="h6">Number of Significant Upward Trend Stations</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Water Quality Station Name</TableCell>
-                            <TableCell>Most recent year flow values (10^6 kg/yr) ⬈</TableCell>
-                            <TableCell>Confidence Level</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {mockData.map((row, index) => (
-                            <TableRow key={index}>
-                                <TableCell>{row.station}</TableCell>
-                                <TableCell>{row.value}</TableCell>
+                {/* Box component with fixed height and scroll */}
+                <Box sx={{ width: '100%', maxHeight: 300, overflow: 'auto' }}>
+                    <Table stickyHeader>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Water Quality Station Name</TableCell>
                                 <TableCell>
-                                    <span
-                                        style={{
-                                            display: 'inline-block',
-                                            padding: '4px 8px',
-                                            backgroundColor:
-                              row.confidence === '90%-100%' ?
-                                  '#ffcccc' :
-                                  row.confidence === '66%-90%' ?
-                                      '#ffebcc' :
-                                      '#f2f2f2',
-                                            borderRadius: '20px',
-                                            color: '#333',
-                                            fontWeight: 500
-                                        }}
+                                    <TableSortLabel
+                                        active
+                                        direction={sortOrder}
+                                        onClick={handleSortRequest}
                                     >
-                                        {row.confidence}
-                                    </span>
+                                        Most recent year flow values (10^6 kg/yr) ⬈
+                                    </TableSortLabel>
                                 </TableCell>
+                                <TableCell>Confidence Level</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHead>
+                        <TableBody>
+                            {sortedData.map((row, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{row.station}</TableCell>
+                                    <TableCell>{row.value}</TableCell>
+                                    <TableCell>
+                                        <span
+                                            style={{
+                                                display: 'inline-block',
+                                                padding: '4px 8px',
+                                                backgroundColor:
+                                row.confidence === '90%-100%' ?
+                                    '#ffcccc' :
+                                    row.confidence === '66%-90%' ?
+                                        '#ffebcc' :
+                                        '#f2f2f2',
+                                                borderRadius: '20px',
+                                                color: '#333',
+                                                fontWeight: 500
+                                            }}
+                                        >
+                                            {row.confidence}
+                                        </span>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Box>
             </AccordionDetails>
         </Accordion>
     );

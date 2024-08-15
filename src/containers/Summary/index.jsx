@@ -588,7 +588,7 @@ const Summary = () => {
 
         // Change the visibility of the layers according to the nutrient
         makeLayerVisible();
-    }, [selectedNutrient, selectedParameter, phosFluxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
+    }, [selectedNutrient, phosFluxTrendStationsLayer20years, phosConcTrendStationsLayer20years, nitrateTrendStationsData20Years]);
 
     const handleMapHover = (event) => {
         const pixel = event.pixel;

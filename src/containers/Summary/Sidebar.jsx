@@ -180,7 +180,7 @@ function convertTrend(inputString) {
 
 // TO NOTE - The model by default provides "flux" but in the website use the more common term Load
 
-const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedParameter }) => {
+const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelectedStation, selectedParameter }) => {
     const classes = useStyles();
     const [data, setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
@@ -290,65 +290,6 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
             </DialogContent>
         </Dialog>
     );
-
-    // Graph components
-    const loadGraph = () => {
-        if (data) {
-            return <Box className={classes.chart}>
-                <h4 className={classes.chartHeader}>Load Graph</h4>
-                <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
-                    stationary_y_line_field="stationaryFNFlux"
-                    stationary_high_interval="stationaryFNFluxHigh"
-                    stationary_low_interval="stationaryFNFluxLow"
-                    non_stationary_y_line_field="nonStationaryFNFlux"
-                    non_stationary_high_interval="nonStationaryFNFluxHigh"
-                    non_stationary_low_interval="nonStationaryFNFluxLow"
-                    y_scatter_field="stationaryFluxDay"
-                    y_label="Yearly Cumulative Load (10^4 kg/yr)"
-                    x_label="Year"
-                    title="Mean (dots) & Flow-Normalized (line) Load Estimates" />
-                <br />
-                <Typography
-                    className={classes.trendText}
-                    variant="span"
-                >
-                    Load Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
-                </Typography>
-            </Box>;
-        }
-        return null;
-    };
-
-    const concGraph = () => {
-        if (data){
-            return <Box className={classes.chart}>
-                <h4 className={classes.chartHeader}>Concentration Graph</h4>
-                <SummaryGraph graph_data={data.concentration} width={350} height={330}
-                    startAtZero={false}
-                    stationary_y_line_field="stationaryFNConc"
-                    stationary_high_interval="stationaryFNConcHigh"
-                    stationary_low_interval="stationaryFNConcLow"
-                    non_stationary_y_line_field="nonStationaryFNConc"
-                    non_stationary_high_interval="nonStationaryFNConcHigh"
-                    non_stationary_low_interval="nonStationaryFNConcLow"
-                    y_scatter_field="stationaryConcDay"
-                    y_label="Yearly Average Concentration (mg/L)"
-                    x_label="Year"
-                    title="Mean (dots) & Flow-Normalized (line) Concentration " />
-                <br />
-                <Typography
-                    className={classes.trendText}
-                    variant="span"
-                >
-                    Concentration Trend - {convertTrend(stationData.significance_concent)}<sup>*</sup>
-                </Typography>
-            </Box>;
-        }
-        
-        return null;
-        
-    };
-
 
     // Graph components
     const loadGraph = () => {

@@ -88,72 +88,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const renderIcon = (feature) => {
-    let icon_trend = null;
-    if(selectedParameter === 'concentration') icon_trend = feature.get('conc_icon_trend');
-    if (selectedParameter === 'flux') icon_trend = feature.get('flux_icon_trend');
-    if (icon_trend === 'Upward Trend'){
-        return new Style({
-            image: new RegularShape({
-                fill: new Fill({
-                    color: '#E78998'
-                }),
-                border: new Stroke({
-                    color: 'red',
-                    width: 5
-                }),
-                points: 3,
-                radius: 8,
-                angle: 0
-            })
-        });
-    } if (icon_trend === 'Downward Trend'){
-        return new Style({
-            image: new RegularShape({
-                fill: new Fill({
-                    color: '#81A8E6'
-                }),
-                border: new Stroke({
-                    color: '#1557FE',
-                    width: 5
-                }),
-                points: 3,
-                radius: 8,
-                angle: Math.PI / 3
-            })
-        });
-    } if (icon_trend === 'No Significant Trend'){
-        return new Style({
-            image: new RegularShape({
-                fill: new Fill({
-                    color: '#AEAEAA'
-                }),
-                border: new Stroke({
-                    color: 'black',
-                    width: 5
-                }),
-                points: 4,
-                radius: 8,
-                angle: Math.PI / 4
-            })
-        });
-    }
-    return null;
-};
-
-const renderWaterSheds = () => {
-    const style = new Style({
-        stroke: new Stroke({
-            color: 'rgba(0, 0, 0, 0)', // Transparent color
-            width: 0 // No stroke width
-        }),
-        fill: new Fill({
-            color: 'rgba(0, 0, 0, 0)' // Transparent fill color
-        })
-    });
-    return style;
-};
-
 const Summary = () => {
     const classes = useStyles();
 
@@ -174,8 +108,6 @@ const Summary = () => {
         React.useState('20_years');
     const [selectedParameter, setSelectedParameter] = React.useState('concentration');
 
-    // State variable to make legend collapsible
-    const [legendOpen, setLegendOpen] = React.useState(false);
 
     // Tooltip
     const [tooltipContent, setTooltipContent] = React.useState('');
@@ -199,7 +131,11 @@ const Summary = () => {
             return new Style({
                 image: new RegularShape({
                     fill: new Fill({
-                        color: 'red'
+                        color: '#E78998'
+                    }),
+                    border: new Stroke({
+                        color: 'red',
+                        width: 5
                     }),
                     points: 3,
                     radius: 8,
@@ -210,7 +146,11 @@ const Summary = () => {
             return new Style({
                 image: new RegularShape({
                     fill: new Fill({
-                        color: 'black'
+                        color: '#81A8E6'
+                    }),
+                    border: new Stroke({
+                        color: '#1557FE',
+                        width: 5
                     }),
                     points: 3,
                     radius: 8,
@@ -218,25 +158,20 @@ const Summary = () => {
                 })
             });
         } if (icon_trend === 'No Significant Trend'){
-            const circleStyle = new Style({
-                image: new Circle({
+            return new Style({
+                image: new RegularShape({
+                    fill: new Fill({
+                        color: '#AEAEAA'
+                    }),
+                    border: new Stroke({
+                        color: 'black',
+                        width: 5
+                    }),
+                    points: 4,
                     radius: 8,
-                    fill: new Fill({
-                        color: 'yellow'
-                    })
+                    angle: Math.PI / 4
                 })
             });
-
-            const innerCircleStyle = new Style({
-                image: new Circle({
-                    radius: 2,
-                    fill: new Fill({
-                        color: 'black'
-                    })
-                })
-            });
-
-            return [circleStyle, innerCircleStyle];
         }
         return null;
     };

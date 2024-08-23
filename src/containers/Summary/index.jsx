@@ -416,7 +416,9 @@ const Summary = () => {
 
         if (selectedStation) {
             let selectedStyle = null;
-            const icon_trend = selectedStation.get('icon_trend');
+            let icon_trend = null;
+            if(selectedParameter === 'concentration') icon_trend = selectedStation.get('conc_icon_trend');
+            if (selectedParameter === 'flux') icon_trend = selectedStation.get('flux_icon_trend');
             if (icon_trend === 'Upward Trend'){
                 selectedStyle = new Style({
                     image: new RegularShape({

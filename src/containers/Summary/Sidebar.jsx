@@ -180,7 +180,7 @@ function convertTrend(inputString) {
 
 // TO NOTE - The model by default provides "flux" but in the website use the more common term Load
 
-const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedParameter }) => {
+const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelectedStation, selectedParameter }) => {
     const classes = useStyles();
     const [data, setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
@@ -290,7 +290,6 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
             </DialogContent>
         </Dialog>
     );
-
 
     // Graph components
     const loadGraph = () => {

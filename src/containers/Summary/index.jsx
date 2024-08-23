@@ -478,7 +478,7 @@ const Summary = () => {
             selectedStation.setStyle(selectedStyle);
         }
         setOldSelectedStation(selectedStation);
-    }, [selectedStation]);
+    }, [selectedStation, selectedParameter]);
 
     // Set styling for selected watershed
     React.useEffect(() => {

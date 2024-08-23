@@ -213,7 +213,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
         } else {
             setData(null);
         }
-    }, [stationData,nitrateTrendStationsData20Years, phosTrendStationData20Years]);
+    }, [stationData, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
 
     // Remove the selected station when the time period is changed
     React.useEffect(() => {
@@ -221,7 +221,9 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
     }, [selectedTimePeriod]);
 
     const infoDialog = (
-        <Dialog open={openInfoDialog} onClose={() => {setOpenInfoDialog(false);}}>
+        <Dialog open={openInfoDialog} onClose={() => {
+            setOpenInfoDialog(false);
+        }}>
 
             <DialogTitle>Trend Information</DialogTitle>
             <IconButton
@@ -234,19 +236,53 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                 <DialogContentText>
                     <div>
                         <p>
-                            The symbols used are similar to those used by the <a href="https://nawqatrends.wim.usgs.gov/swtrends/" target="_blank" rel="noreferrer"><strong>USGS Water-Quality Changes in the Nation’s Streams and Rivers</strong></a> website.
+                            The symbols used are similar to those used by the <a
+                                href="https://nawqatrends.wim.usgs.gov/swtrends/" target="_blank" rel="noreferrer"><strong>USGS
+                            Water-Quality Changes in the Nation’s Streams and Rivers</strong></a> website.
                         </p>
                         <br />
                         <p>
-                            A likelihood-based approach was used to report these trend results. When the trend is "likely up" or "likely down", the trend likelihood value associated with the trend is between 0.85 and 1.0 -- in other words, the chance of the trend occurring in the specified direction is at least an 85 out of 100. When the trend is "somewhat likely up" or "somewhat likely down", the trend likelihood value associated with the trend is between 0.7 and 0.85 -- in other words, the chance of the trend occurring in the specified direction is between 70 and 85 out of 100. When the trend is "about as likely as not", the trend likelihood value associated with the trend is less than 0.7 -- in other words, the chance of the trend being either upward or downward is less than 70 out of 100.
+                            A likelihood-based approach was used to report these trend results. When the trend is
+                            "likely up" or "likely down", the trend likelihood value associated with the trend is
+                            between 0.85 and 1.0 -- in other words, the chance of the trend occurring in the specified
+                            direction is at least an 85 out of 100. When the trend is "somewhat likely up" or "somewhat
+                            likely down", the trend likelihood value associated with the trend is between 0.7 and 0.85
+                            -- in other words, the chance of the trend occurring in the specified direction is between
+                            70 and 85 out of 100. When the trend is "about as likely as not", the trend likelihood value
+                            associated with the trend is less than 0.7 -- in other words, the chance of the trend being
+                            either upward or downward is less than 70 out of 100.
                         </p>
                         <br />
                         <p>
-                            This likelihood-based approach is used as an alternative to the null-hypothesis significance testing (NHST) approach that is often used when reporting water-quality trends. The likelihood-based approach gives people more intuitive information on the certainty of a trend estimate, and provides more evidence of a growing problem or initial clean-up successes. Consider an example where the chance of an upward trend in nitrate concentrations at a site is 80 out of 100 (a trend likelihood value of 0.80). Using the NHST approach and a traditional alpha value of either 0.05 or 0.1, the trend would be reported as nonsignificant. Using the likelihood-based approach, the trend would be reported instead as "somewhat likely up". The NHST approach could lead to a false sense of security because it indicates that there isn't strong proof of a growing problem. The likelihood-based approach indicates instead that it is somewhat likely conditions in the stream are not improving, giving people more information to use when making decisions about watershed management.
+                            This likelihood-based approach is used as an alternative to the null-hypothesis significance
+                            testing (NHST) approach that is often used when reporting water-quality trends. The
+                            likelihood-based approach gives people more intuitive information on the certainty of a
+                            trend estimate, and provides more evidence of a growing problem or initial clean-up
+                            successes. Consider an example where the chance of an upward trend in nitrate concentrations
+                            at a site is 80 out of 100 (a trend likelihood value of 0.80). Using the NHST approach and a
+                            traditional alpha value of either 0.05 or 0.1, the trend would be reported as
+                            nonsignificant. Using the likelihood-based approach, the trend would be reported instead as
+                            "somewhat likely up". The NHST approach could lead to a false sense of security because it
+                            indicates that there isn't strong proof of a growing problem. The likelihood-based approach
+                            indicates instead that it is somewhat likely conditions in the stream are not improving,
+                            giving people more information to use when making decisions about watershed management.
                         </p>
                         <br />
                         <p>
-                            For more information on the philosophy of the likelihood-based approach, please see Hirsch and others (2015), "A bootstrap method for estimating uncertainty of water quality trends", at <a href="http://dx.doi.org/10.1016/j.envsoft.2015.07.017" target="_blank" rel="noreferrer">http://dx.doi.org/10.1016/j.envsoft.2015.07.017</a>. Trend likelihood values for nutrients, sediment, salinity, major ions, and carbon were determined using the bootstrap approach in that same report. Trend likelihood values for pesticides and aquatic ecology metrics were determined using the p-value reported from their respective trend tests, using the equation 1-(p-value/2). See Vecchia and others (2008), "Modeling Variability and Trends in Pesticide Concentrations in Streams", at <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf" target="_blank" rel="noreferrer">http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf</a> for more information on calculating p-values in the pesticide models. See Oelsner, G.P., Sprague, L.A., Murphy, J.C., Zuellig, R.E., Johnson, H.M., Ryberg, K.R.,...
+                            For more information on the philosophy of the likelihood-based approach, please see Hirsch
+                            and others (2015), "A bootstrap method for estimating uncertainty of water quality trends",
+                            at <a href="http://dx.doi.org/10.1016/j.envsoft.2015.07.017" target="_blank"
+                                rel="noreferrer">http://dx.doi.org/10.1016/j.envsoft.2015.07.017</a>. Trend likelihood
+                            values for nutrients, sediment, salinity, major ions, and carbon were determined using the
+                            bootstrap approach in that same report. Trend likelihood values for pesticides and aquatic
+                            ecology metrics were determined using the p-value reported from their respective trend
+                            tests, using the equation 1-(p-value/2). See Vecchia and others (2008), "Modeling
+                            Variability and Trends in Pesticide Concentrations in Streams", at <a
+                                href="http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf"
+                                target="_blank"
+                                rel="noreferrer">http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf</a> for
+                            more information on calculating p-values in the pesticide models. See Oelsner, G.P.,
+                            Sprague, L.A., Murphy, J.C., Zuellig, R.E., Johnson, H.M., Ryberg, K.R.,...
                         </p>
                     </div>
 
@@ -254,6 +290,64 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
             </DialogContent>
         </Dialog>
     );
+
+    // Graph components
+    const loadGraph = () => {
+        if (data) {
+            return <Box className={classes.chart}>
+                <h4 className={classes.chartHeader}>Load Graph</h4>
+                <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
+                    stationary_y_line_field="stationaryFNFlux"
+                    stationary_high_interval="stationaryFNFluxHigh"
+                    stationary_low_interval="stationaryFNFluxLow"
+                    non_stationary_y_line_field="nonStationaryFNFlux"
+                    non_stationary_high_interval="nonStationaryFNFluxHigh"
+                    non_stationary_low_interval="nonStationaryFNFluxLow"
+                    y_scatter_field="stationaryFluxDay"
+                    y_label="Yearly Cumulative Load (10^4 kg/yr)"
+                    x_label="Year"
+                    title="Mean (dots) & Flow-Normalized (line) Load Estimates" />
+                <br />
+                <Typography
+                    className={classes.trendText}
+                    variant="span"
+                >
+                    Load Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
+                </Typography>
+            </Box>;
+        }
+        return null;
+    };
+
+    const concGraph = () => {
+        if (data){
+            return <Box className={classes.chart}>
+                <h4 className={classes.chartHeader}>Concentration Graph</h4>
+                <SummaryGraph graph_data={data.concentration} width={350} height={330}
+                    startAtZero={false}
+                    stationary_y_line_field="stationaryFNConc"
+                    stationary_high_interval="stationaryFNConcHigh"
+                    stationary_low_interval="stationaryFNConcLow"
+                    non_stationary_y_line_field="nonStationaryFNConc"
+                    non_stationary_high_interval="nonStationaryFNConcHigh"
+                    non_stationary_low_interval="nonStationaryFNConcLow"
+                    y_scatter_field="stationaryConcDay"
+                    y_label="Yearly Average Concentration (mg/L)"
+                    x_label="Year"
+                    title="Mean (dots) & Flow-Normalized (line) Concentration " />
+                <br />
+                <Typography
+                    className={classes.trendText}
+                    variant="span"
+                >
+                    Concentration Trend - {convertTrend(stationData.significance_concent)}<sup>*</sup>
+                </Typography>
+            </Box>;
+        }
+        
+        return null;
+        
+    };
 
 
     return (
@@ -285,7 +379,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         }}
                     >
                         <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
-                        <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+                        <MenuItem value="Phosphorus">Total Phosphorus</MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl
@@ -432,54 +526,10 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                         </Typography>
                         <Divider />
                         <div>
-                            {data &&
-                              <Box className={classes.chart}>
-                                  <h4 className={classes.chartHeader}>Load Graph</h4>
-                                  <SummaryGraph graph_data={data.flux} width={350} height={330} startAtZero={false}
-                                      stationary_y_line_field="stationaryFNFlux"
-                                      stationary_high_interval="stationaryFNFluxHigh"
-                                      stationary_low_interval="stationaryFNFluxLow"
-                                      non_stationary_y_line_field="nonStationaryFNFlux"
-                                      non_stationary_high_interval="nonStationaryFNFluxHigh"
-                                      non_stationary_low_interval="nonStationaryFNFluxLow"
-                                      y_scatter_field="stationaryFluxDay"
-                                      y_label="Yearly Cumulative Load (10^6 kg/yr)"
-                                      x_label="Year"
-                                      title="Mean (dots) & Flow-Normalized (line) Load Estimates" />
-                                  <br />
-                                  <Typography
-                                      className={classes.trendText}
-                                      variant="span"
-                                  >
-                                      Load Trend - {convertTrend(stationData.significance_flux)}<sup>*</sup>
-                                  </Typography>
-                              </Box>}
-
-                            <Divider />
-                            <br />
-                            {data &&
-                              <Box className={classes.chart}>
-                                  <h4 className={classes.chartHeader}>Concentration Graph</h4>
-                                  <SummaryGraph graph_data={data.concentration} width={350} height={330}
-                                      startAtZero={false}
-                                      stationary_y_line_field="stationaryFNConc"
-                                      stationary_high_interval="stationaryFNConcHigh"
-                                      stationary_low_interval="stationaryFNConcLow"
-                                      non_stationary_y_line_field="nonStationaryFNConc"
-                                      non_stationary_high_interval="nonStationaryFNConcHigh"
-                                      non_stationary_low_interval="nonStationaryFNConcLow"
-                                      y_scatter_field="stationaryConcDay"
-                                      y_label="Yearly Average Concentration (mg/L)"
-                                      x_label="Year"
-                                      title="Mean (dots) & Flow-Normalized (line) Concentration " />
-                                  <br />
-                                  <Typography
-                                      className={classes.trendText}
-                                      variant="span"
-                                  >
-                                      Concentration Trend - {convertTrend(stationData.significance_concent)}<sup>*</sup>
-                                  </Typography>
-                              </Box>}
+                            {(data && selectedParameter === 'flux') && loadGraph()}
+                            {/* <Divider /> */}
+                            {/* <br /> */}
+                            {(data && selectedParameter === 'concentration') && concGraph()}
                         </div>
                         <span>
                             <sup>*</sup> Percentage ranges represent the probability that the trend is upwards

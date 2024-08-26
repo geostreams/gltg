@@ -97,6 +97,7 @@ const Summary = () => {
     // This state variable is used to keep track of the selected station
     const [selectedStation, setSelectedStation] = React.useState(null);
     const [oldSelectedStation, setOldSelectedStation] = React.useState(null);
+    const [showCharts, setShowCharts] = React.useState(false);
 
     // This state variable is used to keep track of the selected watershed
     const [selectedWatershed, setSelectedWatershed] = React.useState(null);
@@ -108,6 +109,8 @@ const Summary = () => {
         React.useState('20_years');
     const [selectedParameter, setSelectedParameter] = React.useState('concentration');
 
+    // Trend table state
+    const [selectedTrendTableStation, setSelectedTrendTableStation] = React.useState(null);
 
     // Tooltip
     const [tooltipContent, setTooltipContent] = React.useState('');
@@ -497,9 +500,11 @@ const Summary = () => {
                 );
             setSelectedStation(selectedFeature);
             setSelectedWatershed(correspondingWatershed);
+            setShowCharts(true);
         } else {
             setSelectedStation(null);
             setSelectedWatershed(null);
+            setShowCharts(false);
         }
     };
 
@@ -528,6 +533,44 @@ const Summary = () => {
             });
         }
     }, [selectedParameter, nitrateTrendStationsLayer20years, phosTrendStationsLayer20years]);
+
+    // useEffect to handle selection of station in trendTable
+    React.useEffect(() => {
+        //     Set corresponding watershed to visible
+        if (waterShedsLayer20years){
+            const correspondingWatershed = waterShedsLayer20years
+                .getLayersArray()[0]
+                .getSource()
+                .getFeatures()
+                .find(
+                    (feature) => feature.get('id') === selectedTrendTableStation
+                );
+
+            setSelectedWatershed(correspondingWatershed);
+        }
+        if (nitrateTrendStationsData20Years && phosTrendStationData20Years) {
+            let stationsLayer = null;
+            switch (selectedNutrient) {
+                case 'Nitrogen':
+                    stationsLayer = nitrateTrendStationsLayer20years;
+                    break;
+                case 'Phosphorus':
+                    stationsLayer = phosTrendStationsLayer20years;
+                    break;
+            }
+            if (stationsLayer){
+                const correspondingStation = stationsLayer
+                    .getLayersArray()[0]
+                    .getSource()
+                    .getFeatures()
+                    .find(
+                        (feature) => feature.get('SF_site_no') === selectedTrendTableStation
+                    );
+                console.log(correspondingStation);
+                setSelectedStation(correspondingStation);
+            }
+        }
+    },[selectedTrendTableStation]);
 
 
     const handleMapHover = (event) => {
@@ -625,6 +668,8 @@ const Summary = () => {
                         selectedParameter={selectedParameter}
                         setSelectedParameter={setSelectedParameter}
                         removeSelectedStation={removeSelectedStation}
+                        setSelectedTrendTableStation={setSelectedTrendTableStation}
+                        showCharts={showCharts}
                     />
                 </Grid>
             </Grid>

@@ -80,7 +80,7 @@ const TopBar = ({
                 }}
                 label="Select Period"
             >
-                <MenuItem value="20_years">2020-2020</MenuItem>
+                <MenuItem value="20_years">2000-2020</MenuItem>
             </Select>
         </FormControl>
     );

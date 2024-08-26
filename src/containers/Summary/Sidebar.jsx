@@ -15,7 +15,7 @@ import nitrateTrendStationsDataUrl from '../../data/nitrate_trend_station_data_2
 
 
 import SummaryGraph from './SummaryGraph';
-import TrendTable from './TrendTable';
+import TrendTables from './TrendTables';
 
 const useStyles = makeStyles((theme) => ({
     sidebarBody: {
@@ -180,12 +180,13 @@ function convertTrend(inputString) {
 
 // TO NOTE - The model by default provides "flux" but in the website use the more common term Load
 
-const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelectedStation, selectedParameter }) => {
+const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedTrendTableStation, showCharts }) => {
     const classes = useStyles();
     const [data, setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
     const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
     const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
+    const [trendTableData, setTrendTableData] = React.useState({});
 
     React.useEffect(() => {
         fetch(nitrateTrendStationsDataUrl)
@@ -214,6 +215,17 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
             setData(null);
         }
     }, [stationData, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
+
+    React.useEffect(() => {
+        switch (selectedNutrient) {
+            case 'Nitrogen':
+                setTrendTableData(nitrateTrendStationsData20Years);
+                break;
+            case 'Phosphorus':
+                setTrendTableData(phosTrendStationData20Years);
+                break;
+        }
+    },[selectedNutrient, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
 
     // Remove the selected station when the time period is changed
     React.useEffect(() => {
@@ -361,7 +373,7 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                     Nutrient Trends Dashboard
                 </Typography>
                 <Divider className={classes.divider} />
-                {!stationData ?
+                {!(stationData && showCharts) ?
                     (<>
                         <Typography
                             className={classes.promptText}
@@ -373,7 +385,6 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                             </Tooltip>
                         </Typography>
                         <Divider />
-                        <TrendTable />
                         <Box className={classes.summaryBox}>
                             <Typography variant="h6" gutterBottom>
                                 Dashboard Summary
@@ -385,6 +396,11 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                             </Typography>
                         </Box>
                         <Divider />
+                        <TrendTables trendTableData={trendTableData}
+                            selectedNutrient={selectedNutrient}
+                            selectedParameter={selectedParameter}
+                            setSelectedTrendTableStation={setSelectedTrendTableStation}
+                        />
                         <Box className={classes.legendBox}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Typography

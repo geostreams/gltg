@@ -14,7 +14,7 @@
       "properties": {
         "SF_site_no": "07105800",
         "SF_station_nm": "FOUNTAIN CREEK AT SECURITY  CO",
-        "WQ_MonitoringLocationIdentifier": "21COL001_WQX-CO0024392-D/S",
+        "WQ_MonitoringLocationIdentifier": "21COL001_WQX-CO0024392-D-S",
         "WQ_MonitoringLocationName": "Security SD  station:SSD_DWNSTRM",
         "significance_concent": "Upward trend in concentration is highly likely",
         "significance_flux": "Upward trend in flux is highly likely",

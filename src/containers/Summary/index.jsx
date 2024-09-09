@@ -512,6 +512,7 @@ const Summary = () => {
     React.useEffect(() => {
         setSelectedStation(null);
         setSelectedWatershed(null);
+        setShowCharts(false);
 
         // Change the visibility of the layers according to the nutrient
         makeLayerVisible();
@@ -598,6 +599,7 @@ const Summary = () => {
     const removeSelectedStation = () => {
         setSelectedStation(null);
         setSelectedWatershed(null);
+        setShowCharts(false);
     };
 
     if (nitrateTrendStationsLayer20years === null || phosTrendStationsLayer20years === null ||

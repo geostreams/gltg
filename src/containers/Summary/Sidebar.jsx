@@ -1,21 +1,21 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, FormControl, FormLabel, Select, MenuItem, Typography, Dialog, DialogTitle, DialogContent,
-    DialogContentText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper }from '@material-ui/core';
+import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText }from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Divider from '@material-ui/core/Divider';
 import { Clear } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
-import NoSignificantTrendIcon from '../../images/No_Significant_Trend_Icon.png';
-import UpwardTrendIcon from '../../images/Upward_Trending_Icon.png';
-import DownwardTrendIcon from '../../images/Downward_Trending_Icon.png';
+import NoSignificantTrendIcon from '../../images/NoSignificantTrendIcon.png';
+import UpwardTrendIcon from '../../images/UpwardTrendIcon.png';
+import DownwardTrendIcon from '../../images/DownwardTrendIcon.png';
 
 import phosTrendStationDataUrl from '../../data/phos_trend_station_data_20years.json';
 import nitrateTrendStationsDataUrl from '../../data/nitrate_trend_station_data_20years.json';
 
 
 import SummaryGraph from './SummaryGraph';
+import TrendTables from './TrendTables';
 
 const useStyles = makeStyles((theme) => ({
     sidebarBody: {
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        width: '150%'
+        width: '90%'
     },
     formLabel: {
         padding: theme.spacing(1),
@@ -124,8 +124,8 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2, 0)
     },
     legendIcon: {
-        width: '1.75em',
-        height: 'auto',
+        width: '1em',
+        height: '1em',
         marginRight: theme.spacing(1)
     },
     legendContainer: {
@@ -180,12 +180,13 @@ function convertTrend(inputString) {
 
 // TO NOTE - The model by default provides "flux" but in the website use the more common term Load
 
-const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTimePeriod,setSelectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedParameter }) => {
+const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelectedStation, selectedParameter, setSelectedTrendTableStation, showCharts }) => {
     const classes = useStyles();
     const [data, setData] = React.useState(null);
     const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
     const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
     const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
+    const [trendTableData, setTrendTableData] = React.useState({});
 
     React.useEffect(() => {
         fetch(nitrateTrendStationsDataUrl)
@@ -214,6 +215,17 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
             setData(null);
         }
     }, [stationData, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
+
+    React.useEffect(() => {
+        switch (selectedNutrient) {
+            case 'Nitrogen':
+                setTrendTableData(nitrateTrendStationsData20Years);
+                break;
+            case 'Phosphorus':
+                setTrendTableData(phosTrendStationData20Years);
+                break;
+        }
+    },[selectedNutrient, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
 
     // Remove the selected station when the time period is changed
     React.useEffect(() => {
@@ -344,90 +356,15 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                 </Typography>
             </Box>;
         }
-        
+
         return null;
-        
+
     };
 
 
     return (
         <div>
             {infoDialog}
-            <Box
-                className={classes.dropdownsContainer}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-            >
-                <FormControl
-                    component="fieldset"
-                    className={classes.formControl}
-                >
-                    <FormLabel
-                        component="legend"
-                        className={classes.formLabel}
-                    >
-                        <Box display="flex" alignItems="center">
-                           Select Nutrient
-                        </Box>
-                    </FormLabel>
-                    <Select
-                        className={classes.selectButton}
-                        value={selectedNutrient}
-                        onChange={({ target: { value } }) => {
-                            setSelectedNutrient(value);
-                        }}
-                    >
-                        <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
-                        <MenuItem value="Phosphorus">Total Phosphorus</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl
-                    component="fieldset"
-                    className={classes.formControl}
-                >
-                    <FormLabel
-                        component="legend"
-                        className={classes.formLabel}
-                    >
-                        <Box display="flex" alignItems="center">
-                            Select Parameter
-                        </Box>
-                    </FormLabel>
-                    <Select
-                        className={classes.selectButton}
-                        value={selectedParameter}
-                        onChange={({ target: { value } }) => {
-                            setSelectedParameter(value);
-                        }}
-                    >
-                        <MenuItem value="concentration">Concentration</MenuItem>
-                        <MenuItem value="flux">Load</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl
-                    component="fieldset"
-                    className={classes.formControl}
-                >
-                    <FormLabel
-                        component="legend"
-                        className={classes.formLabel}
-                    >
-                        <Box display="flex" alignItems="center">
-                           Select Time Period
-                        </Box>
-                    </FormLabel>
-                    <Select
-                        className={classes.selectButton}
-                        value={selectedTimePeriod}
-                        onChange={({ target: { value } }) => {
-                            setSelectedTimePeriod(value);
-                        }}
-                    >
-                        <MenuItem value="20_years">2000-2020</MenuItem>
-                    </Select>
-                </FormControl>
-            </Box>
             <div className={classes.sidebarBody}>
                 <Typography
                     className={classes.header}
@@ -436,7 +373,7 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                     Nutrient Trends Dashboard
                 </Typography>
                 <Divider className={classes.divider} />
-                {!stationData ?
+                {!(stationData && showCharts) ?
                     (<>
                         <Typography
                             className={classes.promptText}
@@ -459,6 +396,11 @@ const Sidebar = ({ stationData, selectedNutrient,setSelectedNutrient,selectedTim
                             </Typography>
                         </Box>
                         <Divider />
+                        <TrendTables trendTableData={trendTableData}
+                            selectedNutrient={selectedNutrient}
+                            selectedParameter={selectedParameter}
+                            setSelectedTrendTableStation={setSelectedTrendTableStation}
+                        />
                         <Box className={classes.legendBox}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Typography

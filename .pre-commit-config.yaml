@@ -5,3 +5,9 @@ repos:
         name: eslint
         entry: bash -c "npx eslint --fix src"
         language: system
+  - repo: local
+    hooks:
+        - id: prettier
+          name: prettier
+          entry: bash -c "npx prettier src --write"
+          language: system

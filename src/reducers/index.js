@@ -5,6 +5,6 @@ import geostreamingReducers from "@geostreams/geostreaming/src/reducers";
 import __old_reducers from "@geostreams/gltg__old/app/reducers";
 
 export default {
-  ...__old_reducers,
-  ...geostreamingReducers,
+	...__old_reducers,
+	...geostreamingReducers,
 };

@@ -21,54 +21,56 @@ import Tests from "./tests/Tests";
 import Partners from "./containers/Partners";
 
 const routes = Object.assign(coreRoutes, {
-  "/": {
-    exact: true,
-    component: hocs.withLayout(GLTGLandingLayout, LandingPage, {
-      hasFooter: true,
-    }),
-  },
-  "/summary": {
-    exact: true,
-    component: hocs.withLayout(GLTGLayout, NewSummary, {
-      hasFooter: true,
-      stickyFooter: true,
-    }),
-  },
-  "/data-stories": {
-    component: hocs.withLayout(GLTGLayout, DataStories, { hasFooter: true }),
-  },
-  "/help": {
-    exact: true,
-    component: hocs.withLayout(GLTGLayout, Help, { hasFooter: true }),
-  },
-  "/partners": {
-    exact: true,
-    component: hocs.withLayout(GLTGLayout, Partners, { hasFooter: false }),
-  },
-  "/:parent(explore|search|analysis)/detail/location/:name/:category": {
-    component: hocs.withLayout(GLTGLayout, GeoStreamingSensorDetail),
-  },
-  // Routes pointing to the __old code
-  "/explore/:stations": {
-    component: hocs.withLayout(GLTGLayout, GeoStreamingExplore),
-    exact: true,
-  },
-  "/search": {
-    component: hocs.withLayout(GLTGLayout, __old_Search),
-    exact: true,
-  },
-  "/analysis": {
-    component: hocs.withLayout(GLTGLayout, __old_Analysis),
-    exact: true,
-  },
-  "/bmp": { component: hocs.withLayout(GLTGLayout, BMP), exact: true },
+	"/": {
+		exact: true,
+		component: hocs.withLayout(GLTGLandingLayout, LandingPage, {
+			hasFooter: true,
+		}),
+	},
+	"/summary": {
+		exact: true,
+		component: hocs.withLayout(GLTGLayout, NewSummary, {
+			hasFooter: true,
+			stickyFooter: true,
+		}),
+	},
+	"/data-stories": {
+		component: hocs.withLayout(GLTGLayout, DataStories, {
+			hasFooter: true,
+		}),
+	},
+	"/help": {
+		exact: true,
+		component: hocs.withLayout(GLTGLayout, Help, { hasFooter: true }),
+	},
+	"/partners": {
+		exact: true,
+		component: hocs.withLayout(GLTGLayout, Partners, { hasFooter: false }),
+	},
+	"/:parent(explore|search|analysis)/detail/location/:name/:category": {
+		component: hocs.withLayout(GLTGLayout, GeoStreamingSensorDetail),
+	},
+	// Routes pointing to the __old code
+	"/explore/:stations": {
+		component: hocs.withLayout(GLTGLayout, GeoStreamingExplore),
+		exact: true,
+	},
+	"/search": {
+		component: hocs.withLayout(GLTGLayout, __old_Search),
+		exact: true,
+	},
+	"/analysis": {
+		component: hocs.withLayout(GLTGLayout, __old_Analysis),
+		exact: true,
+	},
+	"/bmp": { component: hocs.withLayout(GLTGLayout, BMP), exact: true },
 });
 
 if (process.env.NODE_ENV === "development") {
-  routes["/__new_search"] = {
-    component: hocs.withLayout(GLTGLayout, GeoStreamingSearch),
-  };
-  routes["/tests/gltg"] = { component: Tests };
+	routes["/__new_search"] = {
+		component: hocs.withLayout(GLTGLayout, GeoStreamingSearch),
+	};
+	routes["/tests/gltg"] = { component: Tests };
 }
 
 export default routes;

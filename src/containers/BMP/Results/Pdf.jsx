@@ -30,170 +30,186 @@ import { BMPContext } from "../Context";
 import { RESULTS, createRequestParams } from "./config";
 
 const useStyle = makeStyles((theme) => ({
-  appBar: {
-    position: "relative",
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
-  contentContainer: {
-    padding: theme.spacing(1),
-  },
-  categoryContainer: {
-    padding: theme.spacing(1),
-  },
+	appBar: {
+		position: "relative",
+	},
+	title: {
+		marginLeft: theme.spacing(2),
+		flex: 1,
+	},
+	contentContainer: {
+		padding: theme.spacing(1),
+	},
+	categoryContainer: {
+		padding: theme.spacing(1),
+	},
 }));
 
 interface Props {
-  handleClose: () => void;
-  dispatch: (pageAction: PageAction) => void;
+	handleClose: () => void;
+	dispatch: (pageAction: PageAction) => void;
 }
 
 const Pdf = ({ handleClose, dispatch }: Props) => {
-  const classes = useStyle();
+	const classes = useStyle();
 
-  const { filters, results, updateResults } = React.useContext(BMPContext);
+	const { filters, results, updateResults } = React.useContext(BMPContext);
 
-  const [selectedCategories, updateSelectedCategories] = React.useState<
-    Map<string, boolean>,
-  >(new Map());
+	const [selectedCategories, updateSelectedCategories] = React.useState<
+		Map<string, boolean>,
+	>(new Map());
 
-  const outputContainer = React.useRef();
-  const outputContainerRect = useElementRect(outputContainer);
+	const outputContainer = React.useRef();
+	const outputContainerRect = useElementRect(outputContainer);
 
-  const plotTooltipRef = React.useRef<null | HTMLDivElement>(null);
+	const plotTooltipRef = React.useRef<null | HTMLDivElement>(null);
 
-  const renderResult = ([
-    category,
-    {
-      component: ResultComponent,
-      config: { label },
-    },
-  ]) => {
-    if (!selectedCategories.get(label)) {
-      return <React.Fragment key={category} />;
-    }
-    const queryParams = createRequestParams(category, filters);
-    const queryParamsBase64 = btoa(queryParams);
-    if (results[queryParamsBase64]) {
-      return (
-        <div key={category} className={classes.categoryContainer}>
-          <Typography variant="h6">{label}</Typography>
-          <ResultComponent
-            filters={filters}
-            data={results[queryParamsBase64]}
-            containerRect={outputContainerRect}
-            tooltipRef={plotTooltipRef}
-            showVegaActions={false}
-          />
-        </div>
-      );
-    }
-    dispatch(updateLoadingStatus(true));
-    fetch(`${BMP_API_URL}/practices?${queryParams}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        updateResults({
-          ...results,
-          [queryParamsBase64]: response.results,
-        });
-      })
-      .catch(logger.error)
-      .finally(() => {
-        dispatch(updateLoadingStatus(false));
-      });
-    return (
-      <React.Fragment key={category}>
-        <Typography variant="h6">{label}</Typography>
-        <div>Loading</div>
-      </React.Fragment>
-    );
-  };
+	const renderResult = ([
+		category,
+		{
+			component: ResultComponent,
+			config: { label },
+		},
+	]) => {
+		if (!selectedCategories.get(label)) {
+			return <React.Fragment key={category} />;
+		}
+		const queryParams = createRequestParams(category, filters);
+		const queryParamsBase64 = btoa(queryParams);
+		if (results[queryParamsBase64]) {
+			return (
+				<div key={category} className={classes.categoryContainer}>
+					<Typography variant="h6">{label}</Typography>
+					<ResultComponent
+						filters={filters}
+						data={results[queryParamsBase64]}
+						containerRect={outputContainerRect}
+						tooltipRef={plotTooltipRef}
+						showVegaActions={false}
+					/>
+				</div>
+			);
+		}
+		dispatch(updateLoadingStatus(true));
+		fetch(`${BMP_API_URL}/practices?${queryParams}`, {
+			method: "GET",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				updateResults({
+					...results,
+					[queryParamsBase64]: response.results,
+				});
+			})
+			.catch(logger.error)
+			.finally(() => {
+				dispatch(updateLoadingStatus(false));
+			});
+		return (
+			<React.Fragment key={category}>
+				<Typography variant="h6">{label}</Typography>
+				<div>Loading</div>
+			</React.Fragment>
+		);
+	};
 
-  return (
-    <Dialog fullScreen open onClose={handleClose}>
-      <AppBar className={classes.appBar}>
-        <Toolbar>
-          <IconButton edge="start" color="inherit" onClick={handleClose}>
-            <CloseIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Export to PDF
-          </Typography>
-          <Button
-            color="inherit"
-            variant="outlined"
-            startIcon={<PdfIcon />}
-            disabled={
-              Array.from(selectedCategories.values()).every((v) => !v) ||
-              !outputContainer.current
-            }
-            onClick={() => {
-              if (outputContainer.current) {
-                htmlToPdf(outputContainer.current, {
-                  filename: "bmp.pdf",
-                });
-              }
-            }}
-          >
-            Save
-          </Button>
-        </Toolbar>
-      </AppBar>
+	return (
+		<Dialog fullScreen open onClose={handleClose}>
+			<AppBar className={classes.appBar}>
+				<Toolbar>
+					<IconButton
+						edge="start"
+						color="inherit"
+						onClick={handleClose}
+					>
+						<CloseIcon />
+					</IconButton>
+					<Typography variant="h6" className={classes.title}>
+						Export to PDF
+					</Typography>
+					<Button
+						color="inherit"
+						variant="outlined"
+						startIcon={<PdfIcon />}
+						disabled={
+							Array.from(selectedCategories.values()).every(
+								(v) => !v,
+							) || !outputContainer.current
+						}
+						onClick={() => {
+							if (outputContainer.current) {
+								htmlToPdf(outputContainer.current, {
+									filename: "bmp.pdf",
+								});
+							}
+						}}
+					>
+						Save
+					</Button>
+				</Toolbar>
+			</AppBar>
 
-      <Alert style={{ margin: 20 }} severity="warning">
-        The recommended browsers are Firefox and Chrome. There might be issues
-        with the generated PDF in other browsers such as Safari and IE.
-      </Alert>
+			<Alert style={{ margin: 20 }} severity="warning">
+				The recommended browsers are Firefox and Chrome. There might be
+				issues with the generated PDF in other browsers such as Safari
+				and IE.
+			</Alert>
 
-      <Grid container className={classes.contentContainer}>
-        <Grid item xs={4}>
-          <Typography variant="h6">Include in the report</Typography>
-          <List>
-            {entries(RESULTS).map(
-              ([
-                name,
-                {
-                  config: { label },
-                },
-              ]) => (
-                <ListItem
-                  key={name}
-                  dense
-                  button
-                  onClick={() =>
-                    updateSelectedCategories(
-                      new Map([
-                        ...selectedCategories,
-                        [label, !selectedCategories.get(label)],
-                      ]),
-                    )
-                  }
-                >
-                  <ListItemIcon>
-                    <Checkbox
-                      edge="start"
-                      disableRipple
-                      checked={selectedCategories.get(label) || false}
-                    />
-                  </ListItemIcon>
-                  <ListItemText>{label}</ListItemText>
-                </ListItem>
-              ),
-            )}
-          </List>
-        </Grid>
-        <Grid ref={outputContainer} item xs={8}>
-          {entries(RESULTS).map((resultProps) => renderResult(resultProps))}
-        </Grid>
-      </Grid>
-      <div ref={plotTooltipRef} className={classes.plotTooltip} />
-    </Dialog>
-  );
+			<Grid container className={classes.contentContainer}>
+				<Grid item xs={4}>
+					<Typography variant="h6">Include in the report</Typography>
+					<List>
+						{entries(RESULTS).map(
+							([
+								name,
+								{
+									config: { label },
+								},
+							]) => (
+								<ListItem
+									key={name}
+									dense
+									button
+									onClick={() =>
+										updateSelectedCategories(
+											new Map([
+												...selectedCategories,
+												[
+													label,
+													!selectedCategories.get(
+														label,
+													),
+												],
+											]),
+										)
+									}
+								>
+									<ListItemIcon>
+										<Checkbox
+											edge="start"
+											disableRipple
+											checked={
+												selectedCategories.get(label) ||
+												false
+											}
+										/>
+									</ListItemIcon>
+									<ListItemText>{label}</ListItemText>
+								</ListItem>
+							),
+						)}
+					</List>
+				</Grid>
+				<Grid ref={outputContainer} item xs={8}>
+					{entries(RESULTS).map((resultProps) =>
+						renderResult(resultProps),
+					)}
+				</Grid>
+			</Grid>
+			<div ref={plotTooltipRef} className={classes.plotTooltip} />
+		</Dialog>
+	);
 };
 
 export default connect()(Pdf);

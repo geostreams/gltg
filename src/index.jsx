@@ -7,8 +7,8 @@ window.configruntime = __old_config;
 
 // $FlowFixMe
 import {
-  addEndpoints,
-  fetchSensors as __old_fetchSensors,
+	addEndpoints,
+	fetchSensors as __old_fetchSensors,
 } from "@geostreams/core__old/app/actions";
 
 import render from "@geostreams/core/src/render";
@@ -22,14 +22,14 @@ import fetch from "sync-fetch";
 /* eslint-enable */
 
 render(reducers, routes, async (store) => {
-  // Loading config.json dynamically and setting env variables
-  const config = fetch("../config.json").json();
-  config.map.geoserverUrl = process.env.GEOSERVER_URL;
-  config.geostreamingEndpoint = process.env.GEOSTREAMS_URL;
+	// Loading config.json dynamically and setting env variables
+	const config = fetch("../config.json").json();
+	config.map.geoserverUrl = process.env.GEOSERVER_URL;
+	config.geostreamingEndpoint = process.env.GEOSTREAMS_URL;
 
-  store.dispatch(updateGeoStreamingConfig(config));
-  store.dispatch(addEndpoints());
-  store.dispatch(__old_fetchSensors(config.geostreamingEndpoint));
-  store.dispatch(fetchParameters());
-  store.dispatch(fetchSensors());
+	store.dispatch(updateGeoStreamingConfig(config));
+	store.dispatch(addEndpoints());
+	store.dispatch(__old_fetchSensors(config.geostreamingEndpoint));
+	store.dispatch(fetchParameters());
+	store.dispatch(fetchSensors());
 });

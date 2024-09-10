@@ -22,128 +22,128 @@ export const BMP_API_URL = process.env.BMP_API_URL || "";
 export const MAP_CENTER = transform([-88, 40], "EPSG:4326", "EPSG:3857");
 
 export const STYLES = {
-  hidden: new Style({
-    fill: new Fill({
-      color: [0, 0, 0, 0],
-    }),
-    stroke: new Stroke({
-      color: [0, 0, 0, 0],
-    }),
-  }),
-  default: new Style({
-    fill: new Fill({
-      color: [0, 0, 0, 0.2],
-    }),
-    stroke: new Stroke({
-      color: "black",
-    }),
-  }),
-  selected: new Style({
-    fill: new Fill({
-      color: [255, 0, 0, 0.3],
-    }),
-    stroke: new Stroke({
-      color: "black",
-    }),
-  }),
+	hidden: new Style({
+		fill: new Fill({
+			color: [0, 0, 0, 0],
+		}),
+		stroke: new Stroke({
+			color: [0, 0, 0, 0],
+		}),
+	}),
+	default: new Style({
+		fill: new Fill({
+			color: [0, 0, 0, 0.2],
+		}),
+		stroke: new Stroke({
+			color: "black",
+		}),
+	}),
+	selected: new Style({
+		fill: new Fill({
+			color: [255, 0, 0, 0.3],
+		}),
+		stroke: new Stroke({
+			color: "black",
+		}),
+	}),
 };
 
 export const getStyle = (
-  options: string[],
-  feature: FeatureType,
-  featureIdKey: string,
-  isSelected: boolean,
+	options: string[],
+	feature: FeatureType,
+	featureIdKey: string,
+	isSelected: boolean,
 ) => {
-  if (options.includes(feature.get(featureIdKey))) {
-    return isSelected ? STYLES.selected : STYLES.default;
-  }
-  return STYLES.hidden;
+	if (options.includes(feature.get(featureIdKey))) {
+		return isSelected ? STYLES.selected : STYLES.default;
+	}
+	return STYLES.hidden;
 };
 
 export const BOUNDARIES: { [k: string]: Boundary } = {
-  state: {
-    visible: true,
-    label: "State",
-    idKey: "id",
-    layer: {
-      id: "gltg:us-states",
-      featureIdKey: "NAME",
-      crs: 900913,
-    },
-  },
-  huc_8: {
-    visible: false,
-    label: "HUC-8",
-    idKey: "huc8",
-    layer: {
-      id: "gltg:huc8",
-      featureIdKey: "huc8",
-      crs: 900913,
-    },
-  },
+	state: {
+		visible: true,
+		label: "State",
+		idKey: "id",
+		layer: {
+			id: "gltg:us-states",
+			featureIdKey: "NAME",
+			crs: 900913,
+		},
+	},
+	huc_8: {
+		visible: false,
+		label: "HUC-8",
+		idKey: "huc8",
+		layer: {
+			id: "gltg:huc8",
+			featureIdKey: "huc8",
+			crs: 900913,
+		},
+	},
 };
 
 export const LAYERS = {
-  basemaps: new GroupLayer({
-    title: "Base Maps",
-    layers: [
-      new TileLayer({
-        type: "base",
-        visible: true,
-        title: "Carto",
-        source: new XYZ({
-          url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
-          attributions: [
-            '&#169; <a href="https://www.carto.com">Carto</a>,',
-            OSM_ATTRIBUTION,
-          ],
-        }),
-      }),
-      new TileLayer({
-        type: "base",
-        visible: false,
-        title: "OSM",
-        source: new OSM(),
-      }),
-    ],
-  }),
-  ...entries(BOUNDARIES).reduce(
-    (
-      boundaryLayers,
-      [
-        boundary,
-        {
-          visible,
-          layer: { id, crs, featureIdKey },
-        },
-      ],
-    ) => {
-      const layer = new VectorTileLayer({
-        source: new VectorTileSource({
-          format: new MVT(),
-          url: `${GEOSERVER_URL}/gwc/service/tms/1.0.0/${id}@EPSG:${crs}@pbf/{z}/{x}/{-y}.pbf`,
-          tilePixelRatio: 1,
-        }),
-        visible,
-        style: (feature) => getStyle([], feature, featureIdKey, false),
-      });
-      layer.set("interactive", true);
-      boundaryLayers[boundary] = layer;
-      return boundaryLayers;
-    },
-    {},
-  ),
+	basemaps: new GroupLayer({
+		title: "Base Maps",
+		layers: [
+			new TileLayer({
+				type: "base",
+				visible: true,
+				title: "Carto",
+				source: new XYZ({
+					url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
+					attributions: [
+						'&#169; <a href="https://www.carto.com">Carto</a>,',
+						OSM_ATTRIBUTION,
+					],
+				}),
+			}),
+			new TileLayer({
+				type: "base",
+				visible: false,
+				title: "OSM",
+				source: new OSM(),
+			}),
+		],
+	}),
+	...entries(BOUNDARIES).reduce(
+		(
+			boundaryLayers,
+			[
+				boundary,
+				{
+					visible,
+					layer: { id, crs, featureIdKey },
+				},
+			],
+		) => {
+			const layer = new VectorTileLayer({
+				source: new VectorTileSource({
+					format: new MVT(),
+					url: `${GEOSERVER_URL}/gwc/service/tms/1.0.0/${id}@EPSG:${crs}@pbf/{z}/{x}/{-y}.pbf`,
+					tilePixelRatio: 1,
+				}),
+				visible,
+				style: (feature) => getStyle([], feature, featureIdKey, false),
+			});
+			layer.set("interactive", true);
+			boundaryLayers[boundary] = layer;
+			return boundaryLayers;
+		},
+		{},
+	),
 };
 
 export const YEAR_RANGE = [1980, 2020];
 export const YEAR_RANGE_MARKS = [];
 for (let i = YEAR_RANGE[0]; i <= YEAR_RANGE[1]; i += 1) {
-  const mark = i % 5 ? { value: i } : { value: i, label: i };
-  YEAR_RANGE_MARKS.push(mark);
+	const mark = i % 5 ? { value: i } : { value: i, label: i };
+	YEAR_RANGE_MARKS.push(mark);
 }
 
 export const INITIAL_FILTERS: Filters = {
-  years: YEAR_RANGE,
-  boundaryType: "state",
-  selectedBoundaries: [],
+	years: YEAR_RANGE,
+	boundaryType: "state",
+	selectedBoundaries: [],
 };

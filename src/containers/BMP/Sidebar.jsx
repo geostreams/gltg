@@ -6,10 +6,10 @@ import Filters from "./Filters";
 import Results from "./Results";
 
 const Sidebar = () => (
-  <Container disableGutters>
-    <Filters />
-    <Results />
-  </Container>
+	<Container disableGutters>
+		<Filters />
+		<Results />
+	</Container>
 );
 
 export default Sidebar;

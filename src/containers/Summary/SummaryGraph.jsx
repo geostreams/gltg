@@ -2,7 +2,7 @@ import React from 'react';
 import { VegaLite } from 'react-vega';
 
 type Props = {
-    graph_data: {};
+    graph_data: any;
     width: number;
     height: number;
     startAtZero: boolean;

@@ -6,10 +6,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.733861,
-          38.72944
-        ]
+        "coordinates": [-104.733861, 38.72944]
       },
       "properties": {
         "SF_site_no": "07105800",
@@ -28,10 +25,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.508917,
-          43.421498
-        ]
+        "coordinates": [-91.508917, 43.421498]
       },
       "properties": {
         "SF_site_no": "05388250",
@@ -50,10 +44,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -92.46655,
-          42.649586
-        ]
+        "coordinates": [-92.46655, 42.649586]
       },
       "properties": {
         "SF_site_no": "05458500",
@@ -72,10 +63,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.20555,
-          43.040499
-        ]
+        "coordinates": [-91.20555, 43.040499]
       },
       "properties": {
         "SF_site_no": "05389400",
@@ -94,10 +82,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.182917,
-          41.57974
-        ]
+        "coordinates": [-94.182917, 41.57974]
       },
       "properties": {
         "SF_site_no": "05484000",
@@ -116,10 +101,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.80787,
-          40.640671
-        ]
+        "coordinates": [-93.80787, 40.640671]
       },
       "properties": {
         "SF_site_no": "06898000",
@@ -138,10 +120,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.673702,
-          40.925394
-        ]
+        "coordinates": [-91.673702, 40.925394]
       },
       "properties": {
         "SF_site_no": "05473400",
@@ -160,10 +139,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -92.657145,
-          41.355257
-        ]
+        "coordinates": [-92.657145, 41.355257]
       },
       "properties": {
         "SF_site_no": "05471500",
@@ -182,10 +158,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -92.907905,
-          41.21907
-        ]
+        "coordinates": [-92.907905, 41.21907]
       },
       "properties": {
         "SF_site_no": "05489000",
@@ -204,10 +177,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.290171,
-          41.409359
-        ]
+        "coordinates": [-91.290171, 41.409359]
       },
       "properties": {
         "SF_site_no": "05465000",
@@ -226,10 +196,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.312027,
-          42.576748
-        ]
+        "coordinates": [-96.312027, 42.576748]
       },
       "properties": {
         "SF_site_no": "06600500",
@@ -248,10 +215,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.7355,
-          41.688253
-        ]
+        "coordinates": [-93.7355, 41.688253]
       },
       "properties": {
         "SF_site_no": "05481950",
@@ -270,10 +234,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.985712,
-          42.340001
-        ]
+        "coordinates": [-94.985712, 42.340001]
       },
       "properties": {
         "SF_site_no": "05482300",
@@ -292,10 +253,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.587285,
-          41.424689
-        ]
+        "coordinates": [-93.587285, 41.424689]
       },
       "properties": {
         "SF_site_no": "05486490",
@@ -314,10 +272,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.655021,
-          41.457806
-        ]
+        "coordinates": [-93.655021, 41.457806]
       },
       "properties": {
         "SF_site_no": "05486000",
@@ -336,10 +291,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -100.49189,
-          37.01163
-        ]
+        "coordinates": [-100.49189, 37.01163]
       },
       "properties": {
         "SF_site_no": "07156900",
@@ -358,10 +310,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.25293,
-          38.47142
-        ]
+        "coordinates": [-96.25293, 38.47142]
       },
       "properties": {
         "SF_site_no": "07179730",
@@ -380,10 +329,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.409706,
-          37.837594
-        ]
+        "coordinates": [-82.409706, 37.837594]
       },
       "properties": {
         "SF_site_no": "03214500",
@@ -402,10 +348,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.88532,
-          37.268591
-        ]
+        "coordinates": [-85.88532, 37.268591]
       },
       "properties": {
         "SF_site_no": "03308500",
@@ -424,10 +367,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -84.661148,
-          37.641763
-        ]
+        "coordinates": [-84.661148, 37.641763]
       },
       "properties": {
         "SF_site_no": "03285000",
@@ -446,10 +386,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -84.814284,
-          38.268559
-        ]
+        "coordinates": [-84.814284, 38.268559]
       },
       "properties": {
         "SF_site_no": "03289500",
@@ -468,10 +405,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.82401,
-          35.142
-        ]
+        "coordinates": [-82.82401, 35.142]
       },
       "properties": {
         "SF_site_no": "03439000",
@@ -490,10 +424,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.57841,
-          35.60943
-        ]
+        "coordinates": [-82.57841, 35.60943]
       },
       "properties": {
         "SF_site_no": "03451500",
@@ -512,10 +443,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.848,
-          35.522
-        ]
+        "coordinates": [-82.848, 35.522]
       },
       "properties": {
         "SF_site_no": "03456991",
@@ -534,10 +462,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.18401,
-          35.831
-        ]
+        "coordinates": [-82.18401, 35.831]
       },
       "properties": {
         "SF_site_no": "03463300",
@@ -556,10 +481,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -83.9796,
-          35.13728
-        ]
+        "coordinates": [-83.9796, 35.13728]
       },
       "properties": {
         "SF_site_no": "03550000",
@@ -578,10 +500,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -81.4075,
-          36.39473
-        ]
+        "coordinates": [-81.4075, 36.39473]
       },
       "properties": {
         "SF_site_no": "03161000",
@@ -600,10 +519,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -98.30607,
-          46.35537
-        ]
+        "coordinates": [-98.30607, 46.35537]
       },
       "properties": {
         "SF_site_no": "06470500",
@@ -622,10 +538,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -98.670858,
-          46.883389
-        ]
+        "coordinates": [-98.670858, 46.883389]
       },
       "properties": {
         "SF_site_no": "06470000",
@@ -644,10 +557,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.05342,
-          41.98852
-        ]
+        "coordinates": [-104.05342, 41.98852]
       },
       "properties": {
         "SF_site_no": "06674500",
@@ -666,10 +576,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -97.931967,
-          39.992569
-        ]
+        "coordinates": [-97.931967, 39.992569]
       },
       "properties": {
         "SF_site_no": "06853500",
@@ -688,10 +595,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.8647,
-          39.2122
-        ]
+        "coordinates": [-82.8647, 39.2122]
       },
       "properties": {
         "SF_site_no": "03234500",
@@ -710,10 +614,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -83.1097,
-          39.7008
-        ]
+        "coordinates": [-83.1097, 39.7008]
       },
       "properties": {
         "SF_site_no": "03230500",
@@ -732,10 +633,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.4747,
-          39.565
-        ]
+        "coordinates": [-82.4747, 39.565]
       },
       "properties": {
         "SF_site_no": "03157500",
@@ -754,10 +652,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -80.8808,
-          41.2392
-        ]
+        "coordinates": [-80.8808, 41.2392]
       },
       "properties": {
         "SF_site_no": "03094000",
@@ -776,10 +671,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.4997,
-          40.4056
-        ]
+        "coordinates": [-82.4997, 40.4056]
       },
       "properties": {
         "SF_site_no": "03136500",
@@ -798,10 +690,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.9789,
-          39.32
-        ]
+        "coordinates": [-82.9789, 39.32]
       },
       "properties": {
         "SF_site_no": "03234300",
@@ -820,10 +709,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -78.3856,
-          41.965
-        ]
+        "coordinates": [-78.3856, 41.965]
       },
       "properties": {
         "SF_site_no": "03010500",
@@ -842,10 +728,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.3928,
-          40.9944
-        ]
+        "coordinates": [-79.3928, 40.9944]
       },
       "properties": {
         "SF_site_no": "03032500",
@@ -864,10 +747,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.2086,
-          41.3314
-        ]
+        "coordinates": [-79.2086, 41.3314]
       },
       "properties": {
         "SF_site_no": "03029500",
@@ -886,10 +766,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.3172,
-          41.8519
-        ]
+        "coordinates": [-79.3172, 41.8519]
       },
       "properties": {
         "SF_site_no": "03015500",
@@ -908,10 +785,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.1331,
-          41.9381
-        ]
+        "coordinates": [-79.1331, 41.9381]
       },
       "properties": {
         "SF_site_no": "03015000",
@@ -930,10 +804,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.6958,
-          41.4819
-        ]
+        "coordinates": [-79.6958, 41.4819]
       },
       "properties": {
         "SF_site_no": "03020500",
@@ -952,10 +823,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -80.3369,
-          40.6281
-        ]
+        "coordinates": [-80.3369, 40.6281]
       },
       "properties": {
         "SF_site_no": "03108000",
@@ -974,10 +842,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -80.4611,
-          41.4972
-        ]
+        "coordinates": [-80.4611, 41.4972]
       },
       "properties": {
         "SF_site_no": "03101500",
@@ -996,10 +861,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -80.3739,
-          41.4258
-        ]
+        "coordinates": [-80.3739, 41.4258]
       },
       "properties": {
         "SF_site_no": "03102500",
@@ -1018,10 +880,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.6556,
-          32.9903
-        ]
+        "coordinates": [-91.6556, 32.9903]
       },
       "properties": {
         "SF_site_no": "07364200",
@@ -1040,10 +899,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.6972,
-          34.61
-        ]
+        "coordinates": [-93.6972, 34.61]
       },
       "properties": {
         "SF_site_no": "07356000",
@@ -1062,10 +918,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.858699,
-          33.089762
-        ]
+        "coordinates": [-93.858699, 33.089762]
       },
       "properties": {
         "SF_site_no": "07344370",
@@ -1084,10 +937,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.0614,
-          33.9621
-        ]
+        "coordinates": [-94.0614, 33.9621]
       },
       "properties": {
         "SF_site_no": "07341200",
@@ -1106,10 +956,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.15248175,
-          42.31495945
-        ]
+        "coordinates": [-93.15248175, 42.31495945]
       },
       "properties": {
         "SF_site_no": "05451210",
@@ -1128,10 +975,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.92519,
-          37.335
-        ]
+        "coordinates": [-88.92519, 37.335]
       },
       "properties": {
         "SF_site_no": "03612000",
@@ -1150,10 +994,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.02219,
-          38.937
-        ]
+        "coordinates": [-88.02219, 38.937]
       },
       "properties": {
         "SF_site_no": "03345500",
@@ -1172,10 +1013,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.74571,
-          40.13684
-        ]
+        "coordinates": [-87.74571, 40.13684]
       },
       "properties": {
         "SF_site_no": "03336645",
@@ -1194,10 +1032,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.29743,
-          38.63455
-        ]
+        "coordinates": [-88.29743, 38.63455]
       },
       "properties": {
         "SF_site_no": "03379500",
@@ -1216,10 +1051,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.58776,
-          38.36339
-        ]
+        "coordinates": [-88.58776, 38.36339]
       },
       "properties": {
         "SF_site_no": "03380500",
@@ -1238,10 +1070,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.71044,
-          41.32305
-        ]
+        "coordinates": [-88.71044, 41.32305]
       },
       "properties": {
         "SF_site_no": "05543500",
@@ -1260,10 +1089,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.39454,
-          39.23424
-        ]
+        "coordinates": [-90.39454, 39.23424]
       },
       "properties": {
         "SF_site_no": "05587000",
@@ -1282,10 +1108,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.63144,
-          40.0248
-        ]
+        "coordinates": [-90.63144, 40.0248]
       },
       "properties": {
         "SF_site_no": "05585000",
@@ -1304,10 +1127,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.34025,
-          40.49019
-        ]
+        "coordinates": [-90.34025, 40.49019]
       },
       "properties": {
         "SF_site_no": "05570000",
@@ -1326,10 +1146,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.83551,
-          41.01863
-        ]
+        "coordinates": [-89.83551, 41.01863]
       },
       "properties": {
         "SF_site_no": "05568800",
@@ -1348,10 +1165,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.49799,
-          41.36734
-        ]
+        "coordinates": [-89.49799, 41.36734]
       },
       "properties": {
         "SF_site_no": "05556500",
@@ -1370,10 +1184,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.93027,
-          41.20851
-        ]
+        "coordinates": [-88.93027, 41.20851]
       },
       "properties": {
         "SF_site_no": "05555300",
@@ -1392,10 +1203,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.44269,
-          41.67161
-        ]
+        "coordinates": [-88.44269, 41.67161]
       },
       "properties": {
         "SF_site_no": "05551700",
@@ -1414,10 +1222,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.25561,
-          42.02577
-        ]
+        "coordinates": [-88.25561, 42.02577]
       },
       "properties": {
         "SF_site_no": "05550500",
@@ -1436,10 +1241,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.2473,
-          42.44361
-        ]
+        "coordinates": [-88.2473, 42.44361]
       },
       "properties": {
         "SF_site_no": "05548280",
@@ -1458,10 +1260,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.54592,
-          39.83704
-        ]
+        "coordinates": [-89.54592, 39.83704]
       },
       "properties": {
         "SF_site_no": "05576500",
@@ -1480,10 +1279,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.32263,
-          40.3109
-        ]
+        "coordinates": [-88.32263, 40.3109]
       },
       "properties": {
         "SF_site_no": "05570910",
@@ -1502,10 +1298,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.73538,
-          40.1336
-        ]
+        "coordinates": [-89.73538, 40.1336]
       },
       "properties": {
         "SF_site_no": "05582000",
@@ -1524,10 +1317,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.12946,
-          40.2549
-        ]
+        "coordinates": [-89.12946, 40.2549]
       },
       "properties": {
         "SF_site_no": "05580000",
@@ -1546,10 +1336,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.38353,
-          39.95119
-        ]
+        "coordinates": [-89.38353, 39.95119]
       },
       "properties": {
         "SF_site_no": "05579500",
@@ -1568,10 +1355,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.68702,
-          39.821
-        ]
+        "coordinates": [-89.68702, 39.821]
       },
       "properties": {
         "SF_site_no": "05577500",
@@ -1590,10 +1374,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.58158,
-          40.82319
-        ]
+        "coordinates": [-87.58158, 40.82319]
       },
       "properties": {
         "SF_site_no": "05525000",
@@ -1612,10 +1393,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.17936,
-          41.82539
-        ]
+        "coordinates": [-88.17936, 41.82539]
       },
       "properties": {
         "SF_site_no": "05540095",
@@ -1634,10 +1412,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.17906,
-          41.91105
-        ]
+        "coordinates": [-88.17906, 41.91105]
       },
       "properties": {
         "SF_site_no": "05539900",
@@ -1656,10 +1431,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.0838861,
-          41.5076556
-        ]
+        "coordinates": [-88.0838861, 41.5076556]
       },
       "properties": {
         "SF_site_no": "05539000",
@@ -1678,10 +1450,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.60782,
-          41.56821
-        ]
+        "coordinates": [-87.60782, 41.56821]
       },
       "properties": {
         "SF_site_no": "05536275",
@@ -1700,10 +1469,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.79554,
-          42.01237
-        ]
+        "coordinates": [-87.79554, 42.01237]
       },
       "properties": {
         "SF_site_no": "05536000",
@@ -1722,10 +1488,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.9744,
-          38.8243
-        ]
+        "coordinates": [-89.9744, 38.8243]
       },
       "properties": {
         "SF_site_no": "05587900",
@@ -1744,10 +1507,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.33705,
-          40.14275
-        ]
+        "coordinates": [-91.33705, 40.14275]
       },
       "properties": {
         "SF_site_no": "05495500",
@@ -1766,10 +1526,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.41335,
-          39.58317
-        ]
+        "coordinates": [-88.41335, 39.58317]
       },
       "properties": {
         "SF_site_no": "05591200",
@@ -1788,10 +1545,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.36921,
-          38.57444
-        ]
+        "coordinates": [-89.36921, 38.57444]
       },
       "properties": {
         "SF_site_no": "05593000",
@@ -1810,10 +1564,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.08817,
-          38.96037
-        ]
+        "coordinates": [-89.08817, 38.96037]
       },
       "properties": {
         "SF_site_no": "05592500",
@@ -1832,10 +1583,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.78355,
-          39.40583
-        ]
+        "coordinates": [-88.78355, 39.40583]
       },
       "properties": {
         "SF_site_no": "05592000",
@@ -1854,10 +1602,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.97078,
-          38.32385
-        ]
+        "coordinates": [-89.97078, 38.32385]
       },
       "properties": {
         "SF_site_no": "05595200",
@@ -1876,10 +1621,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.87398,
-          38.40633
-        ]
+        "coordinates": [-89.87398, 38.40633]
       },
       "properties": {
         "SF_site_no": "05594800",
@@ -1898,10 +1640,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.23696,
-          38.92242
-        ]
+        "coordinates": [-89.23696, 38.92242]
       },
       "properties": {
         "SF_site_no": "05592800",
@@ -1920,10 +1659,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.18514,
-          41.55576
-        ]
+        "coordinates": [-90.18514, 41.55576]
       },
       "properties": {
         "SF_site_no": "05446500",
@@ -1942,10 +1678,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.15789,
-          41.48879
-        ]
+        "coordinates": [-90.15789, 41.48879]
       },
       "properties": {
         "SF_site_no": "05447500",
@@ -1964,10 +1697,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.99951,
-          42.19447
-        ]
+        "coordinates": [-88.99951, 42.19447]
       },
       "properties": {
         "SF_site_no": "05440000",
@@ -1986,10 +1716,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.52236553,
-          41.57756614
-        ]
+        "coordinates": [-87.52236553, 41.57756614]
       },
       "properties": {
         "SF_site_no": "05536195",
@@ -2008,10 +1735,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.34058233,
-          41.18269657
-        ]
+        "coordinates": [-87.34058233, 41.18269657]
       },
       "properties": {
         "SF_site_no": "05518000",
@@ -2030,10 +1754,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.60153629,
-          41.30228843
-        ]
+        "coordinates": [-86.60153629, 41.30228843]
       },
       "properties": {
         "SF_site_no": "05517000",
@@ -2052,10 +1773,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.18416667,
-          40.47361111
-        ]
+        "coordinates": [-86.18416667, 40.47361111]
       },
       "properties": {
         "SF_site_no": "03333700",
@@ -2074,10 +1792,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.65972222,
-          40.57611111
-        ]
+        "coordinates": [-85.65972222, 40.57611111]
       },
       "properties": {
         "SF_site_no": "03326500",
@@ -2096,10 +1811,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.77070859,
-          40.59382285
-        ]
+        "coordinates": [-86.77070859, 40.59382285]
       },
       "properties": {
         "SF_site_no": "03333050",
@@ -2118,10 +1830,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.26449731,
-          40.78232596
-        ]
+        "coordinates": [-86.26449731, 40.78232596]
       },
       "properties": {
         "SF_site_no": "03328500",
@@ -2140,10 +1849,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.09621705,
-          40.7427616
-        ]
+        "coordinates": [-86.09621705, 40.7427616]
       },
       "properties": {
         "SF_site_no": "03327500",
@@ -2162,10 +1868,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.41311283,
-          40.89841043
-        ]
+        "coordinates": [-85.41311283, 40.89841043]
       },
       "properties": {
         "SF_site_no": "03324000",
@@ -2184,10 +1887,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.69222222,
-          41.31638889
-        ]
+        "coordinates": [-85.69222222, 41.31638889]
       },
       "properties": {
         "SF_site_no": "03330241",
@@ -2206,10 +1906,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.62139957,
-          40.59050282
-        ]
+        "coordinates": [-86.62139957, 40.59050282]
       },
       "properties": {
         "SF_site_no": "03329700",
@@ -2228,10 +1925,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.92268622,
-          40.05005795
-        ]
+        "coordinates": [-86.92268622, 40.05005795]
       },
       "properties": {
         "SF_site_no": "03339500",
@@ -2250,10 +1944,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.37414727,
-          39.79243258
-        ]
+        "coordinates": [-87.37414727, 39.79243258]
       },
       "properties": {
         "SF_site_no": "03340500",
@@ -2272,10 +1963,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.25066696,
-          39.77825066
-        ]
+        "coordinates": [-86.25066696, 39.77825066]
       },
       "properties": {
         "SF_site_no": "03353500",
@@ -2294,10 +1982,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.28567477,
-          39.91026535
-        ]
+        "coordinates": [-86.28567477, 39.91026535]
       },
       "properties": {
         "SF_site_no": "03353200",
@@ -2316,10 +2001,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.86721387,
-          39.95457101
-        ]
+        "coordinates": [-85.86721387, 39.95457101]
       },
       "properties": {
         "SF_site_no": "03351500",
@@ -2338,10 +2020,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.10503468,
-          39.91036657
-        ]
+        "coordinates": [-86.10503468, 39.91036657]
       },
       "properties": {
         "SF_site_no": "03351000",
@@ -2360,10 +2039,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.76358544,
-          39.43352819
-        ]
+        "coordinates": [-86.76358544, 39.43352819]
       },
       "properties": {
         "SF_site_no": "03358000",
@@ -2382,10 +2058,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -84.95936344,
-          39.73319511
-        ]
+        "coordinates": [-84.95936344, 39.73319511]
       },
       "properties": {
         "SF_site_no": "03275600",
@@ -2404,10 +2077,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.01277778,
-          40.63111111
-        ]
+        "coordinates": [-85.01277778, 40.63111111]
       },
       "properties": {
         "SF_site_no": "03322900",
@@ -2426,10 +2096,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.194694,
-          44.046167
-        ]
+        "coordinates": [-94.194694, 44.046167]
       },
       "properties": {
         "SF_site_no": "05319500",
@@ -2448,10 +2115,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -92.93841,
-          45.83966
-        ]
+        "coordinates": [-92.93841, 45.83966]
       },
       "properties": {
         "SF_site_no": "05338500",
@@ -2470,10 +2134,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.050091,
-          44.117479
-        ]
+        "coordinates": [-94.050091, 44.117479]
       },
       "properties": {
         "SF_site_no": "05320500",
@@ -2492,10 +2153,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.108028,
-          44.093056
-        ]
+        "coordinates": [-94.108028, 44.093056]
       },
       "properties": {
         "SF_site_no": "05320000",
@@ -2514,10 +2172,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -95.1715,
-          44.523694
-        ]
+        "coordinates": [-95.1715, 44.523694]
       },
       "properties": {
         "SF_site_no": "05316500",
@@ -2536,10 +2191,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.439226,
-          44.28915
-        ]
+        "coordinates": [-94.439226, 44.28915]
       },
       "properties": {
         "SF_site_no": "05317000",
@@ -2558,10 +2210,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.378,
-          46.3048
-        ]
+        "coordinates": [-94.378, 46.3048]
       },
       "properties": {
         "SF_site_no": "05247500",
@@ -2580,10 +2229,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -103.62509,
-          44.47318
-        ]
+        "coordinates": [-103.62509, 44.47318]
       },
       "properties": {
         "SF_site_no": "06436180",
@@ -2602,10 +2248,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -102.56659,
-          44.36997
-        ]
+        "coordinates": [-102.56659, 44.36997]
       },
       "properties": {
         "SF_site_no": "06438000",
@@ -2624,10 +2267,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -103.471471,
-          44.621616
-        ]
+        "coordinates": [-103.471471, 44.621616]
       },
       "properties": {
         "SF_site_no": "06436198",
@@ -2646,10 +2286,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.745,
-          43.790278
-        ]
+        "coordinates": [-96.745, 43.790278]
       },
       "properties": {
         "SF_site_no": "06481000",
@@ -2668,10 +2305,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -99.779167,
-          43.027778
-        ]
+        "coordinates": [-99.779167, 43.027778]
       },
       "properties": {
         "SF_site_no": "06464500",
@@ -2690,10 +2324,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -99.556227,
-          43.748602
-        ]
+        "coordinates": [-99.556227, 43.748602]
       },
       "properties": {
         "SF_site_no": "06452000",
@@ -2712,10 +2343,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -101.524999,
-          43.752778
-        ]
+        "coordinates": [-101.524999, 43.752778]
       },
       "properties": {
         "SF_site_no": "06447000",
@@ -2734,10 +2362,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -102.401584,
-          44.080825
-        ]
+        "coordinates": [-102.401584, 44.080825]
       },
       "properties": {
         "SF_site_no": "06423500",
@@ -2756,10 +2381,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -103.839272,
-          44.667353
-        ]
+        "coordinates": [-103.839272, 44.667353]
       },
       "properties": {
         "SF_site_no": "06433000",
@@ -2778,10 +2400,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -103.33627,
-          43.87241
-        ]
+        "coordinates": [-103.33627, 43.87241]
       },
       "properties": {
         "SF_site_no": "06404000",
@@ -2800,10 +2419,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -102.85436,
-          43.94202
-        ]
+        "coordinates": [-102.85436, 43.94202]
       },
       "properties": {
         "SF_site_no": "06421500",
@@ -2822,10 +2438,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.133101,
-          41.9381145
-        ]
+        "coordinates": [-79.133101, 41.9381145]
       },
       "properties": {
         "SF_site_no": "03015000",
@@ -2844,10 +2457,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.00836738,
-          40.93923105
-        ]
+        "coordinates": [-79.00836738, 40.93923105]
       },
       "properties": {
         "SF_site_no": "03034000",
@@ -2866,10 +2476,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.531434,
-          40.82034197
-        ]
+        "coordinates": [-79.531434, 40.82034197]
       },
       "properties": {
         "SF_site_no": "03036500",
@@ -2888,10 +2495,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.9706152,
-          39.7592449
-        ]
+        "coordinates": [-79.9706152, 39.7592449]
       },
       "properties": {
         "SF_site_no": "03072000",
@@ -2910,10 +2514,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -79.8066944,
-          40.2402222
-        ]
+        "coordinates": [-79.8066944, 40.2402222]
       },
       "properties": {
         "SF_site_no": "03083500",
@@ -2932,10 +2533,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -80.31505239,
-          40.763351
-        ]
+        "coordinates": [-80.31505239, 40.763351]
       },
       "properties": {
         "SF_site_no": "03107500",
@@ -2954,10 +2552,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -82.0876439,
-          39.32896188
-        ]
+        "coordinates": [-82.0876439, 39.32896188]
       },
       "properties": {
         "SF_site_no": "03159500",
@@ -2976,10 +2571,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -83.1573333,
-          39.8478333
-        ]
+        "coordinates": [-83.1573333, 39.8478333]
       },
       "properties": {
         "SF_site_no": "03230450",
@@ -2998,10 +2590,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.70554179,
-          37.89950088
-        ]
+        "coordinates": [-86.70554179, 37.89950088]
       },
       "properties": {
         "SF_site_no": "03303280",
@@ -3020,10 +2609,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.5976111,
-          40.1010833
-        ]
+        "coordinates": [-87.5976111, 40.1010833]
       },
       "properties": {
         "SF_site_no": "03339000",
@@ -3042,10 +2628,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.1561111,
-          38.0922222
-        ]
+        "coordinates": [-88.1561111, 38.0922222]
       },
       "properties": {
         "SF_site_no": "03381500",
@@ -3064,10 +2647,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -83.0727778,
-          35.6672222
-        ]
+        "coordinates": [-83.0727778, 35.6672222]
       },
       "properties": {
         "SF_site_no": "03460000",
@@ -3086,10 +2666,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.4366212,
-          45.1632981
-        ]
+        "coordinates": [-93.4366212, 45.1632981]
       },
       "properties": {
         "SF_site_no": "05287890",
@@ -3108,10 +2685,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.261799,
-          42.7399884
-        ]
+        "coordinates": [-91.261799, 42.7399884]
       },
       "properties": {
         "SF_site_no": "05412500",
@@ -3130,10 +2704,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.252073,
-          41.78058635
-        ]
+        "coordinates": [-90.252073, 41.78058635]
       },
       "properties": {
         "SF_site_no": "05420500",
@@ -3152,10 +2723,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.6157222,
-          41.60640556
-        ]
+        "coordinates": [-91.6157222, 41.60640556]
       },
       "properties": {
         "SF_site_no": "05455100",
@@ -3174,10 +2742,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.1820917,
-          41.1780861
-        ]
+        "coordinates": [-91.1820917, 41.1780861]
       },
       "properties": {
         "SF_site_no": "05465500",
@@ -3196,10 +2761,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.2770889,
-          40.75365
-        ]
+        "coordinates": [-91.2770889, 40.75365]
       },
       "properties": {
         "SF_site_no": "05474000",
@@ -3218,10 +2780,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.9596139,
-          40.72780556
-        ]
+        "coordinates": [-91.9596139, 40.72780556]
       },
       "properties": {
         "SF_site_no": "05490500",
@@ -3240,10 +2799,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.5802778,
-          39.8974722
-        ]
+        "coordinates": [-91.5802778, 39.8974722]
       },
       "properties": {
         "SF_site_no": "05500000",
@@ -3262,10 +2818,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -86.968356,
-          41.2200392
-        ]
+        "coordinates": [-86.968356, 41.2200392]
       },
       "properties": {
         "SF_site_no": "05517500",
@@ -3284,10 +2837,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.7235278,
-          40.62991667
-        ]
+        "coordinates": [-87.7235278, 40.62991667]
       },
       "properties": {
         "SF_site_no": "05525500",
@@ -3306,10 +2856,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.8240556,
-          41.0092222
-        ]
+        "coordinates": [-87.8240556, 41.0092222]
       },
       "properties": {
         "SF_site_no": "05526000",
@@ -3328,10 +2875,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.9259167,
-          42.4893861
-        ]
+        "coordinates": [-87.9259167, 42.4893861]
       },
       "properties": {
         "SF_site_no": "05527800",
@@ -3350,10 +2894,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.9002778,
-          41.8258333
-        ]
+        "coordinates": [-87.9002778, 41.8258333]
       },
       "properties": {
         "SF_site_no": "05531500",
@@ -3372,10 +2913,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -87.8220361,
-          41.82149167
-        ]
+        "coordinates": [-87.8220361, 41.82149167]
       },
       "properties": {
         "SF_site_no": "05532500",
@@ -3394,10 +2932,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.5891667,
-          40.03116667
-        ]
+        "coordinates": [-88.5891667, 40.03116667]
       },
       "properties": {
         "SF_site_no": "05572000",
@@ -3416,10 +2951,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.9839722,
-          40.1233611
-        ]
+        "coordinates": [-89.9839722, 40.1233611]
       },
       "properties": {
         "SF_site_no": "05583000",
@@ -3438,10 +2970,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.8961944,
-          40.33152778
-        ]
+        "coordinates": [-90.8961944, 40.33152778]
       },
       "properties": {
         "SF_site_no": "05584500",
@@ -3460,10 +2989,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.6430833,
-          39.70319444
-        ]
+        "coordinates": [-90.6430833, 39.70319444]
       },
       "properties": {
         "SF_site_no": "05586100",
@@ -3482,10 +3008,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -108.1814972,
-          44.75856618
-        ]
+        "coordinates": [-108.1814972, 44.75856618]
       },
       "properties": {
         "SF_site_no": "06279500",
@@ -3504,10 +3027,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -105.8783778,
-          45.0571972
-        ]
+        "coordinates": [-105.8783778, 45.0571972]
       },
       "properties": {
         "SF_site_no": "06324500",
@@ -3526,10 +3046,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -103.1368464,
-          44.5130418
-        ]
+        "coordinates": [-103.1368464, 44.5130418]
       },
       "properties": {
         "SF_site_no": "06437000",
@@ -3548,10 +3065,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -105.0608167,
-          40.37873889
-        ]
+        "coordinates": [-105.0608167, 40.37873889]
       },
       "properties": {
         "SF_site_no": "06741510",
@@ -3570,10 +3084,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -105.0692222,
-          40.5880833
-        ]
+        "coordinates": [-105.0692222, 40.5880833]
       },
       "properties": {
         "SF_site_no": "06752260",
@@ -3592,10 +3103,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -105.011365,
-          40.5519269
-        ]
+        "coordinates": [-105.011365, 40.5519269]
       },
       "properties": {
         "SF_site_no": "06752280",
@@ -3614,10 +3122,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -100.5252778,
-          41.7786111
-        ]
+        "coordinates": [-100.5252778, 41.7786111]
       },
       "properties": {
         "SF_site_no": "06775900",
@@ -3636,10 +3141,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.5408333,
-          41.56116667
-        ]
+        "coordinates": [-96.5408333, 41.56116667]
       },
       "properties": {
         "SF_site_no": "06800000",
@@ -3658,10 +3160,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.2838889,
-          41.2933333
-        ]
+        "coordinates": [-96.2838889, 41.2933333]
       },
       "properties": {
         "SF_site_no": "06800500",
@@ -3680,10 +3179,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.1575,
-          41.01497778
-        ]
+        "coordinates": [-96.1575, 41.01497778]
       },
       "properties": {
         "SF_site_no": "06805500",
@@ -3702,10 +3198,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -95.6445,
-          40.60119444
-        ]
+        "coordinates": [-95.6445, 40.60119444]
       },
       "properties": {
         "SF_site_no": "06810000",
@@ -3724,10 +3217,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -95.0695833,
-          40.20252778
-        ]
+        "coordinates": [-95.0695833, 40.20252778]
       },
       "properties": {
         "SF_site_no": "06817700",
@@ -3746,10 +3236,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.7268333,
-          39.4009722
-        ]
+        "coordinates": [-94.7268333, 39.4009722]
       },
       "properties": {
         "SF_site_no": "06821190",
@@ -3768,10 +3255,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -96.3055532,
-          39.19833014
-        ]
+        "coordinates": [-96.3055532, 39.19833014]
       },
       "properties": {
         "SF_site_no": "06887500",
@@ -3790,10 +3274,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.9646893,
-          38.9833375
-        ]
+        "coordinates": [-94.9646893, 38.9833375]
       },
       "properties": {
         "SF_site_no": "06892350",
@@ -3812,10 +3293,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.2736944,
-          39.64002778
-        ]
+        "coordinates": [-93.2736944, 39.64002778]
       },
       "properties": {
         "SF_site_no": "06902000",
@@ -3834,10 +3312,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -92.79075,
-          39.53994444
-        ]
+        "coordinates": [-92.79075, 39.53994444]
       },
       "properties": {
         "SF_site_no": "06905500",
@@ -3856,10 +3331,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.4385,
-          38.70980556
-        ]
+        "coordinates": [-91.4385, 38.70980556]
       },
       "properties": {
         "SF_site_no": "06934500",
@@ -3878,10 +3350,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.1084722,
-          38.15852778
-        ]
+        "coordinates": [-91.1084722, 38.15852778]
       },
       "properties": {
         "SF_site_no": "07014500",
@@ -3900,10 +3369,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.4631667,
-          37.22025
-        ]
+        "coordinates": [-89.4631667, 37.22025]
       },
       "properties": {
         "SF_site_no": "07022000",
@@ -3922,10 +3388,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.4615833,
-          36.80538889
-        ]
+        "coordinates": [-93.4615833, 36.80538889]
       },
       "properties": {
         "SF_site_no": "07052500",
@@ -3944,10 +3407,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.8463889,
-          36.6215
-        ]
+        "coordinates": [-90.8463889, 36.6215]
       },
       "properties": {
         "SF_site_no": "07068000",
@@ -3966,10 +3426,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.2008333,
-          36.64869444
-        ]
+        "coordinates": [-91.2008333, 36.64869444]
       },
       "properties": {
         "SF_site_no": "07071500",
@@ -3988,10 +3445,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.8780314,
-          38.85471357
-        ]
+        "coordinates": [-104.8780314, 38.85471357]
       },
       "properties": {
         "SF_site_no": "07103700",
@@ -4010,10 +3464,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.8171992,
-          38.9338817
-        ]
+        "coordinates": [-104.8171992, 38.9338817]
       },
       "properties": {
         "SF_site_no": "07103970",
@@ -4032,10 +3483,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.8227519,
-          38.81638158
-        ]
+        "coordinates": [-104.8227519, 38.81638158]
       },
       "properties": {
         "SF_site_no": "07105500",
@@ -4054,10 +3502,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.7958069,
-          38.8030491
-        ]
+        "coordinates": [-104.7958069, 38.8030491]
       },
       "properties": {
         "SF_site_no": "07105530",
@@ -4076,10 +3521,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -104.6010849,
-          38.2877801
-        ]
+        "coordinates": [-104.6010849, 38.2877801]
       },
       "properties": {
         "SF_site_no": "07106500",
@@ -4098,10 +3540,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -97.5405417,
-          38.02853056
-        ]
+        "coordinates": [-97.5405417, 38.02853056]
       },
       "properties": {
         "SF_site_no": "07143672",
@@ -4120,10 +3559,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -97.4244864,
-          37.88306739
-        ]
+        "coordinates": [-97.4244864, 37.88306739]
       },
       "properties": {
         "SF_site_no": "07144100",
@@ -4142,10 +3578,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.9574574,
-          36.92868144
-        ]
+        "coordinates": [-94.9574574, 36.92868144]
       },
       "properties": {
         "SF_site_no": "07185000",
@@ -4164,10 +3597,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.7471711,
-          36.93451148
-        ]
+        "coordinates": [-94.7471711, 36.93451148]
       },
       "properties": {
         "SF_site_no": "07188000",
@@ -4186,10 +3616,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.5868886,
-          36.63146127
-        ]
+        "coordinates": [-94.5868886, 36.63146127]
       },
       "properties": {
         "SF_site_no": "07189000",
@@ -4208,10 +3635,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.6413889,
-          36.3347222
-        ]
+        "coordinates": [-94.6413889, 36.3347222]
       },
       "properties": {
         "SF_site_no": "07191220",
@@ -4230,10 +3654,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.2883333,
-          36.22194444
-        ]
+        "coordinates": [-94.2883333, 36.22194444]
       },
       "properties": {
         "SF_site_no": "07195000",
@@ -4252,10 +3673,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.5333333,
-          36.1086111
-        ]
+        "coordinates": [-94.5333333, 36.1086111]
       },
       "properties": {
         "SF_site_no": "07195430",
@@ -4274,10 +3692,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.5721645,
-          36.13008185
-        ]
+        "coordinates": [-94.5721645, 36.13008185]
       },
       "properties": {
         "SF_site_no": "07195500",
@@ -4296,10 +3711,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.6052778,
-          36.2161111
-        ]
+        "coordinates": [-94.6052778, 36.2161111]
       },
       "properties": {
         "SF_site_no": "07195855",
@@ -4318,10 +3730,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.7068913,
-          36.18647245
-        ]
+        "coordinates": [-94.7068913, 36.18647245]
       },
       "properties": {
         "SF_site_no": "07196000",
@@ -4340,10 +3749,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.9217028,
-          35.9255472
-        ]
+        "coordinates": [-94.9217028, 35.9255472]
       },
       "properties": {
         "SF_site_no": "07196500",
@@ -4362,10 +3768,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.4863889,
-          35.88
-        ]
+        "coordinates": [-94.4863889, 35.88]
       },
       "properties": {
         "SF_site_no": "07196900",
@@ -4384,10 +3787,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.8372472,
-          35.9216222
-        ]
+        "coordinates": [-94.8372472, 35.9216222]
       },
       "properties": {
         "SF_site_no": "07197000",
@@ -4406,10 +3806,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -98.0653316,
-          35.6169933
-        ]
+        "coordinates": [-98.0653316, 35.6169933]
       },
       "properties": {
         "SF_site_no": "07239450",
@@ -4428,10 +3825,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -97.367258,
-          35.5656147
-        ]
+        "coordinates": [-97.367258, 35.5656147]
       },
       "properties": {
         "SF_site_no": "07241520",
@@ -4450,10 +3844,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -97.1939194,
-          35.5003412
-        ]
+        "coordinates": [-97.1939194, 35.5003412]
       },
       "properties": {
         "SF_site_no": "07241550",
@@ -4472,10 +3863,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.4841112,
-          34.87982388
-        ]
+        "coordinates": [-94.4841112, 34.87982388]
       },
       "properties": {
         "SF_site_no": "07247015",
@@ -4494,10 +3882,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -94.4069444,
-          35.1625
-        ]
+        "coordinates": [-94.4069444, 35.1625]
       },
       "properties": {
         "SF_site_no": "07249400",
@@ -4516,10 +3901,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -92.8931944,
-          30.69875
-        ]
+        "coordinates": [-92.8931944, 30.69875]
       },
       "properties": {
         "SF_site_no": "08014500",
@@ -4538,10 +3920,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -85.8794246,
-          39.72782144
-        ]
+        "coordinates": [-85.8794246, 39.72782144]
       },
       "properties": {
         "SF_site_no": "03361650",
@@ -4560,10 +3939,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.8594,
-          43.182747
-        ]
+        "coordinates": [-90.8594, 43.182747]
       },
       "properties": {
         "SF_site_no": "05410490",
@@ -4582,10 +3958,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -90.443375,
-          43.198235
-        ]
+        "coordinates": [-90.443375, 43.198235]
       },
       "properties": {
         "SF_site_no": "05407000",
@@ -4604,10 +3977,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.398476,
-          42.611847
-        ]
+        "coordinates": [-89.398476, 42.611847]
       },
       "properties": {
         "SF_site_no": "05436500",
@@ -4626,10 +3996,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -88.726204,
-          43.188053
-        ]
+        "coordinates": [-88.726204, 43.188053]
       },
       "properties": {
         "SF_site_no": "05425500",
@@ -4648,10 +4015,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.686103,
-          45.178226
-        ]
+        "coordinates": [-89.686103, 45.178226]
       },
       "properties": {
         "SF_site_no": "05395000",
@@ -4670,10 +4034,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.969591,
-          44.629261
-        ]
+        "coordinates": [-91.969591, 44.629261]
       },
       "properties": {
         "SF_site_no": "05369500",
@@ -4692,10 +4053,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.07058,
-          42.609146
-        ]
+        "coordinates": [-89.07058, 42.609146]
       },
       "properties": {
         "SF_site_no": "05430500",
@@ -4714,10 +4072,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -89.6361,
-          43.481606
-        ]
+        "coordinates": [-89.6361, 43.481606]
       },
       "properties": {
         "SF_site_no": "05405000",
@@ -4736,10 +4091,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.28708,
-          44.06084
-        ]
+        "coordinates": [-91.28708, 44.06084]
       },
       "properties": {
         "SF_site_no": "05382000",
@@ -4758,10 +4110,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -91.55315,
-          44.131866
-        ]
+        "coordinates": [-91.55315, 44.131866]
       },
       "properties": {
         "SF_site_no": "05379500",

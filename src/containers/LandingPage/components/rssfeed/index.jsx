@@ -10,7 +10,7 @@ import {
   Link,
 } from "@material-ui/core";
 import classes from "./index.css";
-import {RSS} from '../config';
+import { RSS } from "../config";
 function RssFeed() {
   const [feedItems, setFeedItems] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
@@ -23,7 +23,6 @@ function RssFeed() {
     fetch(RSS)
       .then((response) => response.text())
       .then((xml) => {
-       
         const parser = new DOMParser();
         const doc = parser.parseFromString(xml, "application/xml");
 
@@ -36,7 +35,9 @@ function RssFeed() {
           author: item.querySelector("creator").textContent,
           description: item.querySelector("description").textContent,
         }));
-        let sortedArr = feedItems_all.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        let sortedArr = feedItems_all.sort(
+          (a, b) => new Date(b.pubDate) - new Date(a.pubDate),
+        );
         let feedItems = sortedArr.slice(0, 3);
 
         feedItems.forEach((item) => {
@@ -98,9 +99,9 @@ function RssFeed() {
           const formattedDate = `${monthName} ${day},${year}`;
           item["pubDate"] = formattedDate;
           var desc = item["description"];
-          if(desc.length + (item["title"]).length>50){
-              desc = desc.substring(0,153);
-              item["description"] = desc +"......";
+          if (desc.length + item["title"].length > 50) {
+            desc = desc.substring(0, 153);
+            item["description"] = desc + "......";
           }
         });
 
@@ -126,29 +127,31 @@ function RssFeed() {
                   alt={card.title}
                   width={card["image"][0]["width"]}
                 />
-                <CardContent style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <CardContent
+                  style={{ overflow: "hidden", textOverflow: "ellipsis" }}
+                >
                   <Typography gutterBottom variant="h5" component="div">
                     {card.title}
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
                     {card.pubDate}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                  >
+                  <Typography variant="body2" color="text.secondary">
                     {card.description}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small"> <Link
-                  href={card.link}
-                  color="inherit"
-                  underline="none"
-                  style={{ marginBottom: "1em" }}
-                >
-                  Learn More
-                </Link></Button>
+                  <Button size="small">
+                    {" "}
+                    <Link
+                      href={card.link}
+                      color="inherit"
+                      underline="none"
+                      style={{ marginBottom: "1em" }}
+                    >
+                      Learn More
+                    </Link>
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>
@@ -159,7 +162,7 @@ function RssFeed() {
                 variant="outlined"
                 align="centre"
                 color="primary"
-                style={{ marginBottom: "2em",marginTop: "1em" }}
+                style={{ marginBottom: "2em", marginTop: "1em" }}
               >
                 <Link
                   href="https://greatlakestogulf.web.illinois.edu/"

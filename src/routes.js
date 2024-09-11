@@ -11,6 +11,7 @@ import __old_Search from "@geostreams/gltg__old/app/pages/Search";
 import __old_Analysis from "@geostreams/gltg__old/app/pages/Analysis";
 
 import LandingPage from "./containers/LandingPage";
+import StatePortal from "./containers/StatePortal";
 import DataStories from "./containers/DataStories";
 import Help from "./containers/Help";
 import GLTGLayout from "./containers/Layout";
@@ -30,6 +31,13 @@ const routes = Object.assign(coreRoutes, {
 	"/summary": {
 		exact: true,
 		component: hocs.withLayout(GLTGLayout, NewSummary, {
+			hasFooter: true,
+			stickyFooter: true,
+		}),
+	},
+	"/stateportal": {
+		exact: true,
+		component: hocs.withLayout(GLTGLayout, StatePortal, {
 			hasFooter: true,
 			stickyFooter: true,
 		}),

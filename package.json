@@ -34,11 +34,13 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
+    "react-simple-maps": "^3.0.0",
     "react-vega": "^7.4.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "rsuite": "^5.15.0",
     "sync-fetch": "^0.5.2",
+    "us-atlas": "^3.0.1",
     "vega": "^5.19.1",
     "vega-lite": "^4.17.0"
   },

@@ -51,95 +51,121 @@ const stateNameMarkers = [
 	{ name: "Arkansas", coordinates: [-92.2896, 34.7465] },
 	{ name: "Mississippi", coordinates: [-89.6985, 32.3547] },
 	{ name: "Louisiana", coordinates: [-91.8749, 30.5843] },
-	{ markerOffset: -20, name: "Tennessee", coordinates: [-86.6602, 35.0035] },
+	{ name: "Tennessee", coordinates: [-86.6602, 35.6035] },
 ];
 
 const MapChart = ({ onStateSelect }) => {
 	const [selectedState, setSelectedState] = useState(null);
 
 	// Function to handle clicking on a state
-	const handleStateClick = (geo) => {
+	const handleStateClick = (geo, event) => {
+		event.stopPropagation(); // Prevent click outside logic from triggering
 		const stateName = geo.properties.name;
 		if (highlightedStates.includes(stateName)) {
 			setSelectedState(stateName);
-			onStateSelect(stateName); // Notify the parent about state selection
+			onStateSelect(stateName);
 		}
 	};
 
+	// Function to handle click outside states, reset selectedState
+	const handleMapClick = () => {
+		setSelectedState(null);
+	};
+
 	return (
-		<ComposableMap
-			projection="geoAlbers"
-			projectionConfig={{
-				scale: 1600,
-				center: [5, 38.7],
-				rotate: [96, 0],
-			}}
-			style={{
-				width: "100%",
-				height: "100%",
-			}}
-		>
-			<Geographies geography={usStates}>
-				{({ geographies }) =>
-					geographies.map((geo) => {
-						const stateName = geo.properties.name;
-						const isHighlighted =
-							highlightedStates.includes(stateName);
+		<div onClick={handleMapClick}>
+			<ComposableMap
+				projection="geoAlbers"
+				projectionConfig={{
+					scale: 1600,
+					center: [5, 38.7],
+					rotate: [96, 0],
+				}}
+				style={{
+					width: "100%",
+					height: "100%",
+				}}
+			>
+				<Geographies geography={usStates}>
+					{({ geographies }) =>
+						geographies.map((geo) => {
+							const stateName = geo.properties.name;
+							const isHighlighted =
+								highlightedStates.includes(stateName);
 
-						// Determine the color: selected state keeps its color, others are grey
-						const fillColor =
-							selectedState === stateName
-								? stateColors[stateName] || "#D6D6DA" // Custom color if selected
-								: selectedState
-									? "#EAEAEC" // All other states grey when a state is selected
-									: stateColors[stateName] || "#D6D6DA"; // Default custom color
+							// Set dashed borders only for highlighted states
+							const borderStyle =
+								isHighlighted && selectedState !== stateName
+									? "dashed"
+									: "solid";
 
-						return (
-							<g key={geo.rsmKey}>
-								<Geography
-									geography={geo}
-									onClick={() => handleStateClick(geo)}
-									style={{
-										default: {
-											fill: isHighlighted
-												? fillColor
-												: "#EAEAEC",
-											outline: "none",
-										},
-										hover: {
-											fill: isHighlighted
-												? "#F53"
-												: "#AAA", // Hover effect for highlighted states
-											outline: "none",
-										},
-										pressed: {
-											fill: isHighlighted
-												? "#E42"
-												: "#AAA", // Pressed state color
-											outline: "none",
-										},
-									}}
-								/>
-							</g>
-						);
-					})
-				}
-			</Geographies>
-			{stateNameMarkers.map(({ name, coordinates, markerOffset }) => (
-				<Marker key={name} coordinates={coordinates}>
-					<text
-						textAnchor="middle"
-						style={{
-							fontSize: "0.7em",
-							fill: "black",
-						}}
-						dy={markerOffset}
-					>
-						{name}
-					</text>
-				</Marker>
-			))}
-		</ComposableMap>
+							// Use custom colors for the highlighted states
+							const fillColor =
+								stateColors[stateName] || "#D6D6DA";
+
+							return (
+								<g key={geo.rsmKey}>
+									<Geography
+										geography={geo}
+										onClick={(event) =>
+											handleStateClick(geo, event)
+										}
+										style={{
+											default: {
+												fill: isHighlighted
+													? fillColor
+													: "#EAEAEC",
+												outline: "none",
+												stroke: isHighlighted
+													? "#000"
+													: "none", // No border for non-highlighted states
+												strokeWidth: 1.5,
+												strokeDasharray:
+													borderStyle === "dashed"
+														? "5,5"
+														: "none",
+											},
+											hover: {
+												fill: fillColor,
+												outline: "none",
+												stroke: isHighlighted
+													? "#000"
+													: "none",
+												strokeWidth: 1,
+												strokeDasharray: "none",
+											},
+											pressed: {
+												fill: fillColor,
+												outline: "none",
+												stroke: isHighlighted
+													? "#000"
+													: "none",
+												strokeWidth: 1,
+												strokeDasharray: "none",
+											},
+										}}
+									/>
+								</g>
+							);
+						})
+					}
+				</Geographies>
+				{stateNameMarkers.map(({ name, coordinates, markerOffset }) => (
+					<Marker key={name} coordinates={coordinates}>
+						<text
+							textAnchor="middle"
+							style={{
+								fontSize: "0.7em",
+								fill: "black",
+							}}
+							dy={markerOffset}
+						>
+							{name}
+						</text>
+					</Marker>
+				))}
+			</ComposableMap>
+		</div>
 	);
 };
 

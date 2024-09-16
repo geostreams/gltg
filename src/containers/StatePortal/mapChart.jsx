@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import {
+	ComposableMap,
+	Geographies,
+	Geography,
+	Marker,
+} from "react-simple-maps";
 import usStates from "us-atlas/states-10m.json"; // TopoJSON data for the U.S.
 
 const highlightedStates = [
@@ -10,19 +15,54 @@ const highlightedStates = [
 	"Missouri",
 	"Indiana",
 	"Ohio",
-	"Missouri",
 	"Kentucky",
 	"Arkansas",
 	"Mississippi",
+	"Tennessee",
 	"Louisiana",
 ];
 
+// Define custom colors for each state
+const stateColors = {
+	Minnesota: "#9BE4FF",
+	Wisconsin: "#E1D7FF",
+	Iowa: "#E0FAFC",
+	Illinois: "#FFC8A0",
+	Missouri: "#89DC8D",
+	Indiana: "#FBC9D4",
+	Ohio: "#90A9FF",
+	Kentucky: "#B2C379",
+	Arkansas: "#C69FE8",
+	Mississippi: "#83C6CE",
+	Tennessee: "#FFEFD7",
+	Louisiana: "#E2FFD2",
+};
+
+// Manually specifying positions for state labels (x, y coordinates)
+const stateNameMarkers = [
+	{ name: "Minnesota", coordinates: [-94.6859, 46.5296] },
+	{ name: "Wisconsin", coordinates: [-89.9941, 44.7872] },
+	{ name: "Iowa", coordinates: [-93.2105, 41.878] },
+	{ name: "Illinois", coordinates: [-89.3985, 40.6331] },
+	{ name: "Missouri", coordinates: [-92.2299, 38.3739] },
+	{ name: "Indiana", coordinates: [-86.1349, 40.2672] },
+	{ name: "Ohio", coordinates: [-82.9071, 40.4173] },
+	{ name: "Kentucky", coordinates: [-84.87, 37.4393] },
+	{ name: "Arkansas", coordinates: [-92.2896, 34.7465] },
+	{ name: "Mississippi", coordinates: [-89.6985, 32.3547] },
+	{ name: "Louisiana", coordinates: [-91.8749, 30.5843] },
+	{ markerOffset: -20, name: "Tennessee", coordinates: [-86.6602, 35.0035] },
+];
+
 const MapChart = ({ onStateSelect }) => {
+	const [selectedState, setSelectedState] = useState(null);
+
 	// Function to handle clicking on a state
 	const handleStateClick = (geo) => {
 		const stateName = geo.properties.name;
 		if (highlightedStates.includes(stateName)) {
-			onStateSelect(stateName);
+			setSelectedState(stateName);
+			onStateSelect(stateName); // Notify the parent about state selection
 		}
 	};
 
@@ -35,7 +75,6 @@ const MapChart = ({ onStateSelect }) => {
 				rotate: [96, 0],
 			}}
 			style={{
-				transform: "rotate(1deg)",
 				width: "100%",
 				height: "100%",
 			}}
@@ -43,35 +82,63 @@ const MapChart = ({ onStateSelect }) => {
 			<Geographies geography={usStates}>
 				{({ geographies }) =>
 					geographies.map((geo) => {
-						const isHighlighted = highlightedStates.includes(
-							geo.properties.name,
-						);
+						const stateName = geo.properties.name;
+						const isHighlighted =
+							highlightedStates.includes(stateName);
+
+						// Determine the color: selected state keeps its color, others are grey
+						const fillColor =
+							selectedState === stateName
+								? stateColors[stateName] || "#D6D6DA" // Custom color if selected
+								: selectedState
+									? "#EAEAEC" // All other states grey when a state is selected
+									: stateColors[stateName] || "#D6D6DA"; // Default custom color
+
 						return (
-							<Geography
-								key={geo.rsmKey}
-								geography={geo}
-								onClick={() => handleStateClick(geo)}
-								style={{
-									default: {
-										fill: isHighlighted
-											? "#D6D6DA"
-											: "#EAEAEC",
-										outline: "none",
-									},
-									hover: {
-										fill: isHighlighted ? "#F53" : "#AAA",
-										outline: "none",
-									},
-									pressed: {
-										fill: isHighlighted ? "#E42" : "#AAA",
-										outline: "none",
-									},
-								}}
-							/>
+							<g key={geo.rsmKey}>
+								<Geography
+									geography={geo}
+									onClick={() => handleStateClick(geo)}
+									style={{
+										default: {
+											fill: isHighlighted
+												? fillColor
+												: "#EAEAEC",
+											outline: "none",
+										},
+										hover: {
+											fill: isHighlighted
+												? "#F53"
+												: "#AAA", // Hover effect for highlighted states
+											outline: "none",
+										},
+										pressed: {
+											fill: isHighlighted
+												? "#E42"
+												: "#AAA", // Pressed state color
+											outline: "none",
+										},
+									}}
+								/>
+							</g>
 						);
 					})
 				}
 			</Geographies>
+			{stateNameMarkers.map(({ name, coordinates, markerOffset }) => (
+				<Marker key={name} coordinates={coordinates}>
+					<text
+						textAnchor="middle"
+						style={{
+							fontSize: "0.7em",
+							fill: "black",
+						}}
+						dy={markerOffset}
+					>
+						{name}
+					</text>
+				</Marker>
+			))}
 		</ComposableMap>
 	);
 };

@@ -17,6 +17,20 @@ const highlightedStates = [
 	"Louisiana",
 ];
 
+const stateNameMarkers = [
+	{ markerOffset: -20, name: "Minnesota", coordinates: [-94.6859, 46.7296] },
+	{ markerOffset: -20, name: "Wisconsin", coordinates: [-89.9941, 44.7872] },
+	{ markerOffset: -20, name: "Iowa", coordinates: [-93.2105, 41.8780] },
+	{ markerOffset: -20, name: "Illinois", coordinates: [-89.3985, 40.6331] },
+	{ markerOffset: -20, name: "Missouri", coordinates: [-92.3299, 38.5739] },
+	{ markerOffset: -20, name: "Indiana", coordinates: [-86.1349, 40.2672] },
+	{ markerOffset: -20, name: "Ohio", coordinates: [-82.9071, 40.4173] },
+	{ markerOffset: -20, name: "Kentucky", coordinates: [-84.2700, 37.8393] },
+	{ markerOffset: -20, name: "Arkansas", coordinates: [-92.2896, 34.7465] },
+	{ markerOffset: -20, name: "Mississippi", coordinates: [-89.3985, 32.3547] },
+	{ markerOffset: -20, name: "Louisiana", coordinates: [-91.8749, 30.9843] },
+]
+
 const MapChart = ({ onStateSelect }) => {
 	// Function to handle clicking on a state
 	const handleStateClick = (geo) => {
@@ -72,6 +86,25 @@ const MapChart = ({ onStateSelect }) => {
 					})
 				}
 			</Geographies>
+			{/*Display state names*/}
+			{stateNameMarkers.map(({ name, coordinates, markerOffset }) => (
+				<g key={name}>
+					<circle cx={coordinates[0]} cy={coordinates[1]} r={8} fill="#F00" />
+					<text
+						x={coordinates[0]}
+						y={coordinates[1]}
+						fontSize="12"
+						textAnchor="middle"
+						fill="#FFF"
+						style={{ pointerEvents: "none" }}
+					>
+						<tspan x={coordinates[0]} dy={markerOffset}>
+							{name}
+						</tspan>
+					</text>
+				</g>
+			))}
+
 		</ComposableMap>
 	);
 };

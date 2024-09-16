@@ -51,7 +51,7 @@ const stateNameMarkers = [
 	{ name: "Arkansas", coordinates: [-92.2896, 34.7465] },
 	{ name: "Mississippi", coordinates: [-89.6985, 32.3547] },
 	{ name: "Louisiana", coordinates: [-91.8749, 30.5843] },
-	{ name: "Tennessee", coordinates: [-86.6602, 35.6035] },
+	{ name: "Tennessee", coordinates: [-86.6602, 35.0035] },
 ];
 
 const MapChart = ({ onStateSelect }) => {
@@ -63,13 +63,13 @@ const MapChart = ({ onStateSelect }) => {
 		const stateName = geo.properties.name;
 		if (highlightedStates.includes(stateName)) {
 			setSelectedState(stateName);
-			onStateSelect(stateName);
+			onStateSelect(stateName); // Notify the parent about state selection
 		}
 	};
 
 	// Function to handle click outside states, reset selectedState
 	const handleMapClick = () => {
-		setSelectedState(null);
+		setSelectedState(null); // Reset to original color scheme
 	};
 
 	return (
@@ -101,7 +101,7 @@ const MapChart = ({ onStateSelect }) => {
 
 							// Use custom colors for the highlighted states
 							const fillColor =
-								stateColors[stateName] || "#D6D6DA";
+								stateColors[stateName] || "#D6D6DA"; // Default color scheme
 
 							return (
 								<g key={geo.rsmKey}>
@@ -123,25 +123,25 @@ const MapChart = ({ onStateSelect }) => {
 												strokeDasharray:
 													borderStyle === "dashed"
 														? "5,5"
-														: "none",
+														: "none", // Dashed or solid border
 											},
 											hover: {
-												fill: fillColor,
+												fill: fillColor, // Keep the original color
 												outline: "none",
 												stroke: isHighlighted
 													? "#000"
 													: "none",
-												strokeWidth: 1,
-												strokeDasharray: "none",
+												strokeWidth: 2, // Thicker stroke on hover
+												strokeDasharray: "none", // Solid border on hover
 											},
 											pressed: {
-												fill: fillColor,
+												fill: fillColor, // Keep the original color
 												outline: "none",
 												stroke: isHighlighted
 													? "#000"
 													: "none",
-												strokeWidth: 1,
-												strokeDasharray: "none",
+												strokeWidth: 2, // Thicker stroke when pressed
+												strokeDasharray: "none", // Solid border on selection
 											},
 										}}
 									/>

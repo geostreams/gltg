@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Typography, Box } from "@material-ui/core";
+import {sidebarConfig} from "./sidebarConfig";
 
 const Sidebar = ({ selectedState }) => {
+
 	const defaultView = (
 		<>
 			<Box mb={3}>
@@ -30,6 +32,40 @@ const Sidebar = ({ selectedState }) => {
 			</Box>
 		</>
 	);
+
+	const stateView = (selectedState) => {
+
+		const getIcon = (fileType) => {
+			switch (fileType) {
+				case "web":
+					return <FaGlobe size={40} />;
+				case "dashboard":
+					return <FaThLarge size={40} />;
+				case "map":
+					return <FaMap size={40} />;
+				default:
+					return null;
+			}
+		};
+
+		const { header, subHeader, dataAndResources } = sidebarConfig[selectedState];
+
+		return (
+			<div style={styles.sidebarContainer}>
+				<h1 style={styles.header}>{header}</h1>
+				<p style={styles.subHeader}>{subHeader}</p>
+				<h2 style={styles.sectionTitle}>Data and Resources</h2>
+				<div style={styles.gridContainer}>
+					{dataAndResources.map((resource, index) => (
+						<div key={index} style={styles.card}>
+							{getIcon(resource.fileType)}
+							<p style={styles.cardText}>{resource.name}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		);
+	}
 	return (
 		<div
 			style={{
@@ -40,10 +76,7 @@ const Sidebar = ({ selectedState }) => {
 			}}
 		>
 			{selectedState ? (
-				<div>
-					<h2>{selectedState}</h2>
-					<p>Details about {selectedState}...</p>
-				</div>
+				stateView(selectedState)
 			) : (
 				defaultView
 			)}

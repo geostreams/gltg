@@ -2,8 +2,9 @@ import React from "react";
 import { Typography, Box } from "@material-ui/core";
 import { Language, PictureAsPdf, Map, Dashboard } from "@material-ui/icons";
 import { sidebarConfig } from "./sidebarConfig";
+import { makeStyles } from "@material-ui/core";
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
 	sidebarContainer: {
 		padding: "20px",
 		backgroundColor: "#f4f4f4",
@@ -50,9 +51,10 @@ const styles = {
 		right: "10px", // Icon aligned to the bottom-right
 		fontSize: "40px",
 	},
-};
+}));
 
 const Sidebar = ({ selectedState }) => {
+	const classes = useStyles();
 	const defaultView = (
 		<>
 			<Box mb={3}>
@@ -86,13 +88,13 @@ const Sidebar = ({ selectedState }) => {
 		const getIcon = (fileType) => {
 			switch (fileType) {
 				case "web":
-					return <Language style={styles.icon} />;
+					return <Language style={classes.icon} />;
 				case "dashboard":
-					return <Dashboard style={styles.icon} />;
+					return <Dashboard style={classes.icon} />;
 				case "map":
-					return <Map style={styles.icon} />;
+					return <Map style={classes.icon} />;
 				case "pdf":
-					return <PictureAsPdf style={styles.icon} />;
+					return <PictureAsPdf style={classes.icon} />;
 				default:
 					return null;
 			}
@@ -102,20 +104,20 @@ const Sidebar = ({ selectedState }) => {
 			sidebarConfig[selectedState.toLowerCase()];
 
 		return (
-			<div style={styles.sidebarContainer}>
-				<h1 style={styles.header}>{header}</h1>
-				<p style={styles.subHeader}>{subHeader}</p>
-				<h2 style={styles.sectionTitle}>Data and Resources</h2>
-				<div style={styles.gridContainer}>
+			<div style={classes.sidebarContainer}>
+				<h1 style={classes.header}>{header}</h1>
+				<p style={classes.subHeader}>{subHeader}</p>
+				<h2 style={classes.sectionTitle}>Data and Resources</h2>
+				<div style={classes.gridContainer}>
 					{dataAndResources.map((resource, index) => (
 						<a
 							key={index}
 							href={resource.url}
-							style={styles.card}
+							style={classes.card}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<p style={styles.cardText}>{resource.name}</p>
+							<p style={classes.cardText}>{resource.name}</p>
 							{getIcon(resource.fileType)}
 						</a>
 					))}

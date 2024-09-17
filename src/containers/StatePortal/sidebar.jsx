@@ -1,9 +1,50 @@
 import React, { useState } from "react";
 import { Typography, Box } from "@material-ui/core";
-import {sidebarConfig} from "./sidebarConfig";
+import { Language, Article, Map, Dashboard } from "@material-ui/icons";
+
+import { sidebarConfig } from "./sidebarConfig";
+
+// Styles for the sidebar layout
+const styles = {
+	sidebarContainer: {
+		padding: "20px",
+		backgroundColor: "#f4f4f4",
+	},
+	header: {
+		fontSize: "1.5rem",
+		marginBottom: "10px",
+	},
+	subHeader: {
+		fontSize: "1rem",
+		color: "#555",
+		marginBottom: "20px",
+	},
+	sectionTitle: {
+		fontSize: "1.2rem",
+		marginBottom: "10px",
+		fontWeight: "bold",
+	},
+	gridContainer: {
+		display: "grid",
+		gridTemplateColumns: "1fr 1fr", // 2 columns
+		gap: "20px",
+	},
+	card: {
+		backgroundColor: "#eef3f8",
+		borderRadius: "8px",
+		padding: "15px",
+		textAlign: "center",
+		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+	},
+	cardText: {
+		marginTop: "10px",
+		fontSize: "1rem",
+		fontWeight: "600",
+		color: "#333",
+	},
+};
 
 const Sidebar = ({ selectedState }) => {
-
 	const defaultView = (
 		<>
 			<Box mb={3}>
@@ -34,21 +75,23 @@ const Sidebar = ({ selectedState }) => {
 	);
 
 	const stateView = (selectedState) => {
-
 		const getIcon = (fileType) => {
 			switch (fileType) {
 				case "web":
-					return <FaGlobe size={40} />;
+					return <Language style={{ fontSize: 40 }} />;
 				case "dashboard":
-					return <FaThLarge size={40} />;
+					return <Dashboard style={{ fontSize: 40 }} />;
 				case "map":
-					return <FaMap size={40} />;
+					return <Map style={{ fontSize: 40 }} />;
+				case "pdf":
+					return <Article style={{ fontSize: 40 }} />;
 				default:
 					return null;
 			}
 		};
 
-		const { header, subHeader, dataAndResources } = sidebarConfig[selectedState];
+		const { header, subHeader, dataAndResources } =
+			sidebarConfig[selectedState.toLowerCase()];
 
 		return (
 			<div style={styles.sidebarContainer}>
@@ -65,7 +108,7 @@ const Sidebar = ({ selectedState }) => {
 				</div>
 			</div>
 		);
-	}
+	};
 	return (
 		<div
 			style={{
@@ -75,11 +118,9 @@ const Sidebar = ({ selectedState }) => {
 				overflowY: "auto",
 			}}
 		>
-			{selectedState ? (
-				stateView(selectedState)
-			) : (
-				defaultView
-			)}
+			{selectedState && sidebarConfig[selectedState.toLowerCase()]
+				? stateView(selectedState)
+				: defaultView}
 		</div>
 	);
 };

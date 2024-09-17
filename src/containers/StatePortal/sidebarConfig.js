@@ -15,7 +15,10 @@ export const sidebarConfig = {
 		subHeader:
 			"Lorem ipsum dolor sit amet consectetur. Netus adipiscing a enim arcu ullamcorper enim sed a dignissim.",
 		dataAndResources: [
-			{ name: "Illinois Nutrient Loss Reduction Strategy", fileType: "web" },
+			{
+				name: "Illinois Nutrient Loss Reduction Strategy",
+				fileType: "web",
+			},
 			{ name: "Illinois Nutrient Dashboard", fileType: "dashboard" },
 			{ name: "Water Quality Resources", fileType: "map" },
 			{ name: "Story Map", fileType: "map" },
@@ -27,7 +30,7 @@ export const sidebarConfig = {
 			"Lorem ipsum dolor sit amet consectetur. Netus adipiscing a enim arcu ullamcorper enim sed a dignissim.",
 		dataAndResources: [
 			{ name: "Nutrient Loss Reduction Strategy", fileType: "web" },
-			{ name: "Iowa Nutrient Dashboard", fileType: "dashboard" }
-			]
-	}
+			{ name: "Iowa Nutrient Dashboard", fileType: "dashboard" },
+		],
+	},
 };

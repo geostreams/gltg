@@ -4,7 +4,7 @@ import { Language, PictureAsPdf, Map, Dashboard } from "@material-ui/icons";
 import { sidebarConfig } from "./sidebarConfig";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	sidebarContainer: {
 		padding: "20px",
 		backgroundColor: "#f4f4f4",
@@ -35,20 +35,22 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 		display: "flex",
 		flexDirection: "column",
-		justifyContent: "space-between", // Space between title and icon
-		height: "150px", // Adjust height to your preference
+		justifyContent: "space-between",
+		height: "150px",
 		position: "relative",
+		textDecoration: "none", // Ensure no underline on the link
+		color: "inherit", // Maintain text color when link
 	},
 	cardText: {
 		fontSize: "1rem",
 		fontWeight: "600",
 		color: "#333",
-		alignSelf: "flex-start", // Align title to the top-left
+		alignSelf: "flex-start",
 	},
 	icon: {
 		position: "absolute",
 		bottom: "10px",
-		right: "10px", // Icon aligned to the bottom-right
+		right: "10px",
 		fontSize: "40px",
 	},
 }));
@@ -88,13 +90,13 @@ const Sidebar = ({ selectedState }) => {
 		const getIcon = (fileType) => {
 			switch (fileType) {
 				case "web":
-					return <Language style={classes.icon} />;
+					return <Language className={classes.icon} />;
 				case "dashboard":
-					return <Dashboard style={classes.icon} />;
+					return <Dashboard className={classes.icon} />;
 				case "map":
-					return <Map style={classes.icon} />;
+					return <Map className={classes.icon} />;
 				case "pdf":
-					return <PictureAsPdf style={classes.icon} />;
+					return <PictureAsPdf className={classes.icon} />;
 				default:
 					return null;
 			}
@@ -104,20 +106,20 @@ const Sidebar = ({ selectedState }) => {
 			sidebarConfig[selectedState.toLowerCase()];
 
 		return (
-			<div style={classes.sidebarContainer}>
-				<h1 style={classes.header}>{header}</h1>
-				<p style={classes.subHeader}>{subHeader}</p>
-				<h2 style={classes.sectionTitle}>Data and Resources</h2>
-				<div style={classes.gridContainer}>
+			<div className={classes.sidebarContainer}>
+				<h1 className={classes.header}>{header}</h1>
+				<p className={classes.subHeader}>{subHeader}</p>
+				<h2 className={classes.sectionTitle}>Data and Resources</h2>
+				<div className={classes.gridContainer}>
 					{dataAndResources.map((resource, index) => (
 						<a
 							key={index}
 							href={resource.url}
-							style={classes.card}
+							className={classes.card}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<p style={classes.cardText}>{resource.name}</p>
+							<p className={classes.cardText}>{resource.name}</p>
 							{getIcon(resource.fileType)}
 						</a>
 					))}

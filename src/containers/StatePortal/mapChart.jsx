@@ -61,9 +61,20 @@ const MapChart = ({ onStateSelect }) => {
 	const handleStateClick = (geo, event) => {
 		event.stopPropagation();
 		const stateName = geo.properties.name;
+
 		if (highlightedStates.includes(stateName)) {
-			setSelectedState(stateName);
-			onStateSelect(stateName);
+			//Unselect if clicked state is already selected
+			if (selectedState === stateName) {
+				setSelectedState(null);
+				onStateSelect(null);
+			} else {
+				setSelectedState(stateName);
+				onStateSelect(stateName);
+			}
+		} else {
+			// If a non-highlighted state is clicked, unselect any selected state
+			setSelectedState(null);
+			onStateSelect(null);
 		}
 	};
 

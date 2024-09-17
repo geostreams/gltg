@@ -5,7 +5,7 @@ import {
 	Geography,
 	Marker,
 } from "react-simple-maps";
-import usStates from "us-atlas/states-10m.json"; // TopoJSON data for the U.S.
+import usStates from "us-atlas/states-10m.json";
 
 const highlightedStates = [
 	"Minnesota",
@@ -51,7 +51,7 @@ const stateNameMarkers = [
 	{ name: "Arkansas", coordinates: [-92.2896, 34.7465] },
 	{ name: "Mississippi", coordinates: [-89.6985, 32.3547] },
 	{ name: "Louisiana", coordinates: [-91.8749, 30.5843] },
-	{ name: "Tennessee", coordinates: [-86.6602, 35.0035] },
+	{ name: "Tennessee", coordinates: [-86.6602, 35.6035] },
 ];
 
 const MapChart = ({ onStateSelect }) => {
@@ -59,21 +59,22 @@ const MapChart = ({ onStateSelect }) => {
 
 	// Function to handle clicking on a state
 	const handleStateClick = (geo, event) => {
-		event.stopPropagation(); // Prevent click outside logic from triggering
+		event.stopPropagation();
 		const stateName = geo.properties.name;
 		if (highlightedStates.includes(stateName)) {
 			setSelectedState(stateName);
-			onStateSelect(stateName); // Notify the parent about state selection
+			onStateSelect(stateName);
 		}
 	};
 
 	// Function to handle click outside states, reset selectedState
 	const handleMapClick = () => {
-		setSelectedState(null); // Reset to original color scheme
+		setSelectedState(null);
+		onStateSelect(null);
 	};
 
 	return (
-		<div onClick={handleMapClick}>
+		<div onClick={handleMapClick} style={{ width: "100%", height: "100%" }}>
 			<ComposableMap
 				projection="geoAlbers"
 				projectionConfig={{
@@ -99,9 +100,12 @@ const MapChart = ({ onStateSelect }) => {
 									? "dashed"
 									: "solid";
 
-							// Use custom colors for the highlighted states
-							const fillColor =
-								stateColors[stateName] || "#D6D6DA"; // Default color scheme
+							// Function to choose color for states
+							const fillColor = selectedState
+								? selectedState === stateName
+									? stateColors[stateName] || "#D6D6DA"
+									: "#EAEAEC"
+								: stateColors[stateName] || "#D6D6DA";
 
 							return (
 								<g key={geo.rsmKey}>
@@ -118,30 +122,30 @@ const MapChart = ({ onStateSelect }) => {
 												outline: "none",
 												stroke: isHighlighted
 													? "#000"
-													: "none", // No border for non-highlighted states
+													: "none",
 												strokeWidth: 1.5,
 												strokeDasharray:
 													borderStyle === "dashed"
 														? "5,5"
-														: "none", // Dashed or solid border
+														: "none",
 											},
 											hover: {
-												fill: fillColor, // Keep the original color
+												fill: fillColor,
 												outline: "none",
 												stroke: isHighlighted
 													? "#000"
 													: "none",
-												strokeWidth: 2, // Thicker stroke on hover
-												strokeDasharray: "none", // Solid border on hover
+												strokeWidth: 2,
+												strokeDasharray: "none",
 											},
 											pressed: {
-												fill: fillColor, // Keep the original color
+												fill: fillColor,
 												outline: "none",
 												stroke: isHighlighted
 													? "#000"
 													: "none",
-												strokeWidth: 2, // Thicker stroke when pressed
-												strokeDasharray: "none", // Solid border on selection
+												strokeWidth: 2,
+												strokeDasharray: "none",
 											},
 										}}
 									/>

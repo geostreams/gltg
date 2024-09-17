@@ -4,10 +4,22 @@ export const sidebarConfig = {
 		subHeader:
 			"Lorem ipsum dolor sit amet consectetur. Netus adipiscing a enim arcu ullamcorper enim sed a dignissim.",
 		dataAndResources: [
-			{ name: "Arkansas Nutrient Reduction Strategy", fileType: "pdf" },
-			{ name: "Arkansas Nutrient Reduction Viewer", fileType: "map" },
-			{ name: "ANRS Fact Sheet", fileType: "pdf" },
-			{ name: "ANRS Story Map", fileType: "map" },
+			{
+				name: "Arkansas Nutrient Reduction Strategy",
+				fileType: "pdf",
+				url: "https://google.com",
+			},
+			{
+				name: "Arkansas Nutrient Reduction Viewer",
+				fileType: "map",
+				url: "https://google.com",
+			},
+			{ name: "", fileType: "pdf", url: "https://google.com" },
+			{
+				name: "ANRS Story Map",
+				fileType: "map",
+				url: "https://google.com",
+			},
 		],
 	},
 	illinois: {
@@ -18,10 +30,19 @@ export const sidebarConfig = {
 			{
 				name: "Illinois Nutrient Loss Reduction Strategy",
 				fileType: "web",
+				url: "https://google.com",
 			},
-			{ name: "Illinois Nutrient Dashboard", fileType: "dashboard" },
-			{ name: "Water Quality Resources", fileType: "map" },
-			{ name: "Story Map", fileType: "map" },
+			{
+				name: "Illinois Nutrient Dashboard",
+				fileType: "dashboard",
+				url: "https://google.com",
+			},
+			{
+				name: "Water Quality Resources",
+				fileType: "map",
+				url: "https://google.com",
+			},
+			{ name: "Story Map", fileType: "map", url: "https://google.com" },
 		],
 	},
 	iowa: {

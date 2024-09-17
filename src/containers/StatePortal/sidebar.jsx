@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Typography, Box } from "@material-ui/core";
-import { Language, Article, Map, Dashboard } from "@material-ui/icons";
-
+import { Language, PictureAsPdf, Map, Dashboard } from "@material-ui/icons";
 import { sidebarConfig } from "./sidebarConfig";
 
-// Styles for the sidebar layout
 const styles = {
 	sidebarContainer: {
 		padding: "20px",
@@ -26,21 +24,31 @@ const styles = {
 	},
 	gridContainer: {
 		display: "grid",
-		gridTemplateColumns: "1fr 1fr", // 2 columns
+		gridTemplateColumns: "1fr 1fr",
 		gap: "20px",
 	},
 	card: {
 		backgroundColor: "#eef3f8",
 		borderRadius: "8px",
 		padding: "15px",
-		textAlign: "center",
 		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "space-between", // Space between title and icon
+		height: "150px", // Adjust height to your preference
+		position: "relative",
 	},
 	cardText: {
-		marginTop: "10px",
 		fontSize: "1rem",
 		fontWeight: "600",
 		color: "#333",
+		alignSelf: "flex-start", // Align title to the top-left
+	},
+	icon: {
+		position: "absolute",
+		bottom: "10px",
+		right: "10px", // Icon aligned to the bottom-right
+		fontSize: "40px",
 	},
 };
 
@@ -61,14 +69,14 @@ const Sidebar = ({ selectedState }) => {
 			</Box>
 			<Box>
 				<Typography variant="subtitle2" color="primary" gutterBottom>
-					What information will you get ?
+					What information will you get?
 				</Typography>
 				<Typography variant="body2" color="primary" gutterBottom>
 					Lorem ipsum dolor sit amet consectetur. Nulla tellus integer
 					nisi fringilla facilisi ut ultrices. Malesuada ut faucibus
 					lacus amet malesuada laoreet. Pellentesque sit nec dui id.
 					Risus id lorem pellentesque bibendum tellus consequat turpis
-					justo hac.{" "}
+					justo hac.
 				</Typography>
 			</Box>
 		</>
@@ -78,13 +86,13 @@ const Sidebar = ({ selectedState }) => {
 		const getIcon = (fileType) => {
 			switch (fileType) {
 				case "web":
-					return <Language style={{ fontSize: 40 }} />;
+					return <Language style={styles.icon} />;
 				case "dashboard":
-					return <Dashboard style={{ fontSize: 40 }} />;
+					return <Dashboard style={styles.icon} />;
 				case "map":
-					return <Map style={{ fontSize: 40 }} />;
+					return <Map style={styles.icon} />;
 				case "pdf":
-					return <Article style={{ fontSize: 40 }} />;
+					return <PictureAsPdf style={styles.icon} />;
 				default:
 					return null;
 			}
@@ -100,15 +108,22 @@ const Sidebar = ({ selectedState }) => {
 				<h2 style={styles.sectionTitle}>Data and Resources</h2>
 				<div style={styles.gridContainer}>
 					{dataAndResources.map((resource, index) => (
-						<div key={index} style={styles.card}>
-							{getIcon(resource.fileType)}
+						<a
+							key={index}
+							href={resource.url}
+							style={styles.card}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							<p style={styles.cardText}>{resource.name}</p>
-						</div>
+							{getIcon(resource.fileType)}
+						</a>
 					))}
 				</div>
 			</div>
 		);
 	};
+
 	return (
 		<div
 			style={{

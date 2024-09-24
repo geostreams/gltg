@@ -21,7 +21,6 @@ import NoSignificantTrendIcon from '../../images/NoSignificantTrendIcon.png';
 import UpwardTrendIcon from '../../images/UpwardTrendIcon.png';
 import DownwardTrendIcon from '../../images/DownwardTrendIcon.png';
 
-import MapLegendIcon from '../../images/Map_Legend_Icon.png';
 import { GEOSERVER_URL, MAP_BOUNDS } from './config';
 
 import Sidebar from './Sidebar';
@@ -356,27 +355,27 @@ const Summary = () => {
                 <div className={classes.legendItem}>
                     <img
                         src={UpwardTrendIcon}
-                        alt="Upward Trend Icon"
+                        alt="Likely Upward Trend Icon"
                         className={classes.legendIcon}
                     />
-                    <span>Upward Trend </span>
+                    <span>Likely Upward Trend</span>
                 </div>
                 <div className={classes.legendItem}>
                     <img
                         src={NoSignificantTrendIcon}
-                        alt="No Significant Trend Icon"
+                        alt="No Likely Trend Icon"
                         className={classes.legendIcon}
                     />
-                    <span>No Significant Trend</span>
+                    <span>No Likely Trend</span>
                 </div>
 
                 <div className={classes.legendItem}>
                     <img
                         src={DownwardTrendIcon}
-                        alt=" Downward Trend "
+                        alt="Likely Downward Trend Icon"
                         className={classes.legendIcon}
                     />
-                    <span>Downward Trend </span>
+                    <span>Likely Downward Trend</span>
                 </div>
             </div>
         ),

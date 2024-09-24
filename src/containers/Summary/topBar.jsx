@@ -65,7 +65,7 @@ const TopBar = ({
                 label="Choose a Nutrient"
             >
                 <MenuItem value="Nitrogen">Nitrate-N</MenuItem>
-                <MenuItem value="Phosphorus">Phosphorus</MenuItem>
+                <MenuItem value="Phosphorus">Total Phosphorus</MenuItem>
             </Select>
         </FormControl>
     );

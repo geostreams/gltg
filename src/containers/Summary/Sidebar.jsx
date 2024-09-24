@@ -418,27 +418,27 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                                 <div className={classes.legendItem}>
                                     <img
                                         src={UpwardTrendIcon}
-                                        alt="Upward Trend Icon"
+                                        alt="Likely upward Trend Icon"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Upward Trend </span>
+                                    <span>Likely upward Trend</span>
                                 </div>
                                 <div className={classes.legendItem}>
                                     <img
                                         src={NoSignificantTrendIcon}
-                                        alt="No Significant Trend Icon"
+                                        alt="No Likely Trend"
                                         className={classes.legendIcon}
                                     />
-                                    <span>No Significant Trend</span>
+                                    <span>No Likely Trend</span>
                                 </div>
 
                                 <div className={classes.legendItem}>
                                     <img
                                         src={DownwardTrendIcon}
-                                        alt=" Downward Trend "
+                                        alt="Likely Downward Trend"
                                         className={classes.legendIcon}
                                     />
-                                    <span>Downward Trend </span>
+                                    <span>Likely Downward Trend</span>
                                 </div>
                             </div>
                         </Box>

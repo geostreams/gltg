@@ -71,7 +71,7 @@ const parseTrendJSONData = (data, trendTableData, selectedParameter) => {
     }
 };
 
-const TrendStationTable = ({ data, title, selectedParameter, onSelectStation, selectedStation }) => {
+const TrendStationTable = ({ data, title, selectedParameter, onSelectStation, selectedStation, setShowCharts }) => {
     const [sortOrder, setSortOrder] = useState('desc');
     const [sortColumn, setSortColumn] = useState('lastValue'); // Track the column being sorted
     const [sortedData, setSortedData] = useState([]);
@@ -85,10 +85,7 @@ const TrendStationTable = ({ data, title, selectedParameter, onSelectStation, se
                     ? a.station.localeCompare(b.station)
                     : b.station.localeCompare(a.station);
             } else if (sortColumn === 'confidence') {
-                // Sorting confidence as strings, but can be customized
-                return sortOrder === 'asc'
-                    ? a.confidence.localeCompare(b.confidence)
-                    : b.confidence.localeCompare(a.confidence);
+                return sortOrder === 'asc' ? a.confidence_range - b.confidence_range : b.confidence_range - a.confidence_range;
             }
             return 0;
         });
@@ -105,7 +102,13 @@ const TrendStationTable = ({ data, title, selectedParameter, onSelectStation, se
     };
 
     const handleRowClick = (watershedID) => {
-        onSelectStation(watershedID);
+        if (watershedID === selectedStation) {
+            // If the row clicked is the currently selected one, show charts
+            setShowCharts(true);
+        } else {
+            // Otherwise, select the row
+            onSelectStation(watershedID);
+        }
     };
 
     const chooseConfidenceColor = (confidence) => {
@@ -216,7 +219,7 @@ const TrendStationTable = ({ data, title, selectedParameter, onSelectStation, se
 };
 
 
-export default function TrendTables({ trendTableData, selectedNutrient, selectedParameter,setSelectedTrendTableStation }) {
+export default function TrendTables({ trendTableData, selectedNutrient, selectedParameter,setSelectedTrendTableStation, setShowCharts }) {
     const [trendStationData, setTrendStationData] = useState({});
     const [upwardTrendData, setUpwardTrendData] = useState([]);
     const [downwardTrendData, setDownwardTrendData] = useState([]);
@@ -272,6 +275,7 @@ export default function TrendTables({ trendTableData, selectedNutrient, selected
                 selectedParameter={selectedParameter}
                 onSelectStation={handleSelectStation}
                 selectedStation={selectedStation}
+                setShowCharts={setShowCharts}
             />
             <TrendStationTable
                 data={downwardTrendData}
@@ -279,6 +283,7 @@ export default function TrendTables({ trendTableData, selectedNutrient, selected
                 selectedParameter={selectedParameter}
                 onSelectStation={handleSelectStation}
                 selectedStation={selectedStation}
+                setShowCharts={setShowCharts}
             />
             <TrendStationTable
                 data={stableTrendData}
@@ -286,6 +291,7 @@ export default function TrendTables({ trendTableData, selectedNutrient, selected
                 selectedParameter={selectedParameter}
                 onSelectStation={handleSelectStation}
                 selectedStation={selectedStation}
+                setShowCharts={setShowCharts}
             />
         </div>
     );

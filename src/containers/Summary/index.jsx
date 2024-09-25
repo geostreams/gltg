@@ -671,6 +671,7 @@ const Summary = () => {
                         removeSelectedStation={removeSelectedStation}
                         setSelectedTrendTableStation={setSelectedTrendTableStation}
                         showCharts={showCharts}
+                        setShowCharts={setShowCharts}
                     />
                 </Grid>
             </Grid>

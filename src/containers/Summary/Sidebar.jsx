@@ -372,9 +372,8 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                 >
                     Nutrient Trends Dashboard
                 </Typography>
-                <Divider className={classes.divider} />
-                {!(stationData && showCharts) ?
-                    (<>
+                <Divider className={classes.divider} />                
+                    <div style={{ display: showCharts ? 'none' : 'block' }}>
                         <Typography
                             className={classes.promptText}
                             variant="h5"
@@ -443,8 +442,9 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                                 </div>
                             </div>
                         </Box>
-                    </>) :
-                    (<>
+                    </div>
+                    { (showCharts && stationData) &&
+                        <>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <Typography
                                 className={classes.headerText}
@@ -487,7 +487,7 @@ const Sidebar = ({ stationData, selectedNutrient,selectedTimePeriod, removeSelec
                         <a><b>Flow Component</b>: Total Trend - Source/Sink Component</a>
                         <br /><br />
                         <br /><br />
-                    </>)}
+                    </>}
                 <br />
             </div>
         </div>

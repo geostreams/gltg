@@ -1,5 +1,10 @@
 {
   "extends": [
     "@geostreams"
-  ]
+  ],
+  "rules": {
+    "indent": ["error", "tab"],
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "always-multiline"]
+  }
 }

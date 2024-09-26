@@ -207,8 +207,8 @@ const TrendStationTable = ({
 										}
 									>
 										{selectedParameter === "concentration"
-											? "Most recent concentration value (mg/L)"
-											: "Most recent load value (10^4 kg/yr)"}
+											? "Most recent flow normalized concentration (mg/L)"
+											: "Most recent flow normalized load (10^4 kg/yr)"}
 									</TableSortLabel>
 								</TableCell>
 								<TableCell>

@@ -395,7 +395,7 @@ const Sidebar = ({
 						non_stationary_high_interval="nonStationaryFNFluxHigh"
 						non_stationary_low_interval="nonStationaryFNFluxLow"
 						y_scatter_field="stationaryFluxDay"
-						y_label="Yearly Cumulative Load (10^4 kg/yr)"
+						y_label="Yearly Cumulative Load (10^6 kg/yr)"
 						x_label="Year"
 						title="Mean (dots) & Flow-Normalized (line) Load Estimates"
 					/>

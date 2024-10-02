@@ -147,8 +147,10 @@ const TrendStationTable = ({
 		}
 	};
 
+	const defaultExpanded = title === "Likely Upward Trend Stations";
+
 	return (
-		<Accordion>
+		<Accordion defaultExpanded={defaultExpanded}>
 			<AccordionSummary
 				expandIcon={<ExpandMoreIcon />}
 				aria-controls="panel-content"

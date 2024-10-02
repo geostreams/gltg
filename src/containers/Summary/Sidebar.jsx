@@ -34,12 +34,10 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "unset",
 	},
 	header: {
-		display: "flex", // Using flexbox
-		flexDirection: "column", // Align items vertically
+		display: "flex",
 		alignItems: "flex-start",
 		paddingTop: "0.5em",
 		paddingRight: "1em",
-		margin: "10px auto",
 	},
 	promptText: {
 		margin: 0,
@@ -64,13 +62,6 @@ const useStyles = makeStyles((theme) => ({
 		whiteSpace: "nowrap", // prevent wrapping
 		overflow: "hidden", // hide overflow
 		textOverflow: "ellipsis", // show ellipsis when text overflows
-	},
-	subHeaderText: {
-		margin: 0,
-		color: "#333",
-		letterSpacing: "0.5px",
-		alignSelf: "center",
-		paddingTop: "0.5em",
 	},
 	infoIcon: {
 		verticalAlign: "super",
@@ -460,8 +451,26 @@ const Sidebar = ({
 			<div className={classes.sidebarBody}>
 				<Typography className={classes.header} variant="h5">
 					Nutrient Trends Dashboard
+					<IconButton
+						className={classes.infoIcon}
+						onClick={() => setOpenInfoDialog(true)}
+						size="small"
+					>
+						<InfoIcon fontSize="inherit" />
+					</IconButton>
 				</Typography>
 				<Divider className={classes.divider} />
+				<Box className={classes.summaryBox}>
+					<Typography variant="h6" gutterBottom>
+						Dashboard Summary
+					</Typography>
+					<Typography variant="body1">
+						This dashboard provides an overview of nutrient data
+						across various stations. Use the map to select a station
+						and view detailed data graphs corresponding to the
+						chosen station.
+					</Typography>
+				</Box>
 				<div style={{ display: showCharts ? "none" : "block" }}>
 					<Typography className={classes.promptText} variant="h5">
 						Select Station
@@ -474,18 +483,6 @@ const Sidebar = ({
 						</Tooltip>
 					</Typography>
 					<Divider />
-					<Box className={classes.summaryBox}>
-						<Typography variant="h6" gutterBottom>
-							Dashboard Summary
-						</Typography>
-						<Typography variant="body1">
-							This dashboard provides an overview of nutrient data
-							across various stations. Use the map to select a
-							station and view detailed data graphs corresponding
-							to the chosen station.
-						</Typography>
-					</Box>
-					<Divider />
 					<TrendTables
 						trendTableData={trendTableData}
 						selectedNutrient={selectedNutrient}
@@ -496,51 +493,6 @@ const Sidebar = ({
 						showCharts={showCharts}
 						setShowCharts={setShowCharts}
 					/>
-					<Box className={classes.legendBox}>
-						<div
-							style={{
-								display: "flex",
-								alignItems: "center",
-								justifyContent: "space-between",
-							}}
-						>
-							<Typography variant="h5">
-								Trend Results
-								<InfoIcon
-									className={classes.infoIcon}
-									onClick={() => setOpenInfoDialog(true)}
-								/>
-							</Typography>
-						</div>
-						<br />
-						<div className={classes.legendContainer}>
-							<div className={classes.legendItem}>
-								<img
-									src={UpwardTrendIcon}
-									alt="Likely upward Trend Icon"
-									className={classes.legendIcon}
-								/>
-								<span>Likely upward Trend</span>
-							</div>
-							<div className={classes.legendItem}>
-								<img
-									src={NoSignificantTrendIcon}
-									alt="No Likely Trend"
-									className={classes.legendIcon}
-								/>
-								<span>No Likely Trend</span>
-							</div>
-
-							<div className={classes.legendItem}>
-								<img
-									src={DownwardTrendIcon}
-									alt="Likely Downward Trend"
-									className={classes.legendIcon}
-								/>
-								<span>Likely Downward Trend</span>
-							</div>
-						</div>
-					</Box>
 				</div>
 				{showCharts && stationData && (
 					<>

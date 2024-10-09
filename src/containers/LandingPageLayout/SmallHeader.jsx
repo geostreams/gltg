@@ -229,21 +229,6 @@ const SmallHeader = ({ location }: Props) => {
 						>
 							Best Management Practices
 						</MenuItem>
-						<MenuItem
-							classes={{ root: classes.menuItem }}
-							onClick={statePortalsHandleClick}
-						>
-							<div
-								style={{
-									display: "flex",
-									alignItems: "center",
-									flexWrap: "wrap",
-								}}
-							>
-								<ArrowLeftIcon />
-								<span>State Portals</span>
-							</div>
-						</MenuItem>
 					</Menu>
 				</div>
 			</Toolbar>

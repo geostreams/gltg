@@ -27,7 +27,7 @@ const routes = Object.assign(coreRoutes, {
 			hasFooter: true,
 		}),
 	},
-	"/summary": {
+	"/nutrient-trends": {
 		exact: true,
 		component: hocs.withLayout(GLTGLayout, NewSummary, {
 			hasFooter: true,

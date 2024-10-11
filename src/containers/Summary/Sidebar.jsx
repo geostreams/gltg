@@ -378,7 +378,7 @@ const Sidebar = ({
 	);
 
 	// Graph components
-	const loadGraph = () => {
+	const loadYieldGraph = () => {
 		if (data) {
 			return (
 				<Box className={classes.chart}>
@@ -405,6 +405,24 @@ const Sidebar = ({
 						{convertTrend(stationData.significance_flux)}
 						<sup>*</sup>
 					</Typography>
+					<br />
+					<h4 className={classes.chartHeader}>Yield Graph</h4>
+					<SummaryGraph
+						graph_data={data.yield}
+						width={350}
+						height={330}
+						startAtZero={false}
+						stationary_y_line_field="stationaryFNYield"
+						stationary_high_interval="stationaryFNYieldHigh"
+						stationary_low_interval="stationaryFNYieldLow"
+						non_stationary_y_line_field="nonStationaryFNYield"
+						non_stationary_high_interval="nonStationaryFNYieldHigh"
+						non_stationary_low_interval="nonStationaryFNYieldLow"
+						y_scatter_field="stationaryYieldDay"
+						y_label="Yearly Yield (kg/ha/yr)"
+						x_label="Year"
+						title="Mean (dots) & Flow-Normalized (line) Yield Estimates"
+					/>
 				</Box>
 			);
 		}
@@ -528,7 +546,7 @@ const Sidebar = ({
 						<div>
 							{data &&
 								selectedParameter === "flux" &&
-								loadGraph()}
+								loadYieldGraph()}
 							{/* <Divider /> */}
 							{/* <br /> */}
 							{data &&

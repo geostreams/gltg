@@ -419,7 +419,7 @@ const Sidebar = ({
 						non_stationary_high_interval="nonStationaryFNYieldHigh"
 						non_stationary_low_interval="nonStationaryFNYieldLow"
 						y_scatter_field="stationaryYieldDay"
-						y_label="Yearly Yield (kg/ha/yr)"
+						y_label="Yearly Yield (kg/km^2/yr)"
 						x_label="Year"
 						title="Mean (dots) & Flow-Normalized (line) Yield Estimates"
 					/>

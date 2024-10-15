@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { Typography } from "@material-ui/core";
 
 import About from "./components/about";
 import TextBox from "./components/textbox";
@@ -16,6 +17,7 @@ import ConservationPractices from "./Images/ConservationPractices.png";
 import Explore from "./Images/Explore.png";
 import Analyze from "./Images/Analyze.png";
 import Download from "./Images/Download.png";
+import DashboardViz from "./components/DashboardViz";
 
 // Partner Images
 import NGRREC from "./Images/Partners/NGREC.jpg";
@@ -68,9 +70,73 @@ const Home = () => {
 
 	// Funding Links
 	const fundLink1 = "https://www.waltonfamilyfoundation.org/";
+
+	const dashboardDataJson = JSON.stringify([
+		{
+			label: "BACKGROUND",
+			content: [
+				{ type: "heading", text: "What is this page about?" },
+				{
+					type: "paragraph",
+					text: "There are many agricultural conservation programs that can positively impact water quality.",
+				},
+				{ type: "heading", text: "What information will you get?" },
+				{
+					type: "paragraph",
+					text: "We present data for three conservation programs:",
+				},
+				{
+					type: "list",
+					items: [
+						"Conservation Stewardship Program (CSP)",
+						"Environmental Quality Incentives Program (EQIP)",
+						"EPA 319 Program",
+					],
+				},
+				{ type: "heading", text: "Navigating the Dashboard" },
+				{
+					type: "list",
+					items: [
+						"Select the state or HUC 8 watershed of interest",
+						"Select the time period",
+						"Choose from the selection of program information",
+						"View the results on the right side of your screen",
+						"Download the data",
+					],
+				},
+			],
+		},
+		{
+			label: "DATA",
+			content: [
+				{ type: "heading", text: "What data is used?" },
+				{
+					type: "paragraph",
+					text: "We use data from the USDA and EPA to provide information on conservation programs.",
+				},
+				{ type: "heading", text: "How is the data processed?" },
+				{
+					type: "paragraph",
+					text: "We use the data to calculate the impact of conservation programs on water quality.",
+				},
+			],
+		},
+	]);
+
+	const handleLaunch = () => {
+		console.log("Launch Conservation Practices Dashboard");
+	};
+
 	return (
 		<>
 			<About />
+			<DashboardViz
+				title="Conservation Practices Dashboard"
+				mapImage="/path/to/your/map/image.jpg"
+				launchButtonText="Launch Conservation Practices Dashboard"
+				dashboardDataJson={dashboardDataJson}
+				onLaunch={handleLaunch}
+			/>
 			<RssFeed></RssFeed>
 			<TextBox
 				title="Explore GLTG Dashboards"

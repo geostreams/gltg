@@ -95,7 +95,7 @@ const Home = () => {
 				},
 				{ type: "heading", text: "Navigating the Dashboard" },
 				{
-					type: "list",
+					type: "numberedList",
 					items: [
 						"Select the state or HUC 8 watershed of interest",
 						"Select the time period",
@@ -132,7 +132,7 @@ const Home = () => {
 			<About />
 			<DashboardViz
 				title="Conservation Practices Dashboard"
-				mapImage="/path/to/your/map/image.jpg"
+				mapImage={SummaryDashboard}
 				launchButtonText="Launch Conservation Practices Dashboard"
 				dashboardDataJson={dashboardDataJson}
 				onLaunch={handleLaunch}

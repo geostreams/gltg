@@ -1,43 +1,57 @@
 import React, { useState } from "react";
 import {
-	Box,
 	Typography,
 	Tabs,
 	Tab,
 	Button,
 	Paper,
-	makeStyles,
+	Grid,
 	List,
 	ListItem,
 	ListItemText,
+	makeStyles,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
 		height: "600px",
-		padding: theme.spacing(3),
 		display: "flex",
 		flexDirection: "column",
 	},
-	flexContainer: {
+	topBar: {
+		backgroundColor: theme.palette.grey[100],
+		padding: theme.spacing(2),
+	},
+	content: {
+		flex: 1,
+		padding: theme.spacing(3),
 		display: "flex",
+		flexDirection: "column",
+		overflow: "hidden",
+	},
+	gridContainer: {
 		flex: 1,
 		overflow: "hidden",
 	},
 	column: {
-		width: "50%",
 		height: "100%",
-		padding: theme.spacing(0, 2),
 		display: "flex",
 		flexDirection: "column",
 	},
-	mapContainer: {
-		flex: 1,
+	leftColumn: {
+		height: "100%",
 		display: "flex",
-		alignItems: "center",
+		flexDirection: "column",
 		justifyContent: "center",
+		alignItems: "center",
+	},
+	mapContainer: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
 		marginBottom: theme.spacing(2),
+		overflow: "hidden",
 	},
 	mapImage: {
 		maxWidth: "100%",
@@ -45,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 		objectFit: "contain",
 	},
 	launchButton: {
-		marginTop: "auto",
+		maxWidth: "70%",
 	},
 	tabContent: {
 		padding: theme.spacing(2),
@@ -58,6 +72,11 @@ const useStyles = makeStyles((theme) => ({
 	listItem: {
 		display: "list-item",
 		listStyleType: "disc",
+		marginLeft: theme.spacing(2),
+	},
+	numberedListItem: {
+		display: "list-item",
+		listStyleType: "decimal",
 		marginLeft: theme.spacing(2),
 	},
 }));
@@ -85,20 +104,42 @@ const ContentRenderer = ({ content }) => {
 						))}
 					</List>
 				);
+			case "numberedList":
+				return (
+					<List>
+						{item.items.map((listItem, index) => (
+							<ListItem
+								key={index}
+								className={classes.numberedListItem}
+							>
+								<ListItemText primary={listItem} />
+							</ListItem>
+						))}
+					</List>
+				);
 			default:
 				return null;
 		}
 	};
 
-	console.log("content", content);
 	return (
 		<>
 			{content.map((item, index) => (
-				<Box key={index} className={classes.contentSection}>
+				<div key={index} className={classes.contentSection}>
 					{renderContent(item)}
-				</Box>
+				</div>
 			))}
 		</>
+	);
+};
+
+const ImageComponent = ({ src, alt }) => {
+	const classes = useStyles();
+
+	return (
+		<Paper elevation={3} className={classes.mapContainer}>
+			<img src={src} alt={alt} className={classes.mapImage} />
+		</Paper>
 	);
 };
 
@@ -119,48 +160,45 @@ const DashboardViz = ({
 	const dashboardData = JSON.parse(dashboardDataJson);
 
 	return (
-		<Box className={classes.root}>
-			<Typography variant="h4" component="h1" gutterBottom align="center">
-				{title}
-			</Typography>
+		<div className={classes.root}>
+			<div className={classes.topBar}>
+				<Typography variant="h4" component="h1" align="center">
+					{title}
+				</Typography>
+			</div>
 
-			<Box className={classes.flexContainer}>
+			<Grid container spacing={3} className={classes.gridContainer}>
 				{/* Left column */}
-				<Box className={classes.column}>
-					<Paper elevation={3} className={classes.mapContainer}>
-						<img
-							src={mapImage}
-							alt="Conservation Practices Map"
-							className={classes.mapImage}
-						/>
-					</Paper>
+				<Grid item xs={12} md={6} className={classes.leftColumn}>
+					<ImageComponent src={mapImage} />
 					<Button
 						variant="contained"
 						color="primary"
-						fullWidth
 						className={classes.launchButton}
 						onClick={onLaunch}
 					>
 						{launchButtonText}
 					</Button>
-				</Box>
+				</Grid>
 
 				{/* Right column */}
-				<Box className={classes.column}>
-					<Tabs value={activeTab} onChange={handleTabChange}>
-						{dashboardData.map((tab, index) => (
-							<Tab key={index} label={tab.label} />
-						))}
-					</Tabs>
+				<Grid item xs={12} md={6} className={classes.column}>
+					{dashboardData.length > 1 && (
+						<Tabs value={activeTab} onChange={handleTabChange}>
+							{dashboardData.map((tab, index) => (
+								<Tab key={index} label={tab.label} />
+							))}
+						</Tabs>
+					)}
 
-					<Box className={classes.tabContent}>
+					<div className={classes.tabContent}>
 						<ContentRenderer
 							content={dashboardData[activeTab].content}
 						/>
-					</Box>
-				</Box>
-			</Box>
-		</Box>
+					</div>
+				</Grid>
+			</Grid>
+		</div>
 	);
 };
 

@@ -19,6 +19,10 @@ import Analyze from "./Images/Analyze.png";
 import Download from "./Images/Download.png";
 import DashboardViz from "./components/DashboardViz";
 
+// Dashboard Images
+import TrendDashboardImage from "./Images/trendDashboardImage.png";
+import exploreDashboardImage from "./Images/exploreDashboardImage.png";
+
 // Partner Images
 import NGRREC from "./Images/Partners/NGREC.jpg";
 import NCSA from "./Images/Partners/NCSA_logo.png";
@@ -71,14 +75,123 @@ const Home = () => {
 	// Funding Links
 	const fundLink1 = "https://www.waltonfamilyfoundation.org/";
 
-	const dashboardDataJson = JSON.stringify([
+	const trendsDashboardDataJson = JSON.stringify([
 		{
-			label: "BACKGROUND",
+			label: "Background",
 			content: [
 				{ type: "heading", text: "What is this page about?" },
 				{
 					type: "paragraph",
-					text: "There are many agricultural conservation programs that can positively impact water quality.",
+					text: "To improve water quality in the MARB we must reduce the amount of nitrogen and phosphorus reaching the Mississippi River and its tributaries. However, it can take decades before the results of land  use changes become apparent. Long-term nutrient trends analyses help people visualize the outcomes of management practices and other factors, such as weather, that affect water quality.",
+				},
+				{ type: "heading", text: "What information will you get?" },
+				{
+					type: "paragraph",
+					text: "This dashboard provides an overview of flow normalized nutrient data from water quality monitoring stations throughout the MARB. The  data is curated from the  Water Quality Portal (WQP), has been harmonized to be comparable across states, and the trends analysis was conducted using the WRTDs model..",
+				},
+				{ type: "heading", text: "Navigating the Dashboard" },
+				{
+					type: "paragraph",
+					text: "Use the map to select a station/watershed to view concentration and load graphs corresponding to your chosen station.",
+				},
+			],
+		},
+		{ label: "Trend Stations", content: [] },
+		{ label: "Concentrations", content: [] },
+		{ label: "Load", content: [] },
+	]);
+
+	const stateEffortsDashboardDataJson = JSON.stringify([
+		{
+			label: "Background",
+			content: [
+				{ type: "heading", text: "What is this page about?" },
+				{
+					type: "paragraph",
+					text: "Collectively, the 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms  as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico.",
+				},
+				{ type: "heading", text: "What information will you get?" },
+				{
+					type: "paragraph",
+					text: "Where available, we’ve provided the following information for each of the 12 HTF states:",
+				},
+				{
+					type: "list",
+					items: [
+						"State Nutrient Loss Reduction Plan",
+						"Nutrient Dashboards",
+						"Nutrient Storymaps ",
+					],
+				},
+				{ type: "heading", text: "Navigating the Dashboard" },
+				{
+					type: "paragraph",
+					text: "Click on a state or use the dropdown menu to explore your state(s) of interest.",
+				},
+			],
+		},
+	]);
+
+	const exploreDashboardJson = JSON.stringify([
+		{
+			label: "Background",
+			content: [
+				{ type: "heading", text: "What is this page about?" },
+				{
+					type: "paragraph",
+					text: "There are multiple organizations that collect water quality data in the MARB. If you are interested in water data from a particular location, this page can help you find it.",
+				},
+				{ type: "heading", text: "What information will you get?" },
+				{
+					type: "paragraph",
+					text: "We present water quality data from:",
+				},
+				{
+					type: "numberedList",
+					items: [
+						"EPA’s Water Quality Portal (WQP). This is nitrogen and phosphorus data only. We have done the work of curating the data for you so that you may more easily conduct your own analyses. The data is updated once a year.",
+						"United States Geological Survey (USGS). This data provides multiple parameters of water quality such as dissolved oxygen, turbidity, water temperature, nutrient data, and more.",
+						"USGS Super Gage Network. https://dashboard.waterdata.usgs.gov/app/nwd/en/  and provide info similar to : https://www.usgs.gov/centers/oki-water/science/super-gage-network  on the tab.",
+						"Upper Mississippi River Restoration",
+						"Fox River Study Group",
+					],
+				},
+				{ type: "heading", text: "Navigating the Dashboard" },
+				{
+					type: "numberedList",
+					items: [
+						"Use the Monitoring Locations menu on the left of the screen to select the agency monitoring location of interest. The WQP data is the default. Click the circles to display the information for the other agencies.",
+						"From the menu or map, click the location you are interested in to see water quality parameters collected at the site.",
+						"Select View Data to explore charts and graphs.",
+						"Use the Explore Layers menu on the right of the screen to see other available layers.",
+					],
+				},
+			],
+		},
+		{
+			label: "EPA Water Quality Portal",
+			content: [],
+		},
+		{
+			label: "USGS",
+			content: [],
+		},
+		{
+			label: "USGS Super Gage Network",
+			content: [],
+		},
+		{ label: "Upper Mississippi River Restoration", content: [] },
+		{ label: "Fox River Study Group", content: [] },
+	]);
+
+	const conservationDashboardJson = JSON.stringify([
+		{
+			label: "Background",
+			content: [
+				{ type: "heading", text: "What is this page about?" },
+				{
+					type: "paragraph",
+					text: "There are many agricultural conservation programs that can positively impact water quality. ",
 				},
 				{ type: "heading", text: "What information will you get?" },
 				{
@@ -104,65 +217,50 @@ const Home = () => {
 						"Download the data",
 					],
 				},
-			],
-		},
-		{
-			label: "DATA",
-			content: [
-				{ type: "heading", text: "What data is used?" },
 				{
-					type: "paragraph",
-					text: "We use data from the USDA and EPA to provide information on conservation programs.",
+					label: "Program Count",
+					content: [],
 				},
-				{ type: "heading", text: "How is the data processed?" },
 				{
-					type: "paragraph",
-					text: "We use the data to calculate the impact of conservation programs on water quality.",
+					label: "Program Funding",
+					content: [],
+				},
+				{
+					label: "Program Area Treated",
+					content: [],
+				},
+				{
+					label: "Top 10 Practices by Area Treated",
+					content: [],
 				},
 			],
 		},
 	]);
-
-	const handleLaunch = () => {
-		console.log("Launch Conservation Practices Dashboard");
-	};
-
 	return (
 		<>
 			<About />
 			<DashboardViz
-				title="Conservation Practices Dashboard"
-				mapImage={SummaryDashboard}
-				launchButtonText="Launch Conservation Practices Dashboard"
-				dashboardDataJson={dashboardDataJson}
-				onLaunch={handleLaunch}
+				title="Nutrient Trends Dashboard"
+				mapImage={TrendDashboardImage}
+				launchButtonText="Launch Nutrient Trends Dashboard"
+				dashboardDataJson={trendsDashboardDataJson}
+				buttonLink={"/nutrient-trends"}
+			/>
+			<DashboardViz
+				title="State Efforts Dashboard"
+				mapImage={TrendDashboardImage}
+				launchButtonText="Launch State Efforts Dashboard"
+				dashboardDataJson={stateEffortsDashboardDataJson}
+				buttonLink={"/nutrient-trends"}
+			/>
+			<DashboardViz
+				title="Explore Water Quality Data Dashboard"
+				mapImage={exploreDashboardImage}
+				launchButtonText="Launch Explore Water Quality Data Dashboard"
+				dashboardDataJson={exploreDashboardJson}
+				buttonLink={"/explore/all"}
 			/>
 			<RssFeed></RssFeed>
-			<TextBox
-				title="Explore GLTG Dashboards"
-				text="GLTG dashboards provide Mississippi River water quality analyses that have been developed by our team of experts. Take in the big picture at the Nutrient Trends Dashboard; review water quality state-by-state; and see the impact of a variety of best management practices on the river."
-			/>
-			<Imagerow
-				image1={SummaryDashboard}
-				image2={StatePortal}
-				image3={ConservationPractices}
-				header1={firstRowHeader1}
-				header2={firstRowHeader2}
-				header3={firstRowHeader3}
-				subheader1={firstRowSubHeader1}
-				subheader2={firstRowSubHeader2}
-				subheader3={firstRowSubHeader3}
-				link1={firstRowLink1}
-				link2={firstRowLink2}
-				link3={firstRowLink3}
-				link4={illinois}
-				link5={arkansas}
-				link6={iowa}
-				link7={indiana}
-				link8={missouri}
-				link9={tennessee}
-			/>
-
 			<Partners
 				partner1={NGRREC}
 				partner2={NCSA}

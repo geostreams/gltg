@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		marginBottom: theme.spacing(2),
 		overflow: "hidden",
+		width: "80%",
 	},
 	mapImage: {
 		maxWidth: "100%",
@@ -148,7 +149,7 @@ const DashboardViz = ({
 	mapImage,
 	launchButtonText,
 	dashboardDataJson,
-	onLaunch,
+	buttonLink,
 }) => {
 	const classes = useStyles();
 	const [activeTab, setActiveTab] = useState(0);
@@ -175,7 +176,7 @@ const DashboardViz = ({
 						variant="contained"
 						color="primary"
 						className={classes.launchButton}
-						onClick={onLaunch}
+						href={buttonLink}
 					>
 						{launchButtonText}
 					</Button>
@@ -184,7 +185,11 @@ const DashboardViz = ({
 				{/* Right column */}
 				<Grid item xs={12} md={6} className={classes.column}>
 					{dashboardData.length > 1 && (
-						<Tabs value={activeTab} onChange={handleTabChange}>
+						<Tabs
+							value={activeTab}
+							onChange={handleTabChange}
+							variant="scrollable"
+						>
 							{dashboardData.map((tab, index) => (
 								<Tab key={index} label={tab.label} />
 							))}

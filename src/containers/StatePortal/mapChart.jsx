@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	ComposableMap,
 	Geographies,
@@ -54,33 +54,23 @@ const stateNameMarkers = [
 	{ name: "Tennessee", coordinates: [-86.6602, 35.6035] },
 ];
 
-const MapChart = ({ onStateSelect }) => {
-	const [selectedState, setSelectedState] = useState(null);
-
-	// Function to handle clicking on a state
+const MapChart = ({ selectedState, onStateSelect }) => {
 	const handleStateClick = (geo, event) => {
 		event.stopPropagation();
 		const stateName = geo.properties.name;
 
 		if (highlightedStates.includes(stateName)) {
-			//Unselect if clicked state is already selected
 			if (selectedState === stateName) {
-				setSelectedState(null);
 				onStateSelect(null);
 			} else {
-				setSelectedState(stateName);
 				onStateSelect(stateName);
 			}
 		} else {
-			// If a non-highlighted state is clicked, unselect any selected state
-			setSelectedState(null);
 			onStateSelect(null);
 		}
 	};
 
-	// Function to handle click outside states, reset selectedState
 	const handleMapClick = () => {
-		setSelectedState(null);
 		onStateSelect(null);
 	};
 
@@ -105,13 +95,11 @@ const MapChart = ({ onStateSelect }) => {
 							const isHighlighted =
 								highlightedStates.includes(stateName);
 
-							// Set dashed borders only for highlighted states
 							const borderStyle =
 								isHighlighted && selectedState !== stateName
 									? "dashed"
 									: "solid";
 
-							// Function to choose color for states
 							const fillColor = selectedState
 								? selectedState === stateName
 									? stateColors[stateName] || "#D6D6DA"

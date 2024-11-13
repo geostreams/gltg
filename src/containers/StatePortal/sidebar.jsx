@@ -1,10 +1,17 @@
 import React from "react";
-import { Typography, Box } from "@material-ui/core";
+import {
+	Typography,
+	Box,
+	FormControl,
+	Select,
+	MenuItem,
+	InputLabel,
+} from "@material-ui/core";
 import { Language, PictureAsPdf, Map, Dashboard } from "@material-ui/icons";
 import { sidebarConfig } from "./sidebarConfig";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 	sidebarContainer: {
 		padding: "20px",
 		backgroundColor: "#f4f4f4",
@@ -38,8 +45,8 @@ const useStyles = makeStyles(() => ({
 		justifyContent: "space-between",
 		height: "150px",
 		position: "relative",
-		textDecoration: "none", // Ensure no underline on the link
-		color: "inherit", // Maintain text color when link
+		textDecoration: "none",
+		color: "inherit",
 	},
 	cardText: {
 		fontSize: "1rem",
@@ -53,10 +60,35 @@ const useStyles = makeStyles(() => ({
 		right: "10px",
 		fontSize: "40px",
 	},
+	stateSelect: {
+		marginTop: theme.spacing(3),
+		minWidth: 200,
+		backgroundColor: "#fff",
+	},
 }));
 
-const Sidebar = ({ selectedState }) => {
+const highlightedStates = [
+	"Minnesota",
+	"Wisconsin",
+	"Iowa",
+	"Illinois",
+	"Missouri",
+	"Indiana",
+	"Ohio",
+	"Kentucky",
+	"Arkansas",
+	"Mississippi",
+	"Tennessee",
+	"Louisiana",
+];
+
+const Sidebar = ({ selectedState, onStateSelect }) => {
 	const classes = useStyles();
+
+	const handleStateChange = (event) => {
+		onStateSelect(event.target.value);
+	};
+
 	const defaultView = (
 		<>
 			<Box mb={3}>
@@ -83,6 +115,25 @@ const Sidebar = ({ selectedState }) => {
 					justo hac.
 				</Typography>
 			</Box>
+			<FormControl variant="outlined" className={classes.stateSelect}>
+				<InputLabel id="state-select-label">Select a State</InputLabel>
+				<Select
+					labelId="state-select-label"
+					id="state-select"
+					value={selectedState || ""}
+					onChange={handleStateChange}
+					label="Select a State"
+				>
+					<MenuItem value="">
+						<em>None</em>
+					</MenuItem>
+					{highlightedStates.map((state) => (
+						<MenuItem key={state} value={state}>
+							{state}
+						</MenuItem>
+					))}
+				</Select>
+			</FormControl>
 		</>
 	);
 
@@ -124,6 +175,24 @@ const Sidebar = ({ selectedState }) => {
 						</a>
 					))}
 				</div>
+				<FormControl variant="outlined" className={classes.stateSelect}>
+					<InputLabel id="state-select-label">
+						Select a State
+					</InputLabel>
+					<Select
+						labelId="state-select-label"
+						id="state-select"
+						value={selectedState}
+						onChange={handleStateChange}
+						label="Select a State"
+					>
+						{highlightedStates.map((state) => (
+							<MenuItem key={state} value={state}>
+								{state}
+							</MenuItem>
+						))}
+					</Select>
+				</FormControl>
 			</div>
 		);
 	};

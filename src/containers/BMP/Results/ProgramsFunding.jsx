@@ -169,7 +169,7 @@ const ProgramsFunding = (props: Props) => {
 										</TableCell>
 									))}
 								</TableRow>
-							)
+							),
 						)}
 					</TableBody>
 				</Table>

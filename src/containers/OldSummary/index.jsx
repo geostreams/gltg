@@ -228,7 +228,7 @@ class Summary extends React.Component<Props, State> {
 							visible,
 						});
 						return layer;
-					}
+					},
 				),
 			}),
 			...entries(BOUNDARIES).reduce(
@@ -253,12 +253,12 @@ class Summary extends React.Component<Props, State> {
 										xhr.onload = () => {
 											if (xhr.status === 200) {
 												const geojson = decode(
-													new Pbf(xhr.response)
+													new Pbf(xhr.response),
 												);
 												source.addFeatures(
 													geoJSONFormat.readFeatures(
-														geojson
-													)
+														geojson,
+													),
 												);
 											} else {
 												onError();
@@ -278,7 +278,7 @@ class Summary extends React.Component<Props, State> {
 											feature,
 											resolution,
 											nutrient,
-											year
+											year,
 										);
 									},
 								});
@@ -294,13 +294,13 @@ class Summary extends React.Component<Props, State> {
 									}
 								});
 								return layer;
-							}
+							},
 						),
 					});
 					boundaryLayers[name] = group;
 					return boundaryLayers;
 				},
-				{}
+				{},
 			),
 		};
 	}
@@ -327,7 +327,7 @@ class Summary extends React.Component<Props, State> {
 		if (selectedFeature) {
 			const { nutrient, year } = this.state;
 			selectedFeature.setStyle(
-				getFeatureStyle(selectedFeature, null, nutrient, year, false)
+				getFeatureStyle(selectedFeature, null, nutrient, year, false),
 			);
 		}
 		this.layers[this.state.boundary].setVisible(false);
@@ -365,7 +365,13 @@ class Summary extends React.Component<Props, State> {
 			if (selectedFeature) {
 				const { nutrient, year } = this.state;
 				selectedFeature.setStyle(
-					getFeatureStyle(selectedFeature, null, nutrient, year, true)
+					getFeatureStyle(
+						selectedFeature,
+						null,
+						nutrient,
+						year,
+						true,
+					),
 				);
 			}
 		});
@@ -384,7 +390,7 @@ class Summary extends React.Component<Props, State> {
 					return feature.get("Station_ID");
 				}
 				return false;
-			}
+			},
 		);
 		const selectedFeature = event.map.forEachFeatureAtPixel(
 			event.pixel,
@@ -399,7 +405,7 @@ class Summary extends React.Component<Props, State> {
 			},
 			{
 				hitTolerance: 10,
-			}
+			},
 		);
 
 		if (selectedFeature) {
@@ -413,8 +419,8 @@ class Summary extends React.Component<Props, State> {
 						null,
 						nutrient,
 						year,
-						false
-					)
+						false,
+					),
 				);
 			}
 
@@ -424,7 +430,13 @@ class Summary extends React.Component<Props, State> {
 			if (featureId !== previousFeatureId) {
 				// Feature is selected
 				selectedFeature.setStyle(
-					getFeatureStyle(selectedFeature, null, nutrient, year, true)
+					getFeatureStyle(
+						selectedFeature,
+						null,
+						nutrient,
+						year,
+						true,
+					),
 				);
 				this.setState({ featureId, selectedFeature });
 			} else {
@@ -445,7 +457,7 @@ class Summary extends React.Component<Props, State> {
 			([year, value]) => {
 				x.push(parseInt(year, 10));
 				y.push(parseFloat(value));
-			}
+			},
 		);
 		return SLRSlope(x, y) || 0;
 	};
@@ -455,7 +467,7 @@ class Summary extends React.Component<Props, State> {
 		const nitrogenTrend = this.getNutrientTrend("Nitrogen", featureName);
 		const phosphorusTrend = this.getNutrientTrend(
 			"Phosphorus",
-			featureName
+			featureName,
 		);
 		return [
 			["Nitrogen", nitrogenTrend],
@@ -559,13 +571,13 @@ class Summary extends React.Component<Props, State> {
 									const { title, visible } = legend;
 									document
 										.querySelectorAll(
-											".layer-switcher li.layer"
+											".layer-switcher li.layer",
 										)
 										.forEach((el) => {
 											if (el.innerText === title) {
 												if (visible) {
 													el.classList.remove(
-														"hidden"
+														"hidden",
 													);
 												} else {
 													el.classList.add("hidden");
@@ -607,7 +619,7 @@ class Summary extends React.Component<Props, State> {
 											</ListItemIcon>
 											<ListItemText primary={title} />
 										</ListItem>
-									) : null
+									) : null,
 								)}
 							</List>
 						</BaseControlPortal>

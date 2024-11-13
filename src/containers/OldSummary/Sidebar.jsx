@@ -166,13 +166,13 @@ const Sidebar = ({
 		featureValue =
 			annualYieldData[selectedNutrient][featureId][selectedYear];
 		annualYieldChartData = Object.entries(
-			annualYieldData[selectedNutrient][featureId]
+			annualYieldData[selectedNutrient][featureId],
 		).map(([year, value]) => {
 			// Data is already sorted by year in `src/data/annual_yield.json`
 			yearsOptions.push(
 				<option key={year} value={year}>
 					{year}
-				</option>
+				</option>,
 			);
 			return {
 				x: year,
@@ -305,7 +305,7 @@ const Sidebar = ({
 							barsData={Object.entries(
 								overallData.drainage.annual_load[
 									selectedNutrient
-								]
+								],
 							).map(([year, value]) => ({
 								x: +year,
 								y: +value,
@@ -411,7 +411,7 @@ const Sidebar = ({
 									x,
 									y,
 									selected: x === +selectedYear,
-								})
+								}),
 							)}
 							lineData={annualLoadChartData.normalized_flow}
 							intervalData={
@@ -474,12 +474,12 @@ const Sidebar = ({
 										getNutrientValueCategoryIndex(
 											idx === 0
 												? undefined
-												: idx * 5 - 0.1
+												: idx * 5 - 0.1,
 										)
 									]
 								}
 								activeBox={getNutrientValueCategoryIndex(
-									featureValue
+									featureValue,
 								)}
 								activeBoxLabel={
 									featureValue >= 0
@@ -515,7 +515,7 @@ const Sidebar = ({
 									className={`actionIcon ${classes.infoIcon}`}
 									onClick={() =>
 										updateDialogContent(
-											VARIABLES_INFO.yield
+											VARIABLES_INFO.yield,
 										)
 									}
 								/>
@@ -558,7 +558,7 @@ const Sidebar = ({
 							mouseOver={(d, idx, rects) => {
 								select(rects[idx]).attr("fill", "brown");
 								select(annualYieldTooltipRef.current).html(
-									`${d.x}: <span class=${classes.featureProp}>${d.y} lb/acre</span>`
+									`${d.x}: <span class=${classes.featureProp}>${d.y} lb/acre</span>`,
 								);
 								select(annualYieldChartTooltipRef.current)
 									.html(`${d.y} lb/acre`)
@@ -575,7 +575,7 @@ const Sidebar = ({
 									];
 								select(rects[idx]).attr(
 									"fill",
-									styleInfo.color ? styleInfo.color : "#000"
+									styleInfo.color ? styleInfo.color : "#000",
 								);
 								select(annualYieldTooltipRef.current).html("");
 								select(annualYieldChartTooltipRef.current)

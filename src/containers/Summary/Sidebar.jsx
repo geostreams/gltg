@@ -2,26 +2,36 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
 	Box,
+	FormControl,
+	FormLabel,
+	Select,
+	MenuItem,
 	Typography,
 	Dialog,
 	DialogTitle,
 	DialogContent,
 	DialogContentText,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	Paper,
 } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";
 import { Clear } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
-import NoSignificantTrendIcon from "../../images/NoSignificantTrendIcon.png";
-import UpwardTrendIcon from "../../images/UpwardTrendIcon.png";
-import DownwardTrendIcon from "../../images/DownwardTrendIcon.png";
+import NoSignificantTrendIcon from "../../images/No_Significant_Trend_Icon.png";
+import UpwardTrendIcon from "../../images/Upward_Trending_Icon.png";
+import DownwardTrendIcon from "../../images/Downward_Trending_Icon.png";
 
 import phosTrendStationDataUrl from "../../data/phos_trend_station_data_20years.json";
 import nitrateTrendStationsDataUrl from "../../data/nitrate_trend_station_data_20years.json";
 
 import SummaryGraph from "./SummaryGraph";
-import TrendTables from "./TrendTables";
 
 const useStyles = makeStyles((theme) => ({
 	sidebarBody: {
@@ -34,10 +44,12 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: "unset",
 	},
 	header: {
-		display: "flex",
+		display: "flex", // Using flexbox
+		flexDirection: "column", // Align items vertically
 		alignItems: "flex-start",
 		paddingTop: "0.5em",
 		paddingRight: "1em",
+		margin: "10px auto",
 	},
 	promptText: {
 		margin: 0,
@@ -62,6 +74,13 @@ const useStyles = makeStyles((theme) => ({
 		whiteSpace: "nowrap", // prevent wrapping
 		overflow: "hidden", // hide overflow
 		textOverflow: "ellipsis", // show ellipsis when text overflows
+	},
+	subHeaderText: {
+		margin: 0,
+		color: "#333",
+		letterSpacing: "0.5px",
+		alignSelf: "center",
+		paddingTop: "0.5em",
 	},
 	infoIcon: {
 		verticalAlign: "super",
@@ -96,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	formControl: {
 		margin: theme.spacing(1),
-		width: "90%",
+		width: "150%",
 	},
 	formLabel: {
 		padding: theme.spacing(1),
@@ -121,8 +140,8 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(2, 0),
 	},
 	legendIcon: {
-		width: "1em",
-		height: "1em",
+		width: "1.75em",
+		height: "auto",
 		marginRight: theme.spacing(1),
 	},
 	legendContainer: {
@@ -184,12 +203,12 @@ function convertTrend(inputString) {
 const Sidebar = ({
 	stationData,
 	selectedNutrient,
+	setSelectedNutrient,
 	selectedTimePeriod,
+	setSelectedTimePeriod,
 	removeSelectedStation,
 	selectedParameter,
-	setSelectedTrendTableStation,
-	showCharts,
-	setShowCharts,
+	setSelectedParameter,
 }) => {
 	const classes = useStyles();
 	const [data, setData] = React.useState(null);
@@ -200,7 +219,6 @@ const Sidebar = ({
 	] = React.useState(null);
 	const [phosTrendStationData20Years, setPhosTrendStationData20Years] =
 		React.useState(null);
-	const [trendTableData, setTrendTableData] = React.useState({});
 
 	React.useEffect(() => {
 		fetch(nitrateTrendStationsDataUrl)
@@ -222,14 +240,14 @@ const Sidebar = ({
 					setData(
 						nitrateTrendStationsData20Years[
 							stationData.WQ_MonitoringLocationIdentifier
-						]
+						],
 					);
 					break;
 				case "Phosphorus":
 					setData(
 						phosTrendStationData20Years[
 							stationData.WQ_MonitoringLocationIdentifier
-						]
+						],
 					);
 					break;
 			}
@@ -238,21 +256,6 @@ const Sidebar = ({
 		}
 	}, [
 		stationData,
-		nitrateTrendStationsData20Years,
-		phosTrendStationData20Years,
-	]);
-
-	React.useEffect(() => {
-		switch (selectedNutrient) {
-			case "Nitrogen":
-				setTrendTableData(nitrateTrendStationsData20Years);
-				break;
-			case "Phosphorus":
-				setTrendTableData(phosTrendStationData20Years);
-				break;
-		}
-	}, [
-		selectedNutrient,
 		nitrateTrendStationsData20Years,
 		phosTrendStationData20Years,
 	]);
@@ -378,7 +381,7 @@ const Sidebar = ({
 	);
 
 	// Graph components
-	const loadYieldGraph = () => {
+	const loadGraph = () => {
 		if (data) {
 			return (
 				<Box className={classes.chart}>
@@ -395,7 +398,7 @@ const Sidebar = ({
 						non_stationary_high_interval="nonStationaryFNFluxHigh"
 						non_stationary_low_interval="nonStationaryFNFluxLow"
 						y_scatter_field="stationaryFluxDay"
-						y_label="Yearly Cumulative Load (10^6 kg/yr)"
+						y_label="Yearly Cumulative Load (10^4 kg/yr)"
 						x_label="Year"
 						title="Mean (dots) & Flow-Normalized (line) Load Estimates"
 					/>
@@ -405,24 +408,6 @@ const Sidebar = ({
 						{convertTrend(stationData.significance_flux)}
 						<sup>*</sup>
 					</Typography>
-					<br />
-					<h4 className={classes.chartHeader}>Yield Graph</h4>
-					<SummaryGraph
-						graph_data={data.yield}
-						width={350}
-						height={330}
-						startAtZero={false}
-						stationary_y_line_field="stationaryFNYield"
-						stationary_high_interval="stationaryFNYieldHigh"
-						stationary_low_interval="stationaryFNYieldLow"
-						non_stationary_y_line_field="nonStationaryFNYield"
-						non_stationary_high_interval="nonStationaryFNYieldHigh"
-						non_stationary_low_interval="nonStationaryFNYieldLow"
-						y_scatter_field="stationaryYieldDay"
-						y_label="Yearly Yield (kg/km^2/yr)"
-						x_label="Year"
-						title="Mean (dots) & Flow-Normalized (line) Yield Estimates"
-					/>
 				</Box>
 			);
 		}
@@ -466,53 +451,149 @@ const Sidebar = ({
 	return (
 		<div>
 			{infoDialog}
+			<Box
+				className={classes.dropdownsContainer}
+				display="flex"
+				justifyContent="center"
+				alignItems="center"
+			>
+				<FormControl
+					component="fieldset"
+					className={classes.formControl}
+				>
+					<FormLabel component="legend" className={classes.formLabel}>
+						<Box display="flex" alignItems="center">
+							Select Nutrient
+						</Box>
+					</FormLabel>
+					<Select
+						className={classes.selectButton}
+						value={selectedNutrient}
+						onChange={({ target: { value } }) => {
+							setSelectedNutrient(value);
+						}}
+					>
+						<MenuItem value="Nitrogen">Nitrate-N</MenuItem>
+						<MenuItem value="Phosphorus">Total Phosphorus</MenuItem>
+					</Select>
+				</FormControl>
+				<FormControl
+					component="fieldset"
+					className={classes.formControl}
+				>
+					<FormLabel component="legend" className={classes.formLabel}>
+						<Box display="flex" alignItems="center">
+							Select Parameter
+						</Box>
+					</FormLabel>
+					<Select
+						className={classes.selectButton}
+						value={selectedParameter}
+						onChange={({ target: { value } }) => {
+							setSelectedParameter(value);
+						}}
+					>
+						<MenuItem value="concentration">Concentration</MenuItem>
+						<MenuItem value="flux">Load</MenuItem>
+					</Select>
+				</FormControl>
+				<FormControl
+					component="fieldset"
+					className={classes.formControl}
+				>
+					<FormLabel component="legend" className={classes.formLabel}>
+						<Box display="flex" alignItems="center">
+							Select Time Period
+						</Box>
+					</FormLabel>
+					<Select
+						className={classes.selectButton}
+						value={selectedTimePeriod}
+						onChange={({ target: { value } }) => {
+							setSelectedTimePeriod(value);
+						}}
+					>
+						<MenuItem value="20_years">2000-2020</MenuItem>
+					</Select>
+				</FormControl>
+			</Box>
 			<div className={classes.sidebarBody}>
 				<Typography className={classes.header} variant="h5">
 					Nutrient Trends Dashboard
-					<IconButton
-						className={classes.infoIcon}
-						onClick={() => setOpenInfoDialog(true)}
-						size="small"
-					>
-						<InfoIcon fontSize="inherit" />
-					</IconButton>
 				</Typography>
 				<Divider className={classes.divider} />
-				<Box className={classes.summaryBox}>
-					<Typography variant="h6" gutterBottom>
-						Dashboard Summary
-					</Typography>
-					<Typography variant="body1">
-						This dashboard provides an overview of nutrient data
-						across various stations. Use the map to select a station
-						and view detailed data graphs corresponding to the
-						chosen station.
-					</Typography>
-				</Box>
-				<div style={{ display: showCharts ? "none" : "block" }}>
-					<Typography className={classes.promptText} variant="h5">
-						Select Station
-						<Tooltip
-							title="Click on any station to view nutrient data graphs."
-							arrow
-							placement="top"
-						>
-							<InfoIcon className={classes.infoIcon} />
-						</Tooltip>
-					</Typography>
-					<Divider />
-					<TrendTables
-						trendTableData={trendTableData}
-						selectedNutrient={selectedNutrient}
-						selectedParameter={selectedParameter}
-						setSelectedTrendTableStation={
-							setSelectedTrendTableStation
-						}
-						showCharts={showCharts}
-						setShowCharts={setShowCharts}
-					/>
-				</div>
-				{showCharts && stationData && (
+				{!stationData ? (
+					<>
+						<Typography className={classes.promptText} variant="h5">
+							Select Station
+							<Tooltip
+								title="Click on any station to view nutrient data graphs."
+								arrow
+								placement="top"
+							>
+								<InfoIcon className={classes.infoIcon} />
+							</Tooltip>
+						</Typography>
+						<Divider />
+						<Box className={classes.summaryBox}>
+							<Typography variant="h6" gutterBottom>
+								Dashboard Summary
+							</Typography>
+							<Typography variant="body1">
+								This dashboard provides an overview of nutrient
+								data across various stations. Use the map to
+								select a station and view detailed data graphs
+								corresponding to the chosen station.
+							</Typography>
+						</Box>
+						<Divider />
+						<Box className={classes.legendBox}>
+							<div
+								style={{
+									display: "flex",
+									alignItems: "center",
+									justifyContent: "space-between",
+								}}
+							>
+								<Typography variant="h5">
+									Trend Results
+									<InfoIcon
+										className={classes.infoIcon}
+										onClick={() => setOpenInfoDialog(true)}
+									/>
+								</Typography>
+							</div>
+							<br />
+							<div className={classes.legendContainer}>
+								<div className={classes.legendItem}>
+									<img
+										src={UpwardTrendIcon}
+										alt="Upward Trend Icon"
+										className={classes.legendIcon}
+									/>
+									<span>Upward Trend </span>
+								</div>
+								<div className={classes.legendItem}>
+									<img
+										src={NoSignificantTrendIcon}
+										alt="No Significant Trend Icon"
+										className={classes.legendIcon}
+									/>
+									<span>No Significant Trend</span>
+								</div>
+
+								<div className={classes.legendItem}>
+									<img
+										src={DownwardTrendIcon}
+										alt=" Downward Trend "
+										className={classes.legendIcon}
+									/>
+									<span>Downward Trend </span>
+								</div>
+							</div>
+						</Box>
+					</>
+				) : (
 					<>
 						<div
 							style={{
@@ -546,7 +627,7 @@ const Sidebar = ({
 						<div>
 							{data &&
 								selectedParameter === "flux" &&
-								loadYieldGraph()}
+								loadGraph()}
 							{/* <Divider /> */}
 							{/* <br /> */}
 							{data &&

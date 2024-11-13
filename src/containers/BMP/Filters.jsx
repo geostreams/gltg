@@ -146,12 +146,13 @@ const Filters = () => {
 							size="small"
 							disableCloseOnSelect
 							options={config[boundaryType].map(
-								(attrs) => attrs[BOUNDARIES[boundaryType].idKey]
+								(attrs) =>
+									attrs[BOUNDARIES[boundaryType].idKey],
 							)}
 							filterOptions={(options: string[]) =>
 								options.filter(
 									(option) =>
-										!selectedBoundaries.includes(option)
+										!selectedBoundaries.includes(option),
 								)
 							}
 							value={[]}
@@ -187,7 +188,7 @@ const Filters = () => {
 							dispatchFilterUpdate({
 								type: "selectedBoundaries",
 								value: selectedBoundaries.filter(
-									(b) => b !== boundary
+									(b) => b !== boundary,
 								),
 							});
 						}}

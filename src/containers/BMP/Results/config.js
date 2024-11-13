@@ -35,7 +35,7 @@ export const RESULTS = {
 
 export const createRequestParams = (
 	category: string,
-	filters: Filters
+	filters: Filters,
 ): string => {
 	const prepareParams = RESULTS[category].config.prepareParams;
 
@@ -58,7 +58,7 @@ export const createRequestParams = (
 
 	prepareParams(
 		params,
-		filters.selectedBoundaries.length ? filters.boundaryType : null
+		filters.selectedBoundaries.length ? filters.boundaryType : null,
 	);
 
 	return entries(params)

@@ -81,7 +81,7 @@ const Results = ({ dispatch }: Props) => {
 		if (activeResultCategory) {
 			const queryParams = createRequestParams(
 				activeResultCategory,
-				filters
+				filters,
 			);
 			const queryParamsBase64 = btoa(queryParams);
 			if (results[queryParamsBase64]) {
@@ -149,7 +149,7 @@ const Results = ({ dispatch }: Props) => {
 							<MenuItem key={name} value={name}>
 								{label}
 							</MenuItem>
-						)
+						),
 					)}
 				</Select>
 			</FormControl>

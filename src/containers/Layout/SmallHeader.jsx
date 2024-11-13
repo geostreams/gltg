@@ -208,7 +208,7 @@ const SmallHeader = ({ location }: Props) => {
 							classes={{ root: classes.menuItem }}
 							onClick={dashboardHandleClose}
 							component={Link}
-							to="summary"
+							to="nutrient-trends"
 						>
 							Nutrient Trends Dashboard
 						</MenuItem>
@@ -219,14 +219,6 @@ const SmallHeader = ({ location }: Props) => {
 							to="/bmp"
 						>
 							Best Management Practices
-						</MenuItem>
-						<MenuItem
-							classes={{ root: classes.menuItem }}
-							onClick={dashboardHandleClose}
-							component={Link}
-							to="/summary"
-						>
-							State Portals
 						</MenuItem>
 					</Menu>
 					<Menu

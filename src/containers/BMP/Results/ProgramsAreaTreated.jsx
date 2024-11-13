@@ -183,13 +183,13 @@ const ProgramsAreaTreated = (props: Props) => {
 														boundaryPrograms[
 															program
 														] || 0,
-														0
+														0,
 													)
 												: "-"}
 										</TableCell>
 									))}
 								</TableRow>
-							)
+							),
 						)}
 					</TableBody>
 				</Table>

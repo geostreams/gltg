@@ -134,7 +134,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 						startIcon={<PdfIcon />}
 						disabled={
 							Array.from(selectedCategories.values()).every(
-								(v) => !v
+								(v) => !v,
 							) || !outputContainer.current
 						}
 						onClick={() => {
@@ -178,10 +178,10 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 												[
 													label,
 													!selectedCategories.get(
-														label
+														label,
 													),
 												],
-											])
+											]),
 										)
 									}
 								>
@@ -197,13 +197,13 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 									</ListItemIcon>
 									<ListItemText>{label}</ListItemText>
 								</ListItem>
-							)
+							),
 						)}
 					</List>
 				</Grid>
 				<Grid ref={outputContainer} item xs={8}>
 					{entries(RESULTS).map((resultProps) =>
-						renderResult(resultProps)
+						renderResult(resultProps),
 					)}
 				</Grid>
 			</Grid>

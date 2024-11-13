@@ -59,7 +59,7 @@ const useStyle = makeStyles({
 
 const filtersReducer = (
 	state: Filters = INITIAL_FILTERS,
-	action: FiltersAction
+	action: FiltersAction,
 ) => {
 	switch (action.type) {
 		case "years":
@@ -122,13 +122,13 @@ const BMP = ({ dispatch }: Props) => {
 		dispatch(updateLoadingStatus(true));
 		Promise.all([
 			fetch(`${BMP_API_URL}/assumptions?limit=-1`).then((response) =>
-				response.json()
+				response.json(),
 			),
 			fetch(`${BMP_API_URL}/states?limit=-1`).then((response) =>
-				response.json()
+				response.json(),
 			),
 			fetch(`${BMP_API_URL}/huc8?limit=-1`).then((response) =>
-				response.json()
+				response.json(),
 			),
 		])
 			.then(([assumptionsResponse, statesResponse, huc8Response]) => {
@@ -138,7 +138,7 @@ const BMP = ({ dispatch }: Props) => {
 					huc_8: huc8Response.results,
 				};
 				const boundaryOptions = configObj[filters.boundaryType].map(
-					(attrs) => attrs[BOUNDARIES[filters.boundaryType].idKey]
+					(attrs) => attrs[BOUNDARIES[filters.boundaryType].idKey],
 				);
 				const activeLayer =
 					LAYERS[filtersRef.current.current.boundaryType];
@@ -147,8 +147,8 @@ const BMP = ({ dispatch }: Props) => {
 						boundaryOptions,
 						feature,
 						BOUNDARIES[filters.boundaryType].layer.featureIdKey,
-						false
-					)
+						false,
+					),
 				);
 				configRef.current = configObj;
 				updateConfig(configObj);
@@ -164,7 +164,7 @@ const BMP = ({ dispatch }: Props) => {
 			const previous = filtersRef.current.current;
 
 			const boundaryOptions = config[filters.boundaryType].map(
-				(attrs) => attrs[BOUNDARIES[filters.boundaryType].idKey]
+				(attrs) => attrs[BOUNDARIES[filters.boundaryType].idKey],
 			);
 
 			if (previous.boundaryType !== filters.boundaryType) {
@@ -176,8 +176,8 @@ const BMP = ({ dispatch }: Props) => {
 						boundaryOptions,
 						feature,
 						BOUNDARIES[filters.boundaryType].layer.featureIdKey,
-						false
-					)
+						false,
+					),
 				);
 				LAYERS[filters.boundaryType].setVisible(true);
 			}
@@ -192,10 +192,10 @@ const BMP = ({ dispatch }: Props) => {
 						filters.selectedBoundaries.includes(
 							feature.get(
 								BOUNDARIES[filters.boundaryType].layer
-									.featureIdKey
-							)
-						)
-					)
+									.featureIdKey,
+							),
+						),
+					),
 				);
 			}
 
@@ -207,7 +207,7 @@ const BMP = ({ dispatch }: Props) => {
 	}, [filters]);
 
 	const getMapEventTargetProps = (
-		e: MapBrowserEventType
+		e: MapBrowserEventType,
 	): {
 		feature: FeatureType,
 		layer: LayerType,
@@ -220,17 +220,17 @@ const BMP = ({ dispatch }: Props) => {
 			const boundaryOptions = currentConfig[
 				currentFilters.boundaryType
 			].map(
-				(attrs) => attrs[BOUNDARIES[currentFilters.boundaryType].idKey]
+				(attrs) => attrs[BOUNDARIES[currentFilters.boundaryType].idKey],
 			);
 
 			const targetObject: [FeatureType, LayerType] | null =
 				e.map.forEachFeatureAtPixel(e.pixel, (feature, layer) =>
 					layer.get("interactive") &&
 					boundaryOptions.includes(
-						feature.get(boundaryProps.layer.featureIdKey)
+						feature.get(boundaryProps.layer.featureIdKey),
 					)
 						? [feature, layer]
-						: null
+						: null,
 				);
 
 			if (targetObject) {
@@ -256,7 +256,7 @@ const BMP = ({ dispatch }: Props) => {
 			const boundaryProps = BOUNDARIES[currentFilters.boundaryType];
 
 			const boundaryIndex = currentFilters.selectedBoundaries.indexOf(
-				clickedFeature.get(boundaryProps.layer.featureIdKey)
+				clickedFeature.get(boundaryProps.layer.featureIdKey),
 			);
 			const { selectedBoundaries } = currentFilters;
 			if (boundaryIndex > -1) {
@@ -265,7 +265,7 @@ const BMP = ({ dispatch }: Props) => {
 			} else {
 				// Select the feature
 				selectedBoundaries.push(
-					clickedFeature.get(boundaryProps.layer.featureIdKey)
+					clickedFeature.get(boundaryProps.layer.featureIdKey),
 				);
 			}
 
@@ -275,9 +275,9 @@ const BMP = ({ dispatch }: Props) => {
 					feature,
 					boundaryProps.layer.featureIdKey,
 					selectedBoundaries.includes(
-						feature.get(boundaryProps.layer.featureIdKey)
-					)
-				)
+						feature.get(boundaryProps.layer.featureIdKey),
+					),
+				),
 			);
 
 			dispatchFilterUpdate({
@@ -358,7 +358,7 @@ const BMP = ({ dispatch }: Props) => {
 											>
 												{label}: {value}
 											</Typography>
-										)
+										),
 									)}
 								</Container>
 							</BaseControlPortal>

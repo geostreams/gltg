@@ -85,7 +85,7 @@ export const LAYERS = {
 				source: new XYZ({
 					url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
 					attributions: [
-						"&#169; <a href='https://www.carto.com'>Carto</a>,",
+						'&#169; <a href="https://www.carto.com">Carto</a>,',
 						OSM_ATTRIBUTION,
 					],
 				}),
@@ -107,7 +107,7 @@ export const LAYERS = {
 					visible,
 					layer: { id, crs, featureIdKey },
 				},
-			]
+			],
 		) => {
 			const layer = new VectorTileLayer({
 				source: new VectorTileSource({
@@ -122,7 +122,7 @@ export const LAYERS = {
 			boundaryLayers[boundary] = layer;
 			return boundaryLayers;
 		},
-		{}
+		{},
 	),
 };
 

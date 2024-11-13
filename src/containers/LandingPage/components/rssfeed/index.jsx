@@ -36,7 +36,7 @@ function RssFeed() {
 					description: item.querySelector("description").textContent,
 				}));
 				let sortedArr = feedItems_all.sort(
-					(a, b) => new Date(b.pubDate) - new Date(a.pubDate)
+					(a, b) => new Date(b.pubDate) - new Date(a.pubDate),
 				);
 				let feedItems = sortedArr.slice(0, 3);
 
@@ -69,7 +69,7 @@ function RssFeed() {
 					console.log(item);
 					const strippedText = item.description.replace(
 						/(<([^>]+)>)/gi,
-						""
+						"",
 					);
 					item["description"] = strippedText;
 					var pubDate = item["pubDate"];

@@ -251,7 +251,7 @@ const TrendStationTable = ({
 												padding: "4px 8px",
 												backgroundColor:
 													chooseConfidenceColor(
-														row.confidence
+														row.confidence,
 													),
 												borderRadius: "20px",
 												color: "#333",
@@ -314,7 +314,7 @@ export default function TrendTables({
 			const parsedData = parseTrendJSONData(
 				trendStationData,
 				trendTableData,
-				selectedParameter
+				selectedParameter,
 			);
 			const filterData = (trendType) =>
 				parsedData.filter((station) => station.trend === trendType);

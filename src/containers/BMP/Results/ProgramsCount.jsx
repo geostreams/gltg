@@ -165,12 +165,12 @@ const ProgramsCount = (props: Props) => {
 										<TableCell key={program} align="center">
 											{precision(
 												boundaryPrograms[program] || 0,
-												0
+												0,
 											)}
 										</TableCell>
 									))}
 								</TableRow>
-							)
+							),
 						)}
 					</TableBody>
 				</Table>

@@ -120,7 +120,7 @@ export const FEATURE_STYLE_INFO = [
 ];
 
 export const getNutrientValueCategoryIndex = (
-	nutrientLevel?: number
+	nutrientLevel?: number,
 ): number => {
 	if ((nutrientLevel !== 0 && !nutrientLevel) || nutrientLevel < 0) {
 		return 0;
@@ -166,7 +166,7 @@ export const getFeatureStyle = (
 	resolution: ?number,
 	nutrient: string,
 	year: number,
-	isSelected: boolean = false
+	isSelected: boolean = false,
 ) => {
 	const strokeOptions = isSelected
 		? {

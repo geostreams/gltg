@@ -158,7 +158,7 @@ const Header = ({ location }: Props) => {
 							classes={{ root: classes.menuItem }}
 							onClick={dashboardHandleClose}
 							component={Link}
-							to="summary"
+							to="nutrient-trends"
 						>
 							Nutrient Trends Dashboard
 						</MenuItem>

@@ -12,6 +12,10 @@ import Stroke from "ol/style/Stroke";
 import Style from "ol/style/Style";
 import { entries } from "@geostreams/core/src/utils/array";
 
+import type { Feature as FeatureType } from "ol";
+
+import type { Boundary, Filters } from "./flowtype";
+
 export const GEOSERVER_URL = process.env.GEOSERVER_URL || "";
 export const BMP_API_URL = process.env.BMP_API_URL || "";
 
@@ -44,14 +48,19 @@ export const STYLES = {
 	}),
 };
 
-export const getStyle = (options, feature, featureIdKey, isSelected) => {
+export const getStyle = (
+	options: string[],
+	feature: FeatureType,
+	featureIdKey: string,
+	isSelected: boolean,
+) => {
 	if (options.includes(feature.get(featureIdKey))) {
 		return isSelected ? STYLES.selected : STYLES.default;
 	}
 	return STYLES.hidden;
 };
 
-export const BOUNDARIES = {
+export const BOUNDARIES: { [k: string]: Boundary } = {
 	state: {
 		visible: true,
 		label: "State",
@@ -133,7 +142,7 @@ for (let i = YEAR_RANGE[0]; i <= YEAR_RANGE[1]; i += 1) {
 	YEAR_RANGE_MARKS.push(mark);
 }
 
-export const INITIAL_FILTERS = {
+export const INITIAL_FILTERS: Filters = {
 	years: YEAR_RANGE,
 	boundaryType: "state",
 	selectedBoundaries: [],

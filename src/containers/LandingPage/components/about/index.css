@@ -1,80 +1,25 @@
 .introDiv {
-	/*position: absolute;*/
 	position: relative;
 	display: flex;
 	width: 100%;
-	/*left: 0px;*/
-	height: 44.563em;
+	height: 20em;
 	margin-top: 3em;
-	background-image: url("../../Images/Welcome.jpg");
+	background-image: url("../../Images/gltg-banner.jpg");
 	background-position: center;
-}
-
-.introBox {
-	width: 47.063em;
-	height: 28.375em;
-	background-color: rgba(45, 60, 74, 0.7);
-	z-index: +1;
-	margin: auto;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #1a4984;
 }
 
 .introTitle {
-	/* H1 */
-	font-family: "Roboto";
-	font-style: normal;
-	font-weight: 700;
-	font-size: 36px;
-	line-height: 42px;
-	text-align: center;
-
-	/* TextLight */
-	color: #ffffff;
-	position: static;
-
-	/* Inside auto layout */
-	flex: none;
-	order: 0;
-	align-self: stretch;
-	flex-grow: 0;
-	margin: auto;
-}
-
-.introSubtitle {
-	/* Body1 */
-	font-family: "Roboto";
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 19px;
-
-	/* TextLight */
-	color: #ffffff;
-
-	/* Inside auto layout */
-	flex: none;
-	order: 0;
-	align-self: stretch;
-	flex-grow: 0;
-	margin: auto;
-}
-
-.introList {
-	font-family: "Roboto";
-	font-style: normal;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 17px;
-
-	/* or 106% */
-
-	/* TextLight */
-	color: #ffffff;
-
-	/* Inside auto layout */
-	flex: none;
-	order: 0;
-	flex-grow: 1;
-	margin: auto;
+	position: absolute;
+	left: 4%;
+	bottom: 7%;
+	color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	font-weight: bold;
+	z-index: 1;
+	max-width: 80%;
 }
 
 .photoCredit {

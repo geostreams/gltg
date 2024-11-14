@@ -2,57 +2,94 @@ import React from "react";
 import {
 	Typography,
 	FormControl,
-	Grid,
 	RadioGroup,
 	FormControlLabel,
 	FormLabel,
 	Select,
 	MenuItem,
 	Radio,
-	Button,
 	InputLabel,
+	Container,
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-	topBar: {
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "space-around",
+	root: {
+		width: "100%",
 		backgroundColor: theme.palette.background.default,
-		padding: theme.spacing(1),
 		boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-		maxHeight: "14%",
+		padding: theme.spacing(2),
+		flexShrink: 0,
+		[theme.breakpoints.down("sm")]: {
+			padding: theme.spacing(1),
+		},
+		position: "absolute",
+	},
+	container: {
+		display: "flex",
+		flexDirection: "column",
+		[theme.breakpoints.up("md")]: {
+			flexDirection: "row",
+			alignItems: "center",
+			justifyContent: "space-between",
+		},
 	},
 	topBarTitle: {
 		fontFamily: "Poppins",
-		fontSize: "2em",
+		fontSize: "1.5rem", // Slightly reduced size
 		fontWeight: 700,
-		textAlign: "left",
+		marginBottom: theme.spacing(1),
+		[theme.breakpoints.down("sm")]: {
+			fontSize: "1.25rem",
+			marginBottom: theme.spacing(1),
+		},
 	},
-	topBarItem: {
-		padding: theme.spacing(2),
+	controlsContainer: {
+		display: "flex",
+		flexDirection: "column",
+		gap: theme.spacing(1), // Reduced gap
+		[theme.breakpoints.up("md")]: {
+			flexDirection: "row",
+			alignItems: "center",
+			flexWrap: "wrap",
+		},
 	},
 	formControl: {
-		minWidth: 200,
-		margin: theme.spacing(1),
+		minWidth: "180px", // Slightly reduced
+		[theme.breakpoints.up("md")]: {
+			margin: theme.spacing(0, 1),
+		},
 	},
 	formLabel: {
-		fontSize: ".88rem",
+		fontSize: ".75rem", // Slightly reduced
+		marginBottom: theme.spacing(0.5),
+	},
+	radioGroup: {
+		justifyContent: "center",
+		[theme.breakpoints.up("md")]: {
+			justifyContent: "flex-start",
+		},
 	},
 	selectButton: {
 		background: theme.palette.primary.main,
 		borderRadius: 4,
 		color: theme.palette.primary.contrastText,
-		position: "relative",
 		padding: theme.spacing(1),
 		fontSize: ".75rem",
 		"&:focus": {
 			borderRadius: 4,
 		},
 	},
-	button: {
-		margin: theme.spacing(1),
+	// Make form controls more compact
+	selectRoot: {
+		"& .MuiOutlinedInput-input": {
+			padding: "10px 14px",
+		},
+	},
+	radioLabel: {
+		"& .MuiFormControlLabel-label": {
+			fontSize: ".875rem",
+		},
 	},
 }));
 
@@ -66,15 +103,28 @@ const TopBar = ({
 }) => {
 	const classes = useStyles();
 
+	const CustomRadio = withStyles({
+		root: {
+			padding: "4px", // Reduced padding
+			"&$checked": {
+				color: "#1976D2",
+			},
+		},
+		checked: {},
+	})((props) => <Radio color="default" {...props} />);
+
 	const selectNutrientComponent = (
-		<FormControl variant="outlined" className={classes.formControl}>
+		<FormControl
+			variant="outlined"
+			className={classes.formControl}
+			size="small" // Add size="small"
+		>
 			<InputLabel>Choose a Nutrient</InputLabel>
 			<Select
 				value={selectedNutrient}
-				onChange={({ target: { value } }) => {
-					setSelectedNutrient(value);
-				}}
+				onChange={({ target: { value } }) => setSelectedNutrient(value)}
 				label="Choose a Nutrient"
+				className={classes.selectRoot}
 			>
 				<MenuItem value="Nitrogen">Nitrate-N</MenuItem>
 				<MenuItem value="Phosphorus">Total Phosphorus</MenuItem>
@@ -83,70 +133,71 @@ const TopBar = ({
 	);
 
 	const selectPeriodComponent = (
-		<FormControl variant="outlined" className={classes.formControl}>
+		<FormControl
+			variant="outlined"
+			className={classes.formControl}
+			size="small" // Add size="small"
+		>
 			<InputLabel>Select Period</InputLabel>
 			<Select
 				value={selectedTimePeriod}
-				onChange={({ target: { value } }) => {
-					setSelectedTimePeriod(value);
-				}}
+				onChange={({ target: { value } }) =>
+					setSelectedTimePeriod(value)
+				}
 				label="Select Period"
+				className={classes.selectRoot}
 			>
 				<MenuItem value="20_years">2000-2020</MenuItem>
 			</Select>
 		</FormControl>
 	);
 
-	// Create custom radio
-	const CustomRadio = withStyles({
-		root: {
-			"&$checked": {
-				color: "#1976D2", // Checked color
-			},
-		},
-		checked: {},
-	})((props) => <Radio color="default" {...props} />);
-
 	const selectVariableComponent = (
-		<FormControl component="fieldset" className={classes.formControl}>
-			<FormLabel>Choose a Flow normalized Nutrient Variable</FormLabel>
+		<FormControl
+			component="fieldset"
+			className={classes.formControl}
+			size="small" // Add size="small"
+		>
+			<FormLabel className={classes.formLabel}>
+				Choose a Flow normalized Nutrient Variable
+			</FormLabel>
 			<RadioGroup
 				row
 				value={selectedParameter}
 				onChange={(e) => setSelectedParameter(e.target.value)}
+				className={classes.radioGroup}
 			>
-				{/*Common term for flux is load*/}
 				<FormControlLabel
 					value="flux"
 					control={<CustomRadio />}
 					label="Load"
+					className={classes.radioLabel}
 				/>
 				<FormControlLabel
 					value="concentration"
 					control={<CustomRadio />}
 					label="Concentration"
+					className={classes.radioLabel}
 				/>
 			</RadioGroup>
 		</FormControl>
 	);
 
 	return (
-		<Grid container spacing={2} className={classes.topBar}>
-			<Grid item className={classes.topBarItem}>
-				<Typography variant="h1" className={classes.topBarTitle}>
-					Nutrient Trend Dashboard
-				</Typography>
-			</Grid>
-			<Grid item className={classes.topBarItem}>
-				{selectNutrientComponent}
-			</Grid>
-			<Grid item className={classes.topBarItem}>
-				{selectPeriodComponent}
-			</Grid>
-			<Grid item className={classes.topBarItem}>
-				{selectVariableComponent}
-			</Grid>
-		</Grid>
+		<div className={classes.root}>
+			<Container maxWidth="xl" style={{ padding: "0 16px" }}>
+				<div className={classes.container}>
+					<Typography variant="h1" className={classes.topBarTitle}>
+						Nutrient Trend Dashboard
+					</Typography>
+					<div className={classes.controlsContainer}>
+						{selectNutrientComponent}
+						{selectPeriodComponent}
+						{selectVariableComponent}
+					</div>
+				</div>
+			</Container>
+		</div>
 	);
 };
 

@@ -31,17 +31,24 @@ const useStyles = makeStyles((theme) => ({
 	fillContainer: {
 		width: "100%",
 		height: "100%",
-		marginTop: "1.1%",
+	},
+	topBar: {
+		width: "100%",
+		flexShrink: 0,
+		zIndex: 2,
+		backgroundColor: theme.palette.background.paper,
+		marginBottom: "2.5%",
 	},
 	mainContainer: {
+		height: "calc(100vh - 64px)",
 		position: "absolute",
-		height: "100%",
 	},
 	sidebar: {
 		height: "100%",
 		width: "100%",
 		overflowY: "auto",
 		overflowX: "clip",
+		paddingBottom: "2.5%",
 		"& a": {
 			color: "#0D73C5",
 		},
@@ -657,19 +664,21 @@ const Summary = () => {
 
 	return (
 		<>
-			<Topbar
-				selectedNutrient={selectedNutrient}
-				setSelectedNutrient={setSelectedNutrient}
-				selectedTimePeriod={selectedTimePeriod}
-				setSelectedTimePeriod={setSelectedTimePeriod}
-				selectedParameter={selectedParameter}
-				setSelectedParameter={setSelectedParameter}
-			/>
 			<Grid
 				className={classes.mainContainer}
 				container
 				alignItems="stretch"
 			>
+				<Grid item xs={12} className={classes.topBar}>
+					<Topbar
+						selectedNutrient={selectedNutrient}
+						setSelectedNutrient={setSelectedNutrient}
+						selectedTimePeriod={selectedTimePeriod}
+						setSelectedTimePeriod={setSelectedTimePeriod}
+						selectedParameter={selectedParameter}
+						setSelectedParameter={setSelectedParameter}
+					/>
+				</Grid>
 				<Grid item xs={7} key={selectedTimePeriod}>
 					<Map
 						className={classes.fillContainer}

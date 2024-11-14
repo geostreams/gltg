@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		paddingLeft: "1em",
 		paddingRight: "1em",
+		paddingTop: "2em",
+		marginBottom: "2em",
 	},
 	divider: {
 		borderTop: "1px dashed #000",
@@ -41,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
 	promptText: {
 		margin: 0,
 		letterSpacing: "0.5px",
-		whiteSpace: "nowrap", // prevent wrapping
-		overflow: "hidden", // hide overflow
-		textOverflow: "ellipsis", // show ellipsis when text overflows
+		whiteSpace: "nowrap",
+		overflow: "hidden",
+		textOverflow: "ellipsis",
 		color: "#E05769",
 	},
 	stationNameText: {
@@ -58,9 +60,9 @@ const useStyles = makeStyles((theme) => ({
 		margin: 0,
 		color: "#333",
 		letterSpacing: "0.5px",
-		whiteSpace: "nowrap", // prevent wrapping
-		overflow: "hidden", // hide overflow
-		textOverflow: "ellipsis", // show ellipsis when text overflows
+		whiteSpace: "nowrap",
+		overflow: "hidden",
+		textOverflow: "ellipsis",
 	},
 	infoIcon: {
 		verticalAlign: "super",

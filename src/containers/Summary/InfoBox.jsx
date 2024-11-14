@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const InfoBox = ({ dashboardData }) => {
+const InfoBox = ({ content }) => {
 	const classes = useStyles();
 	const [activeTab, setActiveTab] = useState(0);
 
@@ -95,20 +95,20 @@ const InfoBox = ({ dashboardData }) => {
 
 	return (
 		<div className={classes.root}>
-			{dashboardData.length > 1 && (
+			{content.length > 1 && (
 				<Tabs
 					value={activeTab}
 					onChange={handleTabChange}
 					variant="scrollable"
 				>
-					{dashboardData.map((tab, index) => (
+					{content.map((tab, index) => (
 						<Tab key={index} label={tab.label} />
 					))}
 				</Tabs>
 			)}
 
 			<div className={classes.tabContent}>
-				<ContentRenderer content={dashboardData[activeTab].content} />
+				<ContentRenderer content={content[activeTab].content} />
 			</div>
 		</div>
 	);

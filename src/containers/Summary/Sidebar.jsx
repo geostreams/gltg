@@ -13,12 +13,11 @@ import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";
 import { Clear } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
-import NoSignificantTrendIcon from "../../images/NoSignificantTrendIcon.png";
-import UpwardTrendIcon from "../../images/UpwardTrendIcon.png";
-import DownwardTrendIcon from "../../images/DownwardTrendIcon.png";
+import InfoBox from "./InfoBox";
 
 import phosTrendStationDataUrl from "../../data/phos_trend_station_data_20years.json";
 import nitrateTrendStationsDataUrl from "../../data/nitrate_trend_station_data_20years.json";
+import SummaryInfo from "../../data/SummaryInfo";
 
 import SummaryGraph from "./SummaryGraph";
 import TrendTables from "./TrendTables";
@@ -479,15 +478,16 @@ const Sidebar = ({
 				</Typography>
 				<Divider className={classes.divider} />
 				<Box className={classes.summaryBox}>
-					<Typography variant="h6" gutterBottom>
-						Dashboard Summary
-					</Typography>
-					<Typography variant="body1">
-						This dashboard provides an overview of nutrient data
-						across various stations. Use the map to select a station
-						and view detailed data graphs corresponding to the
-						chosen station.
-					</Typography>
+					{/*<Typography variant="h6" gutterBottom>*/}
+					{/*	Dashboard Summary*/}
+					{/*</Typography>*/}
+					{/*<Typography variant="body1">*/}
+					{/*	This dashboard provides an overview of nutrient data*/}
+					{/*	across various stations. Use the map to select a station*/}
+					{/*	and view detailed data graphs corresponding to the*/}
+					{/*	chosen station.*/}
+					{/*</Typography>*/}
+					<InfoBox content={SummaryInfo} />
 				</Box>
 				<div style={{ display: showCharts ? "none" : "block" }}>
 					<Typography className={classes.promptText} variant="h5">

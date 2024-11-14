@@ -3,25 +3,14 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 
 import About from "./components/about";
-import TextBox from "./components/textbox";
-import Imagerow from "./components/imagerow";
-import FAQBox from "./components/faqbox";
-import Datastories from "./components/datastories";
 import Funding from "./components/funding";
 import Partners from "./components/partners";
 import RssFeed from "./components/rssfeed";
-// Image URls
-import SummaryDashboard from "./Images/SummaryDashboard.png";
-import StatePortal from "./Images/StatePortal.png";
-import ConservationPractices from "./Images/ConservationPractices.png";
-import Explore from "./Images/Explore.png";
-import Analyze from "./Images/Analyze.png";
-import Download from "./Images/Download.png";
 import HomeInfoSection from "./components/HomeInfoSection";
 
-// Dashboard Images
-import TrendDashboardImage from "./Images/trendDashboardImage.png";
-import exploreDashboardImage from "./Images/exploreDashboardImage.png";
+// Image URLS
+import AlgaeBloomImage from "./Images/algae-bloom.jpg";
+import samplingImage from "./Images/sampling-gltg.jpg";
 
 // Partner Images
 import NGRREC from "./Images/Partners/NGREC.jpg";
@@ -129,21 +118,21 @@ const Home = () => {
 			<About />
 			<HomeInfoSection
 				title="Nutrient Trends Dashboard"
-				mapImage={TrendDashboardImage}
+				mapImage={AlgaeBloomImage}
 				launchButtonText="Launch Nutrient Trends Dashboard"
 				infoJSON={trendsDashboardDataJson}
 				buttonLink={"/nutrient-trends"}
 			/>
 			<HomeInfoSection
 				title="State Efforts Dashboard"
-				mapImage={TrendDashboardImage}
+				mapImage={AlgaeBloomImage}
 				launchButtonText="Launch State Efforts Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
 				buttonLink={"/nutrient-trends"}
 			/>
 			<HomeInfoSection
 				title="Explore Water Quality Data Dashboard"
-				mapImage={exploreDashboardImage}
+				mapImage={samplingImage}
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
 				buttonLink={"/explore/all"}

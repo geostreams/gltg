@@ -1,6 +1,7 @@
 import React from "react";
 import {
 	Typography,
+	Box,
 	Button,
 	Paper,
 	Grid,
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 		height: "100%",
 		display: "flex",
 		flexDirection: "column",
+		alignItems: "center",
 	},
 	leftColumn: {
 		display: "flex",
@@ -42,15 +44,15 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		gap: theme.spacing(2),
 	},
-	mapContainer: {
+	imageContainer: {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		width: "80%",
+		maxWidth: "70%",
 	},
-	mapImage: {
+	infoImage: {
+		height: "100%",
 		maxWidth: "100%",
-		maxHeight: "100%",
 		objectFit: "contain",
 	},
 	launchButton: {
@@ -130,15 +132,16 @@ const ImageComponent = ({ src, alt }) => {
 	const classes = useStyles();
 
 	return (
-		<Paper elevation={3} className={classes.mapContainer}>
-			<img src={src} alt={alt} className={classes.mapImage} />
+		<Paper elevation={3} className={classes.imageContainer}>
+			<img src={src} alt={alt} className={classes.infoImage} />
 		</Paper>
 	);
 };
 
 const HomeInfoSection = ({
 	title,
-	mapImage,
+	infoImage,
+	imageCaption,
 	launchButtonText,
 	infoJSON,
 	buttonLink,
@@ -157,7 +160,19 @@ const HomeInfoSection = ({
 			<Grid container spacing={3} className={classes.gridContainer}>
 				{/* Left column */}
 				<Grid item xs={12} md={6} className={classes.leftColumn}>
-					<ImageComponent src={mapImage} />
+					<ImageComponent src={infoImage} />
+					<Box m={2} style={{ textAlign: "center" }}>
+						<Typography variant="caption" gutterBottom>
+							{imageCaption}
+						</Typography>
+					</Box>
+				</Grid>
+
+				{/* Right column */}
+				<Grid item xs={12} md={6} className={classes.column}>
+					<div className={classes.tabContent}>
+						<ContentRenderer content={infoData.content} />
+					</div>
 					<Button
 						variant="contained"
 						color="primary"
@@ -166,13 +181,6 @@ const HomeInfoSection = ({
 					>
 						{launchButtonText}
 					</Button>
-				</Grid>
-
-				{/* Right column */}
-				<Grid item xs={12} md={6} className={classes.column}>
-					<div className={classes.tabContent}>
-						<ContentRenderer content={infoData.content} />
-					</div>
 				</Grid>
 			</Grid>
 		</div>

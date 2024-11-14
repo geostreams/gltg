@@ -28,7 +28,6 @@ const Home = () => {
 	const fundLink1 = "https://www.waltonfamilyfoundation.org/";
 
 	const trendsDashboardDataJson = JSON.stringify({
-		label: "Background",
 		content: [
 			{ type: "heading", text: "What is this page about?" },
 			{
@@ -49,7 +48,6 @@ const Home = () => {
 	});
 
 	const stateEffortsDashboardDataJson = JSON.stringify({
-		label: "Background",
 		content: [
 			{ type: "heading", text: "What is this page about?" },
 			{
@@ -78,7 +76,6 @@ const Home = () => {
 	});
 
 	const exploreDashboardJson = JSON.stringify({
-		label: "Background",
 		content: [
 			{ type: "heading", text: "What is this page about?" },
 			{
@@ -113,26 +110,36 @@ const Home = () => {
 		],
 	});
 
+	const trendDashboardImageCaption =
+		"Excess nutrients can cause algal blooms that degrade water quality.";
+	const stateEffortsDashboardImageCaption =
+		"Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution.";
+	const exploreDashboardImageCaption =
+		"USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river.";
+
 	return (
 		<>
 			<About />
 			<HomeInfoSection
 				title="Nutrient Trends Dashboard"
-				mapImage={AlgaeBloomImage}
+				infoImage={AlgaeBloomImage}
+				imageCaption={trendDashboardImageCaption}
 				launchButtonText="Launch Nutrient Trends Dashboard"
 				infoJSON={trendsDashboardDataJson}
 				buttonLink={"/nutrient-trends"}
 			/>
 			<HomeInfoSection
 				title="State Efforts Dashboard"
-				mapImage={AlgaeBloomImage}
+				infoImage={AlgaeBloomImage}
+				imageCaption={stateEffortsDashboardImageCaption}
 				launchButtonText="Launch State Efforts Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
 				buttonLink={"/nutrient-trends"}
 			/>
 			<HomeInfoSection
 				title="Explore Water Quality Data Dashboard"
-				mapImage={samplingImage}
+				infoImage={samplingImage}
+				imageCaption={exploreDashboardImageCaption}
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
 				buttonLink={"/explore/all"}

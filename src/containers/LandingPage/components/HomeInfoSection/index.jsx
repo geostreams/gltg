@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	Typography,
-	Tabs,
-	Tab,
 	Button,
 	Paper,
 	Grid,
@@ -15,7 +13,7 @@ import {
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: "100%",
-		height: "600px",
+		minHeight: "600px",
 		display: "flex",
 		flexDirection: "column",
 	},
@@ -28,11 +26,9 @@ const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(3),
 		display: "flex",
 		flexDirection: "column",
-		overflow: "hidden",
 	},
 	gridContainer: {
 		flex: 1,
-		overflow: "hidden",
 	},
 	column: {
 		height: "100%",
@@ -40,18 +36,16 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: "column",
 	},
 	leftColumn: {
-		height: "100%",
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
+		gap: theme.spacing(2),
 	},
 	mapContainer: {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		marginBottom: theme.spacing(2),
-		overflow: "hidden",
 		width: "80%",
 	},
 	mapImage: {
@@ -64,8 +58,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	tabContent: {
 		padding: theme.spacing(2),
-		overflow: "auto",
-		flex: 1,
 	},
 	contentSection: {
 		marginBottom: theme.spacing(2),
@@ -144,21 +136,15 @@ const ImageComponent = ({ src, alt }) => {
 	);
 };
 
-const DashboardViz = ({
+const HomeInfoSection = ({
 	title,
 	mapImage,
 	launchButtonText,
-	dashboardDataJson,
+	infoJSON,
 	buttonLink,
 }) => {
 	const classes = useStyles();
-	const [activeTab, setActiveTab] = useState(0);
-
-	const handleTabChange = (event, newValue) => {
-		setActiveTab(newValue);
-	};
-
-	const dashboardData = JSON.parse(dashboardDataJson);
+	const infoData = JSON.parse(infoJSON);
 
 	return (
 		<div className={classes.root}>
@@ -184,22 +170,8 @@ const DashboardViz = ({
 
 				{/* Right column */}
 				<Grid item xs={12} md={6} className={classes.column}>
-					{dashboardData.length > 1 && (
-						<Tabs
-							value={activeTab}
-							onChange={handleTabChange}
-							variant="scrollable"
-						>
-							{dashboardData.map((tab, index) => (
-								<Tab key={index} label={tab.label} />
-							))}
-						</Tabs>
-					)}
-
 					<div className={classes.tabContent}>
-						<ContentRenderer
-							content={dashboardData[activeTab].content}
-						/>
+						<ContentRenderer content={infoData.content} />
 					</div>
 				</Grid>
 			</Grid>
@@ -207,4 +179,4 @@ const DashboardViz = ({
 	);
 };
 
-export default DashboardViz;
+export default HomeInfoSection;

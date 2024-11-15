@@ -257,7 +257,7 @@ const HomeInfoSection = ({
 						<ReactPlayer
 							url={youtubeLink}
 							controls
-							width="70%"
+							width="50%"
 							height={isMobile ? "200px" : "300px"}
 						/>
 					)}

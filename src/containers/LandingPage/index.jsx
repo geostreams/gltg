@@ -106,6 +106,7 @@ const Home = () => {
 				imageCaption="USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river."
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
+				youtubeLink={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 				buttonLink="/explore/all"
 			/>
 			<Partners

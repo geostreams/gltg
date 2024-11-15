@@ -12,6 +12,7 @@ import {
 	useTheme,
 	useMediaQuery,
 } from "@material-ui/core";
+import ReactPlayer from "react-player/youtube";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -208,6 +209,7 @@ const HomeInfoSection = ({
 	launchButtonText,
 	infoJSON,
 	buttonLink,
+	youtubeLink,
 }) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -251,6 +253,14 @@ const HomeInfoSection = ({
 							isMobile={isMobile}
 						/>
 					</div>
+					{youtubeLink && (
+						<ReactPlayer
+							url={youtubeLink}
+							controls
+							width="70%"
+							height={isMobile ? "200px" : "300px"}
+						/>
+					)}
 					<Button
 						variant="contained"
 						color="primary"

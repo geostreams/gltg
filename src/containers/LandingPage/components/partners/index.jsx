@@ -2,6 +2,7 @@ import React from "react";
 import {
 	makeStyles,
 	Typography,
+	Box,
 	Grid,
 	Link,
 	useTheme,
@@ -10,7 +11,6 @@ import {
 
 const useStyles = makeStyles((theme) => ({
 	root: {
-		padding: ({ isMobile }) => theme.spacing(isMobile ? 2 : 4),
 		marginTop: theme.spacing(2),
 	},
 	partnerContainer: {
@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 		padding: theme.spacing(2),
+		transition: "transform 0.2s ease-in-out",
+
+		"&:hover": {
+			transform: "scale(1.05)",
+		},
 	},
 	partnerImage: {
 		maxWidth: "100%",
@@ -26,8 +31,14 @@ const useStyles = makeStyles((theme) => ({
 		objectFit: "contain",
 	},
 	title: {
-		marginBottom: theme.spacing(3),
+		marginTop: "auto",
+		marginBottom: "auto",
 		textAlign: "center",
+	},
+	headerBox: {
+		backgroundColor: "#f5f5f5",
+		padding: "0.5em",
+		marginBottom: "2em",
 	},
 }));
 
@@ -38,12 +49,14 @@ const Partners = ({ partner1, partner2, link1, link2 }) => {
 
 	return (
 		<div className={classes.root}>
-			<Typography
-				variant={isMobile ? "h5" : "h4"}
-				className={classes.title}
-			>
-				Our Partners
-			</Typography>
+			<Box className={classes.headerBox}>
+				<Typography
+					variant={isMobile ? "h5" : "h4"}
+					className={classes.title}
+				>
+					Our Partners
+				</Typography>
+			</Box>
 			<Grid container spacing={isMobile ? 2 : 4}>
 				<Grid item xs={12} sm={6}>
 					<Link

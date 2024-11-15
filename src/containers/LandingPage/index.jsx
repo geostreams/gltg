@@ -1,11 +1,9 @@
 // @flow
 import React from "react";
-import { Typography } from "@material-ui/core";
 
 import About from "./components/about";
 import Funding from "./components/funding";
 import Partners from "./components/partners";
-import RssFeed from "./components/rssfeed";
 import HomeInfoSection from "./components/HomeInfoSection";
 
 // Image URLS
@@ -29,30 +27,25 @@ const Home = () => {
 
 	const trendsDashboardDataJson = JSON.stringify({
 		content: [
-			{ type: "heading", text: "What is this page about?" },
+			{ type: "heading", text: "Why a Nutrient Trends Dashboard?" },
 			{
 				type: "paragraph",
-				text: "To improve water quality in the MARB we must reduce the amount of nitrogen and phosphorus reaching the Mississippi River and its tributaries. However, it can take decades before the results of land  use changes become apparent. Long-term nutrient trends analyses help people visualize the outcomes of management practices and other factors, such as weather, that affect water quality.",
+				text: "TTo improve water quality in the MARB we must reduce the amount of nitrogen and phosphorus entering the streams and rivers flowing through the Mississippi River to the Gulf of Mexico. These changes take time. This is why we look at long term nutrient trends which can then be related to nutrient management practices.",
 			},
 			{ type: "heading", text: "What information will you get?" },
 			{
 				type: "paragraph",
-				text: "This dashboard provides an overview of flow normalized nutrient data from water quality monitoring stations throughout the MARB. The  data is curated from the  Water Quality Portal (WQP), has been harmonized to be comparable across states, and the trends analysis was conducted using the WRTDs model..",
-			},
-			{ type: "heading", text: "Navigating the Dashboard" },
-			{
-				type: "paragraph",
-				text: "Use the map to select a station/watershed to view concentration and load graphs corresponding to your chosen station.",
+				text: "The Nutrient Trends Dashboard provides information on concentrations and loads of nitrogen and phosphorus from over 200 sites having 20 years of data collection. The  data we used were taken  from the Water Quality Portal and  standardized to be comparable across states. Not all water quality monitoring sites met the criteria for our analysis which used the WRTDS method.",
 			},
 		],
 	});
 
 	const stateEffortsDashboardDataJson = JSON.stringify({
 		content: [
-			{ type: "heading", text: "What is this page about?" },
+			{ type: "heading", text: "Why a State Tracker Dashboard?" },
 			{
 				type: "paragraph",
-				text: "Collectively, the 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms  as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico.",
+				text: "The 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico. \nThe 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico.",
 			},
 			{ type: "heading", text: "What information will you get?" },
 			{
@@ -64,48 +57,24 @@ const Home = () => {
 				items: [
 					"State Nutrient Loss Reduction Plan",
 					"Nutrient Dashboards",
+					"Additional Water Quality Resources",
 					"Nutrient Storymaps ",
 				],
-			},
-			{ type: "heading", text: "Navigating the Dashboard" },
-			{
-				type: "paragraph",
-				text: "Click on a state or use the dropdown menu to explore your state(s) of interest.",
 			},
 		],
 	});
 
 	const exploreDashboardJson = JSON.stringify({
 		content: [
-			{ type: "heading", text: "What is this page about?" },
+			{
+				type: "heading",
+				text: "Why an Explore Water Quality Data Dashboard?",
+			},
 			{
 				type: "paragraph",
-				text: "There are multiple organizations that collect water quality data in the MARB. If you are interested in water data from a particular location, this page can help you find it.",
-			},
-			{ type: "heading", text: "What information will you get?" },
-			{
-				type: "paragraph",
-				text: "We present water quality data from:",
-			},
-			{
-				type: "numberedList",
-				items: [
-					"EPA’s Water Quality Portal (WQP). This is nitrogen and phosphorus data only. We have done the work of curating the data for you so that you may more easily conduct your own analyses. The data is updated once a year.",
-					"United States Geological Survey (USGS). This data provides multiple parameters of water quality such as dissolved oxygen, turbidity, water temperature, nutrient data, and more.",
-					"USGS Super Gage Network. https://dashboard.waterdata.usgs.gov/app/nwd/en/  and provide info similar to : https://www.usgs.gov/centers/oki-water/science/super-gage-network  on the tab.",
-					"Upper Mississippi River Restoration",
-					"Fox River Study Group",
-				],
-			},
-			{ type: "heading", text: "Navigating the Dashboard" },
-			{
-				type: "numberedList",
-				items: [
-					"Use the Monitoring Locations menu on the left of the screen to select the agency monitoring location of interest. The WQP data is the default. Click the circles to display the information for the other agencies.",
-					"From the menu or map, click the location you are interested in to see water quality parameters collected at the site.",
-					"Select View Data to explore charts and graphs.",
-					"Use the Explore Layers menu on the right of the screen to see other available layers.",
-				],
+				text:
+					"There are multiple organizations throughout the MARB that collect water quality data. We have focused on long term state and federal nutrient data contained in the  EPA/USGS Water Quality Portal, other USGS data on nutrients and flow, and several regional long term data sets." +
+					"If you are interested in nutrients and related water quality data from a particular location or from a specific watershed, this page can help you find it.",
 			},
 		],
 	});
@@ -144,7 +113,6 @@ const Home = () => {
 				infoJSON={exploreDashboardJson}
 				buttonLink={"/explore/all"}
 			/>
-			<RssFeed></RssFeed>
 			<Partners
 				partner1={NGRREC}
 				partner2={NCSA}

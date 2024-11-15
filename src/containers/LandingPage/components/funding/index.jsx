@@ -1,12 +1,17 @@
 import React from "react";
 import classes from "./index.css";
+import { Typography } from "@material-ui/core";
 
 const Funding = (props) => {
 	const { image1, link1 } = props;
 	return (
 		<>
 			<div className={classes.textDiv}>
-				<h1 className={classes.textTitle}>Funding</h1>
+				<div style={{ backgroundColor: "f5f5f5" }}>
+					<Typography variant="h4" component="h1" align="center">
+						Funding
+					</Typography>
+				</div>
 				<div className={classes.row}>
 					<div
 						className={classes.column}

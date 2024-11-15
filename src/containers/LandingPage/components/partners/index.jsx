@@ -1,11 +1,14 @@
 import React from "react";
 import classes from "./index.css";
+import { Typography } from "@material-ui/core";
 
 const Partners = (props) => {
 	const { partner1, partner2, link1, link2 } = props;
 	return (
 		<div className={classes.textDiv}>
-			<h1 className={classes.textTitle}>Partners</h1>
+			<Typography variant="h4" component="h1" align="center">
+				Partners
+			</Typography>
 			<div className={classes.row}>
 				<div
 					className={classes.column}

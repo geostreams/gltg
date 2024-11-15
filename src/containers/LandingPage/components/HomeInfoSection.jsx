@@ -17,10 +17,12 @@ const useStyles = makeStyles((theme) => ({
 		minHeight: "600px",
 		display: "flex",
 		flexDirection: "column",
+		paddingBottom: theme.spacing(2),
 	},
 	topBar: {
 		backgroundColor: theme.palette.grey[100],
-		padding: theme.spacing(2),
+		padding: theme.spacing(1),
+		marginBottom: theme.spacing(0.75),
 	},
 	content: {
 		flex: 1,
@@ -36,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",
+		justifyContent: "center",
+		marginTop: "auto",
+		marginBottom: "auto",
 	},
 	leftColumn: {
 		display: "flex",
@@ -49,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 		maxWidth: "70%",
+		maxHeight: "85%",
 	},
 	infoImage: {
 		height: "100%",
@@ -58,11 +64,15 @@ const useStyles = makeStyles((theme) => ({
 	launchButton: {
 		maxWidth: "70%",
 	},
-	tabContent: {
+	textContent: {
 		padding: theme.spacing(2),
 	},
 	contentSection: {
 		marginBottom: theme.spacing(2),
+		// Center content
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
 	},
 	listItem: {
 		display: "list-item",
@@ -170,7 +180,7 @@ const HomeInfoSection = ({
 
 				{/* Right column */}
 				<Grid item xs={12} md={6} className={classes.column}>
-					<div className={classes.tabContent}>
+					<div className={classes.textContent}>
 						<ContentRenderer content={infoData.content} />
 					</div>
 					<Button

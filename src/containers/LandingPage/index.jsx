@@ -1,6 +1,5 @@
-// @flow
 import React from "react";
-
+import { Box, useTheme, useMediaQuery } from "@material-ui/core";
 import About from "./components/about";
 import Funding from "./components/funding";
 import Partners from "./components/partners";
@@ -18,6 +17,9 @@ import NCSA from "./Images/Partners/NCSA_logo.png";
 import WaltonFamily from "./Images/Partners/WaltonFamily.png";
 
 const Home = () => {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
 	// Partner Links
 	const partnerLink1 = "http://www.ngrrec.org/";
 	const partnerLink2 = "https://www.ncsa.illinois.edu/";
@@ -79,39 +81,32 @@ const Home = () => {
 		],
 	});
 
-	const trendDashboardImageCaption =
-		"Excess nutrients can cause algal blooms that degrade water quality.";
-	const stateEffortsDashboardImageCaption =
-		"Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution.";
-	const exploreDashboardImageCaption =
-		"USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river.";
-
 	return (
-		<>
+		<Box sx={{ padding: isMobile ? 1 : 2 }}>
 			<About />
 			<HomeInfoSection
 				title="Nutrient Trends Dashboard"
 				infoImage={AlgaeBloomImage}
-				imageCaption={trendDashboardImageCaption}
+				imageCaption="Excess nutrients can cause algal blooms that degrade water quality."
 				launchButtonText="Launch Nutrient Trends Dashboard"
 				infoJSON={trendsDashboardDataJson}
-				buttonLink={"/nutrient-trends"}
+				buttonLink="/nutrient-trends"
 			/>
 			<HomeInfoSection
 				title="State Efforts Dashboard"
 				infoImage={AlgaeBloomImage}
-				imageCaption={stateEffortsDashboardImageCaption}
+				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
 				launchButtonText="Launch State Efforts Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
-				buttonLink={"/nutrient-trends"}
+				buttonLink="/nutrient-trends"
 			/>
 			<HomeInfoSection
 				title="Explore Water Quality Data Dashboard"
 				infoImage={samplingImage}
-				imageCaption={exploreDashboardImageCaption}
+				imageCaption="USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river."
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
-				buttonLink={"/explore/all"}
+				buttonLink="/explore/all"
 			/>
 			<Partners
 				partner1={NGRREC}
@@ -120,7 +115,7 @@ const Home = () => {
 				link2={partnerLink2}
 			/>
 			<Funding image1={WaltonFamily} link1={fundLink1} />
-		</>
+		</Box>
 	);
 };
 

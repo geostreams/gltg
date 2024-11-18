@@ -18,6 +18,12 @@ const SummaryGraph = (props) => {
 		title,
 	} = props;
 
+	// Transform the data to ensure proper date formatting
+	const transformedData = graph_data.map((d) => ({
+		...d,
+		year: new Date(`${d.year}-06-01`),
+	}));
+
 	const spec = {
 		width,
 		height,
@@ -36,7 +42,15 @@ const SummaryGraph = (props) => {
 								field: "year",
 								type: "temporal",
 								timeUnit: "year",
-								axis: { title: x_label, format: "%Y" },
+								axis: {
+									title: x_label,
+									format: "%Y",
+									labelAngle: 0,
+								},
+								scale: {
+									type: "time",
+									nice: "year",
+								},
 							},
 							y: {
 								field: stationary_y_line_field,
@@ -58,7 +72,7 @@ const SummaryGraph = (props) => {
 							y: {
 								field: stationary_high_interval,
 								type: "quantitative",
-								axis: { title: y_label, format: "s" },
+								axis: { title: y_label, format: ".2f" },
 							},
 							color: { value: "#90EE90" },
 							strokeDash: { value: [5, 5] },
@@ -163,22 +177,11 @@ const SummaryGraph = (props) => {
 								},
 							],
 						},
-						params: [
-							{
-								name: "hover",
-								select: {
-									type: "point",
-									fields: ["year"],
-									on: "mouseover",
-									clear: "mouseout",
-								},
-							},
-						],
 					},
 				],
 				width: 335,
 			},
-			// The following concat is for the legend, using dummy data, quite hacky but it works
+			// Legend configuration
 			{
 				data: {
 					values: [
@@ -258,10 +261,11 @@ const SummaryGraph = (props) => {
 			},
 		],
 	};
+
 	return (
 		<VegaLite
 			spec={spec}
-			data={{ table: graph_data }}
+			data={{ table: transformedData }}
 			actions={{ export: true, source: false, compiled: false }}
 		/>
 	);

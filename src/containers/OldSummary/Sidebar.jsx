@@ -20,11 +20,7 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import { Link } from "react-router-dom";
-import {
-	BarChart,
-	LegendHorizontalDiscrete,
-	SimpleLegend,
-} from "@geostreams/core/src/components/d3";
+import { BarChart, LegendHorizontalDiscrete, SimpleLegend } from "@geostreams/core/src/components/d3";
 import Carousel from "@geostreams/core/src/components/Carousel";
 import { entries } from "@geostreams/core/src/utils/array";
 import { useElementRect } from "@geostreams/core/src/utils/hooks";
@@ -34,12 +30,7 @@ import DataStoriesModal from "../DataStories/Details";
 import annualYieldData from "../../data/annual_yield.json";
 import annualLoadData from "../../data/annual_load.json";
 import overallData from "../../data/overall_data.json";
-import {
-	getNutrientValueCategoryIndex,
-	FEATURE_STYLE_INFO,
-	BOUNDARIES,
-	VARIABLES_INFO,
-} from "./config";
+import { getNutrientValueCategoryIndex, FEATURE_STYLE_INFO, BOUNDARIES, VARIABLES_INFO } from "./config";
 
 type Props = {
 	regionLabel: string | null,
@@ -149,13 +140,10 @@ const Sidebar = ({
 	const container = React.useRef();
 	const containerRect = useElementRect(container);
 
-	const annualStateFlowChartTooltipRef: { current: null | HTMLDivElement } =
-		React.createRef();
+	const annualStateFlowChartTooltipRef: { current: null | HTMLDivElement } = React.createRef();
 
-	const annualYieldTooltipRef: { current: null | HTMLDivElement } =
-		React.createRef();
-	const annualYieldChartTooltipRef: { current: null | HTMLDivElement } =
-		React.createRef();
+	const annualYieldTooltipRef: { current: null | HTMLDivElement } = React.createRef();
+	const annualYieldChartTooltipRef: { current: null | HTMLDivElement } = React.createRef();
 
 	const annualLoadChartData = annualLoadData[featureId];
 
@@ -163,11 +151,8 @@ const Sidebar = ({
 	let annualYieldChartData;
 	let featureValue;
 	if (annualYieldData[selectedNutrient][featureId]) {
-		featureValue =
-			annualYieldData[selectedNutrient][featureId][selectedYear];
-		annualYieldChartData = Object.entries(
-			annualYieldData[selectedNutrient][featureId],
-		).map(([year, value]) => {
+		featureValue = annualYieldData[selectedNutrient][featureId][selectedYear];
+		annualYieldChartData = Object.entries(annualYieldData[selectedNutrient][featureId]).map(([year, value]) => {
 			// Data is already sorted by year in `src/data/annual_yield.json`
 			yearsOptions.push(
 				<option key={year} value={year}>
@@ -193,24 +178,14 @@ const Sidebar = ({
 
 	return (
 		<>
-			<Box
-				className={classes.dropdownsContainer}
-				display="flex"
-				justifyContent="center"
-				alignItems="center"
-			>
-				<FormControl
-					component="fieldset"
-					className={classes.formControl}
-				>
+			<Box className={classes.dropdownsContainer} display="flex" justifyContent="center" alignItems="center">
+				<FormControl component="fieldset" className={classes.formControl}>
 					<FormLabel component="legend" className={classes.formLabel}>
 						<Box display="flex" alignItems="center">
 							Boundary Type &nbsp;
 							<InfoIcon
 								className={`actionIcon ${classes.infoIcon}`}
-								onClick={() =>
-									updateDialogContent(VARIABLES_INFO.boundary)
-								}
+								onClick={() => updateDialogContent(VARIABLES_INFO.boundary)}
 							/>
 						</Box>
 					</FormLabel>
@@ -229,18 +204,13 @@ const Sidebar = ({
 						))}
 					</NativeSelect>
 				</FormControl>
-				<FormControl
-					component="fieldset"
-					className={classes.formControl}
-				>
+				<FormControl component="fieldset" className={classes.formControl}>
 					<FormLabel component="legend" className={classes.formLabel}>
 						<Box display="flex" alignItems="center">
 							Nutrient &nbsp;
 							<InfoIcon
 								className={`actionIcon ${classes.infoIcon}`}
-								onClick={() =>
-									updateDialogContent(VARIABLES_INFO.nutrient)
-								}
+								onClick={() => updateDialogContent(VARIABLES_INFO.nutrient)}
 							/>
 						</Box>
 					</FormLabel>
@@ -256,11 +226,7 @@ const Sidebar = ({
 						<option value="Nitrogen">Nitrogen</option>
 					</NativeSelect>
 				</FormControl>
-				<FormControl
-					component="fieldset"
-					className={classes.formControl}
-					disabled={!yearsOptions.length}
-				>
+				<FormControl component="fieldset" className={classes.formControl} disabled={!yearsOptions.length}>
 					<FormLabel component="legend" className={classes.formLabel}>
 						Year {!yearsOptions.length ? "(N/A)" : ""}
 					</FormLabel>
@@ -278,39 +244,29 @@ const Sidebar = ({
 			</Box>
 			<Container ref={container}>
 				<Typography className={classes.header} variant="h5">
-					{regionLabel} -{" "}
-					<span className={classes.featureProp}>{featureId}</span>
+					{regionLabel} - <span className={classes.featureProp}>{featureId}</span>
 				</Typography>
 
-				{selectedBoundary === "drainage" &&
-				featureId === "Statewide Summary" ? (
+				{selectedBoundary === "drainage" && featureId === "Statewide Summary" ? (
 					<>
 						<Divider className={classes.divider} />
 						<Typography variant="subtitle1">
-							TOTAL {selectedNutrient.toUpperCase()} LOAD LEAVING
-							THE STATE OF ILLINOIS
+							TOTAL {selectedNutrient.toUpperCase()} LOAD LEAVING THE STATE OF ILLINOIS
 						</Typography>
 						<Typography variant="caption">
-							The total {selectedNutrient} load leaving the state
-							of Illinois is estimated to be&nbsp;
-							{
-								overallData.drainage.annual_load[
-									selectedNutrient
-								][selectedYear]
-							}
+							The total {selectedNutrient} load leaving the state of Illinois is estimated to be&nbsp;
+							{overallData.drainage.annual_load[selectedNutrient][selectedYear]}
 							&nbsp; million lb in {selectedYear}.
 						</Typography>
 						<BarChart
 							className={classes.barChart}
-							barsData={Object.entries(
-								overallData.drainage.annual_load[
-									selectedNutrient
-								],
-							).map(([year, value]) => ({
-								x: +year,
-								y: +value,
-								selected: +year === +selectedYear,
-							}))}
+							barsData={Object.entries(overallData.drainage.annual_load[selectedNutrient]).map(
+								([year, value]) => ({
+									x: +year,
+									y: +value,
+									selected: +year === +selectedYear,
+								}),
+							)}
 							xAxisProps={{
 								title: "Year",
 								titlePadding: 55,
@@ -338,11 +294,7 @@ const Sidebar = ({
 									.duration(500)
 									.style("opacity", 0);
 							}}
-							barStroke={(d) =>
-								yearsOptions.length && d.selected
-									? "red"
-									: "#117fc9"
-							}
+							barStroke={(d) => (yearsOptions.length && d.selected ? "red" : "#117fc9")}
 							barStrokeWidth={2}
 							barStrokeOpacity={(d) => (d.selected ? 1 : 0)}
 							barFill="#117fc9"
@@ -357,24 +309,15 @@ const Sidebar = ({
 							marginLeft={60}
 							marginRight={20}
 						/>
-						<div
-							ref={annualStateFlowChartTooltipRef}
-							className={classes.chartTooltip}
-						/>
+						<div ref={annualStateFlowChartTooltipRef} className={classes.chartTooltip} />
 					</>
 				) : null}
 
 				{selectedBoundary === "watershed" && annualLoadChartData ? (
 					<>
 						<Divider className={classes.divider} />
-						<Box
-							className={classes.annualFlowLegend}
-							display="flex"
-							justifyContent="space-between"
-						>
-							<Typography variant="subtitle1">
-								ANNUAL NITRATE LOAD
-							</Typography>
+						<Box className={classes.annualFlowLegend} display="flex" justifyContent="space-between">
+							<Typography variant="subtitle1">ANNUAL NITRATE LOAD</Typography>
 							<SimpleLegend
 								width={230}
 								itemHeight={25}
@@ -406,17 +349,13 @@ const Sidebar = ({
 						</Box>
 						<BarChart
 							className={classes.barChart}
-							barsData={annualLoadChartData.annual_load.map(
-								({ x, y }) => ({
-									x,
-									y,
-									selected: x === +selectedYear,
-								}),
-							)}
+							barsData={annualLoadChartData.annual_load.map(({ x, y }) => ({
+								x,
+								y,
+								selected: x === +selectedYear,
+							}))}
 							lineData={annualLoadChartData.normalized_flow}
-							intervalData={
-								annualLoadChartData.confidence_interval
-							}
+							intervalData={annualLoadChartData.confidence_interval}
 							xAxisProps={{
 								title: "Year",
 								titlePadding: 50,
@@ -429,11 +368,7 @@ const Sidebar = ({
 								stroke: "#4682b4",
 								strokeWidth: 2,
 							}}
-							barStroke={(d) =>
-								yearsOptions.length && d.selected
-									? "red"
-									: "#117fc9"
-							}
+							barStroke={(d) => (yearsOptions.length && d.selected ? "red" : "#117fc9")}
 							barStrokeWidth={2}
 							barStrokeOpacity={(d) => (d.selected ? 1 : 0)}
 							barFill="#117fc9"
@@ -453,16 +388,10 @@ const Sidebar = ({
 				{featureValue !== undefined ? (
 					<>
 						<Divider className={classes.divider} />
-						<Typography
-							className={classes.header}
-							variant="subtitle1"
-							gutterBottom
-						>
+						<Typography className={classes.header} variant="subtitle1" gutterBottom>
 							AVERAGE YIELD - {selectedYear}: &nbsp;
 							<span className={classes.featureProp}>
-								{featureValue >= 0
-									? `${featureValue} lb/acre`
-									: "No data is available"}
+								{featureValue >= 0 ? `${featureValue} lb/acre` : "No data is available"}
 							</span>
 						</Typography>
 						<Container>
@@ -471,21 +400,11 @@ const Sidebar = ({
 								boxWidth={(window.innerWidth / 3 - 150) / 7}
 								getBoxInfo={(idx) =>
 									FEATURE_STYLE_INFO[
-										getNutrientValueCategoryIndex(
-											idx === 0
-												? undefined
-												: idx * 5 - 0.1,
-										)
+										getNutrientValueCategoryIndex(idx === 0 ? undefined : idx * 5 - 0.1)
 									]
 								}
-								activeBox={getNutrientValueCategoryIndex(
-									featureValue,
-								)}
-								activeBoxLabel={
-									featureValue >= 0
-										? featureValue.toString()
-										: " "
-								}
+								activeBox={getNutrientValueCategoryIndex(featureValue)}
+								activeBoxLabel={featureValue >= 0 ? featureValue.toString() : " "}
 								activeBoxLabelHeight={15}
 								activeBoxBorderColor="red"
 							/>
@@ -496,28 +415,14 @@ const Sidebar = ({
 				{annualYieldChartData ? (
 					<>
 						<Divider className={classes.divider} />
-						<Typography
-							className={classes.header}
-							variant="subtitle1"
-							gutterBottom
-						>
+						<Typography className={classes.header} variant="subtitle1" gutterBottom>
 							<Box display="flex" alignItems="center">
-								ANNUAL {selectedNutrient.toUpperCase()}{" "}
-								YIELD&nbsp;
-								{annualYieldChartData[0].x}-
-								{
-									annualYieldChartData[
-										annualYieldChartData.length - 1
-									].x
-								}
+								ANNUAL {selectedNutrient.toUpperCase()} YIELD&nbsp;
+								{annualYieldChartData[0].x}-{annualYieldChartData[annualYieldChartData.length - 1].x}
 								&nbsp;
 								<InfoIcon
 									className={`actionIcon ${classes.infoIcon}`}
-									onClick={() =>
-										updateDialogContent(
-											VARIABLES_INFO.yield,
-										)
-									}
+									onClick={() => updateDialogContent(VARIABLES_INFO.yield)}
 								/>
 							</Box>
 						</Typography>
@@ -546,13 +451,8 @@ const Sidebar = ({
 							barStrokeWidth={2}
 							barStrokeOpacity={(d) => (d.selected ? 1 : 0)}
 							barFill={({ y }) => {
-								const styleInfo =
-									FEATURE_STYLE_INFO[
-										getNutrientValueCategoryIndex(y)
-									];
-								return styleInfo.color
-									? styleInfo.color
-									: "#000";
+								const styleInfo = FEATURE_STYLE_INFO[getNutrientValueCategoryIndex(y)];
+								return styleInfo.color ? styleInfo.color : "#000";
 							}}
 							barFillOpacity="1"
 							mouseOver={(d, idx, rects) => {
@@ -569,14 +469,8 @@ const Sidebar = ({
 									.style("top", `${event.clientY - 50}px`);
 							}}
 							mouseOut={(d, idx, rects) => {
-								const styleInfo =
-									FEATURE_STYLE_INFO[
-										getNutrientValueCategoryIndex(d.y)
-									];
-								select(rects[idx]).attr(
-									"fill",
-									styleInfo.color ? styleInfo.color : "#000",
-								);
+								const styleInfo = FEATURE_STYLE_INFO[getNutrientValueCategoryIndex(d.y)];
+								select(rects[idx]).attr("fill", styleInfo.color ? styleInfo.color : "#000");
 								select(annualYieldTooltipRef.current).html("");
 								select(annualYieldChartTooltipRef.current)
 									.transition()
@@ -590,37 +484,25 @@ const Sidebar = ({
 							marginLeft={60}
 							marginRight={20}
 						/>
-						<div
-							ref={annualYieldChartTooltipRef}
-							className={classes.chartTooltip}
-						/>
+						<div ref={annualYieldChartTooltipRef} className={classes.chartTooltip} />
 					</>
 				) : null}
-				{selectedBoundary === "drainage" ||
-				selectedBoundary === "huc8" ? (
+				{selectedBoundary === "drainage" || selectedBoundary === "huc8" ? (
 					<Typography variant="subtitle2" align="center" gutterBottom>
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
 							href="https://www2.illinois.gov/epa/topics/water-quality/watershed-management/excess-nutrients/Documents/NLRS_SCIENCE_ASSESSMENT_UPDATE_2019%20v7_FINAL%20VERSION_web.pdf"
 						>
-							Illinois Nutrient Reduction Strategy Science
-							Assessment Update 2019
+							Illinois Nutrient Reduction Strategy Science Assessment Update 2019
 						</a>
 					</Typography>
 				) : null}
 			</Container>
-			<DataStoriesModal
-				{...iframeProps}
-				handleClose={handleDataStoriesModalClose}
-			/>
+			<DataStoriesModal {...iframeProps} handleClose={handleDataStoriesModalClose} />
 			<Container className={classes.carousel}>
 				<Divider />
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					alignItems="center"
-				>
+				<Box display="flex" justifyContent="space-between" alignItems="center">
 					<Typography variant="h5" gutterBottom>
 						Learn More About GLTG
 					</Typography>
@@ -654,11 +536,7 @@ const Sidebar = ({
 								className={classes.carouselSlide}
 							/>
 							<Grid item xs={12}>
-								<Typography
-									gutterBottom
-									variant="subtitle2"
-									component="h2"
-								>
+								<Typography gutterBottom variant="subtitle2" component="h2">
 									{title}
 								</Typography>
 							</Grid>
@@ -679,9 +557,7 @@ const Sidebar = ({
 							</IconButton>
 						</Typography>
 					</DialogTitle>
-					<DialogContent dividers>
-						{dialogContent.description}
-					</DialogContent>
+					<DialogContent dividers>{dialogContent.description}</DialogContent>
 				</Dialog>
 			) : null}
 		</>

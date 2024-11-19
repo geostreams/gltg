@@ -58,19 +58,12 @@ const DataStories = () => {
 		<>
 			<Details {...iframeProps} handleClose={handleModalClose} />
 			<Alert severity="info">
-				Below, please find our archive of storyboards providing
-				historical context on nutrient pollution and the Great Lakes to
-				Gulf project. Our team is at work developing additional
-				resources to launch in late 2022 and 2023 - check back at
-				greatlakestogulf.org for updates.
+				Below, please find our archive of storyboards providing historical context on nutrient pollution and the
+				Great Lakes to Gulf project. Our team is at work developing additional resources to launch in late 2022
+				and 2023 - check back at greatlakestogulf.org for updates.
 			</Alert>
 			<Container>
-				<Typography
-					className={classes.header}
-					variant="h4"
-					noWrap
-					gutterBottom
-				>
+				<Typography className={classes.header} variant="h4" noWrap gutterBottom>
 					<Avatar className={`left ${classes.icon}`}>
 						<MenuBookIcon />
 					</Avatar>
@@ -91,22 +84,10 @@ const DataStories = () => {
 										})
 									}
 								>
-									<CardActionArea
-										className={
-											slides ? "" : classes.missing
-										}
-									>
-										<CardMedia
-											component="img"
-											src={thumbnail}
-											title={title}
-										/>
+									<CardActionArea className={slides ? "" : classes.missing}>
+										<CardMedia component="img" src={thumbnail} title={title} />
 										<CardContent>
-											<Typography
-												gutterBottom
-												variant="h5"
-												component="h2"
-											>
+											<Typography gutterBottom variant="h5" component="h2">
 												{title}
 											</Typography>
 										</CardContent>

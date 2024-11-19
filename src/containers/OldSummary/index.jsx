@@ -1,24 +1,12 @@
 // @flow
 import * as React from "react";
 import { format } from "d3";
-import {
-	Container,
-	Grid,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-	withStyles,
-} from "@material-ui/core";
+import { Container, Grid, List, ListItem, ListItemIcon, ListItemText, Typography, withStyles } from "@material-ui/core";
 import DownTrendIcon from "@material-ui/icons/ArrowDropDown";
 import UpTrendIcon from "@material-ui/icons/ArrowDropUp";
 import FlatTrendIcon from "@material-ui/icons/FiberManualRecord";
 import Control from "@geostreams/core/src/components/ol/Control";
-import {
-	createEmpty as createEmptyExtent,
-	extend as extendExtent,
-} from "ol/extent";
+import { createEmpty as createEmptyExtent, extend as extendExtent } from "ol/extent";
 import GeoJSON from "ol/format/GeoJSON";
 import GroupLayer from "ol/layer/Group";
 import ImageLayer from "ol/layer/Image";
@@ -34,11 +22,7 @@ import { Map, BaseControlPortal } from "@geostreams/core/src/components/ol";
 import { entries } from "@geostreams/core/src/utils/array";
 import { SLRSlope } from "@geostreams/core/src/utils/math";
 
-import type {
-	Feature as FeatureType,
-	Map as MapType,
-	MapBrowserEventType,
-} from "ol";
+import type { Feature as FeatureType, Map as MapType, MapBrowserEventType } from "ol";
 import type { Layer as LayerType } from "ol/layer";
 
 import annualYieldData from "../../data/annual_yield.json";
@@ -187,10 +171,7 @@ class Summary extends React.Component<Props, State> {
 						title: "Carto",
 						source: new XYZ({
 							url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
-							attributions: [
-								'&#169; <a href="https://www.carto.com">Carto</a>,',
-								OSM_ATTRIBUTION,
-							],
+							attributions: ['&#169; <a href="https://www.carto.com">Carto</a>,', OSM_ATTRIBUTION],
 						}),
 					}),
 					new TileLayer({
@@ -203,105 +184,77 @@ class Summary extends React.Component<Props, State> {
 			}),
 			contextual: new GroupLayer({
 				title: "Layers",
-				layers: CONTEXTUAL_LAYERS.map(
-					({ title, id, boundaries, zIndex }) => {
-						const source = new ImageWMSSource({
-							url: `${GEOSERVER_URL}/wms`,
-							params: { LAYERS: id },
-							ratio: 1,
-							serverType: "geoserver",
+				layers: CONTEXTUAL_LAYERS.map(({ title, id, boundaries, zIndex }) => {
+					const source = new ImageWMSSource({
+						url: `${GEOSERVER_URL}/wms`,
+						params: { LAYERS: id },
+						ratio: 1,
+						serverType: "geoserver",
+					});
+					const visible = !boundaries || boundaries.indexOf(initialState.boundary) > -1;
+					const layer = new ImageLayer({
+						title,
+						source,
+						visible,
+						zIndex,
+					});
+					this.legends.push({
+						layerId: layer.ol_uid,
+						title,
+						url: source.getLegendUrl(),
+						boundaries,
+						visible,
+					});
+					return layer;
+				}),
+			}),
+			...entries(BOUNDARIES).reduce((boundaryLayers, [name, { visible, layers }]) => {
+				const group = new GroupLayer({
+					layers: layers.map(({ url, style, interactive = false, zIndex = undefined }) => {
+						const source = new VectorSource({
+							loader: (extent) => {
+								const xhr = new XMLHttpRequest();
+								xhr.open("GET", url);
+								xhr.responseType = "arraybuffer";
+								const onError = () => {
+									source.removeLoadedExtent(extent);
+								};
+								xhr.onerror = onError;
+								xhr.onload = () => {
+									if (xhr.status === 200) {
+										const geojson = decode(new Pbf(xhr.response));
+										source.addFeatures(geoJSONFormat.readFeatures(geojson));
+									} else {
+										onError();
+									}
+								};
+								xhr.send();
+							},
+							useSpatialIndex: true,
+							format: geoJSONFormat,
 						});
-						const visible =
-							!boundaries ||
-							boundaries.indexOf(initialState.boundary) > -1;
-						const layer = new ImageLayer({
-							title,
+						const layer = new VectorLayer({
 							source,
-							visible,
-							zIndex,
+							name,
+							style: (feature, resolution) => {
+								const { nutrient, year } = this.state;
+								return style(feature, resolution, nutrient, year);
+							},
 						});
-						this.legends.push({
-							layerId: layer.ol_uid,
-							title,
-							url: source.getLegendUrl(),
-							boundaries,
-							visible,
+						layer.set("interactive", interactive);
+						layer.setZIndex(zIndex);
+						source.on("change", () => {
+							if (!group.isReady && source.getState() === "ready") {
+								group.isReady = true;
+								group.setVisible(visible);
+							}
 						});
 						return layer;
-					},
-				),
-			}),
-			...entries(BOUNDARIES).reduce(
-				(boundaryLayers, [name, { visible, layers }]) => {
-					const group = new GroupLayer({
-						layers: layers.map(
-							({
-								url,
-								style,
-								interactive = false,
-								zIndex = undefined,
-							}) => {
-								const source = new VectorSource({
-									loader: (extent) => {
-										const xhr = new XMLHttpRequest();
-										xhr.open("GET", url);
-										xhr.responseType = "arraybuffer";
-										const onError = () => {
-											source.removeLoadedExtent(extent);
-										};
-										xhr.onerror = onError;
-										xhr.onload = () => {
-											if (xhr.status === 200) {
-												const geojson = decode(
-													new Pbf(xhr.response),
-												);
-												source.addFeatures(
-													geoJSONFormat.readFeatures(
-														geojson,
-													),
-												);
-											} else {
-												onError();
-											}
-										};
-										xhr.send();
-									},
-									useSpatialIndex: true,
-									format: geoJSONFormat,
-								});
-								const layer = new VectorLayer({
-									source,
-									name,
-									style: (feature, resolution) => {
-										const { nutrient, year } = this.state;
-										return style(
-											feature,
-											resolution,
-											nutrient,
-											year,
-										);
-									},
-								});
-								layer.set("interactive", interactive);
-								layer.setZIndex(zIndex);
-								source.on("change", () => {
-									if (
-										!group.isReady &&
-										source.getState() === "ready"
-									) {
-										group.isReady = true;
-										group.setVisible(visible);
-									}
-								});
-								return layer;
-							},
-						),
-					});
-					boundaryLayers[name] = group;
-					return boundaryLayers;
-				},
-				{},
-			),
+					}),
+				});
+				boundaryLayers[name] = group;
+				return boundaryLayers;
+			}, {}),
 		};
 	}
 
@@ -326,9 +279,7 @@ class Summary extends React.Component<Props, State> {
 		const { selectedFeature } = this.state;
 		if (selectedFeature) {
 			const { nutrient, year } = this.state;
-			selectedFeature.setStyle(
-				getFeatureStyle(selectedFeature, null, nutrient, year, false),
-			);
+			selectedFeature.setStyle(getFeatureStyle(selectedFeature, null, nutrient, year, false));
 		}
 		this.layers[this.state.boundary].setVisible(false);
 
@@ -339,9 +290,7 @@ class Summary extends React.Component<Props, State> {
 
 		this.legends.forEach((legend) => {
 			const { layerId, boundaries } = legend;
-			const layer = this.layers.contextual
-				.getLayersArray()
-				.find(({ ol_uid }) => ol_uid === layerId);
+			const layer = this.layers.contextual.getLayersArray().find(({ ol_uid }) => ol_uid === layerId);
 			const visible = !boundaries || boundaries.indexOf(boundary) > -1;
 			layer.setVisible(visible);
 			legend.visible = visible;
@@ -358,40 +307,24 @@ class Summary extends React.Component<Props, State> {
 
 	handleVariableChange = (value, variable) => {
 		this.setState({ [variable]: value }, () => {
-			this.layers[this.state.boundary]
-				.getLayers()
-				.forEach((layer) => layer.changed());
+			this.layers[this.state.boundary].getLayers().forEach((layer) => layer.changed());
 			const { selectedFeature } = this.state;
 			if (selectedFeature) {
 				const { nutrient, year } = this.state;
-				selectedFeature.setStyle(
-					getFeatureStyle(
-						selectedFeature,
-						null,
-						nutrient,
-						year,
-						true,
-					),
-				);
+				selectedFeature.setStyle(getFeatureStyle(selectedFeature, null, nutrient, year, true));
 			}
 		});
 	};
 
 	handleMapClick = (event: MapBrowserEventType) => {
-		const {
-			featureId: previousFeatureId,
-			selectedFeature: previousFeature,
-		} = this.state;
+		const { featureId: previousFeatureId, selectedFeature: previousFeature } = this.state;
 
-		const clickedStationId = event.map.forEachFeatureAtPixel(
-			event.pixel,
-			(feature, layer) => {
-				if (layer.get("interactive")) {
-					return feature.get("Station_ID");
-				}
-				return false;
-			},
-		);
+		const clickedStationId = event.map.forEachFeatureAtPixel(event.pixel, (feature, layer) => {
+			if (layer.get("interactive")) {
+				return feature.get("Station_ID");
+			}
+			return false;
+		});
 		const selectedFeature = event.map.forEachFeatureAtPixel(
 			event.pixel,
 			(feature) => {
@@ -410,34 +343,15 @@ class Summary extends React.Component<Props, State> {
 
 		if (selectedFeature) {
 			const { boundary, nutrient, year } = this.state;
-			const [regionLabel, overallFeatureId] =
-				getOverallFeatureLabels(boundary);
+			const [regionLabel, overallFeatureId] = getOverallFeatureLabels(boundary);
 			if (previousFeatureId !== overallFeatureId && previousFeature) {
-				previousFeature.setStyle(
-					getFeatureStyle(
-						previousFeature,
-						null,
-						nutrient,
-						year,
-						false,
-					),
-				);
+				previousFeature.setStyle(getFeatureStyle(previousFeature, null, nutrient, year, false));
 			}
 
-			const featureId =
-				selectedFeature.get("Name") ||
-				selectedFeature.get("Station_ID");
+			const featureId = selectedFeature.get("Name") || selectedFeature.get("Station_ID");
 			if (featureId !== previousFeatureId) {
 				// Feature is selected
-				selectedFeature.setStyle(
-					getFeatureStyle(
-						selectedFeature,
-						null,
-						nutrient,
-						year,
-						true,
-					),
-				);
+				selectedFeature.setStyle(getFeatureStyle(selectedFeature, null, nutrient, year, true));
 				this.setState({ featureId, selectedFeature });
 			} else {
 				// Feature is deselected
@@ -453,22 +367,17 @@ class Summary extends React.Component<Props, State> {
 	getNutrientTrend = (nutrient: string, featureName: string): number => {
 		const x = [];
 		const y = [];
-		Object.entries(annualYieldData[nutrient][featureName]).forEach(
-			([year, value]) => {
-				x.push(parseInt(year, 10));
-				y.push(parseFloat(value));
-			},
-		);
+		Object.entries(annualYieldData[nutrient][featureName]).forEach(([year, value]) => {
+			x.push(parseInt(year, 10));
+			y.push(parseFloat(value));
+		});
 		return SLRSlope(x, y) || 0;
 	};
 
 	getTrends = (featureName: string) => {
 		const classes = this.props.classes;
 		const nitrogenTrend = this.getNutrientTrend("Nitrogen", featureName);
-		const phosphorusTrend = this.getNutrientTrend(
-			"Phosphorus",
-			featureName,
-		);
+		const phosphorusTrend = this.getNutrientTrend("Phosphorus", featureName);
 		return [
 			["Nitrogen", nitrogenTrend],
 			["Phosphorus", phosphorusTrend],
@@ -504,16 +413,13 @@ class Summary extends React.Component<Props, State> {
 		let cumulativeAcres;
 
 		if (selectedFeature) {
-			featureName =
-				selectedFeature.get("Name") ||
-				selectedFeature.get("Station_ID");
+			featureName = selectedFeature.get("Name") || selectedFeature.get("Station_ID");
 			const featureProps = selectedFeature.getProperties();
 			contributingWaterways = featureProps.contributing_waterways;
 			cumulativeAcres = featureProps.cumulative_acres;
 		} else {
 			featureName = getOverallFeatureLabels(boundary).join(" - ");
-			contributingWaterways =
-				overallData[boundary].contributing_waterways;
+			contributingWaterways = overallData[boundary].contributing_waterways;
 			cumulativeAcres = overallData[boundary].cumulative_acres;
 		}
 
@@ -526,17 +432,10 @@ class Summary extends React.Component<Props, State> {
 				</Typography>
 				<Typography variant="caption">
 					{contributingWaterways ? (
-						<span>
-							{format(",")(contributingWaterways)} Contributing
-							Waterways
-						</span>
+						<span>{format(",")(contributingWaterways)} Contributing Waterways</span>
 					) : null}
 					<br />
-					{cumulativeAcres ? (
-						<span>
-							{format(",")(cumulativeAcres)} Cumulative Acres
-						</span>
-					) : null}
+					{cumulativeAcres ? <span>{format(",")(cumulativeAcres)} Cumulative Acres</span> : null}
 				</Typography>
 			</>
 		);
@@ -547,11 +446,7 @@ class Summary extends React.Component<Props, State> {
 		const { boundary, regionLabel, featureId, nutrient, year } = this.state;
 
 		return (
-			<Grid
-				className={classes.mainContainer}
-				container
-				alignItems="stretch"
-			>
+			<Grid className={classes.mainContainer} container alignItems="stretch">
 				<Grid className="fillContainer" item xs={8}>
 					<Map
 						className="fillContainer"
@@ -559,31 +454,22 @@ class Summary extends React.Component<Props, State> {
 						minZoom={5}
 						extent={MAP_BOUNDS}
 						center={[-9972968, 4972295]}
-						controls={[
-							this.boundaryInfoControl,
-							this.legendControl,
-						]}
+						controls={[this.boundaryInfoControl, this.legendControl]}
 						layers={Object.values(this.layers)}
 						legends={this.legends}
 						layerSwitcherOptions={{
 							onShow: () => {
 								this.legends.forEach((legend) => {
 									const { title, visible } = legend;
-									document
-										.querySelectorAll(
-											".layer-switcher li.layer",
-										)
-										.forEach((el) => {
-											if (el.innerText === title) {
-												if (visible) {
-													el.classList.remove(
-														"hidden",
-													);
-												} else {
-													el.classList.add("hidden");
-												}
+									document.querySelectorAll(".layer-switcher li.layer").forEach((el) => {
+										if (el.innerText === title) {
+											if (visible) {
+												el.classList.remove("hidden");
+											} else {
+												el.classList.add("hidden");
 											}
-										});
+										}
+									});
 								});
 							},
 						}}
@@ -592,12 +478,8 @@ class Summary extends React.Component<Props, State> {
 							click: this.handleMapClick,
 						}}
 					>
-						<BaseControlPortal
-							el={this.boundaryInfoControl.element}
-						>
-							<Container>
-								{this.getBoundaryInfoContent()}
-							</Container>
+						<BaseControlPortal el={this.boundaryInfoControl.element}>
+							<Container>{this.getBoundaryInfoContent()}</Container>
 						</BaseControlPortal>
 
 						<BaseControlPortal el={this.legendControl.element}>

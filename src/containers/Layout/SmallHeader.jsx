@@ -1,16 +1,7 @@
 // @flow
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import {
-	AppBar,
-	Avatar,
-	IconButton,
-	Menu,
-	MenuItem,
-	Toolbar,
-	Typography,
-	makeStyles,
-} from "@material-ui/core";
+import { AppBar, Avatar, IconButton, Menu, MenuItem, Toolbar, Typography, makeStyles } from "@material-ui/core";
 
 import MenuIcon from "@material-ui/icons/Menu";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
@@ -120,13 +111,7 @@ const SmallHeader = ({ location }: Props) => {
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} />
-				<Typography
-					component={Link}
-					to="/"
-					className={classes.headerText}
-					variant="h6"
-					noWrap
-				>
+				<Typography component={Link} to="/" className={classes.headerText} variant="h6" noWrap>
 					Great Lakes to Gulf
 				</Typography>
 				<div className={classes.menuIcon}>
@@ -156,10 +141,7 @@ const SmallHeader = ({ location }: Props) => {
 						transformOrigin={{ horizontal: "center" }}
 						className={classes.dropdown}
 					>
-						<MenuItem
-							classes={{ root: classes.menuItem }}
-							onClick={dashboardHandleClick}
-						>
+						<MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClick}>
 							{" "}
 							<div
 								style={{
@@ -182,10 +164,15 @@ const SmallHeader = ({ location }: Props) => {
 						</MenuItem>
 						<MenuItem
 							classes={{ root: classes.menuItem }}
-							onClick={(event) =>
-								(window.location.href =
-									"https://greatlakestogulf.web.illinois.edu")
-							}
+							onClick={menuHandleClose}
+							component={Link}
+							to="/stateportal"
+						>
+							State Portal
+						</MenuItem>
+						<MenuItem
+							classes={{ root: classes.menuItem }}
+							onClick={(event) => (window.location.href = "https://greatlakestogulf.web.illinois.edu")}
 							component={Link}
 							to="data-stories"
 						>

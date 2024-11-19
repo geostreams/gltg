@@ -1,18 +1,7 @@
 // @flow
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import {
-	AppBar,
-	Avatar,
-	Button,
-	Menu,
-	MenuItem,
-	Tab,
-	Tabs,
-	Toolbar,
-	Typography,
-	makeStyles,
-} from "@material-ui/core";
+import { AppBar, Avatar, Button, Menu, MenuItem, Tab, Tabs, Toolbar, Typography, makeStyles } from "@material-ui/core";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import StatePortalsMenu from "./StatePortalsMenu";
 
@@ -100,8 +89,7 @@ const Header = ({ location }: Props) => {
 	};
 
 	// State and handler for the State Portals submenu
-	const [statePortalsAnchorEl, setStatePortalsAnchorEl] =
-		React.useState(null);
+	const [statePortalsAnchorEl, setStatePortalsAnchorEl] = React.useState(null);
 	const statePortalsHandleClick = (event) => {
 		setStatePortalsAnchorEl(event.currentTarget);
 	};
@@ -110,13 +98,7 @@ const Header = ({ location }: Props) => {
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} />
-				<Typography
-					component={Link}
-					to="/"
-					className={classes.headerText}
-					variant="h6"
-					noWrap
-				>
+				<Typography component={Link} to="/" className={classes.headerText} variant="h6" noWrap>
 					Great Lakes to Gulf
 				</Typography>
 				<Tabs
@@ -130,9 +112,7 @@ const Header = ({ location }: Props) => {
 						label="Dashboards"
 						component={Button}
 						id="dashboard-button"
-						aria-controls={
-							dashboardOpen ? "dashboard-menu" : undefined
-						}
+						aria-controls={dashboardOpen ? "dashboard-menu" : undefined}
 						aria-haspopup="true"
 						aria-expanded={dashboardOpen ? "true" : undefined}
 						onClick={dashboardHandleClick}
@@ -180,13 +160,17 @@ const Header = ({ location }: Props) => {
 					/>
 					<Tab
 						className={classes.tabRoot}
+						label="State Portal"
+						component={Link}
+						id="geoApp-button"
+						to="/stateportal"
+					/>
+					<Tab
+						className={classes.tabRoot}
 						label="GLTG News"
 						component={Link}
 						to="/"
-						onClick={(event) =>
-							(window.location.href =
-								"https://greatlakestogulf.web.illinois.edu")
-						}
+						onClick={(event) => (window.location.href = "https://greatlakestogulf.web.illinois.edu")}
 						value="gltg news"
 					/>
 				</Tabs>

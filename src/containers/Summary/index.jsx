@@ -24,24 +24,32 @@ import DownwardTrendIcon from "../../images/DownwardTrendIcon.png";
 import { GEOSERVER_URL, MAP_BOUNDS } from "./config";
 
 import Sidebar from "./Sidebar";
-import Topbar from "./topBar";
+import Topbar from "./TopBar";
 
 // Styling for different components of Nutrient Trends Dashboard
 const useStyles = makeStyles((theme) => ({
 	fillContainer: {
 		width: "100%",
 		height: "100%",
-		marginTop: "1.1%",
+		paddingBottom: "4%",
+	},
+	topBar: {
+		width: "100%",
+		flexShrink: 0,
+		zIndex: 2,
+		backgroundColor: theme.palette.background.paper,
+		marginBottom: "3%",
 	},
 	mainContainer: {
+		height: "calc(100vh - 64px)",
 		position: "absolute",
-		height: "100%",
 	},
 	sidebar: {
 		height: "100%",
 		width: "100%",
 		overflowY: "auto",
 		overflowX: "clip",
+		paddingBottom: "3%",
 		"& a": {
 			color: "#0D73C5",
 		},
@@ -70,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 		opacity: 0.8,
 		zIndex: 1000,
 		position: "absolute",
-		bottom: "10%",
+		bottom: "1%",
 		left: "5%",
 		width: "45%",
 	},
@@ -657,19 +665,21 @@ const Summary = () => {
 
 	return (
 		<>
-			<Topbar
-				selectedNutrient={selectedNutrient}
-				setSelectedNutrient={setSelectedNutrient}
-				selectedTimePeriod={selectedTimePeriod}
-				setSelectedTimePeriod={setSelectedTimePeriod}
-				selectedParameter={selectedParameter}
-				setSelectedParameter={setSelectedParameter}
-			/>
 			<Grid
 				className={classes.mainContainer}
 				container
 				alignItems="stretch"
 			>
+				<Grid item xs={12} className={classes.topBar}>
+					<Topbar
+						selectedNutrient={selectedNutrient}
+						setSelectedNutrient={setSelectedNutrient}
+						selectedTimePeriod={selectedTimePeriod}
+						setSelectedTimePeriod={setSelectedTimePeriod}
+						selectedParameter={selectedParameter}
+						setSelectedParameter={setSelectedParameter}
+					/>
+				</Grid>
 				<Grid item xs={7} key={selectedTimePeriod}>
 					<Map
 						className={classes.fillContainer}

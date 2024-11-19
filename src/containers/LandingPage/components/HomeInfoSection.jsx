@@ -24,14 +24,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	topBar: {
 		backgroundColor: theme.palette.grey[100],
-		padding: ({ isMobile }) =>
-			isMobile ? theme.spacing(1) : theme.spacing(2),
+		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
 		marginBottom: theme.spacing(0.75),
 	},
 	content: {
 		flex: 1,
-		padding: ({ isMobile }) =>
-			isMobile ? theme.spacing(2) : theme.spacing(3),
+		padding: ({ isMobile }) => (isMobile ? theme.spacing(2) : theme.spacing(3)),
 		display: "flex",
 		flexDirection: "column",
 	},
@@ -53,8 +51,7 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: "center",
 		alignItems: "center",
 		gap: theme.spacing(2),
-		padding: ({ isMobile }) =>
-			isMobile ? theme.spacing(1) : theme.spacing(2),
+		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
 	},
 	imageContainer: {
 		display: "flex",
@@ -75,8 +72,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(2, 0),
 	},
 	textContent: {
-		padding: ({ isMobile }) =>
-			isMobile ? theme.spacing(1) : theme.spacing(2),
+		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
 	},
 	contentSection: {
 		marginBottom: theme.spacing(2),
@@ -128,10 +124,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 				);
 			case "heading":
 				return (
-					<Typography
-						variant={isMobile ? "subtitle1" : "h6"}
-						gutterBottom
-					>
+					<Typography variant={isMobile ? "subtitle1" : "h6"} gutterBottom>
 						{item.text}
 					</Typography>
 				);
@@ -144,9 +137,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 									primary={listItem}
 									primaryTypographyProps={{
 										style: {
-											fontSize: isMobile
-												? "0.9rem"
-												: "1rem",
+											fontSize: isMobile ? "0.9rem" : "1rem",
 										},
 									}}
 								/>
@@ -158,17 +149,12 @@ const ContentRenderer = ({ content, isMobile }) => {
 				return (
 					<List>
 						{item.items.map((listItem, index) => (
-							<ListItem
-								key={index}
-								className={classes.numberedListItem}
-							>
+							<ListItem key={index} className={classes.numberedListItem}>
 								<ListItemText
 									primary={listItem}
 									primaryTypographyProps={{
 										style: {
-											fontSize: isMobile
-												? "0.9rem"
-												: "1rem",
+											fontSize: isMobile ? "0.9rem" : "1rem",
 										},
 									}}
 								/>
@@ -202,15 +188,7 @@ const ImageComponent = ({ src, alt, isMobile }) => {
 	);
 };
 
-const HomeInfoSection = ({
-	title,
-	infoImage,
-	imageCaption,
-	launchButtonText,
-	infoJSON,
-	buttonLink,
-	youtubeLink,
-}) => {
+const HomeInfoSection = ({ title, infoImage, imageCaption, launchButtonText, infoJSON, buttonLink, youtubeLink }) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const classes = useStyles({ isMobile });
@@ -219,26 +197,14 @@ const HomeInfoSection = ({
 	return (
 		<div className={classes.root}>
 			<div className={classes.topBar}>
-				<Typography
-					variant={isMobile ? "h5" : "h4"}
-					component="h1"
-					align="center"
-				>
+				<Typography variant={isMobile ? "h5" : "h4"} component="h1" align="center">
 					{title}
 				</Typography>
 			</div>
 
-			<Grid
-				container
-				spacing={isMobile ? 2 : 3}
-				className={classes.gridContainer}
-			>
+			<Grid container spacing={isMobile ? 2 : 3} className={classes.gridContainer}>
 				<Grid item xs={12} md={6} className={classes.leftColumn}>
-					<ImageComponent
-						src={infoImage}
-						alt={title}
-						isMobile={isMobile}
-					/>
+					<ImageComponent src={infoImage} alt={title} isMobile={isMobile} />
 					<Box className={classes.caption}>
 						<Typography variant="caption" gutterBottom>
 							{imageCaption}
@@ -248,18 +214,10 @@ const HomeInfoSection = ({
 
 				<Grid item xs={12} md={6} className={classes.column}>
 					<div className={classes.textContent}>
-						<ContentRenderer
-							content={infoData.content}
-							isMobile={isMobile}
-						/>
+						<ContentRenderer content={infoData.content} isMobile={isMobile} />
 					</div>
 					{youtubeLink && (
-						<ReactPlayer
-							url={youtubeLink}
-							controls
-							width="50%"
-							height={isMobile ? "200px" : "300px"}
-						/>
+						<ReactPlayer url={youtubeLink} controls width="50%" height={isMobile ? "200px" : "300px"} />
 					)}
 					<Button
 						variant="contained"

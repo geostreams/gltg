@@ -109,12 +109,7 @@ const Home = () => {
 				youtubeLink={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 				buttonLink="/explore/all"
 			/>
-			<Partners
-				partner1={NGRREC}
-				partner2={NCSA}
-				link1={partnerLink1}
-				link2={partnerLink2}
-			/>
+			<Partners partner1={NGRREC} partner2={NCSA} link1={partnerLink1} link2={partnerLink2} />
 			<Funding image1={WaltonFamily} link1={fundLink1} />
 		</Box>
 	);

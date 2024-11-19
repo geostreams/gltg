@@ -105,16 +105,12 @@ const ProgramsAreaTreated = (props: Props) => {
 	const programsSet = new Set();
 	const tableData = {};
 	props.data.forEach((d) => {
-		const boundaryId: string = filters.selectedBoundaries.length
-			? (d[filters.boundaryType]: any)
-			: "Total";
+		const boundaryId: string = filters.selectedBoundaries.length ? (d[filters.boundaryType]: any) : "Total";
 
 		programsSet.add(d.program);
 
 		if (tableData[boundaryId]) {
-			tableData[boundaryId][d.program] =
-				(tableData[boundaryId][d.program] || 0) +
-				(d["area_treated-sum"] || 0);
+			tableData[boundaryId][d.program] = (tableData[boundaryId][d.program] || 0) + (d["area_treated-sum"] || 0);
 		} else {
 			tableData[boundaryId] = {
 				[d.program]: d["area_treated-sum"] || 0,
@@ -126,11 +122,9 @@ const ProgramsAreaTreated = (props: Props) => {
 	return (
 		<>
 			<Typography variant="body1" paragraph>
-				Distribution of the number of acres treated by conservation
-				practices across selected area by year. Conservation practices
-				are distinguished by funding source. Please see this document
-				for more information about assumptions made to estimate acres
-				treated:&nbsp;
+				Distribution of the number of acres treated by conservation practices across selected area by year.
+				Conservation practices are distinguished by funding source. Please see this document for more
+				information about assumptions made to estimate acres treated:&nbsp;
 				<a
 					href="http://draindrop.cropsci.illinois.edu/wp-content/uploads/2019/09/Data_Norms.pdf"
 					target="_blank"
@@ -172,25 +166,16 @@ const ProgramsAreaTreated = (props: Props) => {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{entries(tableData).map(
-							([boundary, boundaryPrograms]) => (
-								<TableRow key={boundary}>
-									<TableCell>{boundary}</TableCell>
-									{programs.map((program: string) => (
-										<TableCell key={program} align="center">
-											{boundaryPrograms[program]
-												? precision(
-														boundaryPrograms[
-															program
-														] || 0,
-														0,
-													)
-												: "-"}
-										</TableCell>
-									))}
-								</TableRow>
-							),
-						)}
+						{entries(tableData).map(([boundary, boundaryPrograms]) => (
+							<TableRow key={boundary}>
+								<TableCell>{boundary}</TableCell>
+								{programs.map((program: string) => (
+									<TableCell key={program} align="center">
+										{boundaryPrograms[program] ? precision(boundaryPrograms[program] || 0, 0) : "-"}
+									</TableCell>
+								))}
+							</TableRow>
+						))}
 					</TableBody>
 				</Table>
 			</TableContainer>

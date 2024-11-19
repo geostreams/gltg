@@ -1,12 +1,5 @@
 import React from "react";
-import {
-	Box,
-	Typography,
-	Grid,
-	useTheme,
-	useMediaQuery,
-	makeStyles,
-} from "@material-ui/core";
+import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles } from "@material-ui/core";
 import ReactPlayer from "react-player/youtube";
 import bannerImage from "../../Images/gltg-banner.jpg";
 
@@ -19,8 +12,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		width: "100%",
 		height: ({ isMobile }) => (isMobile ? "15em" : "20em"),
-		marginTop: ({ isMobile }) =>
-			isMobile ? theme.spacing(2) : theme.spacing(3),
+		marginTop: ({ isMobile }) => (isMobile ? theme.spacing(2) : theme.spacing(3)),
 		backgroundImage: `url(${bannerImage})`,
 		backgroundPosition: "center",
 		backgroundRepeat: "no-repeat",
@@ -102,36 +94,18 @@ const About = () => {
 	return (
 		<Box className={classes.root}>
 			<Box className={classes.introDiv}>
-				<Typography
-					variant={isMobile ? "h5" : "h4"}
-					className={classes.introTitle}
-					gutterBottom
-				>
+				<Typography variant={isMobile ? "h5" : "h4"} className={classes.introTitle} gutterBottom>
 					We all have a vested interest in healthy waterways.
 				</Typography>
 			</Box>
 
 			<Box display="flex" justifyContent="center" width="100%">
 				<Box className={classes.contentContainer}>
-					<Grid
-						container
-						spacing={3}
-						style={{ minHeight: "inherit" }}
-					>
-						<Grid
-							item
-							xs={12}
-							md={8}
-							className={classes.leftColumn}
-						>
+					<Grid container spacing={3} style={{ minHeight: "inherit" }}>
+						<Grid item xs={12} md={8} className={classes.leftColumn}>
 							<Box className={classes.leftContent}>
-								<Typography
-									variant={isMobile ? "h6" : "h5"}
-									align="center"
-									gutterBottom
-								>
-									Welcome to Great Lakes to Gulf: Tracking
-									Nutrients in the Mississippi
+								<Typography variant={isMobile ? "h6" : "h5"} align="center" gutterBottom>
+									Welcome to Great Lakes to Gulf: Tracking Nutrients in the Mississippi
 								</Typography>
 								<Typography
 									variant="body1"
@@ -140,17 +114,12 @@ const About = () => {
 									className={classes.responsiveText}
 									gutterBottom
 								>
-									Great Lakes to Gulf (GLTG) is an interactive
-									website that provides curated
-									nutrient-focused water quality information
-									about the Mississippi River and its
-									tributaries. GLTG takes a massive amount of
-									complex water quality data from across
-									geographies and standardizes, distills, and
-									presents it in a way that makes the
-									information accessible and
-									easy-to-understand for scientists, managers,
-									advocates, and the interested public.
+									Great Lakes to Gulf (GLTG) is an interactive website that provides curated
+									nutrient-focused water quality information about the Mississippi River and its
+									tributaries. GLTG takes a massive amount of complex water quality data from across
+									geographies and standardizes, distills, and presents it in a way that makes the
+									information accessible and easy-to-understand for scientists, managers, advocates,
+									and the interested public.
 								</Typography>
 								<Typography
 									variant="body1"
@@ -158,13 +127,10 @@ const About = () => {
 									className={classes.responsiveText}
 									gutterBottom
 								>
-									Importantly, GLTG shows nutrient levels and
-									long term trends throughout the
-									Mississippi/Atchafalaya River Basin (MARB),
-									suggests relationships between these
-									observed trends and conservation indicators,
-									and serves as an information hub about state
-									efforts to improve water quality.
+									Importantly, GLTG shows nutrient levels and long term trends throughout the
+									Mississippi/Atchafalaya River Basin (MARB), suggests relationships between these
+									observed trends and conservation indicators, and serves as an information hub about
+									state efforts to improve water quality.
 								</Typography>
 								<Typography
 									variant="body1"
@@ -172,19 +138,13 @@ const About = () => {
 									className={classes.responsiveText}
 									gutterBottom
 								>
-									Improving America's water quality is not
-									just good for the environment—it's good for
+									Improving America's water quality is not just good for the environment—it's good for
 									families, communities, and the economy.
 								</Typography>
 							</Box>
 						</Grid>
 
-						<Grid
-							item
-							xs={12}
-							md={4}
-							className={classes.rightColumn}
-						>
+						<Grid item xs={12} md={4} className={classes.rightColumn}>
 							<Box className={classes.videoContainer}>
 								<Box className={classes.playerWrapper}>
 									<ReactPlayer

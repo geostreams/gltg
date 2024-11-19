@@ -48,12 +48,7 @@ export const STYLES = {
 	}),
 };
 
-export const getStyle = (
-	options: string[],
-	feature: FeatureType,
-	featureIdKey: string,
-	isSelected: boolean,
-) => {
+export const getStyle = (options: string[], feature: FeatureType, featureIdKey: string, isSelected: boolean) => {
 	if (options.includes(feature.get(featureIdKey))) {
 		return isSelected ? STYLES.selected : STYLES.default;
 	}
@@ -93,10 +88,7 @@ export const LAYERS = {
 				title: "Carto",
 				source: new XYZ({
 					url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
-					attributions: [
-						'&#169; <a href="https://www.carto.com">Carto</a>,',
-						OSM_ATTRIBUTION,
-					],
+					attributions: ['&#169; <a href="https://www.carto.com">Carto</a>,', OSM_ATTRIBUTION],
 				}),
 			}),
 			new TileLayer({

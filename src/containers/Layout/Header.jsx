@@ -1,18 +1,7 @@
 // @flow
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import {
-	AppBar,
-	Avatar,
-	Button,
-	Menu,
-	MenuItem,
-	Tab,
-	Tabs,
-	Toolbar,
-	Typography,
-	makeStyles,
-} from "@material-ui/core";
+import { AppBar, Avatar, Button, Menu, MenuItem, Tab, Tabs, Toolbar, Typography, makeStyles } from "@material-ui/core";
 
 import LogoApp from "../../images/logo_app.png";
 
@@ -103,13 +92,7 @@ const Header = ({ location }: Props) => {
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} />
-				<Typography
-					component={Link}
-					to="/"
-					className={classes.headerText}
-					variant="h6"
-					noWrap
-				>
+				<Typography component={Link} to="/" className={classes.headerText} variant="h6" noWrap>
 					Great Lakes to Gulf
 				</Typography>
 				<Tabs
@@ -123,9 +106,7 @@ const Header = ({ location }: Props) => {
 						label="Dashboards"
 						component={Button}
 						id="dashboard-button"
-						aria-controls={
-							dashboardOpen ? "dashboard-menu" : undefined
-						}
+						aria-controls={dashboardOpen ? "dashboard-menu" : undefined}
 						aria-haspopup="true"
 						aria-expanded={dashboardOpen ? "true" : undefined}
 						onClick={dashboardHandleClick}
@@ -183,10 +164,7 @@ const Header = ({ location }: Props) => {
 						label="GLTG News"
 						component={Link}
 						to="/"
-						onClick={(event) =>
-							(window.location.href =
-								"https://greatlakestogulf.web.illinois.edu")
-						}
+						onClick={(event) => (window.location.href = "https://greatlakestogulf.web.illinois.edu")}
 						value="gltg news"
 					/>
 				</Tabs>

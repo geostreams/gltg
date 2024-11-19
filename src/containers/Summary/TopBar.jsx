@@ -141,9 +141,7 @@ const TopBar = ({
 			<InputLabel>Select Period</InputLabel>
 			<Select
 				value={selectedTimePeriod}
-				onChange={({ target: { value } }) =>
-					setSelectedTimePeriod(value)
-				}
+				onChange={({ target: { value } }) => setSelectedTimePeriod(value)}
 				label="Select Period"
 				className={classes.selectRoot}
 			>
@@ -158,21 +156,14 @@ const TopBar = ({
 			className={classes.formControl}
 			size="small" // Add size="small"
 		>
-			<FormLabel className={classes.formLabel}>
-				Choose a Flow normalized Nutrient Variable
-			</FormLabel>
+			<FormLabel className={classes.formLabel}>Choose a Flow normalized Nutrient Variable</FormLabel>
 			<RadioGroup
 				row
 				value={selectedParameter}
 				onChange={(e) => setSelectedParameter(e.target.value)}
 				className={classes.radioGroup}
 			>
-				<FormControlLabel
-					value="flux"
-					control={<CustomRadio />}
-					label="Load"
-					className={classes.radioLabel}
-				/>
+				<FormControlLabel value="flux" control={<CustomRadio />} label="Load" className={classes.radioLabel} />
 				<FormControlLabel
 					value="concentration"
 					control={<CustomRadio />}

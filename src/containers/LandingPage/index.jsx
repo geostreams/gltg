@@ -6,8 +6,9 @@ import Partners from "./components/partners";
 import HomeInfoSection from "./components/HomeInfoSection";
 
 // Image URLS
-import AlgaeBloomImage from "./Images/algae-bloom.jpg";
+import algaeBloomImage from "./Images/algae-bloom.jpg";
 import samplingImage from "./Images/sampling-gltg.jpg";
+import statePortal from "./Images/state-portal.jpg";
 
 // Partner Images
 import NGRREC from "./Images/Partners/NGREC.jpg";
@@ -32,7 +33,7 @@ const Home = () => {
 			{ type: "heading", text: "Why a Nutrient Trends Dashboard?" },
 			{
 				type: "paragraph",
-				text: "TTo improve water quality in the MARB we must reduce the amount of nitrogen and phosphorus entering the streams and rivers flowing through the Mississippi River to the Gulf of Mexico. These changes take time. This is why we look at long term nutrient trends which can then be related to nutrient management practices.",
+				text: "To improve water quality in the MARB we must reduce the amount of nitrogen and phosphorus entering the streams and rivers flowing through the Mississippi River to the Gulf of Mexico. These changes take time. This is why we look at long term nutrient trends which can then be related to nutrient management practices.",
 			},
 			{ type: "heading", text: "What information will you get?" },
 			{
@@ -86,7 +87,7 @@ const Home = () => {
 			<About />
 			<HomeInfoSection
 				title="Nutrient Trends Dashboard"
-				infoImage={AlgaeBloomImage}
+				infoImage={algaeBloomImage}
 				imageCaption="Excess nutrients can cause algal blooms that degrade water quality."
 				launchButtonText="Launch Nutrient Trends Dashboard"
 				infoJSON={trendsDashboardDataJson}
@@ -94,7 +95,7 @@ const Home = () => {
 			/>
 			<HomeInfoSection
 				title="State Efforts Dashboard"
-				infoImage={AlgaeBloomImage}
+				infoImage={statePortal}
 				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
 				launchButtonText="Launch State Efforts Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}

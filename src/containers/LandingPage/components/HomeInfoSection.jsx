@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
+		padding: 0,
 		maxWidth: ({ isMobile }) => (isMobile ? "100%" : "70%"),
 		maxHeight: ({ isMobile }) => (isMobile ? "300px" : "85%"),
 		margin: ({ isMobile }) => (isMobile ? theme.spacing(2, 0) : 0),

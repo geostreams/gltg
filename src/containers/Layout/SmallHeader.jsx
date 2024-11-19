@@ -182,6 +182,14 @@ const SmallHeader = ({ location }: Props) => {
 						</MenuItem>
 						<MenuItem
 							classes={{ root: classes.menuItem }}
+							onClick={menuHandleClose}
+							component={Link}
+							to="/stateportal"
+						>
+							State Portal
+						</MenuItem>
+						<MenuItem
+							classes={{ root: classes.menuItem }}
 							onClick={(event) =>
 								(window.location.href =
 									"https://greatlakestogulf.web.illinois.edu")

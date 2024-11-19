@@ -180,6 +180,13 @@ const Header = ({ location }: Props) => {
 					/>
 					<Tab
 						className={classes.tabRoot}
+						label="State Portal"
+						component={Link}
+						id="geoApp-button"
+						to="/stateportal"
+					/>
+					<Tab
+						className={classes.tabRoot}
 						label="GLTG News"
 						component={Link}
 						to="/"

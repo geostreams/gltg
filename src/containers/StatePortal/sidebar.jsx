@@ -92,27 +92,59 @@ const Sidebar = ({ selectedState, onStateSelect }) => {
 	const defaultView = (
 		<>
 			<Box mb={3}>
-				<Typography variant="subtitle2" color="primary" gutterBottom>
+				<Typography variant="h5" color="primary" gutterBottom>
 					What is this page about?
 				</Typography>
-				<Typography variant="body2" color="primary" gutterBottom>
-					Lorem ipsum dolor sit amet consectetur. Nulla tellus integer
-					nisi fringilla facilisi ut ultrices. Malesuada ut faucibus
-					lacus amet malesuada laoreet. Pellentesque sit nec dui id.
-					Risus id lorem pellentesque bibendum tellus consequat turpis
-					justo hac.
+				<Typography variant="body1" color="primary" gutterBottom>
+					Established in 1997, the Hypoxia Task Force set a long-term
+					goal of reducing total phosphorus and total nitrogen loads
+					within the MARB by 45% by 2035, with interim goals of a 15%
+					reduction of nitrate-nitrogen and a 25% reduction of total
+					phosphorus by 2025.
+				</Typography>
+				<Typography variant="body1" color="primary" gutterBottom>
+					Leaders in 12 states are working collectively as part of the
+					Hypoxia Task Force to reduce nutrient pollution and improve
+					water quality in Mississippi River and its tributaries.
+					However, determining whether water quality in a given area
+					within a state or region is improving is a complex task.
+					Each state tries to answer this question by quantifying
+					nutrient trends, but they do so at various scales and time
+					periods and using multiple statistical and scientific
+					methods, making it challenging to compare trends across the
+					entire MARB. While our Nutrient Trends Dashboard provides a
+					visualization of comparable trends across the MARB, it also
+					does not tell the whole story.
+				</Typography>
+				<Typography variant="body1" color="primary" gutterBottom>
+					By exploring the State Tracker Dashboard, you can see how
+					each state is approaching the challenge of nutrient
+					reduction in their waterways. We have also provided a
+					summary table of the similarities and differences in the
+					state approaches to nutrient loss reduction and links to
+					available resources, including: State Nutrient Loss
+					Reduction Plans, Nutrient Dashboards, and Additional Water
+					Quality Resources.
+				</Typography>
+				<Typography variant="body1" color="primary" gutterBottom>
+					For a more in depth coverage of nutrient loss reduction
+					approaches read:
+					<a
+						href="https://www.epa.gov/ms-htf/assessing-water-quality-varied-approaches-measure-change-and-show-nutrient-reduction"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Assessing Water Quality: Varied Approaches to Measure
+						Change and Show Nutrient Reduction Progress
+					</a>
 				</Typography>
 			</Box>
 			<Box>
-				<Typography variant="subtitle2" color="primary" gutterBottom>
-					What information will you get?
+				<Typography variant="h5" color="primary" gutterBottom>
+					Navigating the State Tracker Dashboard
 				</Typography>
-				<Typography variant="body2" color="primary" gutterBottom>
-					Lorem ipsum dolor sit amet consectetur. Nulla tellus integer
-					nisi fringilla facilisi ut ultrices. Malesuada ut faucibus
-					lacus amet malesuada laoreet. Pellentesque sit nec dui id.
-					Risus id lorem pellentesque bibendum tellus consequat turpis
-					justo hac.
+				<Typography variant="body1" color="primary" gutterBottom>
+					Use the map or dropdown menu to select your state of choice.
 				</Typography>
 			</Box>
 			<FormControl variant="outlined" className={classes.stateSelect}>

@@ -5,13 +5,7 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 import { Link } from "react-router-dom";
 
-function StatePortalsMenu({
-	anchorEl,
-	open,
-	onClose,
-	classes,
-	orientation = "right",
-}) {
+function StatePortalsMenu({ anchorEl, open, onClose, classes, orientation = "right" }) {
 	const [subMenuAnchorEl, setSubMenuAnchorEl] = useState(null);
 	const [currentSubMenu, setCurrentSubMenu] = useState(null);
 
@@ -89,24 +83,12 @@ function StatePortalsMenu({
 						key={item.name}
 						onClick={(event) => handleMenuItemClick(event, item)}
 						className={classes ? classes.menuItem : ""}
-						component={
-							item.link && item.link.startsWith("/")
-								? Link
-								: undefined
-						}
-						to={
-							item.link && item.link.startsWith("/")
-								? item.link
-								: undefined
-						}
+						component={item.link && item.link.startsWith("/") ? Link : undefined}
+						to={item.link && item.link.startsWith("/") ? item.link : undefined}
 					>
-						{item.hasSubMenu && isLeftOrientation && (
-							<ArrowLeftIcon />
-						)}
+						{item.hasSubMenu && isLeftOrientation && <ArrowLeftIcon />}
 						{item.name}
-						{item.hasSubMenu && !isLeftOrientation && (
-							<ArrowRightIcon />
-						)}
+						{item.hasSubMenu && !isLeftOrientation && <ArrowRightIcon />}
 					</MenuItem>
 				))}
 			</Menu>
@@ -127,12 +109,7 @@ function StatePortalsMenu({
 			>
 				{currentSubMenu &&
 					submenuLinks[currentSubMenu].map((subItem) => (
-						<MenuItem
-							key={subItem.name}
-							onClick={() =>
-								handleSubMenuOptionClick(subItem.link)
-							}
-						>
+						<MenuItem key={subItem.name} onClick={() => handleSubMenuOptionClick(subItem.link)}>
 							{subItem.name}
 						</MenuItem>
 					))}

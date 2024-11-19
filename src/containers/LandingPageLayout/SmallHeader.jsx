@@ -119,8 +119,7 @@ const SmallHeader = ({ location }: Props) => {
 	};
 
 	// State and handler for the State Portals submenu
-	const [statePortalsAnchorEl, setStatePortalsAnchorEl] =
-		React.useState(null);
+	const [statePortalsAnchorEl, setStatePortalsAnchorEl] = React.useState(null);
 	const statePortalsHandleClick = (event) => {
 		setStatePortalsAnchorEl(event.currentTarget);
 	};
@@ -129,13 +128,7 @@ const SmallHeader = ({ location }: Props) => {
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} />
-				<Typography
-					component={Link}
-					to="/"
-					className={classes.headerText}
-					variant="h6"
-					noWrap
-				>
+				<Typography component={Link} to="/" className={classes.headerText} variant="h6" noWrap>
 					Great Lakes to Gulf
 				</Typography>
 				<div className={classes.menuIcon}>
@@ -165,10 +158,7 @@ const SmallHeader = ({ location }: Props) => {
 						transformOrigin={{ horizontal: "center" }}
 						className={classes.dropdown}
 					>
-						<MenuItem
-							classes={{ root: classes.menuItem }}
-							onClick={dashboardHandleClick}
-						>
+						<MenuItem classes={{ root: classes.menuItem }} onClick={dashboardHandleClick}>
 							{" "}
 							<div
 								style={{
@@ -199,10 +189,7 @@ const SmallHeader = ({ location }: Props) => {
 						</MenuItem>
 						<MenuItem
 							classes={{ root: classes.menuItem }}
-							onClick={(event) =>
-								(window.location.href =
-									"https://greatlakestogulf.web.illinois.edu")
-							}
+							onClick={(event) => (window.location.href = "https://greatlakestogulf.web.illinois.edu")}
 							omponent={Link}
 							to="data-stories"
 						>

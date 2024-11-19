@@ -55,9 +55,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 
 	const { filters, results, updateResults } = React.useContext(BMPContext);
 
-	const [selectedCategories, updateSelectedCategories] = React.useState<
-		Map<string, boolean>,
-	>(new Map());
+	const [selectedCategories, updateSelectedCategories] = React.useState<Map<string, boolean>>(new Map());
 
 	const outputContainer = React.useRef();
 	const outputContainerRect = useElementRect(outputContainer);
@@ -118,11 +116,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 		<Dialog fullScreen open onClose={handleClose}>
 			<AppBar className={classes.appBar}>
 				<Toolbar>
-					<IconButton
-						edge="start"
-						color="inherit"
-						onClick={handleClose}
-					>
+					<IconButton edge="start" color="inherit" onClick={handleClose}>
 						<CloseIcon />
 					</IconButton>
 					<Typography variant="h6" className={classes.title}>
@@ -132,11 +126,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 						color="inherit"
 						variant="outlined"
 						startIcon={<PdfIcon />}
-						disabled={
-							Array.from(selectedCategories.values()).every(
-								(v) => !v,
-							) || !outputContainer.current
-						}
+						disabled={Array.from(selectedCategories.values()).every((v) => !v) || !outputContainer.current}
 						onClick={() => {
 							if (outputContainer.current) {
 								htmlToPdf(outputContainer.current, {
@@ -151,9 +141,8 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 			</AppBar>
 
 			<Alert style={{ margin: 20 }} severity="warning">
-				The recommended browsers are Firefox and Chrome. There might be
-				issues with the generated PDF in other browsers such as Safari
-				and IE.
+				The recommended browsers are Firefox and Chrome. There might be issues with the generated PDF in other
+				browsers such as Safari and IE.
 			</Alert>
 
 			<Grid container className={classes.contentContainer}>
@@ -173,15 +162,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 									button
 									onClick={() =>
 										updateSelectedCategories(
-											new Map([
-												...selectedCategories,
-												[
-													label,
-													!selectedCategories.get(
-														label,
-													),
-												],
-											]),
+											new Map([...selectedCategories, [label, !selectedCategories.get(label)]]),
 										)
 									}
 								>
@@ -189,10 +170,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 										<Checkbox
 											edge="start"
 											disableRipple
-											checked={
-												selectedCategories.get(label) ||
-												false
-											}
+											checked={selectedCategories.get(label) || false}
 										/>
 									</ListItemIcon>
 									<ListItemText>{label}</ListItemText>
@@ -202,9 +180,7 @@ const Pdf = ({ handleClose, dispatch }: Props) => {
 					</List>
 				</Grid>
 				<Grid ref={outputContainer} item xs={8}>
-					{entries(RESULTS).map((resultProps) =>
-						renderResult(resultProps),
-					)}
+					{entries(RESULTS).map((resultProps) => renderResult(resultProps))}
 				</Grid>
 			</Grid>
 			<div ref={plotTooltipRef} className={classes.plotTooltip} />

@@ -46,10 +46,7 @@ type UpdateSelectedBoundaries = {
 	value: string[],
 };
 
-export type FiltersAction =
-	| UpdateYearsAction
-	| UpdateBoundaryType
-	| UpdateSelectedBoundaries;
+export type FiltersAction = UpdateYearsAction | UpdateBoundaryType | UpdateSelectedBoundaries;
 
 type Assumption = {
 	alias_1: string,

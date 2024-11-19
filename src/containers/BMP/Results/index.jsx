@@ -67,8 +67,7 @@ const Results = ({ dispatch }: Props) => {
 	const { filters, results, updateResults } = React.useContext(BMPContext);
 
 	const [activeResultKey, updateActiveResultKey] = React.useState<string>("");
-	const [activeResultCategory, updateActiveResultCategory] =
-		React.useState<$Keys<typeof RESULTS>>("");
+	const [activeResultCategory, updateActiveResultCategory] = React.useState<$Keys<typeof RESULTS>>("");
 	const { component: ResultComponent } = RESULTS[activeResultCategory] || {};
 
 	const plotTooltipRef = React.useRef<null | HTMLDivElement>(null);
@@ -79,10 +78,7 @@ const Results = ({ dispatch }: Props) => {
 
 	React.useEffect(() => {
 		if (activeResultCategory) {
-			const queryParams = createRequestParams(
-				activeResultCategory,
-				filters,
-			);
+			const queryParams = createRequestParams(activeResultCategory, filters);
 			const queryParamsBase64 = btoa(queryParams);
 			if (results[queryParamsBase64]) {
 				updateActiveResultKey(queryParamsBase64);
@@ -115,11 +111,7 @@ const Results = ({ dispatch }: Props) => {
 		<Container className={classes.mainContainer}>
 			<Box display="flex" justifyContent="space-between">
 				<Typography variant="h5">Results</Typography>
-				<Button
-					className={classes.outlinedButton}
-					variant="outlined"
-					onClick={() => updatePdfView(true)}
-				>
+				<Button className={classes.outlinedButton} variant="outlined" onClick={() => updatePdfView(true)}>
 					Download PDF
 				</Button>
 			</Box>
@@ -133,11 +125,7 @@ const Results = ({ dispatch }: Props) => {
 					}}
 				>
 					<MenuItem value="">
-						<i>
-							{activeResultCategory
-								? "------"
-								: "Select a category"}
-						</i>
+						<i>{activeResultCategory ? "------" : "Select a category"}</i>
 					</MenuItem>
 					{entries(RESULTS).map(
 						([

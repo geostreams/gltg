@@ -66,13 +66,7 @@ type Props = {
 	stickyFooter: boolean,
 };
 
-const Layout = ({
-	isLoading,
-	children,
-	extraMainClasses,
-	hasFooter,
-	stickyFooter,
-}: Props) => {
+const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter }: Props) => {
 	const classes = useStyles();
 
 	const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
@@ -99,14 +93,10 @@ const Layout = ({
 			</div>
 
 			<div className={classes.mainContainer}>
-				<div className={`${classes.content} ${extraMainClasses}`}>
-					{children}
-				</div>
+				<div className={`${classes.content} ${extraMainClasses}`}>{children}</div>
 
 				{hasFooter && (
-					<div
-						className={`${classes.footerContainer} ${stickyFooter ? classes.stickyFooter : ""}`}
-					>
+					<div className={`${classes.footerContainer} ${stickyFooter ? classes.stickyFooter : ""}`}>
 						<Footer sticky={stickyFooter} />
 					</div>
 				)}

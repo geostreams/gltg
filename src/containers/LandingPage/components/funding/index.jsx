@@ -21,10 +21,7 @@ const Funding = ({ image1, link1 }) => {
 				</Box>
 
 				<div className={classes.row}>
-					<div
-						className={classes.column}
-						style={{ backgroundColor: "white" }}
-					/>
+					<div className={classes.column} style={{ backgroundColor: "white" }} />
 					<div
 						className={classes.column}
 						style={{
@@ -48,13 +45,10 @@ const Funding = ({ image1, link1 }) => {
 						className={classes.textSubTitle}
 						style={{ margin: "0 auto" }}
 					>
-						The Great Lakes to Gulf Virtual Observatory is a
-						cyber-infrastructure framework constructed in
-						collaboration with the National Center for
-						Supercomputing Applications (NCSA) and the National
-						Great Rivers Research and Education Center (NGRREC) with
-						funding provided by NGRREC and the Walton Family
-						Foundation.
+						The Great Lakes to Gulf Virtual Observatory is a cyber-infrastructure framework constructed in
+						collaboration with the National Center for Supercomputing Applications (NCSA) and the National
+						Great Rivers Research and Education Center (NGRREC) with funding provided by NGRREC and the
+						Walton Family Foundation.
 					</Typography>
 				</Box>
 			</div>

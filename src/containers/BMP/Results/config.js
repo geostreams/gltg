@@ -2,15 +2,9 @@
 import { entries } from "@geostreams/core/src/utils/array";
 
 import ProgramsCount, { config as programsCountConfig } from "./ProgramsCount";
-import ProgramsFunding, {
-	config as programsFundingConfig,
-} from "./ProgramsFunding";
-import ProgramsAreaTreated, {
-	config as programsAreaTreatedConfig,
-} from "./ProgramsAreaTreated";
-import TopPracticesByArea, {
-	config as topPracticesByAreaConfig,
-} from "./TopPracticesByArea";
+import ProgramsFunding, { config as programsFundingConfig } from "./ProgramsFunding";
+import ProgramsAreaTreated, { config as programsAreaTreatedConfig } from "./ProgramsAreaTreated";
+import TopPracticesByArea, { config as topPracticesByAreaConfig } from "./TopPracticesByArea";
 
 import type { Filters, QueryParams } from "../flowtype";
 
@@ -33,10 +27,7 @@ export const RESULTS = {
 	},
 };
 
-export const createRequestParams = (
-	category: string,
-	filters: Filters,
-): string => {
+export const createRequestParams = (category: string, filters: Filters): string => {
 	const prepareParams = RESULTS[category].config.prepareParams;
 
 	const params: QueryParams = {
@@ -56,10 +47,7 @@ export const createRequestParams = (
 		params.order_by.push(filters.boundaryType);
 	}
 
-	prepareParams(
-		params,
-		filters.selectedBoundaries.length ? filters.boundaryType : null,
-	);
+	prepareParams(params, filters.selectedBoundaries.length ? filters.boundaryType : null);
 
 	return entries(params)
 		.reduce((queryParams, [param, value]) => {

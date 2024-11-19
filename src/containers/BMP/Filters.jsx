@@ -68,11 +68,9 @@ const useStyle = makeStyles((theme) => ({
 const Filters = () => {
 	const classes = useStyle();
 
-	const { dispatchFilterUpdate, filters, config } =
-		React.useContext(BMPContext);
+	const { dispatchFilterUpdate, filters, config } = React.useContext(BMPContext);
 
-	const [areParametersExpanded, updateExpandParameters] =
-		React.useState(true);
+	const [areParametersExpanded, updateExpandParameters] = React.useState(true);
 
 	const { years, boundaryType, selectedBoundaries } = filters;
 
@@ -94,15 +92,8 @@ const Filters = () => {
 					>
 						Clear Parameters
 					</Button>
-					<Button
-						className={classes.outlinedButton}
-						onClick={handleParameterExpandClick}
-					>
-						{areParametersExpanded ? (
-							<UnfoldLessIcon />
-						) : (
-							<UnfoldMoreIcon />
-						)}
+					<Button className={classes.outlinedButton} onClick={handleParameterExpandClick}>
+						{areParametersExpanded ? <UnfoldLessIcon /> : <UnfoldMoreIcon />}
 					</Button>
 				</ButtonGroup>
 			</Box>
@@ -129,8 +120,7 @@ const Filters = () => {
 								<ToggleButton
 									classes={{
 										root: classes.boundaryToggleGroup,
-										selected:
-											classes.boundaryToggleGroupSelected,
+										selected: classes.boundaryToggleGroupSelected,
 									}}
 									key={name}
 									value={name}
@@ -145,15 +135,9 @@ const Filters = () => {
 							className={classes.boundarySelect}
 							size="small"
 							disableCloseOnSelect
-							options={config[boundaryType].map(
-								(attrs) =>
-									attrs[BOUNDARIES[boundaryType].idKey],
-							)}
+							options={config[boundaryType].map((attrs) => attrs[BOUNDARIES[boundaryType].idKey])}
 							filterOptions={(options: string[]) =>
-								options.filter(
-									(option) =>
-										!selectedBoundaries.includes(option),
-								)
+								options.filter((option) => !selectedBoundaries.includes(option))
 							}
 							value={[]}
 							renderInput={(params) => (
@@ -167,10 +151,7 @@ const Filters = () => {
 							onChange={(e, selectedOptions) => {
 								dispatchFilterUpdate({
 									type: "selectedBoundaries",
-									value: [
-										...selectedBoundaries,
-										selectedOptions,
-									],
+									value: [...selectedBoundaries, selectedOptions],
 								});
 							}}
 						/>
@@ -187,20 +168,14 @@ const Filters = () => {
 						onDelete={() => {
 							dispatchFilterUpdate({
 								type: "selectedBoundaries",
-								value: selectedBoundaries.filter(
-									(b) => b !== boundary,
-								),
+								value: selectedBoundaries.filter((b) => b !== boundary),
 							});
 						}}
 					/>
 				))
 			) : (
-				<Typography
-					className={classes.filtersSummary}
-					variant="overline"
-				>
-					Results are aggregated across all{" "}
-					{BOUNDARIES[boundaryType].label}s.
+				<Typography className={classes.filtersSummary} variant="overline">
+					Results are aggregated across all {BOUNDARIES[boundaryType].label}s.
 				</Typography>
 			)}
 
@@ -216,20 +191,14 @@ const Filters = () => {
 							value={years}
 							min={YEAR_RANGE[0]}
 							max={YEAR_RANGE[1]}
-							onChange={(e, value) =>
-								dispatchFilterUpdate({ type: "years", value })
-							}
+							onChange={(e, value) => dispatchFilterUpdate({ type: "years", value })}
 							valueLabelDisplay="auto"
 						/>
 					</Container>
 				</>
 			) : (
 				<>
-					<Typography
-						className={classes.filtersSummary}
-						variant="overline"
-						gutterBottom
-					>
+					<Typography className={classes.filtersSummary} variant="overline" gutterBottom>
 						({years[0]} - {years[1]})
 					</Typography>
 					<br />

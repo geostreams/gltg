@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-	Typography,
-	Tabs,
-	Tab,
-	List,
-	ListItem,
-	ListItemText,
-	makeStyles,
-} from "@material-ui/core";
+import { Typography, Tabs, Tab, List, ListItem, ListItemText, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -67,10 +59,7 @@ const InfoBox = ({ content }) => {
 				return (
 					<List>
 						{item.items.map((listItem, index) => (
-							<ListItem
-								key={index}
-								className={classes.numberedListItem}
-							>
+							<ListItem key={index} className={classes.numberedListItem}>
 								<ListItemText primary={listItem} />
 							</ListItem>
 						))}
@@ -96,11 +85,7 @@ const InfoBox = ({ content }) => {
 	return (
 		<div className={classes.root}>
 			{content.length > 1 && (
-				<Tabs
-					value={activeTab}
-					onChange={handleTabChange}
-					variant="scrollable"
-				>
+				<Tabs value={activeTab} onChange={handleTabChange} variant="scrollable">
 					{content.map((tab, index) => (
 						<Tab key={index} label={tab.label} />
 					))}

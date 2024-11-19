@@ -1,10 +1,5 @@
 import React from "react";
-import {
-	ComposableMap,
-	Geographies,
-	Geography,
-	Marker,
-} from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import usStates from "us-atlas/states-10m.json";
 
 const highlightedStates = [
@@ -92,13 +87,9 @@ const MapChart = ({ selectedState, onStateSelect }) => {
 					{({ geographies }) =>
 						geographies.map((geo) => {
 							const stateName = geo.properties.name;
-							const isHighlighted =
-								highlightedStates.includes(stateName);
+							const isHighlighted = highlightedStates.includes(stateName);
 
-							const borderStyle =
-								isHighlighted && selectedState !== stateName
-									? "dashed"
-									: "solid";
+							const borderStyle = isHighlighted && selectedState !== stateName ? "dashed" : "solid";
 
 							const fillColor = selectedState
 								? selectedState === stateName
@@ -110,39 +101,26 @@ const MapChart = ({ selectedState, onStateSelect }) => {
 								<g key={geo.rsmKey}>
 									<Geography
 										geography={geo}
-										onClick={(event) =>
-											handleStateClick(geo, event)
-										}
+										onClick={(event) => handleStateClick(geo, event)}
 										style={{
 											default: {
-												fill: isHighlighted
-													? fillColor
-													: "#EAEAEC",
+												fill: isHighlighted ? fillColor : "#EAEAEC",
 												outline: "none",
-												stroke: isHighlighted
-													? "#000"
-													: "none",
+												stroke: isHighlighted ? "#000" : "none",
 												strokeWidth: 1.5,
-												strokeDasharray:
-													borderStyle === "dashed"
-														? "5,5"
-														: "none",
+												strokeDasharray: borderStyle === "dashed" ? "5,5" : "none",
 											},
 											hover: {
 												fill: fillColor,
 												outline: "none",
-												stroke: isHighlighted
-													? "#000"
-													: "none",
+												stroke: isHighlighted ? "#000" : "none",
 												strokeWidth: 2,
 												strokeDasharray: "none",
 											},
 											pressed: {
 												fill: fillColor,
 												outline: "none",
-												stroke: isHighlighted
-													? "#000"
-													: "none",
+												stroke: isHighlighted ? "#000" : "none",
 												strokeWidth: 2,
 												strokeDasharray: "none",
 											},

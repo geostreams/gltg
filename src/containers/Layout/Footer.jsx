@@ -45,22 +45,16 @@ const Footer = ({ sticky }: Props) => {
 			<Grid container>
 				<Grid item xs={12}>
 					<p className={classes.content}>
-						This website was developed by NGRREC, Lewis & Clark
-						Community College, University of Illinois National
-						Center for Supercomputing Applications and the
-						University of Illinois at Urbana-Champaign.
+						This website was developed by NGRREC, Lewis & Clark Community College, University of Illinois
+						National Center for Supercomputing Applications and the University of Illinois at
+						Urbana-Champaign.
 						<br />
-						&copy; 2014 National Center for Supercomputing
-						Applications.
+						&copy; 2014 National Center for Supercomputing Applications.
 					</p>
 					<Divider />
 				</Grid>
 				<Grid item xs={12}>
-					<a
-						href="https://geodashboard.ncsa.illinois.edu/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
+					<a href="https://geodashboard.ncsa.illinois.edu/" target="_blank" rel="noopener noreferrer">
 						Geodashboard v.{process.env.VERSION}
 					</a>
 				</Grid>

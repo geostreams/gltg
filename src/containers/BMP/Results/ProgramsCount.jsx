@@ -105,16 +105,12 @@ const ProgramsCount = (props: Props) => {
 	const programsSet = new Set();
 	const tableData = {};
 	props.data.forEach((d) => {
-		const boundaryId: string = filters.selectedBoundaries.length
-			? (d[filters.boundaryType]: any)
-			: "Total";
+		const boundaryId: string = filters.selectedBoundaries.length ? (d[filters.boundaryType]: any) : "Total";
 
 		programsSet.add(d.program);
 
 		if (tableData[boundaryId]) {
-			tableData[boundaryId][d.program] =
-				(tableData[boundaryId][d.program] || 0) +
-				(d["program-count"] || 0);
+			tableData[boundaryId][d.program] = (tableData[boundaryId][d.program] || 0) + (d["program-count"] || 0);
 		} else {
 			tableData[boundaryId] = {
 				[d.program]: d["program-count"] || 0,
@@ -126,9 +122,8 @@ const ProgramsCount = (props: Props) => {
 	return (
 		<>
 			<Typography variant="body1" paragraph>
-				Distribution of the number of total conservation practices
-				across selected area by year. Conservation practices are
-				distinguished by funding source.
+				Distribution of the number of total conservation practices across selected area by year. Conservation
+				practices are distinguished by funding source.
 			</Typography>
 			<VegaLite
 				width={(containerRect.width || 0) * 0.6}
@@ -157,21 +152,16 @@ const ProgramsCount = (props: Props) => {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{entries(tableData).map(
-							([boundary, boundaryPrograms]) => (
-								<TableRow key={boundary}>
-									<TableCell>{boundary}</TableCell>
-									{programs.map((program: string) => (
-										<TableCell key={program} align="center">
-											{precision(
-												boundaryPrograms[program] || 0,
-												0,
-											)}
-										</TableCell>
-									))}
-								</TableRow>
-							),
-						)}
+						{entries(tableData).map(([boundary, boundaryPrograms]) => (
+							<TableRow key={boundary}>
+								<TableCell>{boundary}</TableCell>
+								{programs.map((program: string) => (
+									<TableCell key={program} align="center">
+										{precision(boundaryPrograms[program] || 0, 0)}
+									</TableCell>
+								))}
+							</TableRow>
+						))}
 					</TableBody>
 				</Table>
 			</TableContainer>

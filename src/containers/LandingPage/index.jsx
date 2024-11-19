@@ -1,21 +1,13 @@
-// @flow
 import React from "react";
-
+import { Box, useTheme, useMediaQuery } from "@material-ui/core";
 import About from "./components/about";
-import TextBox from "./components/textbox";
-import Imagerow from "./components/imagerow";
-import FAQBox from "./components/faqbox";
-import Datastories from "./components/datastories";
 import Funding from "./components/funding";
 import Partners from "./components/partners";
-import RssFeed from "./components/rssfeed";
-// Image URls
-import SummaryDashboard from "./Images/SummaryDashboard.png";
-import StatePortal from "./Images/StatePortal.png";
-import ConservationPractices from "./Images/ConservationPractices.png";
-import Explore from "./Images/Explore.png";
-import Analyze from "./Images/Analyze.png";
-import Download from "./Images/Download.png";
+import HomeInfoSection from "./components/HomeInfoSection";
+
+// Image URLS
+import AlgaeBloomImage from "./Images/algae-bloom.jpg";
+import samplingImage from "./Images/sampling-gltg.jpg";
 
 // Partner Images
 import NGRREC from "./Images/Partners/NGREC.jpg";
@@ -25,42 +17,8 @@ import NCSA from "./Images/Partners/NCSA_logo.png";
 import WaltonFamily from "./Images/Partners/WaltonFamily.png";
 
 const Home = () => {
-	// First Image Row Text
-	const firstRowHeader1 = "Nutrient Trends Dashboard";
-	const firstRowSubHeader1 =
-		"Review all state portals in a single view. Current states available: Illinois. \n" +
-		"\n" +
-		"More to come!";
-	const firstRowLink1 = "summary";
-	const firstRowHeader2 = "State Portals";
-	const firstRowSubHeader2 =
-		"Review data and trends specific to individual states. Current states available: Illinois, Arkansas, Iowa. \n" +
-		"\n" +
-		"More to come!";
-	const firstRowLink2 = "";
-	const firstRowHeader3 = "Conservation Practices";
-	const firstRowSubHeader3 =
-		"Visualize the impact of water quality best management practices in this region.";
-	const firstRowLink3 = "bmp";
-
-	//State Links
-	const illinois = "https://illinois.greatlakestogulf.org/";
-	const arkansas = "https://arkansas.greatlakestogulf.org/";
-	const iowa = "https://programs.iowadnr.gov/aquia/";
-	const indiana =
-		"https://storymaps.arcgis.com/stories/977fe35741c34a2b860b5702c797e020";
-	const missouri = "https://missouri.greatlakestogulf.org/";
-	const tennessee = "https://tennessee.greatlakestogulf.org/";
-	// Second Image Row Text
-	const secondRowHeader1 = "Explore";
-	const secondRowSubHeader1 = "Explore water quality data";
-	const secondRowLink1 = "explore/all";
-	const secondRowHeader2 = "Analyze";
-	const secondRowSubHeader2 = "Analyze water quality data";
-	const secondRowLink2 = "analysis";
-	const secondRowHeader3 = "Download";
-	const secondRowSubHeader3 = "Download water quality data";
-	const secondRowLink3 = "search";
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 	// Partner Links
 	const partnerLink1 = "http://www.ngrrec.org/";
@@ -68,35 +26,89 @@ const Home = () => {
 
 	// Funding Links
 	const fundLink1 = "https://www.waltonfamilyfoundation.org/";
-	return (
-		<>
-			<About />
-			<RssFeed></RssFeed>
-			<TextBox
-				title="Explore GLTG Dashboards"
-				text="GLTG dashboards provide Mississippi River water quality analyses that have been developed by our team of experts. Take in the big picture at the Nutrient Trends Dashboard; review water quality state-by-state; and see the impact of a variety of best management practices on the river."
-			/>
-			<Imagerow
-				image1={SummaryDashboard}
-				image2={StatePortal}
-				image3={ConservationPractices}
-				header1={firstRowHeader1}
-				header2={firstRowHeader2}
-				header3={firstRowHeader3}
-				subheader1={firstRowSubHeader1}
-				subheader2={firstRowSubHeader2}
-				subheader3={firstRowSubHeader3}
-				link1={firstRowLink1}
-				link2={firstRowLink2}
-				link3={firstRowLink3}
-				link4={illinois}
-				link5={arkansas}
-				link6={iowa}
-				link7={indiana}
-				link8={missouri}
-				link9={tennessee}
-			/>
 
+	const trendsDashboardDataJson = JSON.stringify({
+		content: [
+			{ type: "heading", text: "Why a Nutrient Trends Dashboard?" },
+			{
+				type: "paragraph",
+				text: "TTo improve water quality in the MARB we must reduce the amount of nitrogen and phosphorus entering the streams and rivers flowing through the Mississippi River to the Gulf of Mexico. These changes take time. This is why we look at long term nutrient trends which can then be related to nutrient management practices.",
+			},
+			{ type: "heading", text: "What information will you get?" },
+			{
+				type: "paragraph",
+				text: "The Nutrient Trends Dashboard provides information on concentrations and loads of nitrogen and phosphorus from over 200 sites having 20 years of data collection. The  data we used were taken  from the Water Quality Portal and  standardized to be comparable across states. Not all water quality monitoring sites met the criteria for our analysis which used the WRTDS method.",
+			},
+		],
+	});
+
+	const stateEffortsDashboardDataJson = JSON.stringify({
+		content: [
+			{ type: "heading", text: "Why a State Tracker Dashboard?" },
+			{
+				type: "paragraph",
+				text: "The 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico. \nThe 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico.",
+			},
+			{ type: "heading", text: "What information will you get?" },
+			{
+				type: "paragraph",
+				text: "Where available, we’ve provided the following information for each of the 12 HTF states:",
+			},
+			{
+				type: "list",
+				items: [
+					"State Nutrient Loss Reduction Plan",
+					"Nutrient Dashboards",
+					"Additional Water Quality Resources",
+					"Nutrient Storymaps ",
+				],
+			},
+		],
+	});
+
+	const exploreDashboardJson = JSON.stringify({
+		content: [
+			{
+				type: "heading",
+				text: "Why an Explore Water Quality Data Dashboard?",
+			},
+			{
+				type: "paragraph",
+				text:
+					"There are multiple organizations throughout the MARB that collect water quality data. We have focused on long term state and federal nutrient data contained in the  EPA/USGS Water Quality Portal, other USGS data on nutrients and flow, and several regional long term data sets." +
+					"If you are interested in nutrients and related water quality data from a particular location or from a specific watershed, this page can help you find it.",
+			},
+		],
+	});
+
+	return (
+		<Box sx={{ padding: isMobile ? 1 : 2 }}>
+			<About />
+			<HomeInfoSection
+				title="Nutrient Trends Dashboard"
+				infoImage={AlgaeBloomImage}
+				imageCaption="Excess nutrients can cause algal blooms that degrade water quality."
+				launchButtonText="Launch Nutrient Trends Dashboard"
+				infoJSON={trendsDashboardDataJson}
+				buttonLink="/nutrient-trends"
+			/>
+			<HomeInfoSection
+				title="State Efforts Dashboard"
+				infoImage={AlgaeBloomImage}
+				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
+				launchButtonText="Launch State Efforts Dashboard"
+				infoJSON={stateEffortsDashboardDataJson}
+				buttonLink="/nutrient-trends"
+			/>
+			<HomeInfoSection
+				title="Explore Water Quality Data Dashboard"
+				infoImage={samplingImage}
+				imageCaption="USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river."
+				launchButtonText="Launch Explore Water Quality Data Dashboard"
+				infoJSON={exploreDashboardJson}
+				youtubeLink={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+				buttonLink="/explore/all"
+			/>
 			<Partners
 				partner1={NGRREC}
 				partner2={NCSA}
@@ -104,7 +116,7 @@ const Home = () => {
 				link2={partnerLink2}
 			/>
 			<Funding image1={WaltonFamily} link1={fundLink1} />
-		</>
+		</Box>
 	);
 };
 

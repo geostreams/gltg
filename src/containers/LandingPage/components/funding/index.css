@@ -1,56 +1,65 @@
-.row:after {
-	display: table;
-	clear: both;
+.textDiv {
+	width: 100%;
+	margin: 2em 0;
+}
+
+.headerBox {
+	background-color: #f5f5f5;
+	padding: 1em;
+	margin-bottom: 2em;
+}
+
+.title {
+	font-weight: 500;
+}
+
+.row {
+	display: flex;
+	width: 100%;
+	min-height: 150px;
+	margin-bottom: 1em; /* Added margin to create space between row and subtitle */
+}
+
+@media (max-width: 600px) {
+	.row {
+		min-height: 100px;
+		flex-direction: column;
+	}
 }
 
 .column {
-	float: left;
-	width: 33%;
-	height: 15vh;
-	position: relative;
-	transition: transform 0.5s ease;
+	flex: 1;
+	transition: transform 0.2s ease-in-out;
 }
 
 .column:hover {
-	transform: scale(
-		1.1
-	); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
-.textDiv {
-	width: 100%;
-	left: 0px;
-	height: 24em;
-	display: flex;
-	flex-direction: column;
-}
-
-.textTitle {
-	/* H1 */
-	font-family: "Roboto";
-	font-style: normal;
-	font-weight: 700;
-	font-size: 36px;
-	line-height: 42px;
-	text-align: center;
-
-	/* TextLight */
-	color: #2d3c4a;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	transform: scale(1.05);
 }
 
 .textSubTitle {
-	font-family: "Roboto";
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 19px;
-	text-align: center;
-	width: 40em;
+	max-width: 800px;
+	margin: 0 auto; /* Changed to 0 auto to center horizontally */
+	padding: 0 1em;
+	line-height: 1.6;
+	color: #333;
+}
 
-	margin: auto;
-	margin-top: 3em;
+@media (max-width: 600px) {
+	.textDiv {
+		margin: 1em 0;
+	}
 
-	color: #2d3c4a;
+	.headerBox {
+		padding: 0.75em;
+		margin-bottom: 1em;
+	}
+
+	.textSubTitle {
+		font-size: 0.9rem;
+		padding: 0 1.5em;
+	}
+
+	.column {
+		min-height: 80px;
+	}
 }

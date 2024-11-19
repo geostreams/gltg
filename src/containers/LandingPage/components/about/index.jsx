@@ -148,14 +148,14 @@ const About = () => {
 							<Box className={classes.videoContainer}>
 								<Box className={classes.playerWrapper}>
 									<ReactPlayer
-										url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+										url="https://www.youtube.com/watch?v=RO_-MMcReSk"
 										width="70%"
 										height={isMobile ? "200px" : "250px"}
 									/>
 								</Box>
 								<Box className={classes.playerWrapper}>
 									<ReactPlayer
-										url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+										url="https://www.youtube.com/watch?v=RO_-MMcReSk"
 										width="70%"
 										height={isMobile ? "200px" : "250px"}
 									/>

@@ -107,25 +107,7 @@ const Home = () => {
 				imageCaption="USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river."
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
-				youtubeLink={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
-				buttonLink="/explore/all"
-			/>
-			<Partners partner1={NGRREC} partner2={NCSA} link1={partnerLink1} link2={partnerLink2} />
-			<HomeInfoSection
-				title="State Efforts Dashboard"
-				infoImage={AlgaeBloomImage}
-				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
-				launchButtonText="Launch State Efforts Dashboard"
-				infoJSON={stateEffortsDashboardDataJson}
-				buttonLink="/nutrient-trends"
-			/>
-			<HomeInfoSection
-				title="Explore Water Quality Data Dashboard"
-				infoImage={samplingImage}
-				imageCaption="USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river."
-				launchButtonText="Launch Explore Water Quality Data Dashboard"
-				infoJSON={exploreDashboardJson}
-				youtubeLink={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+				youtubeLink={"https://www.youtube.com/watch?v=RO_-MMcReSk"}
 				buttonLink="/explore/all"
 			/>
 			<Partners partner1={NGRREC} partner2={NCSA} link1={partnerLink1} link2={partnerLink2} />

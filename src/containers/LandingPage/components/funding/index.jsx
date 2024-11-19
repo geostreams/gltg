@@ -27,7 +27,7 @@ const Funding = ({ image1, link1 }) => {
 						style={{
 							background: `url(${image1})`,
 							backgroundRepeat: "no-repeat",
-							backgroundSize: isMobile ? "100%" : "80%",
+							backgroundSize: "contain",
 							backgroundPosition: "center",
 							cursor: "pointer",
 						}}

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 	controlsContainer: {
 		display: "flex",
 		flexDirection: "column",
-		gap: theme.spacing(1), // Reduced gap
+		gap: theme.spacing(1),
 		[theme.breakpoints.up("md")]: {
 			flexDirection: "row",
 			alignItems: "center",
@@ -55,13 +55,13 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	formControl: {
-		minWidth: "180px", // Slightly reduced
+		minWidth: "220px", // Increased from 180px to accommodate label
 		[theme.breakpoints.up("md")]: {
 			margin: theme.spacing(0, 1),
 		},
 	},
 	formLabel: {
-		fontSize: ".75rem", // Slightly reduced
+		fontSize: ".75rem",
 		marginBottom: theme.spacing(0.5),
 	},
 	radioGroup: {
@@ -80,10 +80,15 @@ const useStyles = makeStyles((theme) => ({
 			borderRadius: 4,
 		},
 	},
-	// Make form controls more compact
 	selectRoot: {
 		"& .MuiOutlinedInput-input": {
 			padding: "10px 14px",
+		},
+		"& .MuiInputLabel-outlined": {
+			transform: "translate(14px, 12px) scale(1)", // Adjust label position
+		},
+		"& .MuiInputLabel-shrink": {
+			transform: "translate(14px, -6px) scale(0.75)", // Adjust shrunk label position
 		},
 	},
 	radioLabel: {
@@ -105,7 +110,7 @@ const TopBar = ({
 
 	const CustomRadio = withStyles({
 		root: {
-			padding: "4px", // Reduced padding
+			padding: "4px",
 			"&$checked": {
 				color: "#1976D2",
 			},
@@ -114,16 +119,12 @@ const TopBar = ({
 	})((props) => <Radio color="default" {...props} />);
 
 	const selectNutrientComponent = (
-		<FormControl
-			variant="outlined"
-			className={classes.formControl}
-			size="small" // Add size="small"
-		>
-			<InputLabel>Choose a Nutrient</InputLabel>
+		<FormControl variant="outlined" className={classes.formControl} size="small">
+			<InputLabel>Flow Normalized Nutrient</InputLabel>
 			<Select
 				value={selectedNutrient}
 				onChange={({ target: { value } }) => setSelectedNutrient(value)}
-				label="Choose a Nutrient"
+				label="Flow Normalized Nutrient"
 				className={classes.selectRoot}
 			>
 				<MenuItem value="Nitrogen">Nitrate-N</MenuItem>
@@ -133,16 +134,12 @@ const TopBar = ({
 	);
 
 	const selectPeriodComponent = (
-		<FormControl
-			variant="outlined"
-			className={classes.formControl}
-			size="small" // Add size="small"
-		>
-			<InputLabel>Select Period</InputLabel>
+		<FormControl variant="outlined" className={classes.formControl} size="small">
+			<InputLabel>Time Period</InputLabel>
 			<Select
 				value={selectedTimePeriod}
 				onChange={({ target: { value } }) => setSelectedTimePeriod(value)}
-				label="Select Period"
+				label="Time Period"
 				className={classes.selectRoot}
 			>
 				<MenuItem value="20_years">2000-2020</MenuItem>
@@ -151,12 +148,8 @@ const TopBar = ({
 	);
 
 	const selectVariableComponent = (
-		<FormControl
-			component="fieldset"
-			className={classes.formControl}
-			size="small" // Add size="small"
-		>
-			<FormLabel className={classes.formLabel}>Choose a Flow normalized Nutrient Variable</FormLabel>
+		<FormControl component="fieldset" className={classes.formControl} size="small">
+			<FormLabel className={classes.formLabel}>Choose a flow normalized Nutrient Variable</FormLabel>
 			<RadioGroup
 				row
 				value={selectedParameter}

@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		width: "100%",
 		height: ({ isMobile }) => (isMobile ? "15em" : "20em"),
-		marginTop: ({ isMobile }) => (isMobile ? theme.spacing(2) : theme.spacing(3)),
 		backgroundImage: `url(${bannerImage})`,
 		backgroundPosition: "center",
 		backgroundRepeat: "no-repeat",

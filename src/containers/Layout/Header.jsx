@@ -2,64 +2,66 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { AppBar, Avatar, Button, Menu, MenuItem, Tab, Tabs, Toolbar, Typography, makeStyles } from "@material-ui/core";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 import LogoApp from "../../images/logo_app.png";
 
 export const HEADERS_HEIGHT = 61;
 
-const useStyles = makeStyles((theme) => {
-	return {
-		appbar: {
-			zIndex: theme.zIndex.drawer + 1,
+const useStyles = makeStyles((theme) => ({
+	appbar: {
+		zIndex: theme.zIndex.drawer + 1,
+	},
+	mainHeader: {
+		background: theme.palette.primary.main,
+		color: theme.palette.primary.contrastText,
+		textDecoration: "none",
+		height: HEADERS_HEIGHT,
+		minHeight: HEADERS_HEIGHT,
+	},
+	headerText: {
+		color: theme.palette.primary.contrastText,
+		textDecoration: "none",
+		marginBottom: 0,
+	},
+	tagline: {
+		color: theme.palette.primary.contrastText,
+		fontSize: "0.875rem",
+		textAlign: "center",
+	},
+	contactText: {
+		fontSize: "1rem",
+		color: "#BEC4C9",
+		textDecoration: "none",
+	},
+	headerButton: {
+		fontSize: 16,
+		flexGrow: 1,
+	},
+	tabsRoot: {
+		marginLeft: "6em",
+		fontSize: 16,
+		flexGrow: 1,
+	},
+	menuItem: {
+		"&:hover": {
+			backgroundColor: theme.palette.primary.main,
+			color: "white",
 		},
-		mainHeader: {
-			background: theme.palette.primary.main,
-			color: theme.palette.primary.contrastText,
-			textDecoration: "none",
-			height: HEADERS_HEIGHT,
-			minHeight: HEADERS_HEIGHT,
-			"& a": {
-				margin: 5,
-			},
-		},
-		headerText: {
-			color: theme.palette.primary.contrastText,
-			textDecoration: "none",
-		},
-		contactText: {
-			fontSize: "1rem",
-			color: "#BEC4C9",
-			textDecoration: "none",
-		},
-		headerButton: {
-			fontSize: 16,
-			flexGrow: 1,
-		},
-		tabsRoot: {
-			marginLeft: "6em",
-			fontSize: 16,
-			flexGrow: 1,
-		},
-		menuItem: {
-			"&:hover": {
-				backgroundColor: theme.palette.primary.main,
-				color: "white",
-			},
-		},
-		tabsIndicator: {
-			backgroundColor: "#fff",
-		},
-		tabRoot: {
-			fontSize: "1rem",
-		},
-		dropdown: {
-			zIndex: 1100,
-		},
-		dropdownIcon: {
-			display: "flex",
-		},
-	};
-});
+	},
+	tabsIndicator: {
+		backgroundColor: "#fff",
+	},
+	tabRoot: {
+		fontSize: "1rem",
+	},
+	dropdown: {
+		zIndex: 1100,
+	},
+	dropdownIcon: {
+		display: "flex",
+	},
+}));
 
 type Props = {
 	location: {
@@ -88,13 +90,24 @@ const Header = ({ location }: Props) => {
 		setGeoAppAnchorEl(null);
 	};
 
+	// State and handler for the State Portals submenu
+	const [statePortalsAnchorEl, setStatePortalsAnchorEl] = React.useState(null);
+	const statePortalsHandleClick = (event) => {
+		setStatePortalsAnchorEl(event.currentTarget);
+	};
+
 	return (
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} />
-				<Typography component={Link} to="/" className={classes.headerText} variant="h6" noWrap>
-					Great Lakes to Gulf
-				</Typography>
+				<div style={{ display: "flex", flexDirection: "column", marginLeft: "1em" }}>
+					<Typography component={Link} to="/" className={classes.headerText} variant="h5" noWrap>
+						Great Lakes to Gulf
+					</Typography>
+					<Typography className={classes.tagline} variant="h6" noWrap>
+						Tracking nutrients in the river
+					</Typography>
+				</div>
 				<Tabs
 					classes={{
 						root: classes.tabsRoot,
@@ -103,48 +116,11 @@ const Header = ({ location }: Props) => {
 				>
 					<Tab
 						className={classes.tabRoot}
-						label="Dashboards"
-						component={Button}
-						id="dashboard-button"
-						aria-controls={dashboardOpen ? "dashboard-menu" : undefined}
-						aria-haspopup="true"
-						aria-expanded={dashboardOpen ? "true" : undefined}
-						onClick={dashboardHandleClick}
-						classes={classes.headerButton}
+						label="Nutrient Trends"
+						component={Link}
+						id="geoApp-button"
+						to="/nutrient-trends"
 					/>
-					<Menu
-						id="dashboard-menu"
-						anchorEl={dashboardAnchorEl}
-						open={dashboardOpen}
-						onClose={dashboardHandleClose}
-						MenuListProps={{
-							"aria-labelledby": "dashboard-button",
-						}}
-						getContentAnchorEl={null}
-						anchorOrigin={{
-							vertical: "bottom",
-							horizontal: "center",
-						}}
-						transformOrigin={{ horizontal: "center" }}
-						className={classes.dropdown}
-					>
-						<MenuItem
-							classes={{ root: classes.menuItem }}
-							onClick={dashboardHandleClose}
-							component={Link}
-							to="/nutrient-trends"
-						>
-							Nutrient Trends Dashboard
-						</MenuItem>
-						<MenuItem
-							classes={{ root: classes.menuItem }}
-							onClick={dashboardHandleClose}
-							component={Link}
-							to="/bmp"
-						>
-							Best Management Practices
-						</MenuItem>
-					</Menu>
 					<Tab
 						className={classes.tabRoot}
 						label="Explore Data"
@@ -159,22 +135,8 @@ const Header = ({ location }: Props) => {
 						id="geoApp-button"
 						to="/stateportal"
 					/>
-					<Tab
-						className={classes.tabRoot}
-						label="GLTG News"
-						component={Link}
-						to="/"
-						onClick={(event) => (window.location.href = "https://greatlakestogulf.web.illinois.edu")}
-						value="gltg news"
-					/>
 				</Tabs>
-				<Typography
-					component="a"
-					to="/"
-					href="mailto:gltg-support@lists.illinois.edu"
-					className={classes.contactText}
-					noWrap
-				>
+				<Typography component="a" to="/" href="mailto:lkammin@lc.edu" className={classes.contactText} noWrap>
 					CONTACT
 				</Typography>
 			</Toolbar>

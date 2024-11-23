@@ -2,36 +2,27 @@
 import React from "react";
 import { Divider, Grid, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => {
-	return {
-		footer: {
-			width: "100%",
-			background: theme.palette.primary.lighter,
-			color: theme.palette.primary.contrastText,
-			textDecoration: "none",
-			textAlign: "center",
-			padding: "10px 180px",
-			marginTop: "20px",
-			"& a": {
-				margin: 15,
-			},
-			fontSize: 13,
-		},
-		sticky: {
-			position: "absolute",
-			height: 110,
-			bottom: -110,
-			left: 0,
-			marginTop: 0,
-		},
-		content: {
-			color: "gray",
-			width: "75%",
-			margin: "10px auto 5px",
-			lineHeight: 1.1,
-		},
-	};
-});
+const useStyles = makeStyles((theme) => ({
+	footer: {
+		width: "100%",
+		background: "#000000",
+		color: "#BEC4C9",
+		textDecoration: "none",
+		textAlign: "center",
+		padding: "10px 180px",
+		fontSize: 13,
+		flex: "0 0 auto",
+	},
+	sticky: {
+		marginTop: "auto",
+	},
+	content: {
+		color: "gray",
+		width: "100%",
+		margin: "10px auto 5px",
+		lineHeight: 1.1,
+	},
+}));
 
 type Props = {
 	sticky: boolean,
@@ -39,7 +30,6 @@ type Props = {
 
 const Footer = ({ sticky }: Props) => {
 	const classes = useStyles();
-
 	return (
 		<footer className={`${classes.footer} ${sticky ? classes.sticky : ""}`}>
 			<Grid container>
@@ -51,12 +41,6 @@ const Footer = ({ sticky }: Props) => {
 						<br />
 						&copy; 2014 National Center for Supercomputing Applications.
 					</p>
-					<Divider />
-				</Grid>
-				<Grid item xs={12}>
-					<a href="https://geodashboard.ncsa.illinois.edu/" target="_blank" rel="noopener noreferrer">
-						Geodashboard v.{process.env.VERSION}
-					</a>
 				</Grid>
 			</Grid>
 		</footer>

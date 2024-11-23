@@ -15,11 +15,7 @@ import {
 } from "@material-ui/core";
 
 import MenuIcon from "@material-ui/icons/Menu";
-import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
-
-import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import LogoApp from "../../images/logo_app.png";
-import StatePortalsMenu from "./StatePortalsMenu";
 
 export const HEADERS_HEIGHT = 61;
 
@@ -146,7 +142,7 @@ const SmallHeader = ({ location }: Props) => {
 							component={Link}
 							to="nutrient-trends"
 						>
-							Nutrient Trends Dashboard
+							Nutrient Trends
 						</MenuItem>
 						<MenuItem
 							classes={{ root: classes.menuItem }}
@@ -154,7 +150,7 @@ const SmallHeader = ({ location }: Props) => {
 							component={Link}
 							to="/stateportal"
 						>
-							State Portal
+							State Efforts
 						</MenuItem>
 						<MenuItem
 							classes={{ root: classes.menuItem }}

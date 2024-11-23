@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Divider, Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	footer: {

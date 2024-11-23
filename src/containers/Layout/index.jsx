@@ -2,6 +2,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Box, CircularProgress, makeStyles } from "@material-ui/core";
+
 import Footer from "./Footer";
 import Header, { HEADERS_HEIGHT } from "./Header";
 import SmallHeader from "./SmallHeader";
@@ -14,17 +15,9 @@ const useStyles = makeStyles({
 	},
 	main: {
 		position: "absolute",
-		top: 0,
+		top: HEADERS_HEIGHT,
 		width: "100%",
 		height: `calc(100% - ${HEADERS_HEIGHT}px)`,
-		minWidth: "77em",
-		display: "flex",
-		flexDirection: "column", // Added to better handle footer positioning
-	},
-	contentWrapper: {
-		flex: 1,
-		position: "relative",
-		overflowY: "auto", // Added to handle content overflow
 	},
 });
 
@@ -38,23 +31,21 @@ type Props = {
 
 const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter }: Props) => {
 	const classes = useStyles();
+
+	// Handle screen resizing
 	const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 	const widthBreakpoint = 1340;
-
 	React.useEffect(() => {
 		const handleResizeWindow = () => setWindowWidth(window.innerWidth);
 		window.addEventListener("resize", handleResizeWindow);
-		return () => window.removeEventListener("resize", handleResizeWindow);
+		return () => {
+			window.removeEventListener("resize", handleResizeWindow);
+		};
 	}, []);
-
-	const renderFooter = () => {
-		if (!hasFooter) return null;
-		return <Footer sticky={stickyFooter} />;
-	};
 
 	return (
 		<>
-			{isLoading && (
+			{isLoading ? (
 				<Box
 					className={`fillContainer ${classes.scrim}`}
 					display="flex"
@@ -63,11 +54,11 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter
 				>
 					<CircularProgress />
 				</Box>
-			)}
+			) : null}
 			{windowWidth > widthBreakpoint ? <Header /> : <SmallHeader />}
 			<main className={`${classes.main} ${extraMainClasses}`}>
-				<div className={classes.contentWrapper}>{children}</div>
-				{renderFooter()}
+				{children}
+				{hasFooter ? <Footer sticky={stickyFooter} /> : null}
 			</main>
 		</>
 	);

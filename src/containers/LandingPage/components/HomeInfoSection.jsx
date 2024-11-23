@@ -75,23 +75,25 @@ const useStyles = makeStyles((theme) => ({
 		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
 	},
 	contentSection: {
-		marginBottom: theme.spacing(2),
+		marginBottom: theme.spacing(1),
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
+	},
+	list: {
+		padding: 0,
 	},
 	listItem: {
 		display: "list-item",
 		listStyleType: "disc",
 		marginLeft: theme.spacing(2),
-		[theme.breakpoints.down("sm")]: {
-			fontSize: "0.9rem",
-		},
+		padding: theme.spacing(0.5, 1),
 	},
 	numberedListItem: {
 		display: "list-item",
 		listStyleType: "decimal",
 		marginLeft: theme.spacing(2),
+		padding: theme.spacing(0.5, 1),
 		[theme.breakpoints.down("sm")]: {
 			fontSize: "0.9rem",
 		},
@@ -111,6 +113,40 @@ const ContentRenderer = ({ content, isMobile }) => {
 	const renderContent = (item) => {
 		switch (item.type) {
 			case "paragraph":
+				if (item.content) {
+					return (
+						<Typography
+							component="div"
+							style={{
+								fontSize: isMobile ? "0.9rem" : "1rem",
+								lineHeight: isMobile ? 1.5 : 1.6,
+								marginBottom: "1em",
+							}}
+						>
+							{item.content.map((segment, index) =>
+								segment.link ? (
+									<a
+										key={index}
+										href={segment.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										style={{
+											color: "#1976d2",
+											textDecoration: "none",
+											"&:hover": {
+												textDecoration: "underline",
+											},
+										}}
+									>
+										{segment.text}
+									</a>
+								) : (
+									<span key={index}>{segment.text}</span>
+								),
+							)}
+						</Typography>
+					);
+				}
 				return (
 					<Typography
 						paragraph
@@ -130,7 +166,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 				);
 			case "list":
 				return (
-					<List>
+					<List className={classes.list}>
 						{item.items.map((listItem, index) => (
 							<ListItem key={index} className={classes.listItem}>
 								<ListItemText
@@ -138,23 +174,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 									primaryTypographyProps={{
 										style: {
 											fontSize: isMobile ? "0.9rem" : "1rem",
-										},
-									}}
-								/>
-							</ListItem>
-						))}
-					</List>
-				);
-			case "numberedList":
-				return (
-					<List>
-						{item.items.map((listItem, index) => (
-							<ListItem key={index} className={classes.numberedListItem}>
-								<ListItemText
-									primary={listItem}
-									primaryTypographyProps={{
-										style: {
-											fontSize: isMobile ? "0.9rem" : "1rem",
+											margin: 0,
 										},
 									}}
 								/>

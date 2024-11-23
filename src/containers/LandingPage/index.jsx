@@ -48,12 +48,23 @@ const Home = () => {
 			{ type: "heading", text: "Why a State Tracker Dashboard?" },
 			{
 				type: "paragraph",
-				text: "The 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico. \nThe 12 Hypoxia Task Force (HTF) states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal  blooms as well as to reduce  the size of the Hypoxic Zone in the Gulf of Mexico.",
+				content: [
+					{
+						text: "The 12 ",
+					},
+					{
+						text: "Hypoxia Task Force (HTF)",
+						link: "https://www.epa.gov/ms-htf",
+					},
+					{
+						text: " states are working to reduce concentrations of nutrients in our waterways to safeguard public health, improve the quality of drinking water, protect aquatic life and prevent harmful algal blooms as well as to reduce the size of the Hypoxic Zone in the Gulf of Mexico.",
+					},
+				],
 			},
 			{ type: "heading", text: "What information will you get?" },
 			{
 				type: "paragraph",
-				text: "Where available, we’ve provided the following information for each of the 12 HTF states:",
+				text: "Where available, we've provided the following information for each of the 12 HTF states:",
 			},
 			{
 				type: "list",
@@ -61,7 +72,7 @@ const Home = () => {
 					"State Nutrient Loss Reduction Plan",
 					"Nutrient Dashboards",
 					"Additional Water Quality Resources",
-					"Nutrient Storymaps ",
+					"Nutrient Storymaps",
 				],
 			},
 		],
@@ -75,9 +86,11 @@ const Home = () => {
 			},
 			{
 				type: "paragraph",
-				text:
-					"There are multiple organizations throughout the MARB that collect water quality data. We have focused on long term state and federal nutrient data contained in the  EPA/USGS Water Quality Portal, other USGS data on nutrients and flow, and several regional long term data sets." +
-					"If you are interested in nutrients and related water quality data from a particular location or from a specific watershed, this page can help you find it.",
+				text: "There are multiple organizations throughout the MARB that collect water quality data. We have focused on long-term state and federal nutrient data contained in the  EPA/USGS Water Quality Portal, other USGS data on nutrients and flow, and several regional long term data sets.",
+			},
+			{
+				type: "paragraph",
+				text: "If you are interested in nutrients and related water quality data from a particular location or from a specific watershed, this page can help you find it.",
 			},
 		],
 	});
@@ -94,7 +107,7 @@ const Home = () => {
 				buttonLink="/nutrient-trends"
 			/>
 			<HomeInfoSection
-				title="State Efforts Dashboard"
+				title="State Tracker Dashboard"
 				infoImage={statePortal}
 				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
 				launchButtonText="Launch State Efforts Dashboard"
@@ -104,7 +117,7 @@ const Home = () => {
 			<HomeInfoSection
 				title="Explore Water Quality Data Dashboard"
 				infoImage={samplingImage}
-				imageCaption="USGS scientists on the Mississippi River above Vicksburg use a D-99 sampler to collect sediment and water-quality samples from the large inland river."
+				imageCaption="USGS scientists collect water samples from the Mississippi"
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
 				youtubeLink={"https://www.youtube.com/watch?v=RO_-MMcReSk"}

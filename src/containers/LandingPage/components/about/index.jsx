@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles } from "@material-ui/core";
 import ReactPlayer from "react-player/youtube";
 import bannerImage from "../../Images/gltg-banner.jpg";
+import ImageContainer from "./ImageContainer";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -103,13 +104,14 @@ const About = () => {
 					<Grid container spacing={3} style={{ minHeight: "inherit" }}>
 						<Grid item xs={12} md={8} className={classes.leftColumn}>
 							<Box className={classes.leftContent}>
-								<Typography variant={isMobile ? "h6" : "h5"} align="center" gutterBottom>
-									Welcome to Great Lakes to Gulf: Tracking Nutrients in the Mississippi
+								<Typography variant={isMobile ? "h6" : "h5"} align="left" gutterBottom>
+									Welcome to Great Lakes to Gulf:
+									<br />
+									Tracking Nutrients in the Mississippi
 								</Typography>
 								<Typography
 									variant="body1"
-									align="center"
-									style={{ fontWeight: 500 }}
+									align="left"
 									className={classes.responsiveText}
 									gutterBottom
 								>
@@ -122,23 +124,32 @@ const About = () => {
 								</Typography>
 								<Typography
 									variant="body1"
-									align="center"
+									align="left"
 									className={classes.responsiveText}
 									gutterBottom
 								>
-									Importantly, GLTG shows nutrient levels and long term trends throughout the
-									Mississippi/Atchafalaya River Basin (MARB), suggests relationships between these
-									observed trends and conservation indicators, and serves as an information hub about
-									state efforts to improve water quality.
+									Importantly, GLTG shows nutrient levels and long-term trends throughout the{" "}
+									<a
+										href="https://www.epa.gov/ms-htf/mississippiatchafalaya-river-basin-marb"
+										target="_blank"
+									>
+										Mississippi/Atchafalaya River Basin (MARB)
+									</a>
+									, suggests relationships between these observed trends and conservation indicators,
+									and serves as an information hub about state efforts to improve water quality. This
+									information can help track the effectiveness of nutrient reduction efforts at
+									federal, state, and local levels and inform future nutrient loss reduction work.
 								</Typography>
 								<Typography
 									variant="body1"
-									align="center"
+									align="left"
 									className={classes.responsiveText}
 									gutterBottom
 								>
-									Improving America's water quality is not just good for the environment—it's good for
-									families, communities, and the economy.
+									Improving America’s water quality is not just good for the environment—it’s good for
+									families, communities, and the economy. From farmers to scientists and policymakers
+									to environmental advocates, we welcome everyone to join us in charting a healthy
+									course forward for the Mississippi.
 								</Typography>
 							</Box>
 						</Grid>
@@ -146,15 +157,28 @@ const About = () => {
 						<Grid item xs={12} md={4} className={classes.rightColumn}>
 							<Box className={classes.videoContainer}>
 								<Box className={classes.playerWrapper}>
-									<ReactPlayer
+									{/* <ReactPlayer
 										url="https://www.youtube.com/watch?v=RO_-MMcReSk"
 										width="70%"
+										height={isMobile ? "200px" : "250px"}
+									/> */}
+
+									<ImageContainer
+										src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mississippiriver-new-01.png/838px-Mississippiriver-new-01.png"
+										alt="Mississippi River"
+										width="80%"
 										height={isMobile ? "200px" : "250px"}
 									/>
 								</Box>
 								<Box className={classes.playerWrapper}>
-									<ReactPlayer
+									{/* <ReactPlayer
 										url="https://www.youtube.com/watch?v=RO_-MMcReSk"
+										width="70%"
+										height={isMobile ? "200px" : "250px"}
+									/> */}
+									<ImageContainer
+										src="https://cdn.pixabay.com/photo/2019/03/28/17/34/glass-of-water-4087606_1280.jpg"
+										alt="Glass of water"
 										width="70%"
 										height={isMobile ? "200px" : "250px"}
 									/>

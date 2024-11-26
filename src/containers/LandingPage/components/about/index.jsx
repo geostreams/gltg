@@ -1,8 +1,8 @@
 import React from "react";
-import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles } from "@material-ui/core";
+import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles, Link } from "@material-ui/core";
 import ReactPlayer from "react-player/youtube";
 import bannerImage from "../../Images/gltg-banner.jpg";
-import ImageContainer from "./ImageContainer";
+import ImageContainer from "../ImageContainer";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -50,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
 	leftContent: {
 		display: "flex",
 		flexDirection: "column",
-		alignItems: "center",
 		gap: ({ isMobile }) => theme.spacing(isMobile ? 1 : 1.5),
 		textAlign: "center",
 		maxWidth: ({ isMobile }) => (isMobile ? "100%" : "90%"),
@@ -104,10 +103,8 @@ const About = () => {
 					<Grid container spacing={3} style={{ minHeight: "inherit" }}>
 						<Grid item xs={12} md={8} className={classes.leftColumn}>
 							<Box className={classes.leftContent}>
-								<Typography variant={isMobile ? "h6" : "h5"} align="left" gutterBottom>
-									Welcome to Great Lakes to Gulf:
-									<br />
-									Tracking Nutrients in the Mississippi
+								<Typography variant={isMobile ? "h5" : "h4"} align="left" gutterBottom>
+									Welcome to Great Lakes to Gulf: Tracking Nutrients in the Mississippi
 								</Typography>
 								<Typography
 									variant="body1"
@@ -166,8 +163,23 @@ const About = () => {
 									<ImageContainer
 										src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mississippiriver-new-01.png/838px-Mississippiriver-new-01.png"
 										alt="Mississippi River"
-										width="80%"
-										height={isMobile ? "200px" : "250px"}
+										width="60%"
+										height="20%"
+										caption={
+											<>
+												Boundaries of the Mississippi/ Atchafalaya River Basin. Water from the
+												basin eventually reaches the Gulf of Mexico. Image:{" "}
+												<a
+													href="https://creativecommons.org/licenses/by-sa/4.0"
+													target="_blank"
+												>
+													CC BY-SA 4.0
+												</a>
+											</>
+										}
+										photoCredit={
+											<>Source: File:Mississippiriver-new-01.png Created: 26 February 2016</>
+										}
 									/>
 								</Box>
 								<Box className={classes.playerWrapper}>
@@ -179,8 +191,27 @@ const About = () => {
 									<ImageContainer
 										src="https://cdn.pixabay.com/photo/2019/03/28/17/34/glass-of-water-4087606_1280.jpg"
 										alt="Glass of water"
-										width="70%"
-										height={isMobile ? "200px" : "250px"}
+										width="60%"
+										height="20%"
+										caption="Excess nutrients that enter rivers, lakes, and groundwater can end up in our drinking water."
+										photoCredit={
+											<>
+												Photo: Image by{" "}
+												<a
+													href="https://pixabay.com/users/giltonf-4489736/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4087606"
+													target="_blank"
+												>
+													GiltonF
+												</a>{" "}
+												from{" "}
+												<a
+													href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4087606"
+													target="_blank"
+												>
+													Pixabay
+												</a>
+											</>
+										}
 									/>
 								</Box>
 							</Box>

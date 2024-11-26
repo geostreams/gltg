@@ -102,6 +102,14 @@ const Home = () => {
 				title="Nutrient Trends Dashboard"
 				infoImage={algaeBloomImage}
 				imageCaption="Excess nutrients can cause algal blooms that degrade water quality."
+				imageCredit={
+					<>
+						Photo:{" "}
+						<a target="_blank" href="https://www.route3films.com/">
+							Route 3 Films
+						</a>
+					</>
+				}
 				launchButtonText="Launch Nutrient Trends Dashboard"
 				infoJSON={trendsDashboardDataJson}
 				buttonLink="/nutrient-trends"
@@ -110,6 +118,7 @@ const Home = () => {
 				title="State Tracker Dashboard"
 				infoImage={statePortal}
 				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
+				imageCredit={<></>}
 				launchButtonText="Launch State Efforts Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
 				buttonLink="/nutrient-trends"
@@ -118,6 +127,7 @@ const Home = () => {
 				title="Explore Water Quality Data Dashboard"
 				infoImage={samplingImage}
 				imageCaption="USGS scientists collect water samples from the Mississippi"
+				imageCredit={<>Photo: Shannon Williams, USGS </>}
 				launchButtonText="Launch Explore Water Quality Data Dashboard"
 				infoJSON={exploreDashboardJson}
 				youtubeLink={"https://www.youtube.com/watch?v=RO_-MMcReSk"}

@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles, Link } from "@material-ui/core";
-import ReactPlayer from "react-player/youtube";
+// import ReactPlayer from "react-player/youtube";
 import bannerImage from "../../Images/gltg-banner.jpg";
-import ImageContainer from "../ImageContainer";
+import ResponsiveImage from "../ResponsiveImage";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -160,7 +160,7 @@ const About = () => {
 										height={isMobile ? "200px" : "250px"}
 									/> */}
 
-									<ImageContainer
+									<ResponsiveImage
 										src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mississippiriver-new-01.png/838px-Mississippiriver-new-01.png"
 										alt="Mississippi River"
 										width="60%"
@@ -188,7 +188,7 @@ const About = () => {
 										width="70%"
 										height={isMobile ? "200px" : "250px"}
 									/> */}
-									<ImageContainer
+									<ResponsiveImage
 										src="https://cdn.pixabay.com/photo/2019/03/28/17/34/glass-of-water-4087606_1280.jpg"
 										alt="Glass of water"
 										width="60%"

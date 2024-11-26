@@ -13,6 +13,7 @@ import {
 	useMediaQuery,
 } from "@material-ui/core";
 import ReactPlayer from "react-player/youtube";
+import ResponsiveImage from "./ResponsiveImage";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -198,17 +199,16 @@ const ContentRenderer = ({ content, isMobile }) => {
 	);
 };
 
-const ImageComponent = ({ src, alt, isMobile }) => {
-	const classes = useStyles({ isMobile });
-
-	return (
-		<Paper elevation={3} className={classes.imageContainer}>
-			<img src={src} alt={alt} className={classes.infoImage} />
-		</Paper>
-	);
-};
-
-const HomeInfoSection = ({ title, infoImage, imageCaption, launchButtonText, infoJSON, buttonLink, youtubeLink }) => {
+const HomeInfoSection = ({
+	title,
+	infoImage,
+	imageCaption,
+	imageCredit,
+	launchButtonText,
+	infoJSON,
+	buttonLink,
+	youtubeLink,
+}) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const classes = useStyles({ isMobile });
@@ -224,12 +224,14 @@ const HomeInfoSection = ({ title, infoImage, imageCaption, launchButtonText, inf
 
 			<Grid container spacing={isMobile ? 2 : 3} className={classes.gridContainer}>
 				<Grid item xs={12} md={6} className={classes.leftColumn}>
-					<ImageComponent src={infoImage} alt={title} isMobile={isMobile} />
-					<Box className={classes.caption}>
-						<Typography variant="caption" gutterBottom>
-							{imageCaption}
-						</Typography>
-					</Box>
+					<ResponsiveImage
+						src={infoImage}
+						caption={imageCaption}
+						photoCredit={imageCredit}
+						alt={title}
+						width={isMobile ? 300 : 500}
+						height={"100%"}
+					/>
 				</Grid>
 
 				<Grid item xs={12} md={6} className={classes.column}>

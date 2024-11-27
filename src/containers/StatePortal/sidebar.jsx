@@ -28,6 +28,12 @@ const useStyles = makeStyles((theme) => ({
 		gridTemplateColumns: "1fr 1fr",
 		gap: "20px",
 	},
+	fullWidthGrid: {
+		display: "grid",
+		gridTemplateColumns: "2fr",
+		gap: "20px",
+		marginTop: "1em",
+	},
 	card: {
 		backgroundColor: "#eef3f8",
 		borderRadius: "8px",
@@ -40,6 +46,32 @@ const useStyles = makeStyles((theme) => ({
 		position: "relative",
 		textDecoration: "none",
 		color: "inherit",
+	},
+	imageCard: {
+		backgroundColor: "#eef3f8",
+		borderRadius: "8px",
+		padding: "15px",
+		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+		display: "flex",
+		flexDirection: "column",
+		position: "relative",
+		textDecoration: "none",
+		color: "inherit",
+		width: "100%",
+	},
+	imageContainer: {
+		position: "relative",
+		width: "100%",
+		marginTop: "10px",
+		overflow: "hidden",
+		borderRadius: "4px",
+	},
+	resourceImage: {
+		width: "100%",
+		height: "100%",
+		objectFit: "contain",
+		borderRadius: "4px",
+		marginTop: "10px",
 	},
 	cardText: {
 		fontSize: "1rem",
@@ -169,25 +201,62 @@ const Sidebar = ({ selectedState, onStateSelect }) => {
 
 		const { header, subHeader, dataAndResources } = sidebarConfig[selectedState.toLowerCase()];
 
+		// Separate resources with and without images
+		const imageResources = dataAndResources.filter((resource) => resource.image);
+		const standardResources = dataAndResources.filter((resource) => !resource.image);
+
 		return (
 			<div className={classes.sidebarContainer}>
 				<h1 className={classes.header}>{header}</h1>
 				<p className={classes.subHeader}>{subHeader}</p>
 				<h2 className={classes.sectionTitle}>Data and Resources</h2>
-				<div className={classes.gridContainer}>
-					{dataAndResources.map((resource, index) => (
-						<a
-							key={index}
-							href={resource.url}
-							className={classes.card}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<p className={classes.cardText}>{resource.name}</p>
-							{getIcon(resource.fileType)}
-						</a>
-					))}
-				</div>
+
+				{/* Standard Resources */}
+				{standardResources.length > 0 && (
+					<div className={classes.gridContainer}>
+						{standardResources.map((resource, index) => (
+							<a
+								key={`standard-${index}`}
+								href={resource.url}
+								className={classes.card}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<p className={classes.cardText}>{resource.name}</p>
+								{getIcon(resource.fileType)}
+							</a>
+						))}
+					</div>
+				)}
+
+				{/* Image Resources */}
+				{imageResources.length > 0 && (
+					<div className={classes.fullWidthGrid}>
+						{imageResources.map((resource, index) => (
+							<a
+								key={`image-${index}`}
+								href={resource.url}
+								className={classes.imageCard}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<p className={classes.cardText}>{resource.name}</p>
+								<div className={classes.imageContainer}>
+									<img
+										src={resource.image}
+										alt={resource.name}
+										className={classes.resourceImage}
+										onError={(e) => {
+											console.error(`Failed to load image for ${resource.name}`);
+											e.target.style.display = "none";
+										}}
+									/>
+								</div>
+							</a>
+						))}
+					</div>
+				)}
+
 				<FormControl variant="outlined" className={classes.stateSelect}>
 					<InputLabel id="state-select-label">Select a State</InputLabel>
 					<Select

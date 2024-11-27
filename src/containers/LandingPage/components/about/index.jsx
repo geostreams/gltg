@@ -192,7 +192,7 @@ const About = () => {
 										src="https://cdn.pixabay.com/photo/2019/03/28/17/34/glass-of-water-4087606_1280.jpg"
 										alt="Glass of water"
 										width="60%"
-										height="20%"
+										height="10%"
 										caption="Excess nutrients that enter rivers, lakes, and groundwater can end up in our drinking water."
 										photoCredit={
 											<>

@@ -5,13 +5,9 @@ const useStyles = makeStyles((theme) => ({
 	container: {
 		display: "inline-block",
 	},
-	imageContainer: {
-		width: (props) => props.width || 400,
-		height: (props) => props.height || 300,
-	},
 	image: {
-		width: "100%",
-		height: "100%",
+		width: (props) => props.width || 400,
+		maxHeight: (props) => props.height || 300,
 		objectFit: "cover",
 	},
 	textContainer: {
@@ -45,7 +41,7 @@ const ResponsiveImage = ({
 
 	return (
 		<Box className={classes.container}>
-			<Box className={classes.imageContainer}>
+			<Box>
 				<img src={src} alt={alt} className={classes.image} />
 			</Box>
 			<Box className={classes.textContainer}>

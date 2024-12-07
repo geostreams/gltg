@@ -5,11 +5,15 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		marginTop: theme.spacing(2),
 	},
+	gridContainer: {
+		alignItems: "center",
+	},
 	partnerContainer: {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
 		padding: theme.spacing(2),
+		height: "100%", // Ensures container takes full height of grid item
 		transition: "transform 0.2s ease-in-out",
 
 		"&:hover": {
@@ -19,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 	partnerImage: {
 		maxWidth: "100%",
 		height: "auto",
-		maxHeight: ({ isMobile }) => (isMobile ? "100px" : "150px"),
 		objectFit: "contain",
 	},
 	title: {
@@ -34,10 +37,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Partners = ({ partner1, partner2, link1, link2 }) => {
+const Partners = ({ partner1, partner2, link1, link2, maxHeight1, maxHeight2 }) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-	const classes = useStyles({ isMobile });
+	const classes = useStyles();
+
+	// Default heights based on mobile/desktop
+	const defaultHeight = isMobile ? "150px" : "190px";
 
 	return (
 		<div className={classes.root}>
@@ -46,18 +52,38 @@ const Partners = ({ partner1, partner2, link1, link2 }) => {
 					Our Partners
 				</Typography>
 			</Box>
-			<Grid container spacing={isMobile ? 2 : 4}>
+			<Grid container spacing={isMobile ? 2 : 4} className={classes.gridContainer}>
 				<Grid item xs={12} sm={6}>
-					<Link href={link1} target="_blank" rel="noopener noreferrer">
+					<Link
+						href={link1}
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ display: "block", height: "100%" }}
+					>
 						<div className={classes.partnerContainer}>
-							<img src={partner1} alt="Partner 1" className={classes.partnerImage} />
+							<img
+								src={partner1}
+								alt="Partner 1"
+								className={classes.partnerImage}
+								style={{ maxHeight: maxHeight1 || defaultHeight }}
+							/>
 						</div>
 					</Link>
 				</Grid>
 				<Grid item xs={12} sm={6}>
-					<Link href={link2} target="_blank" rel="noopener noreferrer">
+					<Link
+						href={link2}
+						target="_blank"
+						rel="noopener noreferrer"
+						style={{ display: "block", height: "100%" }}
+					>
 						<div className={classes.partnerContainer}>
-							<img src={partner2} alt="Partner 2" className={classes.partnerImage} />
+							<img
+								src={partner2}
+								alt="Partner 2"
+								className={classes.partnerImage}
+								style={{ maxHeight: maxHeight2 || defaultHeight }}
+							/>
 						</div>
 					</Link>
 				</Grid>

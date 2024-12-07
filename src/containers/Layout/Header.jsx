@@ -6,7 +6,7 @@ import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 import LogoApp from "../../images/logo_app.png";
 
-export const HEADERS_HEIGHT = 61;
+export const HEADERS_HEIGHT = 65;
 
 const useStyles = makeStyles((theme) => ({
 	appbar: {
@@ -23,11 +23,12 @@ const useStyles = makeStyles((theme) => ({
 		color: theme.palette.primary.contrastText,
 		textDecoration: "none",
 		marginBottom: 0,
+		fontSize: "2rem",
 	},
 	tagline: {
 		color: theme.palette.primary.contrastText,
-		fontSize: "0.875rem",
-		textAlign: "center",
+		fontSize: "0.800rem",
+		textAlign: "left",
 	},
 	contactText: {
 		fontSize: "1rem",
@@ -101,11 +102,11 @@ const Header = ({ location }: Props) => {
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} />
 				<div style={{ display: "flex", flexDirection: "column", marginLeft: "1em" }}>
-					<Typography component={Link} to="/" className={classes.headerText} variant="h5" noWrap>
+					<Typography className={classes.headerText} variant="h5" noWrap>
 						Great Lakes to Gulf
 					</Typography>
 					<Typography className={classes.tagline} variant="h6" noWrap>
-						Tracking nutrients in the river
+						Tracking nutrients in the Mississippi River Basin
 					</Typography>
 				</div>
 				<Tabs
@@ -123,17 +124,17 @@ const Header = ({ location }: Props) => {
 					/>
 					<Tab
 						className={classes.tabRoot}
+						label="State Efforts"
+						component={Link}
+						id="geoApp-button"
+						to="/stateportal"
+					/>
+					<Tab
+						className={classes.tabRoot}
 						label="Explore Data"
 						component={Link}
 						id="geoApp-button"
 						to="/explore/all"
-					/>
-					<Tab
-						className={classes.tabRoot}
-						label="State Portal"
-						component={Link}
-						id="geoApp-button"
-						to="/stateportal"
 					/>
 				</Tabs>
 				<Typography component="a" to="/" href="mailto:lkammin@lc.edu" className={classes.contactText} noWrap>

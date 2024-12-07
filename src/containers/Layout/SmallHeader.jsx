@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 	tagline: {
 		color: theme.palette.primary.contrastText,
 		fontSize: "0.875rem",
-		textAlign: "center",
+		textAlign: "left",
 	},
 	contactText: {
 		fontSize: "1rem",
@@ -106,7 +106,7 @@ const SmallHeader = ({ location }: Props) => {
 						Great Lakes to Gulf
 					</Typography>
 					<Typography className={classes.tagline} variant="h6" noWrap>
-						Tracking nutrients in the river
+						Tracking nutrients in the Mississippi River Basin
 					</Typography>
 				</div>
 				<div className={classes.menuIcon}>
@@ -159,6 +159,15 @@ const SmallHeader = ({ location }: Props) => {
 							to="/explore/all"
 						>
 							Explore Data
+						</MenuItem>
+						{/* Contact us */}
+						<MenuItem
+							classes={{ root: classes.menuItem }}
+							onClick={menuHandleClose}
+							component="a"
+							href="mailto:lkammin@lc.edu"
+						>
+							Contact Us
 						</MenuItem>
 					</Menu>
 				</div>

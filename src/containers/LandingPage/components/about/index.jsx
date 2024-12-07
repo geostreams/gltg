@@ -182,38 +182,6 @@ const About = () => {
 										}
 									/>
 								</Box>
-								<Box className={classes.playerWrapper}>
-									{/* <ReactPlayer
-										url="https://www.youtube.com/watch?v=RO_-MMcReSk"
-										width="70%"
-										height={isMobile ? "200px" : "250px"}
-									/> */}
-									<ResponsiveImage
-										src="https://cdn.pixabay.com/photo/2019/03/28/17/34/glass-of-water-4087606_1280.jpg"
-										alt="Glass of water"
-										width="60%"
-										height="10%"
-										caption="Excess nutrients that enter rivers, lakes, and groundwater can end up in our drinking water."
-										photoCredit={
-											<>
-												Photo: Image by{" "}
-												<a
-													href="https://pixabay.com/users/giltonf-4489736/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4087606"
-													target="_blank"
-												>
-													GiltonF
-												</a>{" "}
-												from{" "}
-												<a
-													href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4087606"
-													target="_blank"
-												>
-													Pixabay
-												</a>
-											</>
-										}
-									/>
-								</Box>
 							</Box>
 						</Grid>
 					</Grid>

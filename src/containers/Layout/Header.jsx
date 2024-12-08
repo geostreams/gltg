@@ -101,7 +101,7 @@ const Header = ({ location }: Props) => {
 			<Toolbar className={classes.mainHeader}>
 				<Avatar component={Link} to="/" src={LogoApp} style={{ width: "50px", height: "50px" }} />
 				<div style={{ display: "flex", flexDirection: "column", marginLeft: "1em" }}>
-					<Typography className={classes.headerText} variant="h5" noWrap>
+					<Typography component={Link} to="/" className={classes.headerText} variant="h5" noWrap>
 						Great Lakes to Gulf
 					</Typography>
 					<Typography className={classes.tagline} variant="h6" noWrap>

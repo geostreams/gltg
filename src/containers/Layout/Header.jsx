@@ -2,7 +2,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { AppBar, Avatar, Button, Menu, MenuItem, Tab, Tabs, Toolbar, Typography, makeStyles } from "@material-ui/core";
-import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 
 import LogoApp from "../../images/logo_app.png";
 
@@ -23,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
 		color: theme.palette.primary.contrastText,
 		textDecoration: "none",
 		marginBottom: 0,
-		fontSize: "2rem",
+		fontSize: "1.95rem",
 	},
 	tagline: {
 		color: theme.palette.primary.contrastText,
-		fontSize: "0.800rem",
+		fontSize: "0.790rem",
 		textAlign: "left",
 	},
 	contactText: {
@@ -100,7 +99,7 @@ const Header = ({ location }: Props) => {
 	return (
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
-				<Avatar component={Link} to="/" src={LogoApp} />
+				<Avatar component={Link} to="/" src={LogoApp} style={{ width: "50px", height: "50px" }} />
 				<div style={{ display: "flex", flexDirection: "column", marginLeft: "1em" }}>
 					<Typography className={classes.headerText} variant="h5" noWrap>
 						Great Lakes to Gulf

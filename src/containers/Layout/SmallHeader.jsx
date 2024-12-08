@@ -100,7 +100,7 @@ const SmallHeader = ({ location }: Props) => {
 	return (
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
-				<Avatar component={Link} to="/" src={LogoApp} />
+				<Avatar component={Link} to="/" src={LogoApp} style={{ width: "50px", height: "50px" }} />
 				<div style={{ display: "flex", flexDirection: "column", marginLeft: "1em" }}>
 					<Typography component={Link} to="/" className={classes.headerText} variant="h5" noWrap>
 						Great Lakes to Gulf

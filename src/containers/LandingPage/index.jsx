@@ -45,7 +45,7 @@ const Home = () => {
 
 	const stateEffortsDashboardDataJson = JSON.stringify({
 		content: [
-			{ type: "heading", text: "Why a State Tracker Dashboard?" },
+			{ type: "heading", text: "Why a State Efforts Dashboard?" },
 			{
 				type: "paragraph",
 				content: [

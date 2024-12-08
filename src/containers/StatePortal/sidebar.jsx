@@ -135,7 +135,7 @@ const Sidebar = ({ selectedState, onStateSelect }) => {
 					of comparable trends across the MARB, it also does not tell the whole story.
 				</Typography>
 				<Typography variant="body1" color="primary" gutterBottom>
-					By exploring the State Tracker Dashboard, you can see how each state is approaching the challenge of
+					By exploring the State Efforts Dashboard, you can see how each state is approaching the challenge of
 					nutrient reduction in their waterways. We have also provided a summary table of the similarities and
 					differences in the state approaches to nutrient loss reduction and links to available resources,
 					including: State Nutrient Loss Reduction Plans, Nutrient Dashboards, and Additional Water Quality
@@ -155,7 +155,7 @@ const Sidebar = ({ selectedState, onStateSelect }) => {
 			</Box>
 			<Box>
 				<Typography variant="h5" color="primary" gutterBottom>
-					Navigating the State Tracker Dashboard
+					Navigating the State Efforts Dashboard
 				</Typography>
 				<Typography variant="body1" color="primary" gutterBottom>
 					Use the map or dropdown menu to select your state of choice.

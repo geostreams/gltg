@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
 		color: "#BEC4C9",
 		textDecoration: "none",
 		textAlign: "center",
-		padding: "10px 180px",
 		fontSize: 13,
 		flex: "0 0 auto",
 	},

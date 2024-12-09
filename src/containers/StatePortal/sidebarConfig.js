@@ -45,7 +45,7 @@ export const sidebarConfig = {
 			{
 				name: "Illinois Nutrient Trends",
 				fileType: "map",
-				url: "https://gltg-apps-dev.ncsa.illinois.edu/nutrient-trends",
+				url: "https://greatlakestogulf.org/nutrient-trends",
 			},
 			{
 				name: "Illinois Nutrient Loss Reduction Strategy Priority Watershed Map",

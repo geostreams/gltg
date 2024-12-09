@@ -119,7 +119,7 @@ const Home = () => {
 				infoImage={statePortal}
 				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
 				imageCredit={<></>}
-				launchButtonText="Launch State Efforts Dashboard"
+				launchButtonText="Launch State Tracker Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
 				buttonLink="/nutrient-trends"
 			/>

@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText } from "@material-ui/core";
-import CustomDialog from "../components/CustomDialog";
+import CustomDialog from "./CustomDialog";
 import Tooltip from "@material-ui/core/Tooltip";
 import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";

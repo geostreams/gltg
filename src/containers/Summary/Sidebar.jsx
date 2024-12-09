@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText } from "@material-ui/core";
+import CustomDialog from "./CustomDialog";
 import Tooltip from "@material-ui/core/Tooltip";
 import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";
@@ -244,7 +245,7 @@ const Sidebar = ({
 
 	// First load dialog
 	const firstLoadDialog = (
-		<Dialog
+		<CustomDialog
 			open={openFirstLoadDialog}
 			onClose={() => {
 				setOpenFirstLoadDialog(false);
@@ -253,111 +254,103 @@ const Sidebar = ({
 				paper: classes.dialogPaper,
 			}}
 			maxWidth={false}
+			cookieId="trends-info-dialog"
+			title={"Trends Dashboard"}
 		>
-			<DialogTitle>Trends Dashboard</DialogTitle>
-			<IconButton className={classes.dialogCloseButton} onClick={() => setOpenFirstLoadDialog(false)}>
-				<Clear />
-			</IconButton>
-			<DialogContent>
-				<DialogContentText>
-					<div style={{ marginBottom: "1rem" }}>
-						<p>
-							<strong>
-								Tracking trends shows us how well nutrient reduction practices and policies are working
-								and can also help us identify where more effective practices and policies that improve
-								water quality are needed.
-							</strong>
-						</p>
-					</div>
-					<div>
-						<p>
-							Covering over 40% of the continental United states, the MARB plays a crucial role in the
-							ecological and economic health of our country. The Mississippi River and its tributaries
-							supplies drinking water, facilitates transportation, offers recreation, and provides habitat
-							for a diverse array of plants and wildlife. But the river and its tributaries are degraded
-							by high concentrations of nitrogen and phosphorus from{" "}
-							<a
-								href="https://www.epa.gov/nps/basic-information-about-nonpoint-source-nps-pollution#Nonpoint%20Source%20vs%20Point"
-								target="_blank"
-							>
-								point and nonpoint sources
-							</a>
-							. The goal is to reduce harmful nutrient levels in the MARB, but it takes time to see
-							results from reduction efforts. Monitoring long term nutrient trends is one way to measure
-							progress.
-						</p>
-						<br />
-						<p>
-							Each state has its own challenges and questions to answer, which means that they often use
-							different monitoring, approaches, and methods. This makes it hard to compare trends from
-							state to state.
-						</p>
-						<br />
-						<p>
-							Our objective was to conduct a scientifically based and methodologically consistent nutrient
-							trend analyses for sites throughout the MARB.{" "}
-							<strong>This standardization also allows us to look at Trends.</strong>
-						</p>
-						<br />
-						<p>
-							Trends are long-term changes in a variable. In our case, those variables are{" "}
-							<em>nitrogen</em> and <em>phosphorus</em>.
-						</p>
+			<div style={{ marginBottom: "1rem" }}>
+				<p>
+					<strong>
+						Tracking trends shows us how well nutrient reduction practices and policies are working and can
+						also help us identify where more effective practices and policies that improve water quality are
+						needed.
+					</strong>
+				</p>
+			</div>
+			<div>
+				<p>
+					Covering over 40% of the continental United states, the MARB plays a crucial role in the ecological
+					and economic health of our country. The Mississippi River and its tributaries supplies drinking
+					water, facilitates transportation, offers recreation, and provides habitat for a diverse array of
+					plants and wildlife. But the river and its tributaries are degraded by high concentrations of
+					nitrogen and phosphorus from{" "}
+					<a
+						href="https://www.epa.gov/nps/basic-information-about-nonpoint-source-nps-pollution#Nonpoint%20Source%20vs%20Point"
+						target="_blank"
+					>
+						point and nonpoint sources
+					</a>
+					. The goal is to reduce harmful nutrient levels in the MARB, but it takes time to see results from
+					reduction efforts. Monitoring long term nutrient trends is one way to measure progress.
+				</p>
+				<br />
+				<p>
+					Each state has its own challenges and questions to answer, which means that they often use different
+					monitoring, approaches, and methods. This makes it hard to compare trends from state to state.
+				</p>
+				<br />
+				<p>
+					Our objective was to conduct a scientifically based and methodologically consistent nutrient trend
+					analyses for sites throughout the MARB.{" "}
+					<strong>
+						This standardization also allows us to compare trends between the states within the MARB and
+						also see where more monitoring stations are needed.
+					</strong>
+				</p>
+				<br />
+				<p>
+					Trends are long-term changes in a variable. In our case, those variables are <em>nitrogen</em> and{" "}
+					<em>phosphorus</em>.
+				</p>
 
-						<div style={{ paddingLeft: "1 rem" }}>
-							<p>
-								• The amount of nitrogen and phosphorus (measured in milligrams per liter) in a given
-								water collection location is called <em>concentration.</em>
-							</p>
-							<p>
-								• That amount multiplied by the flow rate of the water is defined as <em>load</em>.
-							</p>
-						</div>
+				<div style={{ paddingLeft: "1 rem" }}>
+					<p>
+						• The amount of nitrogen and phosphorus (measured in milligrams per liter) in a given water
+						collection location is called <em>concentration.</em>
+					</p>
+					<p>
+						• That amount multiplied by the flow rate of the water is defined as <em>load</em>.
+					</p>
+				</div>
 
-						<p>
-							We need to consider both to get the complete picture of water quality for human and aquatic
-							health.
-						</p>
-						<br />
-						<p>
-							Trends magnitudes and their significance were computed using the Weighted Regression on
-							Time, Discharge, and Season (WRTDS) coupled to a bootstrap test that calculates the
-							probability that the trend shown is real. Trend results were correlated with land cover,
-							drainage area, relief, upstream dam storage, and initial values. The methods used can be
-							referenced at:{" "}
-							<a
-								href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1752-1688.2010.00482.x"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								HIRSCH, R. M., MOYER, D. L. & ARCHFIELD, S. A. 2010. Weighted regressions on time,
-								discharge, and season (WRTDS), with an application to Chesapeake Bay river inputs 1.
-								JAWRA Journal of the American Water Resources Association, 46, 857-880
-							</a>
-							.
-						</p>
+				<p>
+					We need to consider both to get the complete picture of water quality for human and aquatic health.
+				</p>
+				<br />
+				<p>
+					Trends magnitudes and their significance were computed using the Weighted Regression on Time,
+					Discharge, and Season (WRTDS) coupled to a bootstrap test that calculates the probability that the
+					trend shown is real. Trend results were correlated with land cover, drainage area, relief, upstream
+					dam storage, and initial values. The methods used can be referenced at:{" "}
+					<a
+						href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1752-1688.2010.00482.x"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						HIRSCH, R. M., MOYER, D. L. & ARCHFIELD, S. A. 2010. Weighted regressions on time, discharge,
+						and season (WRTDS), with an application to Chesapeake Bay river inputs 1. JAWRA Journal of the
+						American Water Resources Association, 46, 857-880
+					</a>
+					.
+				</p>
 
-						<p>
-							Our preprint is published and can be found in the following link: <br />
-							<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
-								https://doi.org/10.31223/X5612C
-							</a>
-						</p>
-						<br />
-						<p>
-							If part of the document is shared (e.g., abstract or graphical abstract) please add the
-							following citation: Botero-Acosta, A., McIsaac, G.F., Gilinsky, E., Warner, R. and Lee, J.
-							2024. Nitrate-N trends in Mississippi and Atchafalaya River Basin Watersheds: Exploring
-							correlations of watershed features with nutrient transport components 2000-2020.{" "}
-							<strong>[Preprint]</strong>.
-							<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
-								https://doi.org/10.31223/X5612C
-							</a>
-						</p>
-					</div>
-				</DialogContentText>
-			</DialogContent>
-		</Dialog>
+				<p>
+					Our preprint is published and can be found in the following link: <br />
+					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
+						https://doi.org/10.31223/X5612C
+					</a>
+				</p>
+				<br />
+				<p>
+					If part of the document is shared (e.g., abstract or graphical abstract) please add the following
+					citation: Botero-Acosta, A., McIsaac, G.F., Gilinsky, E., Warner, R. and Lee, J. 2024. Nitrate-N
+					trends in Mississippi and Atchafalaya River Basin Watersheds: Exploring correlations of watershed
+					features with nutrient transport components 2000-2020. <strong>[Preprint]</strong>.
+					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
+						https://doi.org/10.31223/X5612C
+					</a>
+				</p>
+			</div>
+		</CustomDialog>
 	);
 
 	const infoDialog = (

@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 	launchButton: {
 		maxWidth: ({ isMobile }) => (isMobile ? "100%" : "70%"),
 		margin: theme.spacing(2, 0),
+		textAlign: "center",
 	},
 	textContent: {
 		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
@@ -239,7 +240,10 @@ const HomeInfoSection = ({
 						<ContentRenderer content={infoData.content} isMobile={isMobile} />
 					</div>
 					{youtubeLink && (
-						<ReactPlayer url={youtubeLink} controls width="50%" height={isMobile ? "200px" : "300px"} />
+						<>
+							<ReactPlayer url={youtubeLink} controls width="50%" height={isMobile ? "200px" : "300px"} />
+							<div style={{ marginBottom: "2em" }} />
+						</>
 					)}
 					<Button
 						variant="contained"

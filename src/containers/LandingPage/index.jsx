@@ -119,7 +119,7 @@ const Home = () => {
 				infoImage={statePortal}
 				imageCaption="Within the MARB, the 12 states participating in the Hypoxia Task Force are working to reduce nutrient pollution."
 				imageCredit={<></>}
-				launchButtonText="Launch State Efforts Dashboard"
+				launchButtonText="Launch State Tracker Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
 				buttonLink="/nutrient-trends"
 			/>
@@ -133,7 +133,14 @@ const Home = () => {
 				youtubeLink={"https://www.youtube.com/watch?v=RO_-MMcReSk"}
 				buttonLink="/explore/all"
 			/>
-			<Partners partner1={NGRREC} partner2={NCSA} link1={partnerLink1} link2={partnerLink2} />
+			<Partners
+				partner1={NGRREC}
+				partner2={NCSA}
+				link1={partnerLink1}
+				link2={partnerLink2}
+				maxHeight1={"180px"}
+				maxHeight2={"240px"}
+			/>
 			<Funding image1={WaltonFamily} link1={fundLink1} />
 		</Box>
 	);

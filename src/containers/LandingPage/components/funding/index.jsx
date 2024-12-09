@@ -46,9 +46,8 @@ const Funding = ({ image1, link1 }) => {
 						style={{ margin: "0 auto" }}
 					>
 						The Great Lakes to Gulf is a cyber-infrastructure framework constructed in collaboration with
-						the National Center for Supercomputing Applications (NCSA) and the National Great Rivers
-						Research and Education Center (NGRREC) with funding provided by NGRREC and the Walton Family
-						Foundation.
+						the National Center for Supercomputing Applications (NCSA) and the National Great Rivers with
+						funding provided by National Great Rivers and the Walton Family Foundation
 					</Typography>
 				</Box>
 			</div>

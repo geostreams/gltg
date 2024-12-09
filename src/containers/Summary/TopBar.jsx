@@ -35,9 +35,8 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	topBarTitle: {
-		fontFamily: "Poppins",
 		fontSize: "2.2rem",
-		fontWeight: 700,
+		fontWeight: 500,
 		margin: theme.spacing(0.5),
 		[theme.breakpoints.down("sm")]: {
 			fontSize: "1.25rem",

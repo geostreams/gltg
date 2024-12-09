@@ -40,6 +40,7 @@ const Funding = ({ image1, link1 }) => {
 
 				<Box mt={2} mb={4}>
 					<Typography
+						component={"div"}
 						variant="body1"
 						align="center"
 						className={classes.textSubTitle}

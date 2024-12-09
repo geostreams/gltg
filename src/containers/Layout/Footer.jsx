@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	footer: {
@@ -34,13 +34,13 @@ const Footer = ({ sticky }: Props) => {
 		<footer className={`${classes.footer} ${sticky ? classes.sticky : ""}`}>
 			<Grid container>
 				<Grid item xs={12}>
-					<p className={classes.content}>
+					<Typography component="div" variant="body2" className={classes.content}>
 						This website was developed by National Great Rivers, Lewis & Clark Community College, University
 						of Illinois National Center for Supercomputing Applications and the University of Illinois at
 						Urbana-Champaign.
 						<br />
 						&copy; 2024 National Center for Supercomputing Applications.
-					</p>
+					</Typography>
 				</Grid>
 			</Grid>
 		</footer>

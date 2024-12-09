@@ -90,12 +90,6 @@ const Header = ({ location }: Props) => {
 		setGeoAppAnchorEl(null);
 	};
 
-	// State and handler for the State Portals submenu
-	const [statePortalsAnchorEl, setStatePortalsAnchorEl] = React.useState(null);
-	const statePortalsHandleClick = (event) => {
-		setStatePortalsAnchorEl(event.currentTarget);
-	};
-
 	return (
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
@@ -126,7 +120,7 @@ const Header = ({ location }: Props) => {
 						label="State Efforts"
 						component={Link}
 						id="geoApp-button"
-						to="/stateportal"
+						to="/state-portal"
 					/>
 					<Tab
 						className={classes.tabRoot}

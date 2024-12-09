@@ -142,7 +142,7 @@ const Home = () => {
 				imageCredit={<></>}
 				launchButtonText="Launch State Tracker Dashboard"
 				infoJSON={stateEffortsDashboardDataJson}
-				buttonLink="/nutrient-trends"
+				buttonLink="/state-portal"
 			/>
 			<HomeInfoSection
 				title="Explore Water Quality Data Dashboard"

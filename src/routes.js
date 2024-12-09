@@ -34,7 +34,7 @@ const routes = Object.assign(coreRoutes, {
 			stickyFooter: true,
 		}),
 	},
-	"/stateportal": {
+	"/state-portal": {
 		exact: true,
 		component: hocs.withLayout(GLTGLayout, StatePortal, {
 			hasFooter: true,

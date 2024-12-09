@@ -3,6 +3,7 @@ import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles, Link } from
 // import ReactPlayer from "react-player/youtube";
 import bannerImage from "../../Images/gltg-banner.jpg";
 import ResponsiveImage from "../ResponsiveImage";
+import mississippiRiverImage from "../../Images/mississippi_river.png";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -93,7 +94,7 @@ const About = () => {
 	return (
 		<Box className={classes.root}>
 			<Box className={classes.introDiv}>
-				<Typography variant={isMobile ? "h5" : "h4"} className={classes.introTitle} gutterBottom>
+				<Typography comonent="div" variant={isMobile ? "h5" : "h4"} className={classes.introTitle} gutterBottom>
 					We all have a vested interest in healthy waterways.
 				</Typography>
 			</Box>
@@ -101,12 +102,13 @@ const About = () => {
 			<Box display="flex" justifyContent="center" width="100%">
 				<Box className={classes.contentContainer}>
 					<Grid container spacing={3} style={{ minHeight: "inherit" }}>
-						<Grid item xs={12} md={8} className={classes.leftColumn}>
+						<Grid item xs={12} md={9} className={classes.leftColumn}>
 							<Box className={classes.leftContent}>
-								<Typography variant={isMobile ? "h5" : "h4"} align="left" gutterBottom>
+								<Typography comonent="div" variant={isMobile ? "h5" : "h4"} align="left" gutterBottom>
 									Welcome to Great Lakes to Gulf: Tracking Nutrients in the Mississippi
 								</Typography>
 								<Typography
+									component="div"
 									variant="body1"
 									align="left"
 									className={classes.responsiveText}
@@ -120,6 +122,7 @@ const About = () => {
 									and the interested public.
 								</Typography>
 								<Typography
+									component="div"
 									variant="body1"
 									align="left"
 									className={classes.responsiveText}
@@ -138,6 +141,7 @@ const About = () => {
 									federal, state, and local levels and inform future nutrient loss reduction work.
 								</Typography>
 								<Typography
+									component="div"
 									variant="body1"
 									align="left"
 									className={classes.responsiveText}
@@ -151,37 +155,26 @@ const About = () => {
 							</Box>
 						</Grid>
 
-						<Grid item xs={12} md={4} className={classes.rightColumn}>
+						<Grid item xs={12} md={3} className={classes.rightColumn}>
 							<Box className={classes.videoContainer}>
-								<Box className={classes.playerWrapper}>
-									{/* <ReactPlayer
-										url="https://www.youtube.com/watch?v=RO_-MMcReSk"
-										width="70%"
-										height={isMobile ? "200px" : "250px"}
-									/> */}
-
-									<ResponsiveImage
-										src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mississippiriver-new-01.png/838px-Mississippiriver-new-01.png"
-										alt="Mississippi River"
-										width="60%"
-										height="20%"
-										caption={
-											<>
-												Boundaries of the Mississippi/ Atchafalaya River Basin. Water from the
-												basin eventually reaches the Gulf of Mexico. Image:{" "}
-												<a
-													href="https://creativecommons.org/licenses/by-sa/4.0"
-													target="_blank"
-												>
-													CC BY-SA 4.0
-												</a>
-											</>
-										}
-										photoCredit={
-											<>Source: File:Mississippiriver-new-01.png Created: 26 February 2016</>
-										}
-									/>
-								</Box>
+								<ResponsiveImage
+									src={mississippiRiverImage}
+									alt="Mississippi River"
+									width="100%"
+									height="100%"
+									caption={
+										<>
+											Boundaries of the Mississippi/ Atchafalaya River Basin. Water from the basin
+											eventually reaches the Gulf of Mexico. Image:{" "}
+											<a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+												CC BY-SA 4.0
+											</a>
+										</>
+									}
+									photoCredit={
+										<>Source: File:Mississippiriver-new-01.png Created: 26 February 2016</>
+									}
+								/>
 							</Box>
 						</Grid>
 					</Grid>

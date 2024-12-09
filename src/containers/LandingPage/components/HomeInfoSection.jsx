@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	textContent: {
 		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
+		marginRight: ({ isMobile }) => (isMobile ? 0 : "4em"),
 	},
 	contentSection: {
 		marginBottom: theme.spacing(1),
@@ -162,7 +163,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 				);
 			case "heading":
 				return (
-					<Typography variant={isMobile ? "h6" : "h5"} gutterBottom>
+					<Typography variant={isMobile ? "" : "h5"} gutterBottom>
 						{item.text}
 					</Typography>
 				);

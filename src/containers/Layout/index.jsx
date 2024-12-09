@@ -9,14 +9,15 @@ import SmallHeader from "./SmallHeader";
 
 const useStyles = makeStyles({
 	scrim: {
-		position: "relative",
+		position: "absolute",
 		background: "rgba(0, 0, 0, 0.5)",
 		zIndex: 2000,
 	},
 	main: {
-		position: "relative",
+		position: "absolute",
 		top: HEADERS_HEIGHT,
 		width: "100%",
+		height: `calc(100% - ${HEADERS_HEIGHT}px)`,
 	},
 });
 

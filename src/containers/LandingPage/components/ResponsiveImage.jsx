@@ -45,12 +45,10 @@ const ResponsiveImage = ({
 				<img src={src} alt={alt} className={classes.image} />
 			</Box>
 			<Box className={classes.textContainer}>
-				<Typography variant="body2" className={classes.caption}>
+				<Typography component="div" variant="body2">
 					{caption}
 				</Typography>
-				<Typography variant="caption" className={classes.credit}>
-					{photoCredit}
-				</Typography>
+				<Typography variant="caption">{photoCredit}</Typography>
 			</Box>
 		</Box>
 	);

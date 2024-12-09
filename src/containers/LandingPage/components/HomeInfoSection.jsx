@@ -162,7 +162,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 				);
 			case "heading":
 				return (
-					<Typography variant={isMobile ? "subtitle1" : "h5"} gutterBottom>
+					<Typography variant={isMobile ? "h6" : "h5"} gutterBottom>
 						{item.text}
 					</Typography>
 				);

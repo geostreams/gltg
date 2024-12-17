@@ -29,9 +29,9 @@ import Topbar from "./TopBar";
 // Styling for different components of Nutrient Trends Dashboard
 const useStyles = makeStyles((theme) => ({
 	fillContainer: {
+		paddingTop: "2.5%",
 		width: "100%",
 		height: "100%",
-		paddingBottom: "4%",
 	},
 	topBar: {
 		width: "100%",
@@ -597,7 +597,7 @@ const Summary = () => {
 	}
 
 	return (
-		<>
+		<div style={{ display: "flex", width: "100vw", height: "100vh" }}>
 			<Grid className={classes.mainContainer} container alignItems="stretch">
 				<Grid item xs={12} className={classes.topBar}>
 					<Topbar
@@ -659,7 +659,7 @@ const Summary = () => {
 					/>
 				</Grid>
 			</Grid>
-		</>
+		</div>
 	);
 };
 

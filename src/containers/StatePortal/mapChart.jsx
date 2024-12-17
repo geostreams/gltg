@@ -65,12 +65,8 @@ const MapChart = ({ selectedState, onStateSelect }) => {
 		}
 	};
 
-	const handleMapClick = () => {
-		onStateSelect(null);
-	};
-
 	return (
-		<div onClick={handleMapClick} style={{ width: "100%", height: "100%" }}>
+		<div style={{ width: "100%", height: "100%" }}>
 			<ComposableMap
 				projection="geoAlbers"
 				projectionConfig={{
@@ -93,7 +89,7 @@ const MapChart = ({ selectedState, onStateSelect }) => {
 
 							const fillColor = selectedState
 								? selectedState === stateName
-									? stateColors[stateName] || "#D6D6DA"
+									? stateColors[stateName]
 									: "#EAEAEC"
 								: stateColors[stateName] || "#D6D6DA";
 
@@ -111,7 +107,7 @@ const MapChart = ({ selectedState, onStateSelect }) => {
 												strokeDasharray: borderStyle === "dashed" ? "5,5" : "none",
 											},
 											hover: {
-												fill: fillColor,
+												fill: isHighlighted ? fillColor : "#D6D6DA",
 												outline: "none",
 												stroke: isHighlighted ? "#000" : "none",
 												strokeWidth: 2,
@@ -138,6 +134,12 @@ const MapChart = ({ selectedState, onStateSelect }) => {
 							style={{
 								fontSize: "0.7em",
 								fill: "black",
+							}}
+							// Without this, clicking on the text will not trigger the state click
+							onClick={(event) => {
+								// Prevents event bubbling and ensures the label behaves like the state click
+								event.stopPropagation();
+								onStateSelect((prevSelected) => (prevSelected === name ? null : name));
 							}}
 							dy={markerOffset}
 						>

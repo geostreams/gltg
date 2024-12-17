@@ -15,7 +15,6 @@ import StatePortal from "./containers/StatePortal";
 import DataStories from "./containers/DataStories";
 import Help from "./containers/Help";
 import GLTGLayout from "./containers/Layout";
-import GLTGLandingLayout from "./containers/LandingPageLayout";
 import BMP from "./containers/BMP";
 import NewSummary from "./containers/Summary";
 import Tests from "./tests/Tests";
@@ -24,7 +23,7 @@ import Partners from "./containers/Partners";
 const routes = Object.assign(coreRoutes, {
 	"/": {
 		exact: true,
-		component: hocs.withLayout(GLTGLandingLayout, LandingPage, {
+		component: hocs.withLayout(GLTGLayout, LandingPage, {
 			hasFooter: true,
 		}),
 	},
@@ -35,7 +34,7 @@ const routes = Object.assign(coreRoutes, {
 			stickyFooter: true,
 		}),
 	},
-	"/stateportal": {
+	"/state-portal": {
 		exact: true,
 		component: hocs.withLayout(GLTGLayout, StatePortal, {
 			hasFooter: true,

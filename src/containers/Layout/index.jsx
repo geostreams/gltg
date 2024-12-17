@@ -8,53 +8,16 @@ import Header, { HEADERS_HEIGHT } from "./Header";
 import SmallHeader from "./SmallHeader";
 
 const useStyles = makeStyles({
-	root: {
-		display: "flex",
-		flexDirection: "column",
-		minHeight: "100vh",
-	},
 	scrim: {
-		position: "fixed",
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0,
+		position: "absolute",
 		background: "rgba(0, 0, 0, 0.5)",
 		zIndex: 2000,
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
 	},
-	headerContainer: {
-		position: "sticky",
-		top: 0,
-		zIndex: 1000,
-		backgroundColor: "white",
-		height: HEADERS_HEIGHT,
-	},
-	mainContainer: {
-		flex: 1,
-		display: "flex",
-		flexDirection: "column",
-		minHeight: `calc(100vh - ${HEADERS_HEIGHT}px)`,
-	},
-	content: {
-		flex: 1,
-		display: "flex",
-		flexDirection: "column",
-		minHeight: 0,
-		overflow: "hidden",
-	},
-	footerContainer: {
-		marginTop: "auto",
-	},
-	stickyFooter: {
-		position: "sticky",
-		bottom: 0,
-		left: 0,
-		right: 0,
-		zIndex: 1000,
-		backgroundColor: "white",
+	main: {
+		position: "absolute",
+		top: HEADERS_HEIGHT,
+		width: "100%",
+		height: `calc(100% - ${HEADERS_HEIGHT}px)`,
 	},
 });
 
@@ -69,9 +32,9 @@ type Props = {
 const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter }: Props) => {
 	const classes = useStyles();
 
+	// Handle screen resizing
 	const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 	const widthBreakpoint = 1340;
-
 	React.useEffect(() => {
 		const handleResizeWindow = () => setWindowWidth(window.innerWidth);
 		window.addEventListener("resize", handleResizeWindow);
@@ -81,27 +44,23 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter
 	}, []);
 
 	return (
-		<div className={classes.root}>
-			{isLoading && (
-				<div className={classes.scrim}>
+		<>
+			{isLoading ? (
+				<Box
+					className={`fillContainer ${classes.scrim}`}
+					display="flex"
+					alignItems="center"
+					justifyContent="center"
+				>
 					<CircularProgress />
-				</div>
-			)}
-
-			<div className={classes.headerContainer}>
-				{windowWidth > widthBreakpoint ? <Header /> : <SmallHeader />}
-			</div>
-
-			<div className={classes.mainContainer}>
-				<div className={`${classes.content} ${extraMainClasses}`}>{children}</div>
-
-				{hasFooter && (
-					<div className={`${classes.footerContainer} ${stickyFooter ? classes.stickyFooter : ""}`}>
-						<Footer sticky={stickyFooter} />
-					</div>
-				)}
-			</div>
-		</div>
+				</Box>
+			) : null}
+			{windowWidth > widthBreakpoint ? <Header /> : <SmallHeader />}
+			<main className={`${classes.main} ${extraMainClasses}`}>
+				{children}
+				{hasFooter ? <Footer sticky={stickyFooter} /> : null}
+			</main>
+		</>
 	);
 };
 

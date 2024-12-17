@@ -43,7 +43,7 @@ const SummaryInfo = [
 		content: [
 			{
 				type: "heading",
-				text: "What is Flow Normalized load?",
+				text: "What is flow normalized load?",
 			},
 			{
 				type: "paragraph",

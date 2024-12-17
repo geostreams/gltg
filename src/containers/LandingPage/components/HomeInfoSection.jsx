@@ -13,6 +13,7 @@ import {
 	useMediaQuery,
 } from "@material-ui/core";
 import ReactPlayer from "react-player/youtube";
+import ResponsiveImage from "./ResponsiveImage";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -70,28 +71,32 @@ const useStyles = makeStyles((theme) => ({
 	launchButton: {
 		maxWidth: ({ isMobile }) => (isMobile ? "100%" : "70%"),
 		margin: theme.spacing(2, 0),
+		textAlign: "center",
 	},
 	textContent: {
 		padding: ({ isMobile }) => (isMobile ? theme.spacing(1) : theme.spacing(2)),
+		marginRight: ({ isMobile }) => (isMobile ? 0 : "4em"),
 	},
 	contentSection: {
-		marginBottom: theme.spacing(2),
+		marginBottom: theme.spacing(1),
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "center",
+	},
+	list: {
+		padding: 0,
 	},
 	listItem: {
 		display: "list-item",
 		listStyleType: "disc",
 		marginLeft: theme.spacing(2),
-		[theme.breakpoints.down("sm")]: {
-			fontSize: "0.9rem",
-		},
+		padding: theme.spacing(0.5, 1),
 	},
 	numberedListItem: {
 		display: "list-item",
 		listStyleType: "decimal",
 		marginLeft: theme.spacing(2),
+		padding: theme.spacing(0.5, 1),
 		[theme.breakpoints.down("sm")]: {
 			fontSize: "0.9rem",
 		},
@@ -111,6 +116,40 @@ const ContentRenderer = ({ content, isMobile }) => {
 	const renderContent = (item) => {
 		switch (item.type) {
 			case "paragraph":
+				if (item.content) {
+					return (
+						<Typography
+							component="div"
+							style={{
+								fontSize: isMobile ? "0.9rem" : "1rem",
+								lineHeight: isMobile ? 1.5 : 1.6,
+								marginBottom: "1em",
+							}}
+						>
+							{item.content.map((segment, index) =>
+								segment.link ? (
+									<a
+										key={index}
+										href={segment.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										style={{
+											color: "#1976d2",
+											textDecoration: "none",
+											"&:hover": {
+												textDecoration: "underline",
+											},
+										}}
+									>
+										{segment.text}
+									</a>
+								) : (
+									<span key={index}>{segment.text}</span>
+								),
+							)}
+						</Typography>
+					);
+				}
 				return (
 					<Typography
 						paragraph
@@ -124,13 +163,13 @@ const ContentRenderer = ({ content, isMobile }) => {
 				);
 			case "heading":
 				return (
-					<Typography variant={isMobile ? "subtitle1" : "h6"} gutterBottom>
+					<Typography variant={isMobile ? "" : "h5"} gutterBottom>
 						{item.text}
 					</Typography>
 				);
 			case "list":
 				return (
-					<List>
+					<List className={classes.list}>
 						{item.items.map((listItem, index) => (
 							<ListItem key={index} className={classes.listItem}>
 								<ListItemText
@@ -138,23 +177,7 @@ const ContentRenderer = ({ content, isMobile }) => {
 									primaryTypographyProps={{
 										style: {
 											fontSize: isMobile ? "0.9rem" : "1rem",
-										},
-									}}
-								/>
-							</ListItem>
-						))}
-					</List>
-				);
-			case "numberedList":
-				return (
-					<List>
-						{item.items.map((listItem, index) => (
-							<ListItem key={index} className={classes.numberedListItem}>
-								<ListItemText
-									primary={listItem}
-									primaryTypographyProps={{
-										style: {
-											fontSize: isMobile ? "0.9rem" : "1rem",
+											margin: 0,
 										},
 									}}
 								/>
@@ -178,17 +201,16 @@ const ContentRenderer = ({ content, isMobile }) => {
 	);
 };
 
-const ImageComponent = ({ src, alt, isMobile }) => {
-	const classes = useStyles({ isMobile });
-
-	return (
-		<Paper elevation={3} className={classes.imageContainer}>
-			<img src={src} alt={alt} className={classes.infoImage} />
-		</Paper>
-	);
-};
-
-const HomeInfoSection = ({ title, infoImage, imageCaption, launchButtonText, infoJSON, buttonLink, youtubeLink }) => {
+const HomeInfoSection = ({
+	title,
+	infoImage,
+	imageCaption,
+	imageCredit,
+	launchButtonText,
+	infoJSON,
+	buttonLink,
+	youtubeLink,
+}) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 	const classes = useStyles({ isMobile });
@@ -204,12 +226,14 @@ const HomeInfoSection = ({ title, infoImage, imageCaption, launchButtonText, inf
 
 			<Grid container spacing={isMobile ? 2 : 3} className={classes.gridContainer}>
 				<Grid item xs={12} md={6} className={classes.leftColumn}>
-					<ImageComponent src={infoImage} alt={title} isMobile={isMobile} />
-					<Box className={classes.caption}>
-						<Typography variant="caption" gutterBottom>
-							{imageCaption}
-						</Typography>
-					</Box>
+					<ResponsiveImage
+						src={infoImage}
+						caption={imageCaption}
+						photoCredit={imageCredit}
+						alt={title}
+						width={isMobile ? 300 : 500}
+						height={"100%"}
+					/>
 				</Grid>
 
 				<Grid item xs={12} md={6} className={classes.column}>
@@ -217,7 +241,10 @@ const HomeInfoSection = ({ title, infoImage, imageCaption, launchButtonText, inf
 						<ContentRenderer content={infoData.content} isMobile={isMobile} />
 					</div>
 					{youtubeLink && (
-						<ReactPlayer url={youtubeLink} controls width="50%" height={isMobile ? "200px" : "300px"} />
+						<>
+							<ReactPlayer url={youtubeLink} controls width="50%" height={isMobile ? "200px" : "300px"} />
+							<div style={{ marginBottom: "2em" }} />
+						</>
 					)}
 					<Button
 						variant="contained"

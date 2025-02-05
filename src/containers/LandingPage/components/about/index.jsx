@@ -1,56 +1,187 @@
 import React from "react";
-import { Box, Button, Typography } from "@material-ui/core";
-import classes from "./index.css";
+import { Box, Typography, Grid, useTheme, useMediaQuery, makeStyles, Link } from "@material-ui/core";
+// import ReactPlayer from "react-player/youtube";
+import bannerImage from "../../Images/gltg-banner.jpg";
+import ResponsiveImage from "../ResponsiveImage";
+import mississippiRiverImage from "../../Images/mississippi_river.png";
 
-const About = () => (
-	<div className={classes.introDiv}>
-		<Box className={classes.introBox}>
-			<div style={{ marginTop: "1.875em" }}>
-				<Typography
-					variant="h4"
-					align="center"
-					className={classes.introTitle}
-					gutterBottom
-				>
-					Welcome to the Great Lakes to Gulf Virtual Observatory
+const useStyles = makeStyles((theme) => ({
+	root: {
+		width: "100%",
+	},
+	introDiv: {
+		position: "relative",
+		display: "flex",
+		width: "100%",
+		height: ({ isMobile }) => (isMobile ? "15em" : "20em"),
+		backgroundImage: `url(${bannerImage})`,
+		backgroundPosition: "center",
+		backgroundRepeat: "no-repeat",
+		backgroundSize: "cover",
+		backgroundColor: "#1a4984",
+	},
+	introTitle: {
+		position: "absolute",
+		left: "4%",
+		bottom: "7%",
+		color: theme.palette.common.white,
+		textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+		fontWeight: "bold",
+		zIndex: 1,
+		maxWidth: "90%",
+	},
+	photoCredit: {
+		position: "absolute",
+		bottom: 0,
+		right: 0,
+		color: "#bec4c9",
+		fontStyle: "italic",
+		fontWeight: 400,
+		fontSize: 10,
+		lineHeight: "12px",
+	},
+	contentContainer: {
+		padding: ({ isMobile }) => theme.spacing(isMobile ? 1 : 2),
+	},
+	leftColumn: {
+		display: "flex",
+		alignItems: "center",
+		minHeight: "100%",
+	},
+	leftContent: {
+		display: "flex",
+		flexDirection: "column",
+		gap: ({ isMobile }) => theme.spacing(isMobile ? 1 : 1.5),
+		textAlign: "center",
+		maxWidth: ({ isMobile }) => (isMobile ? "100%" : "90%"),
+		margin: "auto",
+		padding: theme.spacing(1),
+	},
+	rightColumn: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+		justifyContent: "center",
+		padding: theme.spacing(1),
+	},
+	videoContainer: {
+		display: "flex",
+		flexDirection: "column",
+		gap: ({ isMobile }) => theme.spacing(isMobile ? 1 : 2),
+		width: "100%",
+		maxWidth: 600,
+		paddingLeft: theme.spacing(2),
+	},
+	playerWrapper: {
+		width: "100%",
+		marginBottom: theme.spacing(0.5),
+		"& > div": {
+			borderRadius: theme.shape.borderRadius,
+			overflow: "hidden",
+		},
+	},
+	responsiveText: {
+		fontSize: ({ isMobile }) => (isMobile ? "0.9rem" : "1rem"),
+		lineHeight: 1.5,
+	},
+}));
+
+const About = () => {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+	const classes = useStyles({ isMobile });
+
+	return (
+		<Box className={classes.root}>
+			<Box className={classes.introDiv}>
+				<Typography comonent="div" variant={isMobile ? "h5" : "h4"} className={classes.introTitle} gutterBottom>
+					We all have a vested interest in healthy waterways.
 				</Typography>
-			</div>
-			<div style={{ marginLeft: "3em", width: "90%" }}>
-				<Typography className={classes.introSubtitle} gutterBottom>
-					The Great Lakes to Gulf Virtual Observatory (GLTG) is an
-					interactive application that provides user-friendly access
-					to water quality information about the Mississippi River and
-					its tributaries. Users can:
-				</Typography>
-			</div>
-			<div style={{ marginLeft: "7em", marginTop: "1em", width: "80%" }}>
-				<Typography className={classes.introList} gutterBottom>
-					<ul>
-						<li>
-							Select and compare current and historic water
-							quality conditions in rivers and streams.
-						</li>
-						<li>Analyze and graph specific parameters.</li>
-						<li>
-							Examine data layers contributing to observed water
-							quality - such as land cover, rainfall, and more.
-						</li>
-						<li>Download data for further exploration.</li>
-					</ul>
-				</Typography>
-			</div>
-			<div style={{ marginLeft: "3em", marginTop: "1em", width: "90%" }}>
-				<Typography className={classes.introSubtitle} gutterBottom>
-					GLTG helps people visualize and better understand nutrient
-					pollution and its potential causes. Find out more and try it
-					out for yourself via the resources below.{" "}
-				</Typography>
-			</div>
+			</Box>
+
+			<Box display="flex" justifyContent="center" width="100%">
+				<Box className={classes.contentContainer}>
+					<Grid container spacing={3} style={{ minHeight: "inherit" }}>
+						<Grid item xs={12} md={9} className={classes.leftColumn}>
+							<Box className={classes.leftContent}>
+								<Typography comonent="div" variant={isMobile ? "h5" : "h4"} align="left" gutterBottom>
+									Welcome to Great Lakes to Gulf: Tracking Nutrients in the Mississippi
+								</Typography>
+								<Typography
+									component="div"
+									variant="body1"
+									align="left"
+									className={classes.responsiveText}
+									gutterBottom
+								>
+									Great Lakes to Gulf (GLTG) is an interactive website that provides curated
+									nutrient-focused water quality information about the Mississippi River and its
+									tributaries. GLTG takes a massive amount of complex water quality data from across
+									geographies and standardizes, distills, and presents it in a way that makes the
+									information accessible and easy-to-understand for scientists, managers, advocates,
+									and the interested public.
+								</Typography>
+								<Typography
+									component="div"
+									variant="body1"
+									align="left"
+									className={classes.responsiveText}
+									gutterBottom
+								>
+									Importantly, GLTG shows nutrient levels and long-term trends throughout the{" "}
+									<a
+										href="https://www.epa.gov/ms-htf/mississippiatchafalaya-river-basin-marb"
+										target="_blank"
+									>
+										Mississippi/Atchafalaya River Basin (MARB)
+									</a>
+									, suggests relationships between these observed trends and conservation indicators,
+									and serves as an information hub about state efforts to improve water quality. This
+									information can help track the effectiveness of nutrient reduction efforts at
+									federal, state, and local levels and inform future nutrient loss reduction work.
+								</Typography>
+								<Typography
+									component="div"
+									variant="body1"
+									align="left"
+									className={classes.responsiveText}
+									gutterBottom
+								>
+									Improving America’s water quality is not just good for the environment—it’s good for
+									families, communities, and the economy. From farmers to scientists and policymakers
+									to environmental advocates, we welcome everyone to join us in charting a healthy
+									course forward for the Mississippi.
+								</Typography>
+							</Box>
+						</Grid>
+
+						<Grid item xs={12} md={3} className={classes.rightColumn}>
+							<Box className={classes.videoContainer}>
+								<ResponsiveImage
+									src={mississippiRiverImage}
+									alt="Mississippi River"
+									width="100%"
+									height="100%"
+									caption={
+										<>
+											Boundaries of the Mississippi/ Atchafalaya River Basin. Water from the basin
+											eventually reaches the Gulf of Mexico. Image:{" "}
+											<a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">
+												CC BY-SA 4.0
+											</a>
+										</>
+									}
+									photoCredit={
+										<>Source: File:Mississippiriver-new-01.png Created: 26 February 2016</>
+									}
+								/>
+							</Box>
+						</Grid>
+					</Grid>
+				</Box>
+			</Box>
 		</Box>
-		<div className={classes.photoCredit}>
-			<p> Photo by Todd Trapani on Unsplash</p>
-		</div>
-	</div>
-);
+	);
+};
 
 export default About;

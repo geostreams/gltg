@@ -29,13 +29,7 @@ type Props = {
 	stickyFooter: boolean,
 };
 
-const Layout = ({
-	isLoading,
-	children,
-	extraMainClasses,
-	hasFooter,
-	stickyFooter,
-}: Props) => {
+const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter }: Props) => {
 	const classes = useStyles();
 
 	// Handle screen resizing

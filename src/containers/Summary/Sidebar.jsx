@@ -1,24 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-	Box,
-	Typography,
-	Dialog,
-	DialogTitle,
-	DialogContent,
-	DialogContentText,
-} from "@material-ui/core";
+import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText } from "@material-ui/core";
+import CustomDialog from "./CustomDialog";
 import Tooltip from "@material-ui/core/Tooltip";
 import InfoIcon from "@material-ui/icons/Info";
 import Divider from "@material-ui/core/Divider";
 import { Clear } from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
-import NoSignificantTrendIcon from "../../images/NoSignificantTrendIcon.png";
-import UpwardTrendIcon from "../../images/UpwardTrendIcon.png";
-import DownwardTrendIcon from "../../images/DownwardTrendIcon.png";
+import InfoBox from "./InfoBox";
 
 import phosTrendStationDataUrl from "../../data/phos_trend_station_data_20years.json";
 import nitrateTrendStationsDataUrl from "../../data/nitrate_trend_station_data_20years.json";
+import SummaryInfo from "../../data/SummaryInfo";
 
 import SummaryGraph from "./SummaryGraph";
 import TrendTables from "./TrendTables";
@@ -28,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 		paddingLeft: "1em",
 		paddingRight: "1em",
+		paddingTop: "2em",
+		marginBottom: "2em",
 	},
 	divider: {
 		borderTop: "1px dashed #000",
@@ -42,9 +37,9 @@ const useStyles = makeStyles((theme) => ({
 	promptText: {
 		margin: 0,
 		letterSpacing: "0.5px",
-		whiteSpace: "nowrap", // prevent wrapping
-		overflow: "hidden", // hide overflow
-		textOverflow: "ellipsis", // show ellipsis when text overflows
+		whiteSpace: "nowrap",
+		overflow: "hidden",
+		textOverflow: "ellipsis",
 		color: "#E05769",
 	},
 	stationNameText: {
@@ -59,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
 		margin: 0,
 		color: "#333",
 		letterSpacing: "0.5px",
-		whiteSpace: "nowrap", // prevent wrapping
-		overflow: "hidden", // hide overflow
-		textOverflow: "ellipsis", // show ellipsis when text overflows
+		whiteSpace: "nowrap",
+		overflow: "hidden",
+		textOverflow: "ellipsis",
 	},
 	infoIcon: {
 		verticalAlign: "super",
@@ -150,28 +145,33 @@ const useStyles = makeStyles((theme) => ({
 	},
 	tableHeader: {
 		fontWeight: "bold",
-		backgroundColor: "#f5f5f5", // This sets the background color for the header
+		backgroundColor: "#f5f5f5",
 	},
 	title: {
-		padding: 16, // Add padding around the title text
+		padding: 16,
 		fontWeight: "bold",
+	},
+	dialogPaper: {
+		width: "70vw",
+		maxWidth: "1200px",
+		height: "auto",
+		maxHeight: "800px",
+	},
+	dialogContent: {
+		height: "100%",
+		overflowY: "auto", // Enable scrolling if content overflows
 	},
 }));
 
 function convertTrend(inputString) {
 	const conversionDict = {
-		"Downward trend in concentration is highly likely":
-			"Highly Likely Downward (0% - 10%)",
-		"Upward trend in concentration is highly likely":
-			"Highly Likely Upward (90% - 100%)",
+		"Downward trend in concentration is highly likely": "Highly Likely Downward (0% - 10%)",
+		"Upward trend in concentration is highly likely": "Highly Likely Upward (90% - 100%)",
 		"No Significant Trend": "No Significant Trend (33% - 66%)",
 		"Upward trend in concentration is likely": "Likely Upward (66% - 90%)",
-		"Downward trend in concentration is likely":
-			"Likely Downward (10% - 33%)",
-		"Downward trend in flux is highly likely":
-			"Highly Likely Downward (0% - 10%)",
-		"Upward trend in flux is highly likely":
-			"Highly Likely Upward (90% - 100%)",
+		"Downward trend in concentration is likely": "Likely Downward (10% - 33%)",
+		"Downward trend in flux is highly likely": "Highly Likely Downward (0% - 10%)",
+		"Upward trend in flux is highly likely": "Highly Likely Upward (90% - 100%)",
 		"Upward trend in flux is likely": "Likely Upward (66% - 90%)",
 		"Downward trend in flux is likely": "Likely Downward (10% - 33%)",
 	};
@@ -193,13 +193,10 @@ const Sidebar = ({
 }) => {
 	const classes = useStyles();
 	const [data, setData] = React.useState(null);
+	const [openFirstLoadDialog, setOpenFirstLoadDialog] = React.useState(true);
 	const [openInfoDialog, setOpenInfoDialog] = React.useState(false);
-	const [
-		nitrateTrendStationsData20Years,
-		setNitrateTrendStationsData20Years,
-	] = React.useState(null);
-	const [phosTrendStationData20Years, setPhosTrendStationData20Years] =
-		React.useState(null);
+	const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
+	const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
 	const [trendTableData, setTrendTableData] = React.useState({});
 
 	React.useEffect(() => {
@@ -219,28 +216,16 @@ const Sidebar = ({
 		if (stationData) {
 			switch (selectedNutrient) {
 				case "Nitrogen":
-					setData(
-						nitrateTrendStationsData20Years[
-							stationData.WQ_MonitoringLocationIdentifier
-						],
-					);
+					setData(nitrateTrendStationsData20Years[stationData.WQ_MonitoringLocationIdentifier]);
 					break;
 				case "Phosphorus":
-					setData(
-						phosTrendStationData20Years[
-							stationData.WQ_MonitoringLocationIdentifier
-						],
-					);
+					setData(phosTrendStationData20Years[stationData.WQ_MonitoringLocationIdentifier]);
 					break;
 			}
 		} else {
 			setData(null);
 		}
-	}, [
-		stationData,
-		nitrateTrendStationsData20Years,
-		phosTrendStationData20Years,
-	]);
+	}, [stationData, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
 
 	React.useEffect(() => {
 		switch (selectedNutrient) {
@@ -251,29 +236,135 @@ const Sidebar = ({
 				setTrendTableData(phosTrendStationData20Years);
 				break;
 		}
-	}, [
-		selectedNutrient,
-		nitrateTrendStationsData20Years,
-		phosTrendStationData20Years,
-	]);
+	}, [selectedNutrient, nitrateTrendStationsData20Years, phosTrendStationData20Years]);
 
 	// Remove the selected station when the time period is changed
 	React.useEffect(() => {
 		removeSelectedStation();
 	}, [selectedTimePeriod]);
 
+	// First load dialog
+	const firstLoadDialog = (
+		<CustomDialog
+			open={openFirstLoadDialog}
+			onClose={() => {
+				setOpenFirstLoadDialog(false);
+			}}
+			classes={{
+				paper: classes.dialogPaper,
+			}}
+			maxWidth={false}
+			cookieId="trends-info-dialog"
+			title={"Trends Dashboard"}
+		>
+			<div style={{ marginBottom: "1rem" }}>
+				<p>
+					<strong>
+						Tracking trends shows us how well nutrient reduction practices and policies are working and can
+						also help us identify where more effective practices and policies that improve water quality are
+						needed.
+					</strong>
+				</p>
+			</div>
+			<div>
+				<p>
+					Covering over 40% of the continental United states, the MARB plays a crucial role in the ecological
+					and economic health of our country. The Mississippi River and its tributaries supplies drinking
+					water, facilitates transportation, offers recreation, and provides habitat for a diverse array of
+					plants and wildlife. But the river and its tributaries are degraded by high concentrations of
+					nitrogen and phosphorus from{" "}
+					<a
+						href="https://www.epa.gov/nps/basic-information-about-nonpoint-source-nps-pollution#Nonpoint%20Source%20vs%20Point"
+						target="_blank"
+					>
+						point and nonpoint sources
+					</a>
+					. The goal is to reduce harmful nutrient levels in the MARB, but it takes time to see results from
+					reduction efforts. Monitoring long term nutrient trends is one way to measure progress.
+				</p>
+				<br />
+				<p>
+					Each state has its own challenges and questions to answer, which means that they often use different
+					monitoring, approaches, and methods. This makes it hard to compare trends from state to state.
+				</p>
+				<br />
+				<p>
+					Our objective was to conduct a scientifically based and methodologically consistent nutrient trend
+					analyses for sites throughout the MARB.{" "}
+					<strong>
+						This standardization also allows us to compare trends between the states within the MARB and
+						also see where more monitoring stations are needed.
+					</strong>
+				</p>
+				<br />
+				<p>
+					Trends are long-term changes in a variable. In our case, those variables are <em>nitrogen</em> and{" "}
+					<em>phosphorus</em>.
+				</p>
+
+				<div style={{ paddingLeft: "1 rem" }}>
+					<p>
+						• The amount of nitrogen and phosphorus (measured in milligrams per liter) in a given water
+						collection location is called <em>concentration.</em>
+					</p>
+					<p>
+						• That amount multiplied by the flow rate of the water is defined as <em>load</em>.
+					</p>
+				</div>
+
+				<p>
+					We need to consider both to get the complete picture of water quality for human and aquatic health.
+				</p>
+				<br />
+				<p>
+					Trends magnitudes and their significance were computed using the Weighted Regression on Time,
+					Discharge, and Season (WRTDS) coupled to a bootstrap test that calculates the probability that the
+					trend shown is real. Trend results were correlated with land cover, drainage area, relief, upstream
+					dam storage, and initial values. The methods used can be referenced at:{" "}
+					<a
+						href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1752-1688.2010.00482.x"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						HIRSCH, R. M., MOYER, D. L. & ARCHFIELD, S. A. 2010. Weighted regressions on time, discharge,
+						and season (WRTDS), with an application to Chesapeake Bay river inputs 1. JAWRA Journal of the
+						American Water Resources Association, 46, 857-880
+					</a>
+					.
+				</p>
+
+				<p>
+					Our preprint is published and can be found in the following link: <br />
+					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
+						https://doi.org/10.31223/X5612C
+					</a>
+				</p>
+				<br />
+				<p>
+					If part of the document is shared (e.g., abstract or graphical abstract) please add the following
+					citation: Botero-Acosta, A., McIsaac, G.F., Gilinsky, E., Warner, R. and Lee, J. 2024. Nitrate-N
+					trends in Mississippi and Atchafalaya River Basin Watersheds: Exploring correlations of watershed
+					features with nutrient transport components 2000-2020. <strong>[Preprint]</strong>.
+					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
+						https://doi.org/10.31223/X5612C
+					</a>
+				</p>
+			</div>
+		</CustomDialog>
+	);
+
 	const infoDialog = (
 		<Dialog
 			open={openInfoDialog}
+			classes={{
+				paper: classes.dialogPaper,
+			}}
 			onClose={() => {
 				setOpenInfoDialog(false);
 			}}
 		>
 			<DialogTitle>Trend Information</DialogTitle>
-			<IconButton
-				className={classes.dialogCloseButton}
-				onClick={() => setOpenInfoDialog(false)}
-			>
+			<IconButton className={classes.dialogCloseButton} onClick={() => setOpenInfoDialog(false)}>
 				<Clear />
 			</IconButton>
 			<DialogContent>
@@ -281,84 +372,51 @@ const Sidebar = ({
 					<div>
 						<p>
 							The symbols used are similar to those used by the{" "}
-							<a
-								href="https://nawqatrends.wim.usgs.gov/swtrends/"
-								target="_blank"
-								rel="noreferrer"
-							>
-								<strong>
-									USGS Water-Quality Changes in the Nation’s
-									Streams and Rivers
-								</strong>
+							<a href="https://nawqatrends.wim.usgs.gov/swtrends/" target="_blank" rel="noreferrer">
+								<strong>USGS Water-Quality Changes in the Nation’s Streams and Rivers</strong>
 							</a>{" "}
 							website.
 						</p>
 						<br />
 						<p>
-							A likelihood-based approach was used to report these
-							trend results. When the trend is "likely up" or
-							"likely down", the trend likelihood value associated
-							with the trend is between 0.85 and 1.0 -- in other
-							words, the chance of the trend occurring in the
-							specified direction is at least an 85 out of 100.
-							When the trend is "somewhat likely up" or "somewhat
-							likely down", the trend likelihood value associated
-							with the trend is between 0.7 and 0.85 -- in other
-							words, the chance of the trend occurring in the
-							specified direction is between 70 and 85 out of 100.
-							When the trend is "about as likely as not", the
-							trend likelihood value associated with the trend is
-							less than 0.7 -- in other words, the chance of the
-							trend being either upward or downward is less than
-							70 out of 100.
+							A likelihood-based approach was used to report these trend results. When the trend is
+							"likely up" or "likely down", the trend likelihood value associated with the trend is
+							between 0.85 and 1.0 -- in other words, the chance of the trend occurring in the specified
+							direction is at least an 85 out of 100. When the trend is "somewhat likely up" or "somewhat
+							likely down", the trend likelihood value associated with the trend is between 0.7 and 0.85
+							-- in other words, the chance of the trend occurring in the specified direction is between
+							70 and 85 out of 100. When the trend is "about as likely as not", the trend likelihood value
+							associated with the trend is less than 0.7 -- in other words, the chance of the trend being
+							either upward or downward is less than 70 out of 100.
 						</p>
 						<br />
 						<p>
-							This likelihood-based approach is used as an
-							alternative to the null-hypothesis significance
-							testing (NHST) approach that is often used when
-							reporting water-quality trends. The likelihood-based
-							approach gives people more intuitive information on
-							the certainty of a trend estimate, and provides more
-							evidence of a growing problem or initial clean-up
-							successes. Consider an example where the chance of
-							an upward trend in nitrate concentrations at a site
-							is 80 out of 100 (a trend likelihood value of 0.80).
-							Using the NHST approach and a traditional alpha
-							value of either 0.05 or 0.1, the trend would be
-							reported as nonsignificant. Using the
-							likelihood-based approach, the trend would be
-							reported instead as "somewhat likely up". The NHST
-							approach could lead to a false sense of security
-							because it indicates that there isn't strong proof
-							of a growing problem. The likelihood-based approach
-							indicates instead that it is somewhat likely
-							conditions in the stream are not improving, giving
-							people more information to use when making decisions
-							about watershed management.
+							This likelihood-based approach is used as an alternative to the null-hypothesis significance
+							testing (NHST) approach that is often used when reporting water-quality trends. The
+							likelihood-based approach gives people more intuitive information on the certainty of a
+							trend estimate, and provides more evidence of a growing problem or initial clean-up
+							successes. Consider an example where the chance of an upward trend in nitrate concentrations
+							at a site is 80 out of 100 (a trend likelihood value of 0.80). Using the NHST approach and a
+							traditional alpha value of either 0.05 or 0.1, the trend would be reported as
+							nonsignificant. Using the likelihood-based approach, the trend would be reported instead as
+							"somewhat likely up". The NHST approach could lead to a false sense of security because it
+							indicates that there isn't strong proof of a growing problem. The likelihood-based approach
+							indicates instead that it is somewhat likely conditions in the stream are not improving,
+							giving people more information to use when making decisions about watershed management.
 						</p>
 						<br />
 						<p>
-							For more information on the philosophy of the
-							likelihood-based approach, please see Hirsch and
-							others (2015), "A bootstrap method for estimating
-							uncertainty of water quality trends", at{" "}
-							<a
-								href="http://dx.doi.org/10.1016/j.envsoft.2015.07.017"
-								target="_blank"
-								rel="noreferrer"
-							>
+							For more information on the philosophy of the likelihood-based approach, please see Hirsch
+							and others (2015), "A bootstrap method for estimating uncertainty of water quality trends",
+							at{" "}
+							<a href="http://dx.doi.org/10.1016/j.envsoft.2015.07.017" target="_blank" rel="noreferrer">
 								http://dx.doi.org/10.1016/j.envsoft.2015.07.017
 							</a>
-							. Trend likelihood values for nutrients, sediment,
-							salinity, major ions, and carbon were determined
-							using the bootstrap approach in that same report.
-							Trend likelihood values for pesticides and aquatic
-							ecology metrics were determined using the p-value
-							reported from their respective trend tests, using
-							the equation 1-(p-value/2). See Vecchia and others
-							(2008), "Modeling Variability and Trends in
-							Pesticide Concentrations in Streams", at{" "}
+							. Trend likelihood values for nutrients, sediment, salinity, major ions, and carbon were
+							determined using the bootstrap approach in that same report. Trend likelihood values for
+							pesticides and aquatic ecology metrics were determined using the p-value reported from their
+							respective trend tests, using the equation 1-(p-value/2). See Vecchia and others (2008),
+							"Modeling Variability and Trends in Pesticide Concentrations in Streams", at{" "}
 							<a
 								href="http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf"
 								target="_blank"
@@ -366,10 +424,8 @@ const Sidebar = ({
 							>
 								http://onlinelibrary.wiley.com/doi/10.1111/j.1752-1688.2008.00225.x/pdf
 							</a>{" "}
-							for more information on calculating p-values in the
-							pesticide models. See Oelsner, G.P., Sprague, L.A.,
-							Murphy, J.C., Zuellig, R.E., Johnson, H.M., Ryberg,
-							K.R.,...
+							for more information on calculating p-values in the pesticide models. See Oelsner, G.P.,
+							Sprague, L.A., Murphy, J.C., Zuellig, R.E., Johnson, H.M., Ryberg, K.R.,...
 						</p>
 					</div>
 				</DialogContentText>
@@ -401,8 +457,7 @@ const Sidebar = ({
 					/>
 					<br />
 					<Typography className={classes.trendText} variant="span">
-						Load Trend -{" "}
-						{convertTrend(stationData.significance_flux)}
+						Load Trend - {convertTrend(stationData.significance_flux)}
 						<sup>*</sup>
 					</Typography>
 					<br />
@@ -452,8 +507,7 @@ const Sidebar = ({
 					/>
 					<br />
 					<Typography className={classes.trendText} variant="span">
-						Concentration Trend -{" "}
-						{convertTrend(stationData.significance_concent)}
+						Concentration Trend - {convertTrend(stationData.significance_concent)}
 						<sup>*</sup>
 					</Typography>
 				</Box>
@@ -465,38 +519,32 @@ const Sidebar = ({
 
 	return (
 		<div>
+			{firstLoadDialog}
 			{infoDialog}
 			<div className={classes.sidebarBody}>
 				<Typography className={classes.header} variant="h5">
 					Nutrient Trends Dashboard
-					<IconButton
-						className={classes.infoIcon}
-						onClick={() => setOpenInfoDialog(true)}
-						size="small"
-					>
+					<IconButton className={classes.infoIcon} onClick={() => setOpenInfoDialog(true)} size="small">
 						<InfoIcon fontSize="inherit" />
 					</IconButton>
 				</Typography>
 				<Divider className={classes.divider} />
 				<Box className={classes.summaryBox}>
-					<Typography variant="h6" gutterBottom>
-						Dashboard Summary
-					</Typography>
-					<Typography variant="body1">
-						This dashboard provides an overview of nutrient data
-						across various stations. Use the map to select a station
-						and view detailed data graphs corresponding to the
-						chosen station.
-					</Typography>
+					{/*<Typography variant="h6" gutterBottom>*/}
+					{/*	Dashboard Summary*/}
+					{/*</Typography>*/}
+					{/*<Typography variant="body1">*/}
+					{/*	This dashboard provides an overview of nutrient data*/}
+					{/*	across various stations. Use the map to select a station*/}
+					{/*	and view detailed data graphs corresponding to the*/}
+					{/*	chosen station.*/}
+					{/*</Typography>*/}
+					<InfoBox content={SummaryInfo} />
 				</Box>
 				<div style={{ display: showCharts ? "none" : "block" }}>
 					<Typography className={classes.promptText} variant="h5">
 						Select Station
-						<Tooltip
-							title="Click on any station to view nutrient data graphs."
-							arrow
-							placement="top"
-						>
+						<Tooltip title="Click on any station to view nutrient data graphs." arrow placement="top">
 							<InfoIcon className={classes.infoIcon} />
 						</Tooltip>
 					</Typography>
@@ -505,9 +553,7 @@ const Sidebar = ({
 						trendTableData={trendTableData}
 						selectedNutrient={selectedNutrient}
 						selectedParameter={selectedParameter}
-						setSelectedTrendTableStation={
-							setSelectedTrendTableStation
-						}
+						setSelectedTrendTableStation={setSelectedTrendTableStation}
 						showCharts={showCharts}
 						setShowCharts={setShowCharts}
 					/>
@@ -521,10 +567,7 @@ const Sidebar = ({
 								alignItems: "center",
 							}}
 						>
-							<Typography
-								className={classes.headerText}
-								variant="h6"
-							>
+							<Typography className={classes.headerText} variant="h6">
 								Water Quality Station Name:
 							</Typography>
 							<IconButton
@@ -536,44 +579,34 @@ const Sidebar = ({
 								<Clear />
 							</IconButton>
 						</div>
-						<Typography
-							className={classes.stationNameText}
-							variant="span"
-						>
+						<Typography className={classes.stationNameText} variant="span">
 							{stationData.WQ_MonitoringLocationName}
 						</Typography>
 						<Divider />
 						<div>
-							{data &&
-								selectedParameter === "flux" &&
-								loadYieldGraph()}
+							{data && selectedParameter === "flux" && loadYieldGraph()}
 							{/* <Divider /> */}
 							{/* <br /> */}
-							{data &&
-								selectedParameter === "concentration" &&
-								concGraph()}
+							{data && selectedParameter === "concentration" && concGraph()}
 						</div>
 						<span>
-							<sup>*</sup> Percentage ranges represent the
-							probability that the trend is upwards
+							<sup>*</sup> Percentage ranges represent the probability that the trend is upwards
 						</span>
 						<br />
 						<br />
 						<a>
-							<b>Total Trend</b>: Flow-Normalized Non-Stationary
-							Streamflow with 90% Confidence Interval
+							<b>Total Trend</b>: Flow-Normalized Non-Stationary Streamflow with 90% Confidence Interval
 						</a>
 						<br />
 						<br />
 						<a>
-							<b>Source/Sink Component</b>: Flow-Normalized
-							Stationary Streamflow with 90% Confidence Interval
+							<b>Source/Sink Component</b>: Flow-Normalized Stationary Streamflow with 90% Confidence
+							Interval
 						</a>
 						<br />
 						<br />
 						<a>
-							<b>Flow Component</b>: Total Trend - Source/Sink
-							Component
+							<b>Flow Component</b>: Total Trend - Source/Sink Component
 						</a>
 						<br />
 						<br />

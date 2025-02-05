@@ -11,10 +11,10 @@ import __old_Search from "@geostreams/gltg__old/app/pages/Search";
 import __old_Analysis from "@geostreams/gltg__old/app/pages/Analysis";
 
 import LandingPage from "./containers/LandingPage";
+import StatePortal from "./containers/StatePortal";
 import DataStories from "./containers/DataStories";
 import Help from "./containers/Help";
 import GLTGLayout from "./containers/Layout";
-import GLTGLandingLayout from "./containers/LandingPageLayout";
 import BMP from "./containers/BMP";
 import NewSummary from "./containers/Summary";
 import Tests from "./tests/Tests";
@@ -23,13 +23,20 @@ import Partners from "./containers/Partners";
 const routes = Object.assign(coreRoutes, {
 	"/": {
 		exact: true,
-		component: hocs.withLayout(GLTGLandingLayout, LandingPage, {
+		component: hocs.withLayout(GLTGLayout, LandingPage, {
 			hasFooter: true,
 		}),
 	},
 	"/nutrient-trends": {
 		exact: true,
 		component: hocs.withLayout(GLTGLayout, NewSummary, {
+			hasFooter: true,
+			stickyFooter: true,
+		}),
+	},
+	"/state-portal": {
+		exact: true,
+		component: hocs.withLayout(GLTGLayout, StatePortal, {
 			hasFooter: true,
 			stickyFooter: true,
 		}),

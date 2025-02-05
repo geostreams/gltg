@@ -49,13 +49,9 @@ const parseTrendJSONData = (data, trendTableData, selectedParameter) => {
 							station: SF_station_nm,
 							confidence_range: conc_trend_inc_prob_range,
 							trend: conc_icon_trend,
-							confidence:
-								confidenceMapping[conc_trend_inc_prob_range] ||
-								"Unknown",
+							confidence: confidenceMapping[conc_trend_inc_prob_range] || "Unknown",
 							lastValue:
-								trendTableData[
-									WQ_MonitoringLocationIdentifier
-								].concentration.slice(-1)[0]
+								trendTableData[WQ_MonitoringLocationIdentifier].concentration.slice(-1)[0]
 									.nonStationaryFNConc,
 							SF_site_no,
 						};
@@ -65,13 +61,9 @@ const parseTrendJSONData = (data, trendTableData, selectedParameter) => {
 							station: SF_station_nm,
 							confidence_range: flux_trend_inc_prob_range,
 							trend: flux_icon_trend,
-							confidence:
-								confidenceMapping[flux_trend_inc_prob_range] ||
-								"Unknown",
+							confidence: confidenceMapping[flux_trend_inc_prob_range] || "Unknown",
 							lastValue:
-								trendTableData[
-									WQ_MonitoringLocationIdentifier
-								].flux.slice(-1)[0].nonStationaryFNFlux,
+								trendTableData[WQ_MonitoringLocationIdentifier].flux.slice(-1)[0].nonStationaryFNFlux,
 							SF_site_no,
 						};
 				}
@@ -85,14 +77,7 @@ const parseTrendJSONData = (data, trendTableData, selectedParameter) => {
 	}
 };
 
-const TrendStationTable = ({
-	data,
-	title,
-	selectedParameter,
-	onSelectStation,
-	selectedStation,
-	setShowCharts,
-}) => {
+const TrendStationTable = ({ data, title, selectedParameter, onSelectStation, selectedStation, setShowCharts }) => {
 	const [sortOrder, setSortOrder] = useState("desc");
 	const [sortColumn, setSortColumn] = useState("lastValue"); // Track the column being sorted
 	const [sortedData, setSortedData] = useState([]);
@@ -100,13 +85,9 @@ const TrendStationTable = ({
 	useEffect(() => {
 		const sorted = [...data].sort((a, b) => {
 			if (sortColumn === "lastValue") {
-				return sortOrder === "asc"
-					? a.lastValue - b.lastValue
-					: b.lastValue - a.lastValue;
+				return sortOrder === "asc" ? a.lastValue - b.lastValue : b.lastValue - a.lastValue;
 			} else if (sortColumn === "station") {
-				return sortOrder === "asc"
-					? a.station.localeCompare(b.station)
-					: b.station.localeCompare(a.station);
+				return sortOrder === "asc" ? a.station.localeCompare(b.station) : b.station.localeCompare(a.station);
 			} else if (sortColumn === "confidence") {
 				return sortOrder === "asc"
 					? a.confidence_range - b.confidence_range
@@ -151,11 +132,7 @@ const TrendStationTable = ({
 
 	return (
 		<Accordion defaultExpanded={defaultExpanded}>
-			<AccordionSummary
-				expandIcon={<ExpandMoreIcon />}
-				aria-controls="panel-content"
-				id="panel-header"
-			>
+			<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel-content" id="panel-header">
 				<Typography
 					variant="h6"
 					style={{
@@ -187,26 +164,16 @@ const TrendStationTable = ({
 									<TableSortLabel
 										active={sortColumn === "station"}
 										direction={sortOrder}
-										onClick={() =>
-											handleSortRequest("station")
-										}
+										onClick={() => handleSortRequest("station")}
 									>
 										Water Quality Station Name
 									</TableSortLabel>
 								</TableCell>
-								<TableCell
-									sortDirection={
-										sortColumn === "lastValue"
-											? sortOrder
-											: false
-									}
-								>
+								<TableCell sortDirection={sortColumn === "lastValue" ? sortOrder : false}>
 									<TableSortLabel
 										active={sortColumn === "lastValue"}
 										direction={sortOrder}
-										onClick={() =>
-											handleSortRequest("lastValue")
-										}
+										onClick={() => handleSortRequest("lastValue")}
 									>
 										{selectedParameter === "concentration"
 											? "Most recent flow normalized concentration (mg/L)"
@@ -217,9 +184,7 @@ const TrendStationTable = ({
 									<TableSortLabel
 										active={sortColumn === "confidence"}
 										direction={sortOrder}
-										onClick={() =>
-											handleSortRequest("confidence")
-										}
+										onClick={() => handleSortRequest("confidence")}
 									>
 										Probability of Increasing Trend
 									</TableSortLabel>
@@ -230,16 +195,11 @@ const TrendStationTable = ({
 							{sortedData.map((row) => (
 								<TableRow
 									key={row.SF_site_no}
-									onClick={() =>
-										handleRowClick(row.SF_site_no)
-									}
+									onClick={() => handleRowClick(row.SF_site_no)}
 									hover
 									style={{
 										cursor: "pointer",
-										backgroundColor:
-											row.SF_site_no === selectedStation
-												? "#f0f0f0"
-												: "inherit",
+										backgroundColor: row.SF_site_no === selectedStation ? "#f0f0f0" : "inherit",
 									}}
 								>
 									<TableCell>{row.station}</TableCell>
@@ -249,10 +209,7 @@ const TrendStationTable = ({
 											style={{
 												display: "inline-block",
 												padding: "4px 8px",
-												backgroundColor:
-													chooseConfidenceColor(
-														row.confidence,
-													),
+												backgroundColor: chooseConfidenceColor(row.confidence),
 												borderRadius: "20px",
 												color: "#333",
 												fontWeight: 500,
@@ -311,13 +268,8 @@ export default function TrendTables({
 
 	useEffect(() => {
 		if (trendTableData && Object.keys(trendTableData).length > 0) {
-			const parsedData = parseTrendJSONData(
-				trendStationData,
-				trendTableData,
-				selectedParameter,
-			);
-			const filterData = (trendType) =>
-				parsedData.filter((station) => station.trend === trendType);
+			const parsedData = parseTrendJSONData(trendStationData, trendTableData, selectedParameter);
+			const filterData = (trendType) => parsedData.filter((station) => station.trend === trendType);
 
 			setUpwardTrendData(filterData("Upward Trend"));
 			setDownwardTrendData(filterData("Downward Trend"));

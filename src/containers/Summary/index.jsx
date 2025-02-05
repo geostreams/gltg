@@ -24,24 +24,32 @@ import DownwardTrendIcon from "../../images/DownwardTrendIcon.png";
 import { GEOSERVER_URL, MAP_BOUNDS } from "./config";
 
 import Sidebar from "./Sidebar";
-import Topbar from "./topBar";
+import Topbar from "./TopBar";
 
 // Styling for different components of Nutrient Trends Dashboard
 const useStyles = makeStyles((theme) => ({
 	fillContainer: {
+		paddingTop: "2.5%",
 		width: "100%",
 		height: "100%",
-		marginTop: "1.1%",
+	},
+	topBar: {
+		width: "100%",
+		flexShrink: 0,
+		zIndex: 2,
+		backgroundColor: theme.palette.background.paper,
+		marginBottom: "3%",
 	},
 	mainContainer: {
+		height: "calc(100vh - 64px)",
 		position: "absolute",
-		height: "100%",
 	},
 	sidebar: {
 		height: "100%",
 		width: "100%",
 		overflowY: "auto",
 		overflowX: "clip",
+		paddingBottom: "3%",
 		"& a": {
 			color: "#0D73C5",
 		},
@@ -70,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 		opacity: 0.8,
 		zIndex: 1000,
 		position: "absolute",
-		bottom: "10%",
+		bottom: "1%",
 		left: "5%",
 		width: "45%",
 	},
@@ -98,19 +106,15 @@ const Summary = () => {
 
 	// This state variable is used to keep track of the selected watershed
 	const [selectedWatershed, setSelectedWatershed] = React.useState(null);
-	const [oldSelectedWatershed, setOldSelectedWatershed] =
-		React.useState(null);
+	const [oldSelectedWatershed, setOldSelectedWatershed] = React.useState(null);
 
 	// State variable to keep track of sidebar inputs
 	const [selectedNutrient, setSelectedNutrient] = React.useState("Nitrogen");
-	const [selectedTimePeriod, setSelectedTimePeriod] =
-		React.useState("20_years");
-	const [selectedParameter, setSelectedParameter] =
-		React.useState("concentration");
+	const [selectedTimePeriod, setSelectedTimePeriod] = React.useState("20_years");
+	const [selectedParameter, setSelectedParameter] = React.useState("concentration");
 
 	// Trend table state
-	const [selectedTrendTableStation, setSelectedTrendTableStation] =
-		React.useState(null);
+	const [selectedTrendTableStation, setSelectedTrendTableStation] = React.useState(null);
 
 	// Tooltip
 	const [tooltipContent, setTooltipContent] = React.useState("");
@@ -121,28 +125,17 @@ const Summary = () => {
 	const tooltipRef = React.useRef();
 
 	// Lazy load the geoJSON and json files
-	const [
-		nitrateTrendStationsLayer20years,
-		setNitrateTrendStationsLayer20years,
-	] = React.useState(null);
-	const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] =
-		React.useState(null);
+	const [nitrateTrendStationsLayer20years, setNitrateTrendStationsLayer20years] = React.useState(null);
+	const [phosTrendStationsLayer20years, setPhosTrendStationsLayer20years] = React.useState(null);
 
-	const [waterShedsLayer20years, setWaterShedsLayer20years] =
-		React.useState(null);
-	const [
-		nitrateTrendStationsData20Years,
-		setNitrateTrendStationsData20Years,
-	] = React.useState(null);
-	const [phosTrendStationData20Years, setPhosTrendStationData20Years] =
-		React.useState(null);
+	const [waterShedsLayer20years, setWaterShedsLayer20years] = React.useState(null);
+	const [nitrateTrendStationsData20Years, setNitrateTrendStationsData20Years] = React.useState(null);
+	const [phosTrendStationData20Years, setPhosTrendStationData20Years] = React.useState(null);
 
 	const renderIcon = (feature) => {
 		let icon_trend = null;
-		if (selectedParameter === "concentration")
-			icon_trend = feature.get("conc_icon_trend");
-		if (selectedParameter === "flux")
-			icon_trend = feature.get("flux_icon_trend");
+		if (selectedParameter === "concentration") icon_trend = feature.get("conc_icon_trend");
+		if (selectedParameter === "flux") icon_trend = feature.get("flux_icon_trend");
 		if (icon_trend === "Upward Trend") {
 			return new Style({
 				image: new RegularShape({
@@ -222,73 +215,67 @@ const Summary = () => {
 
 	// useEffect to lazy load the geoJSON files
 	React.useEffect(() => {
-		import("../../data/nitrate_trend_stations_20_years.geojson").then(
-			(data) => {
-				const nitrateTrendStationsJSON20Years = data.default;
-				setNitrateTrendStationsLayer20years(
-					new GroupLayer({
-						title: "Nitrate Trend Stations",
-						layers: [
-							new VectorLayer({
-								visible: true,
-								title: "Trend Stations",
-								source: new VectorSource({
-									url: nitrateTrendStationsJSON20Years,
-									format: new GeoJSON(),
-								}),
-								interactive: true,
-								style: renderIcon,
+		import("../../data/nitrate_trend_stations_20_years.geojson").then((data) => {
+			const nitrateTrendStationsJSON20Years = data.default;
+			setNitrateTrendStationsLayer20years(
+				new GroupLayer({
+					title: "Nitrate Trend Stations",
+					layers: [
+						new VectorLayer({
+							visible: true,
+							title: "Trend Stations",
+							source: new VectorSource({
+								url: nitrateTrendStationsJSON20Years,
+								format: new GeoJSON(),
 							}),
-						],
-					}),
-				);
-			},
-		);
+							interactive: true,
+							style: renderIcon,
+						}),
+					],
+				}),
+			);
+		});
 
-		import("../../data/phos_trend_stations_20_years.geojson").then(
-			(data) => {
-				const phosTrendStationsJSON20Years = data.default;
-				setPhosTrendStationsLayer20years(
-					new GroupLayer({
-						title: "Phosphorus Trend Stations",
-						layers: [
-							new VectorLayer({
-								visible: true,
-								title: "Trend Stations",
-								source: new VectorSource({
-									url: phosTrendStationsJSON20Years,
-									format: new GeoJSON(),
-								}),
-								interactive: true,
-								style: renderIcon,
+		import("../../data/phos_trend_stations_20_years.geojson").then((data) => {
+			const phosTrendStationsJSON20Years = data.default;
+			setPhosTrendStationsLayer20years(
+				new GroupLayer({
+					title: "Phosphorus Trend Stations",
+					layers: [
+						new VectorLayer({
+							visible: true,
+							title: "Trend Stations",
+							source: new VectorSource({
+								url: phosTrendStationsJSON20Years,
+								format: new GeoJSON(),
 							}),
-						],
-					}),
-				);
-			},
-		);
-		import("../../data/phos_trend_station_data_20years.json").then(
-			(data) => {
-				const phosTrendStationsJSON20Years = data.default;
-				setPhosTrendStationData20Years(
-					new GroupLayer({
-						title: "Phosphorus Trend Stations",
-						layers: [
-							new VectorLayer({
-								visible: true,
-								title: "Trend Stations",
-								source: new VectorSource({
-									url: phosTrendStationsJSON20Years,
-									format: new GeoJSON(),
-								}),
-								interactive: true,
-								style: renderIcon,
+							interactive: true,
+							style: renderIcon,
+						}),
+					],
+				}),
+			);
+		});
+		import("../../data/phos_trend_station_data_20years.json").then((data) => {
+			const phosTrendStationsJSON20Years = data.default;
+			setPhosTrendStationData20Years(
+				new GroupLayer({
+					title: "Phosphorus Trend Stations",
+					layers: [
+						new VectorLayer({
+							visible: true,
+							title: "Trend Stations",
+							source: new VectorSource({
+								url: phosTrendStationsJSON20Years,
+								format: new GeoJSON(),
 							}),
-						],
-					}),
-				);
-			},
-		);
+							interactive: true,
+							style: renderIcon,
+						}),
+					],
+				}),
+			);
+		});
 
 		import("../../data/watersheds_20years.geojson").then((data) => {
 			const waterShedsJSON20years = data.default;
@@ -310,18 +297,14 @@ const Summary = () => {
 				}),
 			);
 		});
-		import("../../data/phos_trend_station_data_20years.json").then(
-			(data) => {
-				const phosData = data.default;
-				setPhosTrendStationData20Years(phosData);
-			},
-		);
-		import("../../data/nitrate_trend_station_data_20years.json").then(
-			(data) => {
-				const nitrateData = data.default;
-				setNitrateTrendStationsData20Years(nitrateData);
-			},
-		);
+		import("../../data/phos_trend_station_data_20years.json").then((data) => {
+			const phosData = data.default;
+			setPhosTrendStationData20Years(phosData);
+		});
+		import("../../data/nitrate_trend_station_data_20years.json").then((data) => {
+			const nitrateData = data.default;
+			setNitrateTrendStationsData20Years(nitrateData);
+		});
 	}, []);
 
 	// This group layer contains the base map and the state boundaries layer
@@ -334,10 +317,7 @@ const Summary = () => {
 				title: "Carto",
 				source: new XYZ({
 					url: "https://{a-d}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}.png",
-					attributions: [
-						'&#169; <a href="https://www.carto.com">Carto</a>,',
-						OSM_ATTRIBUTION,
-					],
+					attributions: ['&#169; <a href="https://www.carto.com">Carto</a>,', OSM_ATTRIBUTION],
 				}),
 			}),
 			new TileLayer({
@@ -376,28 +356,16 @@ const Summary = () => {
 		() => (
 			<div className={classes.legendContainer}>
 				<div className={classes.legendItem}>
-					<img
-						src={UpwardTrendIcon}
-						alt="Likely Upward Trend Icon"
-						className={classes.legendIcon}
-					/>
+					<img src={UpwardTrendIcon} alt="Likely Upward Trend Icon" className={classes.legendIcon} />
 					<span>Likely Upward Trend</span>
 				</div>
 				<div className={classes.legendItem}>
-					<img
-						src={NoSignificantTrendIcon}
-						alt="No Likely Trend Icon"
-						className={classes.legendIcon}
-					/>
+					<img src={NoSignificantTrendIcon} alt="No Likely Trend Icon" className={classes.legendIcon} />
 					<span>No Likely Trend</span>
 				</div>
 
 				<div className={classes.legendItem}>
-					<img
-						src={DownwardTrendIcon}
-						alt="Likely Downward Trend Icon"
-						className={classes.legendIcon}
-					/>
+					<img src={DownwardTrendIcon} alt="Likely Downward Trend Icon" className={classes.legendIcon} />
 					<span>Likely Downward Trend</span>
 				</div>
 			</div>
@@ -417,10 +385,8 @@ const Summary = () => {
 		if (selectedStation) {
 			let selectedStyle = null;
 			let icon_trend = null;
-			if (selectedParameter === "concentration")
-				icon_trend = selectedStation.get("conc_icon_trend");
-			if (selectedParameter === "flux")
-				icon_trend = selectedStation.get("flux_icon_trend");
+			if (selectedParameter === "concentration") icon_trend = selectedStation.get("conc_icon_trend");
+			if (selectedParameter === "flux") icon_trend = selectedStation.get("flux_icon_trend");
 			if (icon_trend === "Upward Trend") {
 				selectedStyle = new Style({
 					image: new RegularShape({
@@ -504,25 +470,16 @@ const Summary = () => {
 	// Interaction when you click on a trend station
 
 	const handleMapClick = (event) => {
-		const selectedFeature = event.map.forEachFeatureAtPixel(
-			event.pixel,
-			(feature) => feature,
-		);
+		const selectedFeature = event.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
 		// Get corresponding watershed by SF_site_no if the selected feature is a trend station
-		if (
-			selectedFeature &&
-			selectedFeature.getGeometry().getType() === "Point"
-		) {
+		if (selectedFeature && selectedFeature.getGeometry().getType() === "Point") {
 			// This always shows nitrogen my worry is the function passed to openlayers is not getting the updated value of selectedNutrient
 
 			const correspondingWatershed = waterShedsLayer20years
 				.getLayersArray()[0]
 				.getSource()
 				.getFeatures()
-				.find(
-					(feature) =>
-						feature.get("id") === selectedFeature.get("SF_site_no"),
-				);
+				.find((feature) => feature.get("id") === selectedFeature.get("SF_site_no"));
 			setSelectedStation(selectedFeature);
 			setSelectedWatershed(correspondingWatershed);
 			setShowCharts(true);
@@ -558,11 +515,7 @@ const Summary = () => {
 				layer.getSource().changed(); // Trigger refresh
 			});
 		}
-	}, [
-		selectedParameter,
-		nitrateTrendStationsLayer20years,
-		phosTrendStationsLayer20years,
-	]);
+	}, [selectedParameter, nitrateTrendStationsLayer20years, phosTrendStationsLayer20years]);
 
 	// useEffect to handle selection of station in trendTable
 	React.useEffect(() => {
@@ -572,10 +525,7 @@ const Summary = () => {
 				.getLayersArray()[0]
 				.getSource()
 				.getFeatures()
-				.find(
-					(feature) =>
-						feature.get("id") === selectedTrendTableStation,
-				);
+				.find((feature) => feature.get("id") === selectedTrendTableStation);
 
 			setSelectedWatershed(correspondingWatershed);
 		}
@@ -594,11 +544,7 @@ const Summary = () => {
 					.getLayersArray()[0]
 					.getSource()
 					.getFeatures()
-					.find(
-						(feature) =>
-							feature.get("SF_site_no") ===
-							selectedTrendTableStation,
-					);
+					.find((feature) => feature.get("SF_site_no") === selectedTrendTableStation);
 				console.log(correspondingStation);
 				setSelectedStation(correspondingStation);
 			}
@@ -641,12 +587,7 @@ const Summary = () => {
 		phosTrendStationData20Years === null
 	) {
 		return (
-			<Box
-				display="flex"
-				justifyContent="center"
-				alignItems="center"
-				minHeight="100vh"
-			>
+			<Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
 				<Box textAlign="center">
 					<CircularProgress />
 					<p>Loading data...</p>
@@ -656,20 +597,18 @@ const Summary = () => {
 	}
 
 	return (
-		<>
-			<Topbar
-				selectedNutrient={selectedNutrient}
-				setSelectedNutrient={setSelectedNutrient}
-				selectedTimePeriod={selectedTimePeriod}
-				setSelectedTimePeriod={setSelectedTimePeriod}
-				selectedParameter={selectedParameter}
-				setSelectedParameter={setSelectedParameter}
-			/>
-			<Grid
-				className={classes.mainContainer}
-				container
-				alignItems="stretch"
-			>
+		<div style={{ display: "flex", width: "100vw", height: "100vh" }}>
+			<Grid className={classes.mainContainer} container alignItems="stretch">
+				<Grid item xs={12} className={classes.topBar}>
+					<Topbar
+						selectedNutrient={selectedNutrient}
+						setSelectedNutrient={setSelectedNutrient}
+						selectedTimePeriod={selectedTimePeriod}
+						setSelectedTimePeriod={setSelectedTimePeriod}
+						selectedParameter={selectedParameter}
+						setSelectedParameter={setSelectedParameter}
+					/>
+				</Grid>
 				<Grid item xs={7} key={selectedTimePeriod}>
 					<Map
 						className={classes.fillContainer}
@@ -706,9 +645,7 @@ const Summary = () => {
 				</Grid>
 				<Grid className={classes.sidebar} item xs={5}>
 					<Sidebar
-						stationData={
-							selectedStation ? selectedStation.values_ : null
-						}
+						stationData={selectedStation ? selectedStation.values_ : null}
 						selectedNutrient={selectedNutrient}
 						setSelectedNutrient={setSelectedNutrient}
 						selectedTimePeriod={selectedTimePeriod}
@@ -716,15 +653,13 @@ const Summary = () => {
 						selectedParameter={selectedParameter}
 						setSelectedParameter={setSelectedParameter}
 						removeSelectedStation={removeSelectedStation}
-						setSelectedTrendTableStation={
-							setSelectedTrendTableStation
-						}
+						setSelectedTrendTableStation={setSelectedTrendTableStation}
 						showCharts={showCharts}
 						setShowCharts={setShowCharts}
 					/>
 				</Grid>
 			</Grid>
-		</>
+		</div>
 	);
 };
 

@@ -15,7 +15,7 @@ export const sidebarConfig = {
 			{
 				name: "Arkansas Nutrient Reduction Viewer",
 				fileType: "map",
-				url: "https://anrcdoc.aad.arkansas.gov/arcgisportal/apps/dashboards/92c5bf3078244aa6b1b2022236c5aae9",
+				url: "https://adaesri.aad.arkansas.gov/portal/apps/dashboards/710369625e624a0c899c288c5e049712",
 			},
 			{
 				name: "ANRS Fact",
@@ -25,7 +25,7 @@ export const sidebarConfig = {
 			{
 				name: "ANRS Story Map",
 				fileType: "map",
-				url: "https://anrcdoc.aad.arkansas.gov/arcgisportal/apps/storymaps/stories/433a65c303e146df83eec5e5fe7ab9ad",
+				url: "https://adaesri.aad.arkansas.gov/portal/apps/storymaps/stories/b48eb2e614494abeafb8cf0a9e2fcf5f",
 			},
 			{
 				name: "Great Lakes to Gulf - Arkansas Water Quality Data Portal",
@@ -105,7 +105,7 @@ export const sidebarConfig = {
 			{
 				name: "Iowa Nutrient Reduction Strategy Data Dashboards",
 				fileType: "dashboard",
-				url: "https://www.arcgis.com/apps/dashboards/52865e429fc3462782a77041d6b9065d",
+				url: "https://nrstracking.cals.iastate.edu/tracking-iowa-nutrient-reduction-strategy",
 			},
 			{
 				name: "Iowa Department of Natural Resources Ambient Stream Monitoring",
@@ -141,6 +141,11 @@ export const sidebarConfig = {
 				name: "Kentucky Nutrient Strategy Update Story Map",
 				fileType: "web",
 				url: "https://storymaps.arcgis.com/stories/ad5b60986f04440399964378c81b1da9",
+			},
+			{
+				name: "Gulf Hypoxia Program in Kentucky",
+				fileType: "web",
+				url: "https://storymaps.arcgis.com/stories/7d5cad7b726d4641a21e89d14009ea65",
 			},
 		],
 	},
@@ -262,6 +267,11 @@ export const sidebarConfig = {
 				image: TennesseeState,
 				url: "https://tennessee.greatlakestogulf.org/",
 			},
+			{
+				name: "Tennessee Nutrient Database",
+				fileType: "web",
+				url: "https://tdec.tn.gov/nutrient/",
+			},
 		],
 	},
 	wisconsin: {
@@ -286,6 +296,11 @@ export const sidebarConfig = {
 				name: "Great Lakes Basin River Water-Quality Trends",
 				fileType: "dashboard",
 				url: "https://rconnect.usgs.gov/glritrends/",
+			},
+			{
+				name: "2024 Integrated Report",
+				fileType: "web",
+				url: "https://dnr.wisconsin.gov/topic/SurfaceWater/Congress.html",
 			},
 		],
 	},

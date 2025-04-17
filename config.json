@@ -306,6 +306,13 @@
             ],
             "":[
                 {
+                    "title":"Subsurface Tile Drainage",
+                    "id":"gltg:Clipped12_LZW",
+                    "type":"wms",
+                    "legend":"/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&layer=gltg:Clipped12_LZW",
+                    "initialOpacity":0.9
+                },
+                {
                     "title":"River Reaches",
                     "id":"gltg:gltg-pools",
                     "type":"wms",

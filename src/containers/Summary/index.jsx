@@ -378,7 +378,7 @@ const Summary = () => {
 		// This is the interaction to set style for the selected station
 		if (oldSelectedStation !== selectedStation) {
 			if (oldSelectedStation) {
-				oldSelectedStation.setStyle(renderIcon);
+				oldSelectedStation.setStyle(null); // Remove custom style to fall back to layer style
 			}
 		}
 

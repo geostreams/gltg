@@ -5,7 +5,6 @@ import { Box, CircularProgress, makeStyles } from "@material-ui/core";
 
 import Footer from "./Footer";
 import Header, { HEADERS_HEIGHT } from "./Header";
-import SmallHeader from "./SmallHeader";
 
 const useStyles = makeStyles({
 	scrim: {
@@ -55,7 +54,7 @@ const Layout = ({ isLoading, children, extraMainClasses, hasFooter, stickyFooter
 					<CircularProgress />
 				</Box>
 			) : null}
-			{windowWidth > widthBreakpoint ? <Header /> : <SmallHeader />}
+			<Header />
 			<main className={`${classes.main} ${extraMainClasses}`}>
 				{children}
 				{hasFooter ? <Footer sticky={stickyFooter} /> : null}

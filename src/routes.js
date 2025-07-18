@@ -27,7 +27,7 @@ const routes = Object.assign(coreRoutes, {
 			hasFooter: true,
 		}),
 	},
-	"/nutrient-trends": {
+	"/dashboards/nutrient-trends": {
 		exact: true,
 		component: hocs.withLayout(GLTGLayout, NewSummary, {
 			hasFooter: true,
@@ -58,7 +58,7 @@ const routes = Object.assign(coreRoutes, {
 		component: hocs.withLayout(GLTGLayout, GeoStreamingSensorDetail),
 	},
 	// Routes pointing to the __old code
-	"/explore/:stations": {
+	"/dashboards/explore/:stations": {
 		component: hocs.withLayout(GLTGLayout, GeoStreamingExplore),
 		exact: true,
 	},

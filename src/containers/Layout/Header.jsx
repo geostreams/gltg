@@ -25,6 +25,8 @@ import LogoApp from "../../images/logo_app.png";
 
 export const HEADERS_HEIGHT = 65;
 
+const NEW_SITE_URL = process.env.NEW_SITE_URL || "https://gltg-apps-dev.ncsa.illinois.edu";
+
 const useStyles = makeStyles((theme) => ({
 	appbar: {
 		zIndex: 1100,
@@ -209,8 +211,8 @@ const Header = ({ location }) => {
 					<List component="div" disablePadding>
 						<ListItem
 							button
-							component={Link}
-							to="/our-story"
+							component="a"
+							href={`${NEW_SITE_URL}/our-story`}
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -218,8 +220,8 @@ const Header = ({ location }) => {
 						</ListItem>
 						<ListItem
 							button
-							component={Link}
-							to="/our-team"
+							component="a"
+							href={`${NEW_SITE_URL}/our-team`}
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -252,7 +254,7 @@ const Header = ({ location }) => {
 						<ListItem
 							button
 							component={Link}
-							to="/nutrient-trends"
+							to="/dashboards/nutrient-trends"
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -260,8 +262,8 @@ const Header = ({ location }) => {
 						</ListItem>
 						<ListItem
 							button
-							component={Link}
-							to="/state-portal"
+							component="a"
+							href={`${NEW_SITE_URL}/dashboards/state-efforts`}
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -270,7 +272,7 @@ const Header = ({ location }) => {
 						<ListItem
 							button
 							component={Link}
-							to="/explore/all"
+							to="/dashboards/explore/all"
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -279,7 +281,7 @@ const Header = ({ location }) => {
 					</List>
 				</Collapse>
 
-				<ListItem button component={Link} to="/resources" onClick={handleDrawerToggle}>
+				<ListItem button component="a" href={`${NEW_SITE_URL}/resources`} onClick={handleDrawerToggle}>
 					<ListItemText primary="Resources" />
 				</ListItem>
 				<ListItem button component="a" href="mailto:lkammin@lc.edu" onClick={handleDrawerToggle}>
@@ -293,9 +295,15 @@ const Header = ({ location }) => {
 		<AppBar position="fixed" className={classes.appbar}>
 			<Toolbar className={classes.mainHeader}>
 				<div className={classes.logoContainer}>
-					<Avatar component={Link} to="/" src={LogoApp} className={classes.avatar} />
+					<Avatar component="a" href={`${NEW_SITE_URL}/`} src={LogoApp} className={classes.avatar} />
 					<div className={classes.titleContainer}>
-						<Typography component={Link} to="/" className={classes.headerText} variant="h5" noWrap>
+						<Typography
+							component="a"
+							href={`${NEW_SITE_URL}/`}
+							className={classes.headerText}
+							variant="h5"
+							noWrap
+						>
 							Great Lakes to Gulf
 						</Typography>
 						<Typography className={classes.tagline} variant="h6" noWrap>
@@ -330,7 +338,12 @@ const Header = ({ location }) => {
 						aria-expanded={dashboardsOpen ? "true" : undefined}
 						onClick={dashboardsHandleClick}
 					/>
-					<Tab className={classes.tabRoot} label="Resources" component={Link} to="/resources" />
+					<Tab
+						className={classes.tabRoot}
+						label="Resources"
+						component="a"
+						href={`${NEW_SITE_URL}/resources`}
+					/>
 				</div>
 
 				<div className={classes.contactTab}>
@@ -363,22 +376,18 @@ const Header = ({ location }) => {
 				>
 					<MenuItem
 						onClick={aboutHandleClose}
-						component={Link}
-						to="/our-story"
+						component="a"
+						href={`${NEW_SITE_URL}/our-story`}
 						className={classes.menuItem}
-						anchorEl={aboutAnchorEl}
-						anchorOrigin={{
-							vertical: "bottom",
-							horizontal: "center",
-						}}
-						transformOrigin={{
-							vertical: "top",
-							horizontal: "center",
-						}}
 					>
 						Our Story
 					</MenuItem>
-					<MenuItem onClick={aboutHandleClose} component={Link} to="/our-team" className={classes.menuItem}>
+					<MenuItem
+						onClick={aboutHandleClose}
+						component="a"
+						href={`${NEW_SITE_URL}/our-team`}
+						className={classes.menuItem}
+					>
 						Our Team
 					</MenuItem>
 					<MenuItem
@@ -414,15 +423,15 @@ const Header = ({ location }) => {
 					<MenuItem
 						onClick={dashboardsHandleClose}
 						component={Link}
-						to="/nutrient-trends"
+						to="/dashboards/nutrient-trends"
 						className={classes.menuItem}
 					>
 						Nutrient Trends
 					</MenuItem>
 					<MenuItem
 						onClick={dashboardsHandleClose}
-						component={Link}
-						to="/state-portal"
+						component="a"
+						href={`${NEW_SITE_URL}/dashboards/state-efforts`}
 						className={classes.menuItem}
 					>
 						State Efforts
@@ -430,7 +439,7 @@ const Header = ({ location }) => {
 					<MenuItem
 						onClick={dashboardsHandleClose}
 						component={Link}
-						to="/explore/all"
+						to="/dashboards/explore/all"
 						className={classes.menuItem}
 					>
 						Explore Data

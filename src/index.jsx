@@ -20,7 +20,7 @@ import fetch from "sync-fetch";
 
 render(reducers, routes, async (store) => {
 	// Loading config.json dynamically and setting env variables
-	const config = fetch("../config.json").json();
+	const config = fetch("/config.json").json();
 	config.map.geoserverUrl = process.env.GEOSERVER_URL;
 	config.geostreamingEndpoint = process.env.GEOSTREAMS_URL;
 

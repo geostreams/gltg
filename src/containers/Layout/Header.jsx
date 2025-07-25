@@ -193,7 +193,7 @@ const Header = ({ location }) => {
 	const drawer = (
 		<div className={classes.drawerList} role="presentation">
 			<List>
-				<ListItem button component={Link} to={`${NEW_SITE_URL}/getting-started`} onClick={handleDrawerToggle}>
+				<ListItem button component="a" href={`${NEW_SITE_URL}/getting-started`} onClick={handleDrawerToggle}>
 					<ListItemText primary="Getting Started" />
 				</ListItem>
 
@@ -328,8 +328,8 @@ const Header = ({ location }) => {
 					<Tab
 						className={classes.tabRoot}
 						label="Getting Started"
-						component={Link}
-						to={`${NEW_SITE_URL}/getting-started`}
+						component="a"
+						href={`${NEW_SITE_URL}/getting-started`}
 					/>
 					<Tab
 						className={classes.tabRoot}

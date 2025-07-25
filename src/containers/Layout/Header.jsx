@@ -193,7 +193,7 @@ const Header = ({ location }) => {
 	const drawer = (
 		<div className={classes.drawerList} role="presentation">
 			<List>
-				<ListItem button component={Link} to="/getting-started" onClick={handleDrawerToggle}>
+				<ListItem button component={Link} to={`${NEW_SITE_URL}/getting-started`} onClick={handleDrawerToggle}>
 					<ListItemText primary="Getting Started" />
 				</ListItem>
 
@@ -230,7 +230,7 @@ const Header = ({ location }) => {
 						<ListItem
 							button
 							component="a"
-							href="mailto:lkammin@lc.edu"
+							href={`${NEW_SITE_URL}/contact`}
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -284,7 +284,7 @@ const Header = ({ location }) => {
 				<ListItem button component="a" href={`${NEW_SITE_URL}/resources`} onClick={handleDrawerToggle}>
 					<ListItemText primary="Resources" />
 				</ListItem>
-				<ListItem button component="a" href="mailto:lkammin@lc.edu" onClick={handleDrawerToggle}>
+				<ListItem button component="a" href={`${NEW_SITE_URL}/contact`} onClick={handleDrawerToggle}>
 					<ListItemText primary="Contact" />
 				</ListItem>
 			</List>
@@ -325,7 +325,12 @@ const Header = ({ location }) => {
 						aria-expanded={aboutOpen ? "true" : undefined}
 						onClick={aboutHandleClick}
 					/>
-					<Tab className={classes.tabRoot} label="Getting Started" component={Link} to="/getting-started" />
+					<Tab
+						className={classes.tabRoot}
+						label="Getting Started"
+						component={Link}
+						to={`${NEW_SITE_URL}/getting-started`}
+					/>
 					<Tab
 						className={classes.tabRoot}
 						label={
@@ -347,7 +352,7 @@ const Header = ({ location }) => {
 				</div>
 
 				<div className={classes.contactTab}>
-					<Tab className={classes.tabRoot} label="Contact" component="a" href="mailto:lkammin@lc.edu" />
+					<Tab className={classes.tabRoot} label="Contact" component="a" href={`${NEW_SITE_URL}/contact`} />
 				</div>
 
 				<IconButton className={classes.mobileMenuButton} onClick={handleDrawerToggle}>

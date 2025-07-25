@@ -398,7 +398,7 @@ const Header = ({ location }) => {
 					<MenuItem
 						onClick={aboutHandleClose}
 						component="a"
-						href="mailto:lkammin@lc.edu"
+						href={`${NEW_SITE_URL}/contact`}
 						className={classes.menuItem}
 					>
 						Contact Us

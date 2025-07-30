@@ -25,7 +25,7 @@ import LogoApp from "../../images/logo_app.png";
 
 export const HEADERS_HEIGHT = 65;
 
-const NEW_SITE_URL = process.env.NEW_SITE_URL || "https://gltg-apps-dev.ncsa.illinois.edu";
+const NEW_SITE_URL = process.env.NEW_SITE_URL || "https://greatlakestogulf.org";
 
 const useStyles = makeStyles((theme) => ({
 	appbar: {

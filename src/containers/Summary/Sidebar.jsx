@@ -335,7 +335,7 @@ const Sidebar = ({
 				<p>
 					The methodology and results from our nitrogen trends analysis are available{" "}
 					<a
-						href="The methodology and results from our nitrogen trends analysis are available at: https://www.researchgate.net/publication/389605626_Nitrate-N_trends_in_Mississippi_and_[…]tershed_features_with_nutrient_trends_components_2000-2020"
+						href="https://www.sciencedirect.com/science/article/pii/S0048969725006771"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -345,9 +345,6 @@ const Sidebar = ({
 					citation: Botero-Acosta, A., McIsaac, G.F., Gilinsky, E., Warner, R. and Lee, J. 2025. Nitrate-N
 					trends in Mississippi and Atchafalaya River Basin Watersheds: Exploring correlations of watershed
 					features with nutrient transport components 2000-2020.
-					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
-						https://doi.org/10.31223/X5612C
-					</a>
 				</p>
 			</div>
 		</CustomDialog>

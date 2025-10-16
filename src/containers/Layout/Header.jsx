@@ -272,7 +272,7 @@ const Header = ({ location }) => {
 						<ListItem
 							button
 							component={Link}
-							to="/dashboards/explore/all"
+							to={`${NEW_SITE_URL}/dashboards/explore/`}
 							onClick={handleDrawerToggle}
 							className={classes.expandedListItem}
 						>
@@ -444,7 +444,7 @@ const Header = ({ location }) => {
 					<MenuItem
 						onClick={dashboardsHandleClose}
 						component={Link}
-						to="/dashboards/explore/all"
+						to={`${NEW_SITE_URL}/dashboards/explore/`}
 						className={classes.menuItem}
 					>
 						Explore Data

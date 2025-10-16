@@ -439,33 +439,6 @@
             "link":"http://waterqualitydata.us/",
             "defaultVisibility": false
         },
-        "usgs":{
-            "label":"United States Geological Survey",
-            "order": 6,
-            "color":"#39B54A",
-            "description":"The USGS investigates the occurrence, quantity, quality, distribution, and movement of surface and underground waters and disseminates the data to the public, State and local governments, public and private utilities, and other Federal agencies involved with managing our water resources. U.S. Geological Survey conducts long-term monitoring of lakes and rivers nationwide. They have gauges throughout many rivers in the Mississippi River basin. We've chosen to focus on gauges on the Mississippi River and its tributaries that are equipped with continuous nitrate sensors for this website.",
-            "more_info":"For more information and for access to all USGS water quantity and quality data.",
-            "link":"http://waterdata.usgs.gov/nwis",
-            "defaultVisibility": false
-        },
-        "usgs-sg":{
-            "label":"United States Geological Survey (Super Gage Network)",
-            "order": 7,
-            "color":"#228e31",
-            "description":"The USGS investigates the occurrence, quantity, quality, distribution, and movement of surface and underground waters and disseminates the data to the public, State and local governments, public and private utilities, and other Federal agencies involved with managing our water resources. U.S. Geological Survey conducts long-term monitoring of lakes and rivers nationwide. They have gauges throughout many rivers in the Mississippi River basin. We've chosen to focus on gauges on the Mississippi River and its tributaries that are equipped with continuous nitrate sensors for this website.",
-            "more_info":"For more information and for access to all USGS water quantity and quality data.",
-            "link":"http://waterdata.usgs.gov/nwis",
-            "defaultVisibility": false
-        },
-        "umrr-ltrm":{
-            "label":"Upper Mississippi River Restoration",
-            "order": 8,
-            "color":"#5F99C1",
-            "description":"The UMRR LTRM water quality sampling design focuses on a subset of limnological variables related to habitat quality and ecosystem function that includes physicochemical features, suspended sediment, and major plant nutrients known to be significant to aquatic habitat in this system. We've chosen to focus on long term nitrate data sets available on the Mississippi River for this website.",
-            "more_info":"Click here for more information and for access to all original UMRR LTRM data.",
-            "link":"http://www.umesc.usgs.gov/data_library/water_quality/water1_query.shtml",
-            "defaultVisibility": false
-        },
         "sierra-club":{
             "label":"Fox River Study Group",
             "order": 9,

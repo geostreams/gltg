@@ -397,7 +397,7 @@
         "wqp_gte30":{
             "label":"Water Quality Portal (>=30 Years)",
             "order": 5,
-            "color":"#E97C00",
+            "color":"#f95738",
             "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
             "more_info":"Click here for more information and for access to all WQP data.",
             "link":"http://waterqualitydata.us/",
@@ -406,7 +406,7 @@
         "wqp_20to29":{
             "label":"Water Quality Portal (20-29 Years)",
             "order": 4,
-            "color":"#E88D25",
+            "color":"#ee964b",
             "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
             "more_info":"Click here for more information and for access to all WQP data.",
             "link":"http://waterqualitydata.us/",
@@ -415,7 +415,7 @@
         "wqp_10to19":{
             "label":"Water Quality Portal (10-19 Years)",
             "order": 3,
-            "color":"#E79D49",
+            "color":"#f4d35e",
             "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
             "more_info":"Click here for more information and for access to all WQP data.",
             "link":"http://waterqualitydata.us/",
@@ -424,7 +424,7 @@
         "wqp_5to9":{
             "label":"Water Quality Portal (5-9 Years)",
             "order": 2,
-            "color":"#E5AE6E",
+            "color":"#faf0ca",
             "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
             "more_info":"Click here for more information and for access to all WQP data.",
             "link":"http://waterqualitydata.us/",
@@ -433,7 +433,7 @@
         "wqp_lt5":{
             "label":"Water Quality Portal (<5 Years)",
             "order": 1,
-            "color":"#E4BE92",
+            "color":"#0d3b66",
             "description":"The Water Quality Portal (WQP) is a cooperative service sponsored by the United States Geological Survey (USGS), the Environmental Protection Agency (EPA) and the National Water Quality Monitoring Council (NWQMC) that integrates publicly available water quality data from the USGS National Water Information System (NWIS) the EPA STOrage and RETrieval (STORET) Data Warehouse, and the USDA ARS Sustaining The Earth’s Watersheds - Agricultural Research Database System (STEWARDS). We've chosen to focus on available Water Quality Portal long term (5 years) nitrate data sets available on the Mississippi River and its tributaries for this website.",
             "more_info":"Click here for more information and for access to all WQP data.",
             "link":"http://waterqualitydata.us/",

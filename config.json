@@ -442,7 +442,7 @@
         "sierra-club":{
             "label":"Fox River Study Group",
             "order": 9,
-            "color":"#9C2C1A",
+            "color":"#008736",
             "description":"These locations contain data related to the Fox River Study Group.",
             "more_info":"Click here for more information about the Fox River Study Group",
             "link":"http://foxriverstudygroup.org/",

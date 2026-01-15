@@ -443,8 +443,8 @@ const Header = ({ location }) => {
 					</MenuItem>
 					<MenuItem
 						onClick={dashboardsHandleClose}
-						component={Link}
-						to={`${NEW_SITE_URL}/dashboards/explore/`}
+						component="a"
+						href={`${NEW_SITE_URL}/dashboards/explore/`}
 						className={classes.menuItem}
 					>
 						Explore Data

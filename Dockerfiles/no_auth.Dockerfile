@@ -16,7 +16,7 @@ ENV GA_TOKEN=$GA_TOKEN
 
 RUN git clone https://github.com/geostreams/geodashboard.git /tmp/geodashboard
 WORKDIR /tmp/geodashboard
-RUN if [[ -z "${GEODASHBOARD_VERSION}" ]] ; then git switch --detach $GEODASHBOARD_VERSION ; fi
+RUN git checkout 95-gltg-explore-page-changes
 RUN yarn && yarn link:all
 
 COPY ../ /tmp/gltg/

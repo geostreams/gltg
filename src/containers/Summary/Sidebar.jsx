@@ -315,7 +315,6 @@ const Sidebar = ({
 				<p>
 					We need to consider both to get the complete picture of water quality for human and aquatic health.
 				</p>
-				<br />
 				<p>
 					Trends magnitudes and their significance were computed using the Weighted Regression on Time,
 					Discharge, and Season (WRTDS) coupled to a bootstrap test that calculates the probability that the
@@ -332,22 +331,20 @@ const Sidebar = ({
 					</a>
 					.
 				</p>
-
-				<p>
-					Our preprint is published and can be found in the following link: <br />
-					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
-						https://doi.org/10.31223/X5612C
-					</a>
-				</p>
 				<br />
 				<p>
+					The methodology and results from our nitrogen trends analysis are available{" "}
+					<a
+						href="https://www.sciencedirect.com/science/article/pii/S0048969725006771"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						here.
+					</a>{" "}
 					If part of the document is shared (e.g., abstract or graphical abstract) please add the following
-					citation: Botero-Acosta, A., McIsaac, G.F., Gilinsky, E., Warner, R. and Lee, J. 2024. Nitrate-N
+					citation: Botero-Acosta, A., McIsaac, G.F., Gilinsky, E., Warner, R. and Lee, J. 2025. Nitrate-N
 					trends in Mississippi and Atchafalaya River Basin Watersheds: Exploring correlations of watershed
-					features with nutrient transport components 2000-2020. <strong>[Preprint]</strong>.
-					<a href="https://doi.org/10.31223/X5612C" target="_blank" rel="noopener noreferrer">
-						https://doi.org/10.31223/X5612C
-					</a>
+					features with nutrient transport components 2000-2020.
 				</p>
 			</div>
 		</CustomDialog>
